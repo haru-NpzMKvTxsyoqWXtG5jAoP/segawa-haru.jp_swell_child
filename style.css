@@ -11,3 +11,148 @@
     License: GNU General Public License
     License URI: http://www.gnu.org/licenses/gpl.html
 */
+
+
+/* ===========================================================
+   左端に寄せるセクション：デスクトップ時のみ適用
+=========================================================== */
+.wp-block-group-edge-left-section {
+  max-width: none !important;   /* SWELLテーマなどの幅制限を解除 */
+  width: 100%;
+  padding-left: 8px;            /* 完全ベタ付けではなく、僅かに余白を残す */
+}
+
+/* SERVICE見出しと説明文の隙間を圧縮（必要なブロックに class="edge-left-section"） */
+.edge-left-section {
+  margin-bottom: -0.35em !important;
+}
+
+/* モバイル向け：左右に読みやすい余白を確保
+=========================================================== */
+@media (max-width: 599px) {
+  .wp-block-group-edge-left-section {
+    padding-left: 16px;
+  }
+}
+
+/* ===========================================================
+   カード一覧：レスポンシブ 4 → 3 → 2 → 1 列
+=========================================================== */
+.card-grid {
+  display: grid;
+  gap: 2.5rem 2rem;                                 /* 行：2.5rem　列：2rem */
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-auto-rows: auto;                             /* 高さは中身に合わせる */
+  max-width: var(--wp--style--global--wide-size, 1320px);
+  margin: 0 auto;                                   /* 中央寄せ */
+}
+
+/* ===========================================================
+   カード本体
+=========================================================== */
+.card-item {
+  --main: #04C58A;                                  /* 緑（好みで調整） */
+  background: #fff;
+  border: 2px solid var(--main);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.04);
+  display: flex;
+  flex-direction: column;
+  transition: background .3s, color .3s, box-shadow .3s;
+  overflow: hidden;                                 /* 角丸と画像を揃える */
+  position: relative;                              /* 矢印絶対配置用 */
+}
+
+/* 画像 */
+.card-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;                                /* 任意で調整可 */
+  object-fit: cover;
+}
+
+/* 見出し */
+.card-item h3 {
+  margin: 0.5rem 1.25rem 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  transition: color .3s;
+}
+
+/* 見出し */
+.card-item h5 {
+  margin: 0.5rem 1.25rem 0.3rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  transition: color .3s;
+}
+
+/* 本文 */
+.card-item p {
+  flex: 1 0 auto;
+  margin: 0 1.25rem 1.25rem;
+  font-size: 14px;                                  /* 指定の14px */
+  line-height: 1.7;
+  transition: color .3s;
+}
+
+/* 矢印（SVGに .arrow を付与） */
+.card-item .arrow {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 1.5rem; /* サイズ調整 */
+  height: auto;
+  transition: filter .3s, transform .3s;
+}
+
+/* ===========================================================
+   Hover：背景⇢緑／文字⇢白／矢印⇢白＋スライド
+=========================================================== */
+.card-item:hover {
+  background: var(--main);
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+.card-item:hover h3,
+.card-item:hover h5,
+.card-item:hover p {
+  color: #fff;
+}
+.card-item:hover .arrow {
+  filter: brightness(0) invert(1);
+  transform: translateX(.35rem);
+}
+
+/* モバイル：ギャップを少し詰める
+=========================================================== */
+@media (max-width: 599px) {
+  .card-grid {
+    gap: 2rem;
+  }
+}
+
+/* 1. カード本体を relative にしておく */
+.card-item {
+  position: relative;
+}
+
+/* 2. 矢印を右下に固定する */
+.card-item .arrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 0;               /* 余計な余白リセット */
+  width: 1.5em;            /* 好みで調整 */
+  height: auto;
+  filter: none;            /* 通常時はフィルターなし */
+  transition: transform .3s, filter .3s;
+}
+
+/* 3. ホバー時だけ矢印を白く＆スライド */
+.card-item:hover .arrow {
+  filter: invert(1) brightness(1.2);
+  transform: translateX(.35rem);
+}
+
+
