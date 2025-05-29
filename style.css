@@ -55,10 +55,7 @@
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   grid-auto-rows: auto;                             /* 高さは中身に合わせる */
   max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのワイド幅に合わせる */
-  margin-left: auto;  /* 左マージンを自動に */
-  margin-right: auto; /* 右マージンを自動に */
-  padding-left: 15px; /* コンテンツエリアの左右パディングを考慮 (SWELLのデフォルトに近い値) */
-  padding-right: 15px;/* コンテンツエリアの左右パディングを考慮 */
+  margin: 0 auto; /* シンプルに中央寄せに戻す */
 }
 
 /* ===========================================================
@@ -148,8 +145,6 @@
 @media (max-width: 599px) {
   .card-grid {
     gap: 1.5rem; /* モバイル時のギャップをさらに詰める */
-    padding-left: 10px; /* モバイル時のパディング調整 */
-    padding-right: 10px;/* モバイル時のパディング調整 */
   }
 }
 
