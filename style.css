@@ -12,6 +12,17 @@
     License URI: http://www.gnu.org/licenses/gpl.html
 */
 
+/* ===========================================================
+   ページ全体の調整
+=========================================================== */
+/* SERVICE見出し (h1) とヘッダーの隙間を調整 */
+/* 必要に応じてセレクタをより具体的にしてください (例: .page-id-XXX h1) */
+.l-article > .l-container > .c-pageTitle, /* SWELLの標準的なタイトル構成に合わせる場合 */
+.entry-header .entry-title { /* テーマによってはこちらの可能性も */
+  margin-top: 1em !important; /* 上の余白を減らす (値は調整してください) */
+  margin-bottom: 1em !important; /* 下の余白も調整 (値は調整してください) */
+}
+
 
 /* ===========================================================
    左端に寄せるセクション：デスクトップ時のみ適用
@@ -43,8 +54,11 @@
   gap: 2.5rem 1rem; /* 列のgapを 2rem から 1rem に変更 */
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   grid-auto-rows: auto;                             /* 高さは中身に合わせる */
-  max-width: var(--wp--style--global--wide-size, 1320px);
-  margin: 0 auto;                                   /* 中央寄せ */
+  max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのワイド幅に合わせる */
+  margin-left: auto;  /* 左マージンを自動に */
+  margin-right: auto; /* 右マージンを自動に */
+  padding-left: 15px; /* コンテンツエリアの左右パディングを考慮 (SWELLのデフォルトに近い値) */
+  padding-right: 15px;/* コンテンツエリアの左右パディングを考慮 */
 }
 
 /* ===========================================================
@@ -93,9 +107,9 @@
 .card-item p {
   flex: 1 0 auto;
   margin: 0 1.25rem 1.25rem;
-  font-size: 14px;                                  /* 指定の14px */
-  line-height: 1.7;
-  max-height: calc(14px * 1.7 * 3); /* テキストを3行までに制限 */
+  font-size: 13px;                                  /* 13px に変更 */
+  line-height: 1.6;                                 /* line-height調整 */
+  max-height: calc(13px * 1.6 * 3); /* テキストを3行までに制限 (13pxベース) */
   overflow: hidden; /* 溢れたテキストを非表示 */
   transition: color .3s;
 }
@@ -103,11 +117,12 @@
 /* 矢印（SVGに .arrow を付与） */
 .card-item .arrow {
   position: absolute;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  width: 1.5rem; /* サイズ調整 */
-  height: auto;
+  right: 1rem; /* 位置調整 */
+  bottom: 1rem; /* 位置調整 */
+  width: 24px; /* 具体的なpx指定に変更 */
+  height: 24px; /* 具体的なpx指定に変更 */
   transition: filter .3s, transform .3s;
+  /* filter: none; はホバー時に上書きされるので、通常時は不要なら削除または維持 */
 }
 
 /* ===========================================================
@@ -132,31 +147,42 @@
 =========================================================== */
 @media (max-width: 599px) {
   .card-grid {
-    gap: 2rem;
+    gap: 1.5rem; /* モバイル時のギャップをさらに詰める */
+    padding-left: 10px; /* モバイル時のパディング調整 */
+    padding-right: 10px;/* モバイル時のパディング調整 */
   }
 }
 
 /* 1. カード本体を relative にしておく */
+/* .card-item は既に定義されているので、ここでは不要 (重複) */
+/*
 .card-item {
   position: relative;
 }
+*/
 
 /* 2. 矢印を右下に固定する */
+/* .card-item .arrow も既に定義されているので、ここでは不要 (重複) */
+/*
 .card-item .arrow {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  margin: 0;               /* 余計な余白リセット */
-  width: 1.2em;            /* サイズを少し小さく変更 */
+  margin: 0;
+  width: 1.2em;
   height: auto;
-  filter: none;            /* 通常時はフィルターなし */
+  filter: none;
   transition: transform .3s, filter .3s;
 }
+*/
 
 /* 3. ホバー時だけ矢印を白く＆スライド */
+/* .card-item:hover .arrow も既に定義されているので、ここでは不要 (重複) */
+/*
 .card-item:hover .arrow {
   filter: invert(1) brightness(1.2);
   transform: translateX(.35rem);
 }
+*/
 
 
