@@ -12,24 +12,12 @@
     License URI: http://www.gnu.org/licenses/gpl.html
 */
 
-/* ===========================================================
-   ページ全体の調整
-=========================================================== */
-/* SERVICE見出し (h1) とヘッダーの隙間を調整 */
-/* 必要に応じてセレクタをより具体的にしてください (例: .page-id-XXX h1) */
-/* 前の指定をコメントアウト 
-.l-article > .l-container > .c-pageTitle, 
-.entry-header .entry-title { 
-  margin-top: 1em !important; 
-  margin-bottom: 1em !important; 
+/* ページ全体の調整は一旦リセット */
+/*
+.h1.is-style-section_ttl {
+  margin-top: 1rem !important; 
 }
 */
-
-/* スクリーンショットで確認したSERVICE見出しのセレクタをターゲットにする */
-h1.is-style-section_ttl {
-  margin-top: 1rem !important; /* 上の余白を調整 (値は好みで変更) */
-  /* margin-bottom は .edge-left-section で調整されているはずなので、ここでは触らない */
-}
 
 /* ===========================================================
    左端に寄せるセクション：デスクトップ時のみ適用
@@ -56,27 +44,13 @@ h1.is-style-section_ttl {
 /* ===========================================================
    カード一覧：レスポンシブ 4 → 3 → 2 → 1 列
 =========================================================== */
-/* 前の .wp-block-group.alignwide.card-grid の指定は削除 */
-
 .card-grid {
   display: grid;
-  gap: 2.5rem 1rem;
+  gap: 2.5rem 2rem;                                 /* 行：2.5rem　列：2rem */
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  grid-auto-rows: auto;
-  box-sizing: border-box;
-  width: 100%; /* 親要素の幅いっぱいに広がる */
-  margin-left: auto;  /* 基本的な中央寄せ */
-  margin-right: auto; /* 基本的な中央寄せ */
-  /* デフォルトの最大幅は、通常のコンテンツ幅に合わせるか、一旦広めにしておく */
-  max-width: 1100px; /* 通常時の最大幅 (必要に応じて調整) */
-}
-
-/* カードグリッドが .alignwide (幅広) の場合 */
-.card-grid.alignwide {
-  max-width: none !important; /* SWELLの .alignwide の幅を最大限に使うため、max-width制限を解除 */
-  /* SWELLの .alignwide の left や width の指定を活かしつつ、マージンで中央寄せを再確保 */
-  margin-left: auto !important;
-  margin-right: auto !important;
+  grid-auto-rows: auto;                             /* 高さは中身に合わせる */
+  max-width: var(--wp--style--global--wide-size, 1320px);
+  margin: 0 auto;                                   /* 中央寄せ */
 }
 
 /* ===========================================================
@@ -85,12 +59,12 @@ h1.is-style-section_ttl {
 .card-item {
   --main: #04C58A;                                  /* 緑（好みで調整） */
   background: #fff;
-  border: 2px solid #000000; /* 枠線の色を黒に変更 */
+  border: 2px solid var(--main);
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,.04);
   display: flex;
   flex-direction: column;
-  transition: background .3s, color .3s, box-shadow .3s, border-color .3s; /* border-color を transition に追加 */
+  transition: background .3s, color .3s, box-shadow .3s;
   overflow: hidden;                                 /* 角丸と画像を揃える */
   position: relative;                              /* 矢印絶対配置用 */
 }
@@ -102,7 +76,7 @@ h1.is-style-section_ttl {
   height: auto;
   aspect-ratio: 4/3;                                /* 任意で調整可 */
   object-fit: cover;
-  pointer-events: none; /* 画像クリックイベントを無効化 */
+  pointer-events: none; /* 画像クリックイベントを無効化 (維持) */
 }
 
 /* 見出し */
@@ -125,22 +99,19 @@ h1.is-style-section_ttl {
 .card-item p {
   flex: 1 0 auto;
   margin: 0 1.25rem 1.25rem;
-  font-size: 13px;                                  /* 13px に変更 */
-  line-height: 1.6;                                 /* line-height調整 */
-  max-height: calc(13px * 1.6 * 3); /* テキストを3行までに制限 (13pxベース) */
-  overflow: hidden; /* 溢れたテキストを非表示 */
+  font-size: 14px;                                  /* 指定の14px */
+  line-height: 1.7;
   transition: color .3s;
 }
 
 /* 矢印（SVGに .arrow を付与） */
 .card-item .arrow {
   position: absolute;
-  right: 1rem; /* 位置調整 */
-  bottom: 1rem; /* 位置調整 */
-  width: 24px; /* 具体的なpx指定に変更 */
-  height: 24px; /* 具体的なpx指定に変更 */
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 1.5rem; /* サイズ調整 */
+  height: auto;
   transition: filter .3s, transform .3s;
-  /* filter: none; はホバー時に上書きされるので、通常時は不要なら削除または維持 */
 }
 
 /* ===========================================================
@@ -149,7 +120,6 @@ h1.is-style-section_ttl {
 .card-item:hover {
   background: var(--main);
   box-shadow: 0 8px 18px rgba(0,0,0,.10);
-  border-color: var(--main); /* ホバー時の枠線色を緑に */
 }
 .card-item:hover h3,
 .card-item:hover h5,
@@ -161,44 +131,80 @@ h1.is-style-section_ttl {
   transform: translateX(.35rem);
 }
 
-/* モバイル：ギャップを少し詰める
+/* ===========================================================
+   これ以降のカード関連のCSSは、ハルが自由に組んでみてね！
+   SWELLのブロックエディタでカラムやグループを使ってカードを作った場合、
+   以下のようなクラス名が付与されることが多いので参考にしてみてね。
 =========================================================== */
-@media (max-width: 599px) {
-  .card-grid {
-    gap: 1.5rem; /* モバイル時のギャップをさらに詰める */
-  }
-}
 
-/* 1. カード本体を relative にしておく */
-/* .card-item は既に定義されているので、ここでは不要 (重複) */
-/*
-.card-item {
-  position: relative;
-}
-*/
+/* カード全体を囲むラッパー（例：カラムブロックやグループブロック） */
+/* .wp-block-columns {} */       /* カラムブロック全体 */
+/* .wp-block-column {} */        /* 個々のカラム */
+/* .wp-block-group {} */         /* グループブロック */
+/* .card-grid {} */            /* ハルが独自に付けたクラス名 */
 
-/* 2. 矢印を右下に固定する */
-/* .card-item .arrow も既に定義されているので、ここでは不要 (重複) */
-/*
-.card-item .arrow {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  margin: 0;
-  width: 1.2em;
-  height: auto;
-  filter: none;
-  transition: transform .3s, filter .3s;
-}
-*/
 
-/* 3. ホバー時だけ矢印を白く＆スライド */
-/* .card-item:hover .arrow も既に定義されているので、ここでは不要 (重複) */
-/*
-.card-item:hover .arrow {
-  filter: invert(1) brightness(1.2);
-  transform: translateX(.35rem);
-}
-*/
+/* 個々のカードアイテム */
+/* .wp-block-group {} */         /* グループブロックをカードとして使う場合など */
+/* .card-item {} */             /* ハルが独自に付けたクラス名 */
+
+
+/* カード内の画像 */
+/* .wp-block-image img {} */
+
+
+/* カード内の見出し */
+/* .wp-block-heading {} */
+/* .wp-block-post-title {} */    /* 投稿タイトルブロックなど */
+
+
+/* カード内のテキスト */
+/* .wp-block-paragraph {} */     /* 段落ブロック */
+/* .wp-block-post-excerpt {} */  /* 抜粋ブロックなど */
+
+
+/* カード内のボタンやリンク */
+/* .wp-block-button__link {} */
+
+
+/* --- 以下、ハルのカスタムCSSを記述するエリア --- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- ここまで --- */
 
 
