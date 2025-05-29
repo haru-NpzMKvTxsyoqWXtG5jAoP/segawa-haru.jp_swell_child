@@ -16,12 +16,12 @@
    左端に寄せるセクション：デスクトップ時のみ適用
 =========================================================== */
 .wp-block-group-edge-left-section {
-  max-width: none !important;   /* SWELLテーマなどの幅制限を解除 */
+  max-width: none !important;   /* SWELLテーマの幅制限を解除 */
   width: 100%;
   padding-left: 8px;            /* 完全ベタ付けではなく、僅かに余白を残す */
 }
 
-/* SERVICE見出しと説明文の隙間を圧縮（必要なブロックに class="edge-left-section"） */
+/* SERVICE見出しと説明文の隙間（必要なブロックに class="edge-left-section"） */
 .edge-left-section {
   margin-bottom: -0.35em !important;
 }
@@ -32,4 +32,30 @@
   .wp-block-group-edge-left-section {
     padding-left: 16px;
   }
+}
+/* ===========================================================
+   カード一覧
+=========================================================== */
+.card-grid {
+  /* ここにカスタムプロパティを定義 */
+  --card-grid-gap: 20px;                      /* カード間の隙間 */
+  --card-grid-min-item-width: 200px;          /* カードの最小幅 */
+  --card-grid-max-columns: 4;                 /* カードの最大列数 */
+  --card-item-height: 300px;                  /* カードの高さ */
+  --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
+  --card-border-color-hover: green;           /* カードのホバー時の枠線色 */
+  --card-bg-color: #fff;                      /* カードの背景色 */
+  --card-border-radius: 10px;                 /* カードの角丸 (今のスタイルに合わせる) */
+  --card-image-max-height: 150px;             /* カード画像の最大高さ */
+  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
+  --arrow-size: 20px;                         /* 矢印のサイズ */
+  --arrow-color: #333;                        /* 矢印の色 */
+
+  /* ↓ここから下は、今の .card-grid のスタイル */
+  display: grid;
+  gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), calc( (100% - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns) ))); /* カスタムプロパティを使用し、最大列数を考慮 */
+  grid-auto-rows: auto;                             /* 高さは中身に合わせる */
+  max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのデフォルト幅変数 */
+  margin: 0 auto;                                   /* 中央寄せ */
 }
