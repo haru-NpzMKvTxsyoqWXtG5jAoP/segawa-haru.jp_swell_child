@@ -40,7 +40,7 @@
 =========================================================== */
 .card-grid {
   display: grid;
-  gap: 2.5rem 2rem;                                 /* 行：2.5rem　列：2rem */
+  gap: 2.5rem 1rem; /* 列のgapを 2rem から 1rem に変更 */
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   grid-auto-rows: auto;                             /* 高さは中身に合わせる */
   max-width: var(--wp--style--global--wide-size, 1320px);
@@ -53,12 +53,12 @@
 .card-item {
   --main: #04C58A;                                  /* 緑（好みで調整） */
   background: #fff;
-  border: 2px solid var(--main);
+  border: 2px solid #000000; /* 枠線の色を黒に変更 */
   border-radius: 10px;
   box-shadow: 0 6px 12px rgba(0,0,0,.04);
   display: flex;
   flex-direction: column;
-  transition: background .3s, color .3s, box-shadow .3s;
+  transition: background .3s, color .3s, box-shadow .3s, border-color .3s; /* border-color を transition に追加 */
   overflow: hidden;                                 /* 角丸と画像を揃える */
   position: relative;                              /* 矢印絶対配置用 */
 }
@@ -70,6 +70,7 @@
   height: auto;
   aspect-ratio: 4/3;                                /* 任意で調整可 */
   object-fit: cover;
+  pointer-events: none; /* 画像クリックイベントを無効化 */
 }
 
 /* 見出し */
@@ -94,6 +95,8 @@
   margin: 0 1.25rem 1.25rem;
   font-size: 14px;                                  /* 指定の14px */
   line-height: 1.7;
+  max-height: calc(14px * 1.7 * 3); /* テキストを3行までに制限 */
+  overflow: hidden; /* 溢れたテキストを非表示 */
   transition: color .3s;
 }
 
@@ -113,6 +116,7 @@
 .card-item:hover {
   background: var(--main);
   box-shadow: 0 8px 18px rgba(0,0,0,.10);
+  border-color: var(--main); /* ホバー時の枠線色を緑に */
 }
 .card-item:hover h3,
 .card-item:hover h5,
@@ -143,7 +147,7 @@
   bottom: 1rem;
   right: 1rem;
   margin: 0;               /* 余計な余白リセット */
-  width: 1.5em;            /* 好みで調整 */
+  width: 1.2em;            /* サイズを少し小さく変更 */
   height: auto;
   filter: none;            /* 通常時はフィルターなし */
   transition: transform .3s, filter .3s;
