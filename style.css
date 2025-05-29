@@ -36,7 +36,7 @@
 /* ===========================================================
    カード一覧
 =========================================================== */
-.card-grid {
+div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 20px;                      /* カード間の隙間 */
   --card-grid-min-item-width: 200px;          /* カードの最小幅 */
@@ -55,7 +55,19 @@
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
   grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), calc( (100% - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns) ))); /* カスタムプロパティを使用し、最大列数を考慮 */
-  grid-auto-rows: auto;                             /* 高さは中身に合わせる */
   max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのデフォルト幅変数 */
-  margin: 0 auto;                                   /* 中央寄せ */
+}
+
+/* ===========================================================
+   カード本体
+=========================================================== */
+.card-item {
+  height: var(--card-item-height); /* カードの高さを固定 (300px) */
+  border: 1px solid var(--card-border-color); /* 枠線 (黒) */
+  border-radius: var(--card-border-radius); /* 角丸 (10px) */
+  background-color: var(--card-bg-color); /* 背景色 (白) */
+  overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
+  display: flex; /* 内部要素の配置にflexboxを使用 */
+  flex-direction: column; /* 子要素を縦方向に並べる */
+  box-shadow: 0 6px 12px rgba(0,0,0,.04); /* 影 (SWELLのスタイルから拝借) */
 }
