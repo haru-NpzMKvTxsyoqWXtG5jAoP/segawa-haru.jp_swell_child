@@ -103,3 +103,11 @@ div.wp-block-group.card-grid {
   padding-left: 20px;  /* 内側の左右余白（なくてもOK、お好みで） */
   padding-right: 20px; /* 内側の左右余白（なくてもOK、お好みで） */
 }
+
+/* ----------------------------------------------------------------
+  特定の固定ページ（page-id-8551）の.post_content幅を調整
+-----------------------------------------------------------------*/
+body.page-id-8551 .post_content {
+  width: auto !important;      /* width を auto にして親要素に合わせる */
+  max-width: none !important;  /* 最大幅の制限も解除 */
+}
