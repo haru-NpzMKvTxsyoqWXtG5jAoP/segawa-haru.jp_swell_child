@@ -74,12 +74,22 @@ div.wp-block-group.card-grid {
 /* ----------------------------------------------------------------
   サービス紹介コンテンツエリア全体のスタイル
 -----------------------------------------------------------------*/
-.top-service-contents {
-  max-width: 1400px; /* 希望の最大幅 */
-  margin-left: auto;  /* 中央寄せ */
-  margin-right: auto; /* 中央寄せ */
-  padding-left: 20px;  /* 内側の左右余白（なくてもOK、お好みで） */
-  padding-right: 20px; /* 内側の左右余白（なくてもOK、お好みで） */
+/* サービス紹介コンテンツエリア全体のスタイル */
+.top-service-contents.alignfull, /* 「全幅」設定で .alignfull が付いた場合 */
+.top-service-contents {          /* 「全幅」設定でない場合も考慮（念のため） */
+  /* SWELLの alignfull が使う width と left を上書きして無効化する */
+  width: auto !important;
+  left: auto !important;
+  position: relative !important; /* SWELLの left 指定を打ち消すため */
+
+  /* 改めてこっちで幅と中央寄せを指定する */
+  max-width: 1400px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  /* 元々指定していたpaddingはそのまま活かす */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* このページのメインコンテンツ(.l-mainContent__inner)の最大幅を広げる */
