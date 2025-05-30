@@ -70,3 +70,28 @@ div.wp-block-group.card-grid {
   flex-direction: column; /* 子要素を縦方向に並べる */
   box-shadow: 0 6px 12px rgba(0,0,0,.04); /* 影 (SWELLのスタイルから拝借) */
 }
+
+.card-item:hover {
+  background-color: var(--card-border-color-hover); /* ホバー時背景色を緑に */
+  border-color: var(--card-border-color-hover); /* ホバー時枠線も緑に */
+  color: #FFFFFF; /* ホバー時文字色を白に */
+}
+
+/* ===========================================================
+   カード内の要素
+=========================================================== */
+
+/* カード内見出し (h3) */
+.card-item h3 {
+  margin: 0.5rem 1.25rem 0.3rem; /* 上下左右のマージン */
+  font-size: 1.35rem;             /* フォントサイズ */
+  font-weight: 700;               /* フォントの太さ */
+  line-height: 1.4;               /* 行の高さ */
+  color: #333333;                 /* 通常時の文字色 (ホバーで白になるので、通常時も定義) */
+  transition: color .3s;          /* 文字色の変化をアニメーション */
+}
+
+/* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
+.card-item:hover h3 {
+  color: #FFFFFF;
+}
