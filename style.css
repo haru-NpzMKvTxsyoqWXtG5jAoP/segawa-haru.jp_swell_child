@@ -54,9 +54,7 @@ div.wp-block-group.card-grid {
   display: grid;
   gap: var(--card-grid-gap);
   grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr));
-  max-width: 1108px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%; /* 親要素(.top-service-contents)の幅いっぱいに広がるようにする */
 }
 
 /* ===========================================================
@@ -94,3 +92,14 @@ div.wp-block-group.card-grid {
 /*  width: 100%; / * 親要素(.l-mainContent__inner) いっぱいに広がる */
   /* max-width と margin は .l-mainContent__inner で制御するのでここでは不要 */
 /* } */
+
+/* ----------------------------------------------------------------
+  サービス紹介コンテンツエリア全体のスタイル
+-----------------------------------------------------------------*/
+.top-service-contents {
+  max-width: 1400px; /* 希望の最大幅 */
+  margin-left: auto;  /* 中央寄せ */
+  margin-right: auto; /* 中央寄せ */
+  padding-left: 20px;  /* 内側の左右余白（なくてもOK、お好みで） */
+  padding-right: 20px; /* 内側の左右余白（なくてもOK、お好みで） */
+}
