@@ -55,7 +55,6 @@ div.wp-block-group.card-grid {
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
   grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), calc( (100% - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns) ))); /* カスタムプロパティを使用し、最大列数を考慮 */
-  max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのデフォルト幅変数 */
 }
 
 /* ===========================================================
