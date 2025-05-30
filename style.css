@@ -51,10 +51,11 @@ div.wp-block-group.card-grid {
   --arrow-size: 20px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
 
+  /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
-  gap: var(--card-grid-gap);
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr));
-  width: 100%; /* 親要素(.top-service-contents)の幅いっぱいに広がるようにする */
+  gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), calc( (100% - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns) ))); /* カスタムプロパティを使用し、最大列数を考慮 */
+  max-width: var(--wp--style--global--wide-size, 1320px); /* SWELLのデフォルト幅変数 */
 }
 
 /* ===========================================================
@@ -70,59 +71,3 @@ div.wp-block-group.card-grid {
   flex-direction: column; /* 子要素を縦方向に並べる */
   box-shadow: 0 6px 12px rgba(0,0,0,.04); /* 影 (SWELLのスタイルから拝借) */
 }
-
-/* ===========================================================
-   特定の固定ページ（page-id-8551）のレイアウト調整
-=========================================================== */
-/* このページのメインコンテンツ(.l-mainContent__inner)の最大幅を広げる */
-/* body.page-id-8551 .l-mainContent__inner { */
-/*  max-width: 1108px; */
-/*  margin-left: auto; */
-/*  margin-right: auto; */
-/* } */
-
-/* このページ内のカードラッパー(.card-grid)のスタイル */
-/* もともと div.wp-block-group.card-grid.is-layout-grid に指定していたスタイルをこちらに統合・調整 */
-/* body.page-id-8551 div.wp-block-group.card-grid.is-layout-grid { */
-  /* カスタムプロパティ定義は既存のものを参照するのでここでは省略 */
-/*  display: grid; */
-/*  gap: var(--card-grid-gap); / * !important は不要になるはず */
-/*  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); / * !important は不要になるはず */
-/*  width: 100%; / * 親要素(.l-mainContent__inner) いっぱいに広がる */
-  /* max-width と margin は .l-mainContent__inner で制御するのでここでは不要 */
-/* } */
-
-/* ----------------------------------------------------------------
-  サービス紹介コンテンツエリア全体のスタイル
------------------------------------------------------------------*/
-/* サービス紹介コンテンツエリア全体のスタイル */
-/* .top-service-contents.alignfull, /* 「全幅」設定で .alignfull が付いた場合 */
-/* .top-service-contents {          /* 「全幅」設定でない場合も考慮（念のため） */
-  /* SWELLの alignfull が使う width と left を上書きして無効化する */
-/*  width: auto !important; */
-/*  left: auto !important; */
-/*  position: relative !important; /* SWELLの left 指定を打ち消すため */
-
-  /* 改めてこっちで幅と中央寄せを指定する */
-/*  max-width: 1400px !important; */
-/*  margin-left: auto !important; */
-/*  margin-right: auto !important; */
-
-  /* 元々指定していたpaddingはそのまま活かす */
-/*  padding-left: 20px; */
-/*  padding-right: 20px; */
-/* } */
-
-/* このページのメインコンテンツ(.l-mainContent__inner)の最大幅を広げる */
-/* body.page-id-8551 .l-mainContent__inner { */
-/*  width: auto !important; */
-/*  max-width: none !important; */
-/* } */
-
-/* ----------------------------------------------------------------
-  特定の固定ページ（page-id-8551）の.post_content幅を調整
------------------------------------------------------------------*/
-/* body.page-id-8551 .post_content { */
-/*  width: auto !important;      /* width を auto にして親要素に合わせる */
-/*  max-width: none !important;  /* 最大幅の制限も解除 */
-/* } */
