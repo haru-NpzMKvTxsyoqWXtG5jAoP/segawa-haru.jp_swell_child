@@ -36,7 +36,7 @@
 /* ===========================================================
    カード一覧
 =========================================================== */
-div.wp-block-group.card-grid.is-layout-grid {
+div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 20px;                      /* カード間の隙間 */
   --card-grid-min-item-width: 200px;          /* カードの最小幅 */
@@ -51,14 +51,12 @@ div.wp-block-group.card-grid.is-layout-grid {
   --arrow-size: 20px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
 
-  /* ↓ここから下は、新しいセレクタ(body.page-id-8551 ...)で制御するため削除 */
-  /* display: grid; */
-  /* gap: var(--card-grid-gap) !important; */
-  /* grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)) !important; */
-  /* width: 1108px !important; */
-  /* max-width: none !important; */
-  /* margin-left: auto !important; */
-  /* margin-right: auto !important; */
+  display: grid;
+  gap: var(--card-grid-gap);
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr));
+  max-width: 1108px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===========================================================
@@ -80,19 +78,19 @@ div.wp-block-group.card-grid.is-layout-grid {
 -----------------------------------------------------------------*/
 
 /* このページのメインコンテンツ(.l-mainContent__inner)の最大幅を広げる */
-body.page-id-8551 .l-mainContent__inner {
-  max-width: 1108px;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* body.page-id-8551 .l-mainContent__inner { */
+/*  max-width: 1108px; */
+/*  margin-left: auto; */
+/*  margin-right: auto; */
+/* } */
 
 /* このページ内のカードラッパー(.card-grid)のスタイル */
 /* もともと div.wp-block-group.card-grid.is-layout-grid に指定していたスタイルをこちらに統合・調整 */
-body.page-id-8551 div.wp-block-group.card-grid.is-layout-grid {
+/* body.page-id-8551 div.wp-block-group.card-grid.is-layout-grid { */
   /* カスタムプロパティ定義は既存のものを参照するのでここでは省略 */
-  display: grid;
-  gap: var(--card-grid-gap); /* !important は不要になるはず */
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); /* !important は不要になるはず */
-  width: 100%; /* 親要素(.l-mainContent__inner) いっぱいに広がる */
+/*  display: grid; */
+/*  gap: var(--card-grid-gap); / * !important は不要になるはず */
+/*  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); / * !important は不要になるはず */
+/*  width: 100%; / * 親要素(.l-mainContent__inner) いっぱいに広がる */
   /* max-width と margin は .l-mainContent__inner で制御するのでここでは不要 */
-}
+/* } */
