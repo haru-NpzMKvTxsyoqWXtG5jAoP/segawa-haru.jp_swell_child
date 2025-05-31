@@ -44,7 +44,7 @@ div.wp-block-group.card-grid {
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
-  --card-border-radius: 10px;                 /* カードの角丸 (元に戻す) */
+  --card-border-radius: 10px;                 /* カードの角丸 (一時的に無効化) */
   --card-image-max-height: 150px;             /* カード画像の最大高さ */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
   --arrow-size: 24px;                         /* 矢印のサイズ (20pxから24pxに変更) */
@@ -120,33 +120,30 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   カード内SVG矢印
+   カード内インラインSVG矢印
 =========================================================== */
-.card-item .arrow {
-  width: var(--arrow-size);  /* カスタムプロパティでサイズ指定 (20px) */
-  height: var(--arrow-size); /* カスタムプロパティでサイズ指定 (20px) */
+.card-item .arrow svg { /* figureタグやdivなど、SVGをラップしてる要素の中のSVGタグ自体 */
+  width: var(--arrow-size);  /* カスタムプロパティでサイズ指定 (今は24pxのはず) */
+  height: var(--arrow-size); /* カスタムプロパティでサイズ指定 */
   position: absolute;
   right: 1rem;  /* カード右端からの距離 */
   bottom: 1rem; /* カード下端からの距離 */
-  margin: 0; /* WordPressがfigureにつける可能性のあるマージンをリセット */
-  padding: 0; /* WordPressがfigureにつける可能性のあるパディングをリセット */
-  transition: transform 0.3s ease-out; /* アニメーション用に追加 */
+  transition: transform 0.3s ease-out; /* ホバー時の移動アニメーション */
 }
 
-.card-item:hover .arrow {
+.card-item:hover .arrow svg {
   transform: translateX(5px); /* ホバー時に右に5px動かす */
 }
 
-.card-item .arrow img { /* figureの中のimgタグ(SVG)に対して */
-  display: block; /* 余計な隙間をなくす */
-  width: 100%;    /* 親要素(figure.arrow)のサイズに合わせる */
-  height: 100%;   /* 親要素(figure.arrow)のサイズに合わせる */
-  fill: var(--arrow-color); /* SVGの色を指定 */
-  transition: fill 0.3s, transform 0.3s ease-out; /* fillのtransitionもここにまとめる */
+.card-item .arrow svg path { /* SVGの中の<path>要素 (矢印の線を描いてる部分) */
+  stroke: var(--arrow-color); /* 線をカスタムプロパティの色に (今は#333のはず) */
+  fill: var(--arrow-color);   /* 念のためfillも同じ色に (SVGの作りによる) */
+  transition: stroke 0.3s, fill 0.3s; /* ホバー時の色変化をアニメーション */
 }
 
-.card-item:hover .arrow img {
-  fill: #FFFFFF !important; /* ホバー時は白 (強制的に) */
+.card-item:hover .arrow svg path {
+  stroke: #FFFFFF; /* ホバー時は白に */
+  fill: #FFFFFF;   /* ホバー時は白に */
 }
 
 /* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
