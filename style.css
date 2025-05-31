@@ -68,6 +68,7 @@ div.wp-block-group.card-grid {
   overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
+  transition: background-color .3s, border-color .3s; /* 背景色と枠線色の変化をアニメーション */
 }
 
 .card-item:hover {
@@ -114,6 +115,7 @@ div.wp-block-group.card-grid {
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
   max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   text-align: justify;        /* 均等割り付けを試す */
+  transition: color .3s; /* 文字色の変化をアニメーション */
 }
 
 /* ===========================================================
