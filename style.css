@@ -100,13 +100,21 @@ div.wp-block-group.card-grid {
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: 13px; /* フォントサイズを13pxに指定 */
-  padding: 0 0.8rem 0.5rem; /* 上0、左右0.8rem、下0.5rem のパディング (左右を0.8remに) */
-  margin: 0; /* デフォルトマージンをリセット */
-  line-height: 1.6; /* 行間を調整 */
-  color: #555555; /* 通常時の文字色 */
-  flex-grow: 1; /* 残りのスペースを埋めるように伸びる */
-  overflow-y: auto; /* 内容が多い場合にスクロール (デバッグ用、最終的にはhiddenかも) */
+  font-size: 13px;            /* フォントサイズを13pxに指定 */
+  padding-top: 0;
+  padding-right: 0.8rem;      /* 内側の右パディング */
+  padding-bottom: 0.5rem;
+  padding-left: 0.8rem;       /* 内側の左パディング */
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-right: 1rem;         /* 外側の右マージンを追加 */
+  margin-bottom: 0.5rem;      /* 下にも少しマージンを（flex-growとの兼ね合いで調整） */
+  margin-left: 1rem;          /* 外側の左マージンを追加 */
+  line-height: 1.6;           /* 行の高さ */
+  color: #555555;            /* 通常時の文字色 */
+  flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
+  overflow-y: auto;           /* 内容が多い場合にスクロール */
+  /* text-align: left; */           /* 明示的に左揃えを指定 (削除またはコメントアウト) */
 }
 
 /* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
