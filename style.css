@@ -44,7 +44,7 @@ div.wp-block-group.card-grid {
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
-  --card-border-radius: 10px;                 /* カードの角丸 (一時的に無効化) */
+  --card-border-radius: 10px;                 /* カードの角丸 */
   --card-image-max-height: 150px;             /* カード画像の最大高さ */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
   --arrow-size: 24px;                         /* 矢印のサイズ (20pxから24pxに変更) */
@@ -68,13 +68,12 @@ div.wp-block-group.card-grid {
   overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
-  /* box-shadow: 0 6px 12px rgba(0,0,0,.04); */ /* 影を削除 */
 }
 
 .card-item:hover {
   background-color: var(--card-border-color-hover); /* ホバー時背景色を緑に */
   border-color: var(--card-border-color-hover); /* ホバー時枠線も緑に */
-  color: #FFFFFF; /* ホバー時文字色を白に */
+  color: #FFFFFF; /* ホバー時文字色を白に (復活させる) */
 }
 
 /* ===========================================================
@@ -143,6 +142,10 @@ div.wp-block-group.card-grid {
 .card-item:hover .arrow svg path {
   stroke: #FFFFFF; /* ホバー時は白に */
   fill: #FFFFFF;   /* ホバー時は白に */
+}
+
+.card-item:hover p {
+  color: #FFFFFF; /* ホバー時文字色を白に */
 }
 
 /* ===========================================================
