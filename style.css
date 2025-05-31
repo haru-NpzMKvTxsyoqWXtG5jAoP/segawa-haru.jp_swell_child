@@ -113,7 +113,8 @@ div.wp-block-group.card-grid {
   line-height: 1.6;           /* 行の高さ */
   color: #555555;            /* 通常時の文字色 */
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
-  overflow-y: auto;           /* 内容が多い場合にスクロール */
+  overflow-y: hidden;           /* 内容が多い場合に隠す (スクロールを無効に) */
+  max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   /* text-align: left; */           /* 明示的に左揃えを指定 (削除またはコメントアウト) */
 }
 
