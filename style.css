@@ -108,7 +108,7 @@ div.wp-block-group.card-grid {
   box-sizing: border-box;
   margin-top: 0;
   margin-right: 0.5rem;         /* 外側の右余白を0.5remに変更 */
-  margin-bottom: 0.5rem;      /* 下にも少しマージンを（flex-growとの兼ね合いで調整） */
+  margin-bottom: 0.8rem;      /* 下にも少しマージンを（flex-growとの兼ね合いで調整）テキストと矢印の間の余白 */
   margin-left: 0.5rem;          /* 外側の左余白を0.5remに変更 */
   line-height: 1.6;           /* 行の高さ */
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
@@ -119,12 +119,15 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    カード内インラインSVG矢印
 =========================================================== */
+.card-item .arrow { /* SVGを囲む .arrow クラスがついたdiv */
+  align-self: flex-end; /* 右端に配置 */
+  margin-right: 1rem;   /* カード右端からの距離 */
+  margin-bottom: 1rem;  /* カード下端からの距離 */
+}
+
 .card-item .arrow svg { /* figureタグやdivなど、SVGをラップしてる要素の中のSVGタグ自体 */
   width: var(--arrow-size);  /* カスタムプロパティでサイズ指定 (今は24pxのはず) */
   height: var(--arrow-size); /* カスタムプロパティでサイズ指定 */
-  position: absolute;
-  right: 1rem;  /* カード右端からの距離 */
-  bottom: 1rem; /* カード下端からの距離 */
   transition: transform 0.3s ease-out; /* ホバー時の移動アニメーション */
 }
 
