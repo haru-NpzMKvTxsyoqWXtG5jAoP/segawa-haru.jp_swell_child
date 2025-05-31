@@ -116,7 +116,6 @@ div.wp-block-group.card-grid {
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
   max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   text-align: justify;        /* 均等割り付けを試す */
-  /* text-align: left; */           /* 明示的に左揃えを指定 (削除またはコメントアウト) */
 }
 
 /* ===========================================================
@@ -144,15 +143,6 @@ div.wp-block-group.card-grid {
 .card-item:hover .arrow svg path {
   stroke: #FFFFFF; /* ホバー時は白に */
   fill: #FFFFFF;   /* ホバー時は白に */
-}
-
-/* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
-.card-item:hover h3 {
-  color: #FFFFFF;
-}
-
-.card-item:hover p {
-  color: #FFFFFF; /* ホバー時文字色を白に */
 }
 
 /* ===========================================================
