@@ -47,7 +47,7 @@ div.wp-block-group.card-grid {
   --card-border-radius: 10px;                 /* カードの角丸 (元に戻す) */
   --card-image-max-height: 150px;             /* カード画像の最大高さ */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
-  --arrow-size: 20px;                         /* 矢印のサイズ */
+  --arrow-size: 24px;                         /* 矢印のサイズ (20pxから24pxに変更) */
   --arrow-color: #333;                        /* 矢印の色 */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
@@ -130,6 +130,11 @@ div.wp-block-group.card-grid {
   bottom: 1rem; /* カード下端からの距離 */
   margin: 0; /* WordPressがfigureにつける可能性のあるマージンをリセット */
   padding: 0; /* WordPressがfigureにつける可能性のあるパディングをリセット */
+  transition: transform 0.3s ease-out; /* アニメーション用に追加 */
+}
+
+.card-item:hover .arrow {
+  transform: translateX(5px); /* ホバー時に右に5px動かす */
 }
 
 .card-item .arrow img { /* figureの中のimgタグ(SVG)に対して */
@@ -137,11 +142,11 @@ div.wp-block-group.card-grid {
   width: 100%;    /* 親要素(figure.arrow)のサイズに合わせる */
   height: 100%;   /* 親要素(figure.arrow)のサイズに合わせる */
   fill: var(--arrow-color); /* SVGの色を指定 */
-  transition: fill 0.3s;
+  transition: fill 0.3s, transform 0.3s ease-out; /* fillのtransitionもここにまとめる */
 }
 
 .card-item:hover .arrow img {
-  fill: #FFFFFF; /* ホバー時は白 */
+  fill: #FFFFFF !important; /* ホバー時は白 (強制的に) */
 }
 
 /* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
