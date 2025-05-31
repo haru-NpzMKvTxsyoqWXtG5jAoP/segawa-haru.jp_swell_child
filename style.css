@@ -40,8 +40,7 @@ div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 20px;                      /* カード間の隙間 */
   --card-grid-min-item-width: 200px;          /* カードの最小幅 */
-  --card-grid-max-columns: 4;                 /* カードの最大列数 */
-  --card-item-height: 300px;                  /* カードの高さ */
+  --card-item-height: 350px;                  /* カードの高さ (300pxから350pxに変更) */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
@@ -68,7 +67,7 @@ div.wp-block-group.card-grid {
   overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
-  box-shadow: 0 6px 12px rgba(0,0,0,.04); /* 影 (SWELLのスタイルから拝借) */
+  /* box-shadow: 0 6px 12px rgba(0,0,0,.04); */ /* 影を削除 */
 }
 
 .card-item:hover {
@@ -81,6 +80,14 @@ div.wp-block-group.card-grid {
    カード内の要素
 =========================================================== */
 
+/* カード内画像 */
+.card-item img {
+  pointer-events: none; /* 画像のクリックイベント無効化 */
+  max-height: var(--card-image-max-height); /* 最大高さをカスタムプロパティで指定 */
+  object-fit: cover; /* 画像がコンテナに合わせてトリミングされるように */
+  width: 100%; /* 画像の幅をカードに合わせる */
+}
+
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 0.5rem 1.25rem 0.3rem; /* 上下左右のマージン */
@@ -91,7 +98,22 @@ div.wp-block-group.card-grid {
   transition: color .3s;          /* 文字色の変化をアニメーション */
 }
 
+/* カード内テキスト (p) */
+.card-item p {
+  font-size: 0.9rem; /* フォントサイズを少し小さく (1px小さくの意図をremで表現) */
+  padding: 0 1.25rem 0.5rem; /* 上0、左右1.25rem、下0.5rem のパディング */
+  margin: 0; /* デフォルトマージンをリセット */
+  line-height: 1.6; /* 行間を調整 */
+  color: #555555; /* 通常時の文字色 */
+  flex-grow: 1; /* 残りのスペースを埋めるように伸びる */
+  overflow-y: auto; /* 内容が多い場合にスクロール (デバッグ用、最終的にはhiddenかも) */
+}
+
 /* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
 .card-item:hover h3 {
   color: #FFFFFF;
+}
+
+.card-item:hover p {
+  color: #FFFFFF; /* ホバー時文字色を白に */
 }
