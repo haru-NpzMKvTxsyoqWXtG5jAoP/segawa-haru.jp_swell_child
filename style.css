@@ -107,9 +107,9 @@ div.wp-block-group.card-grid {
   padding-left: 0.8rem;       /* 内側の左パディング */
   box-sizing: border-box;
   margin-top: 0;
-  margin-right: 1rem;         /* 外側の右マージンを追加 */
+  margin-right: 0.5rem;         /* 外側の右余白を0.5remに変更 */
   margin-bottom: 0.5rem;      /* 下にも少しマージンを（flex-growとの兼ね合いで調整） */
-  margin-left: 1rem;          /* 外側の左マージンを追加 */
+  margin-left: 0.5rem;          /* 外側の左余白を0.5remに変更 */
   line-height: 1.6;           /* 行の高さ */
   color: #555555;            /* 通常時の文字色 */
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
