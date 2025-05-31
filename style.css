@@ -44,7 +44,7 @@ div.wp-block-group.card-grid {
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
-  --card-border-radius: 10px;                 /* カードの角丸 (今のスタイルに合わせる) */
+  /* --card-border-radius: 10px; */                 /* カードの角丸 (一時的に無効化) */
   --card-image-max-height: 150px;             /* カード画像の最大高さ */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
   --arrow-size: 20px;                         /* 矢印のサイズ */
@@ -61,7 +61,7 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   height: var(--card-item-height); /* カードの高さを固定 (300px) */
-  border: 1px solid var(--card-border-color); /* 枠線 (黒) */
+  border: 2px solid var(--card-border-color); /* 枠線 (黒) 太さを2pxに変更 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
   overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
@@ -101,7 +101,7 @@ div.wp-block-group.card-grid {
 /* カード内テキスト (p) */
 .card-item p {
   font-size: 0.9rem; /* フォントサイズを少し小さく (1px小さくの意図をremで表現) */
-  padding: 0 1.25rem 0.5rem; /* 上0、左右1.25rem、下0.5rem のパディング */
+  padding: 0 1rem 0.5rem; /* 上0、左右1rem、下0.5rem のパディング (左右を1remに) */
   margin: 0; /* デフォルトマージンをリセット */
   line-height: 1.6; /* 行間を調整 */
   color: #555555; /* 通常時の文字色 */
