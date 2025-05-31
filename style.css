@@ -120,9 +120,10 @@ div.wp-block-group.card-grid {
    カード内インラインSVG矢印
 =========================================================== */
 .card-item .arrow { /* SVGを囲む .arrow クラスがついたdiv */
-  align-self: flex-end; /* 右端に配置 */
+  margin-left: auto;  /* これで右寄せを試みる */
   margin-right: 1rem;   /* カード右端からの距離 */
   margin-bottom: 1rem;  /* カード下端からの距離 */
+  width: fit-content; /* SVGの幅に合わせるために追加 */
 }
 
 .card-item .arrow svg { /* figureタグやdivなど、SVGをラップしてる要素の中のSVGタグ自体 */
