@@ -123,8 +123,8 @@ div.wp-block-group.card-grid {
    カード内インラインSVG矢印
 =========================================================== */
 .card-item .arrow svg { /* figureタグやdivなど、SVGをラップしてる要素の中のSVGタグ自体 */
-  width: var(--arrow-size) !important;  /* カスタムプロパティでサイズ指定 (今は24pxのはず) + !important */
-  height: var(--arrow-size) !important; /* カスタムプロパティでサイズ指定 + !important */
+  width: var(--arrow-size);  /* カスタムプロパティでサイズ指定 (今は24pxのはず) */
+  height: var(--arrow-size); /* カスタムプロパティでサイズ指定 */
   position: absolute;
   right: 1rem;  /* カード右端からの距離 */
   bottom: 1rem; /* カード下端からの距離 */
