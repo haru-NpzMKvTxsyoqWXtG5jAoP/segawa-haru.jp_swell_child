@@ -60,6 +60,7 @@ div.wp-block-group.card-grid {
    カード本体
 =========================================================== */
 .card-item {
+  position: relative; /* 子要素のabsolute指定の基準にする */
   height: var(--card-item-height); /* カードの高さを固定 (300px) */
   border: 1px solid var(--card-border-color); /* 枠線 (黒) 太さを1pxに戻す */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
@@ -113,10 +114,34 @@ div.wp-block-group.card-grid {
   line-height: 1.6;           /* 行の高さ */
   color: #555555;            /* 通常時の文字色 */
   flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
-  overflow-y: hidden;           /* 内容が多い場合に隠す (スクロールを無効に) */
   max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   text-align: justify;        /* 均等割り付けを試す */
   /* text-align: left; */           /* 明示的に左揃えを指定 (削除またはコメントアウト) */
+}
+
+/* ===========================================================
+   カード内SVG矢印
+=========================================================== */
+.card-item .arrow {
+  width: var(--arrow-size);  /* カスタムプロパティでサイズ指定 (20px) */
+  height: var(--arrow-size); /* カスタムプロパティでサイズ指定 (20px) */
+  position: absolute;
+  right: 1rem;  /* カード右端からの距離 */
+  bottom: 1rem; /* カード下端からの距離 */
+  margin: 0; /* WordPressがfigureにつける可能性のあるマージンをリセット */
+  padding: 0; /* WordPressがfigureにつける可能性のあるパディングをリセット */
+}
+
+.card-item .arrow img { /* figureの中のimgタグ(SVG)に対して */
+  display: block; /* 余計な隙間をなくす */
+  width: 100%;    /* 親要素(figure.arrow)のサイズに合わせる */
+  height: 100%;   /* 親要素(figure.arrow)のサイズに合わせる */
+  fill: var(--arrow-color); /* SVGの色を指定 */
+  transition: fill 0.3s;
+}
+
+.card-item:hover .arrow img {
+  fill: #FFFFFF; /* ホバー時は白 */
 }
 
 /* ホバー時に見出しの文字色も変わるように念のため指定 (親要素のcolor指定が優先される場合もあるため) */
