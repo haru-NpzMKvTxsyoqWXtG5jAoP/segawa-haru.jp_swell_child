@@ -43,7 +43,7 @@ div.wp-block-group.card-grid {
   --card-grid-max-columns: 4;                 /* カードの最大列数 */
   --card-item-height: 300px;                  /* カードの高さ */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
-  --card-border-color-hover: green;           /* カードのホバー時の枠線色 */
+  --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 (今のスタイルに合わせる) */
   --card-image-max-height: 150px;             /* カード画像の最大高さ */
@@ -54,7 +54,7 @@ div.wp-block-group.card-grid {
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), calc( (100% - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns) ))); /* カスタムプロパティを使用し、最大列数を考慮 */
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); /* カードの最小幅を保ちつつ、残りのスペースを均等に分配 */
 }
 
 /* ===========================================================
