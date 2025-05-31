@@ -40,7 +40,7 @@ div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 20px;                      /* カード間の隙間 */
   --card-grid-min-item-width: 200px;          /* カードの最小幅 */
-  --card-item-height: 350px;                  /* カードの高さ (300pxから350pxに変更) */
+  --card-item-height: 300px;                  /* カードの高さ (350pxから300pxに戻す) */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
@@ -116,4 +116,12 @@ div.wp-block-group.card-grid {
 
 .card-item:hover p {
   color: #FFFFFF; /* ホバー時文字色を白に */
+}
+
+/* ===========================================================
+   記事・固定ページ大見出し (H2) の横幅調整
+=========================================================== */
+.post_content > h2 {
+  margin-left: 0;  /* 左マージンを0に */
+  margin-right: 0; /* 右マージンを0に */
 }
