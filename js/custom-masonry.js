@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     imagesLoaded( elem, function() {
       var msnry = new Masonry( elem, {
         itemSelector: '.masonry-gallery-item',
-        columnWidth: '.masonry-gallery-item',
+        columnWidth: 395,
         gutter: 25,
         percentPosition: false
       });
