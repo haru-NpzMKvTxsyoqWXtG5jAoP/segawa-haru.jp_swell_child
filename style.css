@@ -218,6 +218,7 @@ div.wp-block-group.card-grid {
 @media (min-width: 1024px) {
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: 395px; /* 固定ピクセル値に戻す */
+    width: calc((100% - 2 * 25px) / 3); /* gutter2つ、3列 */
   }
+  /* .masonry-gallery-item--wide のスタイル指定は削除しました */
 }
