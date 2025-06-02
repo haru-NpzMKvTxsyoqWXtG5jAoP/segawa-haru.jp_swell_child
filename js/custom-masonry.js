@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemSelector: '.masonry-gallery-item',
         columnWidth: '.masonry-gallery-item', // CSSで指定された狭いアイテムの幅を基準にする
         gutter: 25, // アイテム間の隙間
-        percentPosition: true // 幅が%指定なのでtrueに戻す
+        percentPosition: false // 幅が%指定なのでfalseに変更
       });
     });
   }
