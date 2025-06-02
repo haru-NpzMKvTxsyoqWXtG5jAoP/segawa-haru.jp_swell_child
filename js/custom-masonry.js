@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   // メイソンリーレイアウトを適用するコンテナ要素を取得
   var elem = document.querySelector('.masonry-gallery');
   if (elem) {
@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
           gutter: 25, // アイテム間の隙間
           percentPosition: false // 幅が%指定なのでfalseに変更
         });
-        // msnry.layout(); // layout() はMasonryが自動で初回実行するので、一旦なくても良いかも
-      }, 100); // 100ミリ秒後に実行
+        msnry.layout(); // layout() を再度呼び出す
+      }, 200); // 遅延を200ミリ秒に増やしてみる
     });
   }
 }); 
