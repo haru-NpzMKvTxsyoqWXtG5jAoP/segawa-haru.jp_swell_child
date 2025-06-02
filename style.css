@@ -222,10 +222,7 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: calc( ( (100vw - 40px) - (2 * 25px) ) / 4 ); /* ( (ビューポート幅 - 左右padding合計) - 2つのgutter合計 ) / 4 */
+    width: calc((100% - 2 * 25px) / 3); /* gutter2つ、3列 */
   }
-  .masonry-gallery .masonry-gallery-item--wide {
-    margin-bottom: 25px;
-    width: calc( ( (100vw - 40px) - (2 * 25px) ) / 2 ); /* ( (ビューポート幅 - 左右padding合計) - 2つのgutter合計 ) / 2 */
-  }
+  /* .masonry-gallery-item--wide のスタイル指定は削除しました */
 }
