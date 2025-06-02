@@ -1,4 +1,3 @@
-/*
 document.addEventListener('DOMContentLoaded', function () {
   // メイソンリーレイアウトを適用するコンテナ要素を取得
   var elem = document.querySelector('.masonry-gallery');
@@ -15,5 +14,4 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
-});
-*/ 
+}); 
