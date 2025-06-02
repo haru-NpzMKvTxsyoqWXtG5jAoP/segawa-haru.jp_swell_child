@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemSelector: '.masonry-gallery-item',
         columnWidth: '.masonry-gallery-item',
         gutter: 25,
-        percentPosition: true
+        percentPosition: false
       });
     });
   }
