@@ -159,36 +159,67 @@ div.wp-block-group.card-grid {
 
 /* --- メイソンリー風レスポンシブ・ギャラリー --- */
 .masonry-gallery {
-  display: grid;
-  gap: 15px;
-  grid-template-columns: 1fr; /* スマホ (デフォルト) */
+  position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
+  /* display: grid; */ /* Masonry.jsで制御するためコメントアウト */
+  /* gap: 15px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
+  /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト */
 }
 
-.masonry-gallery .masonry-gallery-item {
+.masonry-gallery .masonry-gallery-item,
+.masonry-gallery .masonry-gallery-item--wide {
   /* アイテムごとのスタイル (例: 枠線、パディングなど) はここに後で追加できるよ */
   border: 1px solid #eee; /* 仮の枠線（見た目の確認用） */
   padding: 10px;          /* 仮のパディング（見た目の確認用） */
+  box-sizing: border-box; /* width計算を容易にするため */
+  /* margin-bottom はメディアクエリで指定 */
+  /* width はメディアクエリで指定 */
 }
 
-.masonry-gallery .masonry-gallery-item img {
+.masonry-gallery .masonry-gallery-item img, /* 通常アイテム内の画像 */
+.masonry-gallery .masonry-gallery-item--wide img { /* 幅広アイテム内の画像 */
   display: block;
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
 
+/* スマホ (デフォルト) */
+@media (max-width: 767px) { /* タブレットのブレークポイント未満 */
+  .masonry-gallery .masonry-gallery-item,
+  .masonry-gallery .masonry-gallery-item--wide {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+}
+
 /* タブレット (768px以上) */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) { /* PCのブレークポイント未満 */
   .masonry-gallery {
-    grid-template-columns: repeat(2, 1fr); /* 2列 */
-    gap: 20px;
+    /* grid-template-columns: repeat(2, 1fr); */ /* Masonry.jsで制御するためコメントアウト */
+    /* gap: 20px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
+  }
+  .masonry-gallery .masonry-gallery-item {
+    margin-bottom: 20px;
+    width: calc((100% - 25px) / 2); /* JSのgutterが25pxなので合わせる */
+  }
+  .masonry-gallery .masonry-gallery-item--wide {
+    margin-bottom: 20px;
+    width: 100%;
   }
 }
 
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
   .masonry-gallery {
-    grid-template-columns: repeat(3, 1fr); /* 3列 */
-    gap: 25px;
+    /* grid-template-columns: repeat(3, 1fr); */ /* Masonry.jsで制御するためコメントアウト */
+    /* gap: 25px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
+  }
+  .masonry-gallery .masonry-gallery-item {
+    margin-bottom: 25px;
+    width: calc((100% - 2 * 25px) / 4);
+  }
+  .masonry-gallery .masonry-gallery-item--wide {
+    margin-bottom: 25px;
+    width: calc((100% - 2 * 25px) / 2);
   }
 }
