@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var msnry = new Masonry( elem, {
         // オプション
         itemSelector: '.masonry-gallery-item',
-        columnWidth: '.masonry-gallery-item', // CSSで指定された狭いアイテムの幅を基準にする
+        columnWidth: 395, // ← 固定ピクセル値に変更
         gutter: 25, // アイテム間の隙間
         percentPosition: false // 幅が%指定なのでfalseに変更
       });

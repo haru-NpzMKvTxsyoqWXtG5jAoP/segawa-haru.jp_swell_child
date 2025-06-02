@@ -216,13 +216,9 @@ div.wp-block-group.card-grid {
 
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
-  .masonry-gallery {
-    /* grid-template-columns: repeat(3, 1fr); */ /* Masonry.jsで制御するためコメントアウト */
-    /* gap: 25px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
-  }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: calc((100% - 2 * 25px) / 3); /* gutter2つ、3列 */
+    width: 395px; /* ← JSのcolumnWidthと同じ固定値に */
   }
   /* .masonry-gallery-item--wide のスタイル指定は削除しました */
 }
