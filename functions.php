@@ -33,3 +33,5 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_script( 'custom-masonry', get_stylesheet_directory_uri() . '/js/custom-masonry.js', array('masonry-pkgd', 'imagesloaded'), $custom_masonry_timestamp, true );
 
 }, 11);
+
+/* script_loader_tag のフィルターフックは削除 */
