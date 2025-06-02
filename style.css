@@ -156,3 +156,39 @@ div.wp-block-group.card-grid {
   margin-left: 0;  /* 左マージンを0に */
   margin-right: 0; /* 右マージンを0に */
 }
+
+/* --- メイソンリー風レスポンシブ・ギャラリー --- */
+.masonry-gallery {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr; /* スマホ (デフォルト) */
+}
+
+.masonry-gallery .masonry-gallery-item {
+  /* アイテムごとのスタイル (例: 枠線、パディングなど) はここに後で追加できるよ */
+  border: 1px solid #eee; /* 仮の枠線（見た目の確認用） */
+  padding: 10px;          /* 仮のパディング（見た目の確認用） */
+}
+
+.masonry-gallery .masonry-gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* タブレット (768px以上) */
+@media (min-width: 768px) {
+  .masonry-gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2列 */
+    gap: 20px;
+  }
+}
+
+/* PC (1024px以上) */
+@media (min-width: 1024px) {
+  .masonry-gallery {
+    grid-template-columns: repeat(3, 1fr); /* 3列 */
+    gap: 25px;
+  }
+}
