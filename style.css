@@ -54,6 +54,9 @@ div.wp-block-group.card-grid {
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
   grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); /* カードの最小幅を保ちつつ、残りのスペースを均等に分配 */
+  padding-left: 20px;  /* 左側の余白 */
+  padding-right: 20px; /* 右側の余白 */
+  box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
 /* ===========================================================
@@ -163,6 +166,9 @@ div.wp-block-group.card-grid {
   /* display: grid; */ /* Masonry.jsで制御するためコメントアウト */
   /* gap: 15px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
   /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト */
+  padding-left: 20px;  /* 左側の余白 */
+  padding-right: 20px; /* 右側の余白 */
+  box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
 .masonry-gallery .masonry-gallery-item,
@@ -216,10 +222,10 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: calc((100% - 2 * 25px) / 4);
+    width: calc((100% - 2 * 25px) / 4); /* 全体の約1/4の幅 (25pxはgutter値) */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 25px;
-    width: calc((100% - 2 * 25px) / 2);
+    width: calc((100% - 2 * 25px) / 2); /* 全体の約1/2の幅、狭いアイテムの2倍 */
   }
 }

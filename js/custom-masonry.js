@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var msnry = new Masonry( elem, {
         // オプション
         itemSelector: '.masonry-gallery-item',
-        columnWidth: '.masonry-gallery-item', // 列の幅をアイテムの幅に合わせる場合
-        gutter: 25, // アイテム間の隙間（CSSで設定したgapと合わせると良い）
-        percentPosition: true
+        columnWidth: '.masonry-gallery-item', // CSSで指定された狭いアイテムの幅を基準にする
+        gutter: 25, // アイテム間の隙間
+        percentPosition: true // 幅が%指定なのでtrueに戻す
       });
     });
   }
