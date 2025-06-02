@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         gutter: 25, // アイテム間の隙間
         percentPosition: false // 幅が%指定なのでfalseに変更
       });
+      msnry.layout(); // ← これを追加！
     });
   }
 }); 
