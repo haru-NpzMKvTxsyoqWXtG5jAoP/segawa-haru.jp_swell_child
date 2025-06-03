@@ -253,33 +253,6 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：矢印
-=========================================================== */
-.masonry-gallery-item svg { /* SVGが直接アイテム内にある場合 */
-  width: 24px;  /* カードの矢印サイズに合わせる (仮) */
-  height: 24px; /* カードの矢印サイズに合わせる (仮) */
-  position: absolute;
-  right: 1rem;
-  bottom: 0.5rem; /* 1rem から 0.5rem に変更して、より上に配置 */
-  transition: transform 0.3s ease-out;
-}
-
-.masonry-gallery-item:hover svg {
-  transform: translateX(5px); /* ホバー時に右に5px動かす */
-}
-
-.masonry-gallery-item svg path {
-  stroke: #333; /* 通常時の矢印の色 (仮) */
-  fill: #333;   /* 通常時の矢印の色 (仮) */
-  transition: stroke 0.3s, fill 0.3s;
-}
-
-.masonry-gallery-item:hover svg path {
-  stroke: #04C58A; /* ホバー時は緑色に */
-  fill: #04C58A;   /* ホバー時は緑色に */
-}
-
-/* ===========================================================
    メイソンリー：H6と矢印の2カラムレイアウト (h6-arrow)
 =========================================================== */
 .masonry-gallery-item .h6-arrow.wp-block-columns { /* WordPressのカラムブロックに直接スタイルを当てる */
