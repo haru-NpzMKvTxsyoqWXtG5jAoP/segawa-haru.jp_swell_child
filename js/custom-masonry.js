@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // オプション
         itemSelector: '.masonry-gallery-item',
         columnWidth: '.grid-sizer', // ← '.grid-sizer' を指定
-        gutter: 25, // アイテム間の隙間
+        gutter: 15, // アイテム間の隙間 (25から15に変更)
         percentPosition: true // ← true のまま
       });
     });
