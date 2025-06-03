@@ -221,11 +221,12 @@ div.wp-block-group.card-grid {
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
   .masonry-gallery .grid-sizer {
-    width: calc((100% - 2 * 25px) / 3); /* gutter2つ、3列 */
+    width: calc((100% - 2 * 25px) / 3);
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: calc((100% - 2 * 25px) / 3) !important; /*  !important を追加 */
+    /* 親のパディング(左右20pxずつ)を考慮して100%から引く */
+    width: calc(((100% - 40px) - 2 * 25px) / 3) !important;
   }
   /* .masonry-gallery-item--wide のスタイル指定は削除しました */
 }
