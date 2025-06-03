@@ -160,7 +160,9 @@ div.wp-block-group.card-grid {
   margin-right: 0; /* 右マージンを0に */
 }
 
-/* --- メイソンリー風レスポンシブ・ギャラリー --- */
+/* ===========================================================
+   メイソンリー：基本スタイル
+=========================================================== */
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
   position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
@@ -178,9 +180,18 @@ div.wp-block-group.card-grid {
 
 .masonry-gallery .masonry-gallery-item,
 .masonry-gallery .masonry-gallery-item--wide { 
-  border: 1px solid #eee; 
+  border: none; /* 枠線をなしに */
   padding: 10px;          
   box-sizing: border-box; 
+}
+
+/* ===========================================================
+   メイソンリー：H6見出し
+=========================================================== */
+.masonry-gallery .masonry-gallery-item h6,
+.masonry-gallery .masonry-gallery-item--wide h6 {
+  font-size: 12px; /* フォントサイズを12pxに */
+  /* 必要であれば、margin や padding も調整 */
 }
 
 .masonry-gallery .masonry-gallery-item img,
@@ -229,4 +240,31 @@ div.wp-block-group.card-grid {
     width: calc(((100% - 40px) - 2 * 15px) / 3) !important; /* (2 * 25px から 2 * 15px に変更) */
   }
   /* .masonry-gallery-item--wide のスタイル指定は削除しました */
+}
+
+/* ===========================================================
+   メイソンリー：矢印
+=========================================================== */
+.masonry-gallery-item svg { /* SVGが直接アイテム内にある場合 */
+  width: 24px;  /* カードの矢印サイズに合わせる (仮) */
+  height: 24px; /* カードの矢印サイズに合わせる (仮) */
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  transition: transform 0.3s ease-out;
+}
+
+.masonry-gallery-item:hover svg {
+  transform: translateX(5px); /* ホバー時に右に5px動かす */
+}
+
+.masonry-gallery-item svg path {
+  stroke: #333; /* 通常時の矢印の色 (仮) */
+  fill: #333;   /* 通常時の矢印の色 (仮) */
+  transition: stroke 0.3s, fill 0.3s;
+}
+
+.masonry-gallery-item:hover svg path {
+  stroke: #04C58A; /* ホバー時は緑色に */
+  fill: #04C58A;   /* ホバー時は緑色に */
 }
