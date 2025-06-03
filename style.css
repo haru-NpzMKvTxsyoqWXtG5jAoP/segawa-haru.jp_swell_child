@@ -162,13 +162,14 @@ div.wp-block-group.card-grid {
 
 /* --- メイソンリー風レスポンシブ・ギャラリー --- */
 .masonry-gallery {
+  display: block !important; /* display:grid の上書きを試みる */
   position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
-  /* display: grid; */ /* Masonry.jsで制御するためコメントアウト */
-  /* gap: 15px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
-  /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト */
   padding-left: 20px;  /* 左側の余白 */
   padding-right: 20px; /* 右側の余白 */
   box-sizing: border-box; /* パディングを幅の内側に含めるため */
+  /* display: grid; */ /* Masonry.jsで制御するためコメントアウト済み */
+  /* gap: 15px; */ /* Masonry.jsのgutterで制御するためコメントアウト済み */
+  /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト済み */
 }
 
 .masonry-gallery .masonry-gallery-item,
