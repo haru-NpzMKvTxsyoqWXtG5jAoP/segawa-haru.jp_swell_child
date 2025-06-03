@@ -172,18 +172,19 @@ div.wp-block-group.card-grid {
   /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト済み */
 }
 
-.masonry-gallery .masonry-gallery-item,
-.masonry-gallery .masonry-gallery-item--wide {
-  /* アイテムごとのスタイル (例: 枠線、パディングなど) はここに後で追加できるよ */
-  border: 1px solid #eee; /* 仮の枠線（見た目の確認用） */
-  padding: 10px;          /* 仮のパディング（見た目の確認用） */
-  box-sizing: border-box; /* width計算を容易にするため */
-  /* margin-bottom はメディアクエリで指定 */
-  /* width はメディアクエリで指定 */
+.masonry-gallery .grid-sizer {
+  /* 高さやボーダー、パディングは不要 */
 }
 
-.masonry-gallery .masonry-gallery-item img, /* 通常アイテム内の画像 */
-.masonry-gallery .masonry-gallery-item--wide img { /* 幅広アイテム内の画像 */
+.masonry-gallery .masonry-gallery-item,
+.masonry-gallery .masonry-gallery-item--wide { 
+  border: 1px solid #eee; 
+  padding: 10px;          
+  box-sizing: border-box; 
+}
+
+.masonry-gallery .masonry-gallery-item img,
+.masonry-gallery .masonry-gallery-item--wide img { 
   display: block;
   width: 100%;
   height: auto;
@@ -191,35 +192,40 @@ div.wp-block-group.card-grid {
 }
 
 /* スマホ (デフォルト) */
-@media (max-width: 767px) { /* タブレットのブレークポイント未満 */
+@media (max-width: 767px) { 
+  .masonry-gallery .grid-sizer {
+    width: 100%; /* 1列 */
+  }
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 15px;
-    width: 100%;
+    width: 100%; /* .grid-sizer と同じ */
   }
 }
 
 /* タブレット (768px以上) */
-@media (min-width: 768px) and (max-width: 1023px) { /* PCのブレークポイント未満 */
-  .masonry-gallery {
-    /* grid-template-columns: repeat(2, 1fr); */ /* Masonry.jsで制御するためコメントアウト */
-    /* gap: 20px; */ /* Masonry.jsのgutterで制御するためコメントアウト */
+@media (min-width: 768px) and (max-width: 1023px) { 
+  .masonry-gallery .grid-sizer {
+    width: calc((100% - 25px) / 2); /* gutter1つ、2列 */
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 20px;
-    width: calc((100% - 25px) / 2); /* JSのgutterが25pxなので合わせる */
+    width: calc((100% - 25px) / 2); /* .grid-sizer と同じ */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 20px;
-    width: 100%;
+    width: 100%; /* 幅広アイテムはタブレットでは100%のまま (これは一旦維持) */
   }
 }
 
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
+  .masonry-gallery .grid-sizer {
+    width: calc((100% - 2 * 25px) / 3); /* gutter2つ、3列 */
+  }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: 2198px; /* ← 計算したピクセル値 */
+    width: calc((100% - 2 * 25px) / 3); /* .grid-sizer と同じ (calcに戻す) */
   }
   /* .masonry-gallery-item--wide のスタイル指定は削除しました */
 }

@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var msnry = new Masonry( elem, {
         // オプション
         itemSelector: '.masonry-gallery-item',
-        columnWidth: 2198, // ← 計算したピクセル値
+        columnWidth: '.grid-sizer', // ← '.grid-sizer' を指定
         gutter: 25, // アイテム間の隙間
-        percentPosition: false // ← false に変更
+        percentPosition: true // ← true のまま
       });
     });
   }
