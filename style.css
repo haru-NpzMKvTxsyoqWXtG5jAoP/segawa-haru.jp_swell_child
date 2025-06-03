@@ -194,6 +194,14 @@ div.wp-block-group.card-grid {
   /* 必要であれば、margin や padding も調整 */
 }
 
+/* ===========================================================
+   メイソンリー：本文テキスト
+=========================================================== */
+.masonry-gallery .masonry-gallery-item p,
+.masonry-gallery .masonry-gallery-item--wide p {
+  margin-bottom: 0.5rem; /* テキスト下の余白を調整 */
+}
+
 .masonry-gallery .masonry-gallery-item img,
 .masonry-gallery .masonry-gallery-item--wide img { 
   display: block;
