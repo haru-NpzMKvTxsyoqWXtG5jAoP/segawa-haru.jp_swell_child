@@ -314,7 +314,7 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .masonry-gallery-item .h6-arrow svg { /* セレクタをh6-arrow内に限定 */
   width: 24px;
-  height: 24px;
+  height: 58px; /* 24px から 58px に変更 */
   display: block; /* インライン要素扱いを防ぐ */
   transition: transform 0.3s ease-out;
   /* position: absolute, right, bottom は削除 */
