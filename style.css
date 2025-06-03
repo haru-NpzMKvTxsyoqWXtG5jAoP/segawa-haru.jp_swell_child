@@ -199,7 +199,7 @@ div.wp-block-group.card-grid {
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 15px;
-    width: 100%; /* .grid-sizer と同じ */
+    width: calc(100% - 40px) !important; /* 親のパディング(左右20pxずつ)を引く */
   }
 }
 
@@ -210,7 +210,7 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 20px;
-    width: calc((100% - 15px) / 2); /* .grid-sizer と同じ (25pxから15pxに変更) */
+    width: calc(((100% - 40px) - 15px) / 2) !important; /* 親のパディングとgutterを引く */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 20px;
