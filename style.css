@@ -276,3 +276,59 @@ div.wp-block-group.card-grid {
   stroke: #04C58A; /* ホバー時は緑色に */
   fill: #04C58A;   /* ホバー時は緑色に */
 }
+
+/* ===========================================================
+   メイソンリー：H6と矢印の2カラムレイアウト (h6-arrow)
+=========================================================== */
+.masonry-gallery-item .h6-arrow.wp-block-columns { /* WordPressのカラムブロックに直接スタイルを当てる */
+  display: flex; /* Flexboxを確実に適用 */
+  justify-content: space-between; /* H6を左、矢印を右に */
+  align-items: center; /* H6と矢印を垂直中央揃え */
+  padding: 0; /* カラムブロックの余白をリセット */
+  margin-bottom: 0.5rem; /* 下の本文との間隔 (pタグのマージンと同じくらい) */
+}
+
+.masonry-gallery-item .h6-arrow > .wp-block-column { /* 各カラムの余白もリセット */
+  padding: 0;
+  margin: 0; /* SWELLがデフォルトでマージンをつける場合があるのでリセット */
+}
+
+.masonry-gallery-item .h6-arrow > .wp-block-column:first-child { /* H6側カラム */
+  flex-grow: 1; /* H6側が余ったスペースを埋める */
+  min-width: 0; /* 縮小できるように */
+  /* padding-right: 5px; */ /* H6と矢印の間の隙間 (お好みで) */
+}
+
+.masonry-gallery-item .h6-arrow > .wp-block-column:last-child { /* 矢印側カラム */
+  flex-shrink: 0; /* 矢印が縮まないように */
+  /* padding-left: 5px; */ /* H6と矢印の間の隙間 (お好みで) */
+  display: flex; /* SVGをflexアイテムとして扱い、中央揃えしやすくする */
+  align-items: center;
+  justify-content: flex-end; /* 矢印をカラム内で右端に */
+}
+
+/* ===========================================================
+   メイソンリー：矢印 (h6-arrow内のSVG)
+=========================================================== */
+.masonry-gallery-item .h6-arrow svg { /* セレクタをh6-arrow内に限定 */
+  width: 24px;
+  height: 24px;
+  display: block; /* インライン要素扱いを防ぐ */
+  transition: transform 0.3s ease-out;
+  /* position: absolute, right, bottom は削除 */
+}
+
+.masonry-gallery-item:hover .h6-arrow svg { /* アイテム全体ホバーで矢印を動かす */
+  transform: translateX(5px);
+}
+
+.masonry-gallery-item .h6-arrow svg path {
+  stroke: #333;
+  fill: #333;
+  transition: stroke 0.3s, fill 0.3s;
+}
+
+.masonry-gallery-item:hover .h6-arrow svg path { /* アイテム全体ホバーで矢印の色を変える */
+  stroke: #04C58A;
+  fill: #04C58A;
+}
