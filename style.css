@@ -258,7 +258,7 @@ div.wp-block-group.card-grid {
   height: 24px; /* カードの矢印サイズに合わせる (仮) */
   position: absolute;
   right: 1rem;
-  bottom: 1rem;
+  bottom: 0.5rem; /* 1rem から 0.5rem に変更して、より上に配置 */
   transition: transform 0.3s ease-out;
 }
 
