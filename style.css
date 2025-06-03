@@ -191,7 +191,9 @@ div.wp-block-group.card-grid {
 .masonry-gallery .masonry-gallery-item h6,
 .masonry-gallery .masonry-gallery-item--wide h6 {
   font-size: 12px; /* フォントサイズを12pxに */
-  /* 必要であれば、margin や padding も調整 */
+  margin-top: 0; /* 上マージンをリセット */
+  margin-bottom: 0; /* 下マージンをリセット */
+  line-height: 1; /* 行の高さをフォントサイズに近づける (お好みで調整) */
 }
 
 /* ===========================================================
