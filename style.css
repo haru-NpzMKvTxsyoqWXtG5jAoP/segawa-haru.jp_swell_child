@@ -352,31 +352,34 @@ div.wp-block-group.card-grid {
    harusegawa-title (H1) スタイル
 =========================================================== */
 .harusegawa-title {
-  font-size: 13vw; /* ビューポート幅の13%をフォントサイズに (調整可能) */
-  line-height: 1.1;  /* 行間を少し詰める */
-  font-weight: bold; /* 太字にする (画像の雰囲気に合わせて) */
-  color: #FFFFFF;    /* 文字色を白に */
+  font-size: 22vw; /* さらに大きくしてみる (調整用) */
+  line-height: 1;  /* 行間を可能な限り詰める */
+  font-weight: bold;
+  color: #FFFFFF;
   text-align: center;
-  margin-top: 0.5em; /* 上の余白 */
-  margin-bottom: 0.1em; /* 下のキャプションとの余白を詰める */
-  padding-left: 5%; /* 左右に少し余白を持たせて、完全にベタ付きにならないように */
-  padding-right: 5%;
+  margin-top: 0.2em; /* 少し調整 */
+  margin-bottom: 0.1em;
+  padding-left: 2%; /* 少し調整 */
+  padding-right: 2%;
   width: 100%;
-  box-sizing: border-box; /* パディングを幅の内側に含める */
-  overflow-wrap: break-word; /* 長い単語でも折り返すように */
+  box-sizing: border-box;
+  overflow-wrap: normal; /* break-word から変更 */
+  white-space: nowrap; /* 折り返しを禁止 */
+  letter-spacing: -0.03em; /* 文字間を少し詰めてみる (調整用) */
+  /* overflow: hidden; */ /* 親要素かここで必要に応じて */
 }
 
 /* ===========================================================
    harusegawa-title-caption (H2) スタイル
 =========================================================== */
 .harusegawa-title-caption {
-  font-size: 14px;
-  font-weight: normal; /* 通常の太さ */
-  color: #FFFFFF;      /* 文字色を白に */
+  font-size: 14px !important; /* !important を追加して強制 */
+  font-weight: normal;
+  color: #FFFFFF;
   text-align: center;
-  margin-top: 0;     /* H1との間の余白はH1側で調整 */
+  margin-top: 0;
   margin-bottom: 1em;
-  padding-left: 10%;  /* タイトルより少し内側に入るように */
+  padding-left: 10%;
   padding-right: 10%;
   line-height: 1.6;
 }
