@@ -336,7 +336,7 @@ div.wp-block-group.card-grid {
   transition: stroke 0.3s, fill 0.3s;
 }
 
-.masonry-gallery-item:hover .h6-arrow svg path { /* アイテム全体ホバーで矢印の色を変える */
+.masonry-gallery-item:hover .h6-arrow svg path {
   stroke: #04C58A;
   fill: #04C58A;   /* fillを復活 */
   /* ホバー時のtransformやpathの色指定は、既に .masonry-gallery-item:hover svg (path) で
@@ -346,4 +346,37 @@ div.wp-block-group.card-grid {
      現在の .masonry-gallery-item:hover .h6-arrow svg (コンテナのtransform) や path (色) のスタイルは、
      基本スタイルのホバーと全く同じ効果なので、理論上は省略可能だが、
      意図を明確にするため、または将来的な個別変更のために残しておくのもアリ。 */
+}
+
+/* ===========================================================
+   harusegawa-title (H1) スタイル
+=========================================================== */
+.harusegawa-title {
+  font-size: 13vw; /* ビューポート幅の13%をフォントサイズに (調整可能) */
+  line-height: 1.1;  /* 行間を少し詰める */
+  font-weight: bold; /* 太字にする (画像の雰囲気に合わせて) */
+  color: #FFFFFF;    /* 文字色を白に */
+  text-align: center;
+  margin-top: 0.5em; /* 上の余白 */
+  margin-bottom: 0.1em; /* 下のキャプションとの余白を詰める */
+  padding-left: 5%; /* 左右に少し余白を持たせて、完全にベタ付きにならないように */
+  padding-right: 5%;
+  width: 100%;
+  box-sizing: border-box; /* パディングを幅の内側に含める */
+  overflow-wrap: break-word; /* 長い単語でも折り返すように */
+}
+
+/* ===========================================================
+   harusegawa-title-caption (H2) スタイル
+=========================================================== */
+.harusegawa-title-caption {
+  font-size: 14px;
+  font-weight: normal; /* 通常の太さ */
+  color: #FFFFFF;      /* 文字色を白に */
+  text-align: center;
+  margin-top: 0;     /* H1との間の余白はH1側で調整 */
+  margin-bottom: 1em;
+  padding-left: 10%;  /* タイトルより少し内側に入るように */
+  padding-right: 10%;
+  line-height: 1.6;
 }
