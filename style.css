@@ -39,8 +39,8 @@
 div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 1px;                       /* カード間の隙間 (30px から 1px に変更) */
-  --card-grid-min-item-width: 250px;          /* カードの最小幅 (200px から 250px に変更) */
-  --card-item-height: 300px;                  /* カードの高さ (350pxから300pxに戻す) */
+  --card-grid-min-item-width: 375px;          /* カードの最小幅 (250px から 375px に変更: 1.5倍) */
+  --card-item-height: 450px;                  /* カードの高さ (300px から 450px に変更: 1.5倍) */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
@@ -64,19 +64,18 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   position: relative; /* 子要素のabsolute指定の基準にする */
-  height: var(--card-item-height); /* カードの高さを固定 (300px) */
-  border: 1px solid var(--card-border-color); /* 枠線 (黒) 太さを1pxに戻す */
+  height: var(--card-item-height); /* カードの高さを固定 (450px) */
+  border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
   overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
-  transition: background-color .3s, border-color .3s; /* 背景色と枠線色の変化をアニメーション */
+  transition: background-color .3s; /* 背景色の変化をアニメーション（border-colorは削除） */
 }
 
 .card-item:hover {
   background-color: var(--card-border-color-hover); /* ホバー時背景色を緑に */
-  border-color: var(--card-border-color-hover); /* ホバー時枠線も緑に */
   color: #FFFFFF; /* ホバー時文字色を白に (復活させる) */
 }
 
