@@ -40,17 +40,18 @@ div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 1px;                       /* カード間の隙間 */
   --card-grid-min-item-width: 375px;          /* カードの最小幅 */
-  --card-item-height: 450px;                  /* カードの高さ */
+  --card-item-height: 450px;                  /* カードの"最小"高さとして使用 */
   --card-border-color: #000000;               /* カードの通常時の枠線色 */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-max-height: 280px;             /* カード画像の高さ (304pxから280pxに変更) */
+  --card-image-max-height: 350px;             /* カード画像の最大高さ (280pxから350pxに更新) */
   --card-image-padding: 15px;                 /* カード内画像の上下左右の余白（内側へのオフセット） */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
+  --card-aspect-ratio: 375 / 450;             /* カードのアスペクト比 (幅 / 高さ) */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
@@ -76,7 +77,9 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   position: relative; /* 子要素のabsolute指定の基準にする */
-  height: var(--card-item-height); /* カードの高さを固定 (450px) */
+  /* height: var(--card-item-height); */ /* 固定高さを削除 */
+  aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
+  min-height: var(--card-item-height);  /* 最小高さを保証 */
   border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
@@ -98,7 +101,8 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  height: var(--card-image-max-height);
+  height: 62%; /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
+  max-height: var(--card-image-max-height); /* 画像の最大高さを350pxに制限 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
   object-fit: cover;
   object-position: center;
