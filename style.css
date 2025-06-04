@@ -45,7 +45,7 @@ div.wp-block-group.card-grid {
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-max-height: 234px;             /* カード画像の高さ (180pxから234pxに1.3倍) */
+  --card-image-max-height: 304px;             /* カード画像の高さ (234pxから304pxにさらに1.3倍) */
   --card-image-padding: 15px;                 /* カード内画像の上下左右の余白（内側へのオフセット） */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
