@@ -153,15 +153,8 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   記事・固定ページ大見出し (H2) の横幅調整
-=========================================================== */
-.post_content > h2 {
-  margin-left: 0;  /* 左マージンを0に */
-  margin-right: 0; /* 右マージンを0に */
-}
-
-/* ===========================================================
    全幅グループ内の制約付きインナーコンテナの幅制限を解除
+   （SVGタイトルの幅制限解除のため）
 =========================================================== */
 .wp-block-group.alignfull > .wp-block-group__inner-container.is-layout-constrained {
   max-width: none !important; /* SWELLの最大幅制限を解除 */
@@ -364,8 +357,8 @@ div.wp-block-group.card-grid {
   padding-left: 50px;
   padding-right: 50px;
   box-sizing: border-box;
-  width: 100%;
-  /* height と background-color, color の !important は不要になるはず */
+  width: 100% !important; /* インラインスタイルの width を上書き */
+  height: auto !important; /* インラインスタイルの height も上書き */
 }
 
 .harusegawa-title-svg svg {
@@ -378,16 +371,16 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   harusegawa-title-caption (H2) スタイル
+   harusegawa-title-caption (H2キャプション) スタイル
 =========================================================== */
 .harusegawa-title-caption {
   font-size: 14px !important; /* !important を追加して強制 */
   font-weight: normal;
   color: #FFFFFF;      /* 文字色を白に */
   text-align: center;
-  margin-top: 0;     /* H1との間の余白はH1側で調整 */
+  margin-top: 0;     /* SVGタイトルとの間の余白はSVG側で調整 */
   margin-bottom: 1em;
-  /* キャプションの左右パディングはここで調整 (SVGタイトルとは別に) */
+  /* キャプションの左右パディングはSVGタイトルとは別に調整 */
   padding-left: calc(50px + 5%); /* SVGの50px + さらに5%内側 */
   padding-right: calc(50px + 5%);
   box-sizing: border-box; /* パディングを幅の内側に含める */
