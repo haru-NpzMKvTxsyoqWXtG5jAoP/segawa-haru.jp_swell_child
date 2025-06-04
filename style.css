@@ -38,7 +38,7 @@
 =========================================================== */
 div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
-  --card-grid-gap: 30px;                      /* カード間の隙間 (20px から 30px に変更) */
+  --card-grid-gap: 1px;                       /* カード間の隙間 (30px から 1px に変更) */
   --card-grid-min-item-width: 250px;          /* カードの最小幅 (200px から 250px に変更) */
   --card-item-height: 300px;                  /* カードの高さ (350pxから300pxに戻す) */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
