@@ -50,13 +50,24 @@ div.wp-block-group.card-grid {
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
+  --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
-  grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); /* カードの最小幅を保ちつつ、残りのスペースを均等に分配 */
-  padding-left: 50px;  /* 左側の余白 (20px から 50px に変更) */
-  padding-right: 50px; /* 右側の余白 (20px から 50px に変更) */
+  /* 最大4列に制限しつつ、レスポンシブに列数を調整 */
+  grid-template-columns: repeat(
+    auto-fit, 
+    minmax(
+      max(
+        var(--card-grid-min-item-width), 
+        calc((100% - 100px - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns))
+      ), 
+      1fr
+    )
+  );
+  padding-left: 50px;  /* 左側の余白 */
+  padding-right: 50px; /* 右側の余白 */
   box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
