@@ -38,7 +38,7 @@
 =========================================================== */
 div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
-  --card-grid-gap: 20px;                      /* カード間の隙間 */
+  --card-grid-gap: 30px;                      /* カード間の隙間 (20px から 30px に変更) */
   --card-grid-min-item-width: 250px;          /* カードの最小幅 (200px から 250px に変更) */
   --card-item-height: 300px;                  /* カードの高さ (350pxから300pxに戻す) */
   --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
@@ -54,8 +54,8 @@ div.wp-block-group.card-grid {
   display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
   grid-template-columns: repeat(auto-fit, minmax(var(--card-grid-min-item-width), 1fr)); /* カードの最小幅を保ちつつ、残りのスペースを均等に分配 */
-  padding-left: 20px;  /* 左側の余白 */
-  padding-right: 20px; /* 右側の余白 */
+  padding-left: 50px;  /* 左側の余白 (20px から 50px に変更) */
+  padding-right: 50px; /* 右側の余白 (20px から 50px に変更) */
   box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
