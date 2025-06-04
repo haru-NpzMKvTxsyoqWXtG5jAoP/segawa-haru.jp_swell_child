@@ -253,7 +253,9 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：矢印 (元々あったスタイルを復活)
+   メイソンリー：矢印 (基本スタイル & h6-arrowの外のデフォルト)
+   アイテム右下に絶対配置されるSVG矢印の基本的なスタイル。
+   .h6-arrow内のSVGでは、一部のスタイルが下の専用ルールで上書きされる。
 =========================================================== */
 .masonry-gallery-item svg { /* SVGが直接アイテム内にある場合 */
   width: 24px;  /* カードの矢印サイズに合わせる (仮) */
@@ -262,6 +264,7 @@ div.wp-block-group.card-grid {
   right: 1rem;
   bottom: 0.5rem; /* 1rem から 0.5rem に変更して、より上に配置 */
   transition: transform 0.3s ease-out;
+  /* fill: #04C58A;  ホバー時は緑色に  <- この行を削除 (SVGコンテナへの不適切なfill指定) */
 }
 
 .masonry-gallery-item:hover svg {
@@ -276,7 +279,7 @@ div.wp-block-group.card-grid {
 
 .masonry-gallery-item:hover svg path {
   stroke: #04C58A; /* ホバー時は緑色に */
-  fill: #04C58A;   /* ホバー時は緑色に */
+  fill: #04C58A;   /* ホバー時は緑色に (復活) */
 }
 
 /* ===========================================================
@@ -310,14 +313,17 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：矢印 (h6-arrow内のSVG) - スタイルを再追加
+   メイソンリー：矢印 (h6-arrow内の専用スタイル)
+   H6見出しの横にFlexboxで配置されるSVG矢印のための専用スタイル。
+   上記の .masonry-gallery-item svg のスタイルを部分的に上書き・補完する。
 =========================================================== */
 .masonry-gallery-item .h6-arrow svg { /* セレクタをh6-arrow内に限定 */
-  width: 24px;
-  height: 58px; /* 24px から 58px に変更 */
-  display: block; /* インライン要素扱いを防ぐ */
+  /* width は基本スタイル (24px) を継承 */
+  height: 58px;     /* H6と高さを揃えるため、基本スタイルから変更 */
+  display: block;   /* 高さ指定やFlexアイテムとしての挙動のため */
   transition: transform 0.3s ease-out;
-  /* position: absolute, right, bottom は削除 */
+  /* position, right, bottom はFlexboxによる配置のため、基本スタイルの指定は不要 (または影響なし) */
+  /* transition, transform (for SVG container) は基本スタイルを継承・共通 */
 }
 
 .masonry-gallery-item:hover .h6-arrow svg { /* アイテム全体ホバーで矢印を動かす */
@@ -332,5 +338,12 @@ div.wp-block-group.card-grid {
 
 .masonry-gallery-item:hover .h6-arrow svg path { /* アイテム全体ホバーで矢印の色を変える */
   stroke: #04C58A;
-  fill: #04C58A;
+  fill: #04C58A;   /* fillを復活 */
+  /* ホバー時のtransformやpathの色指定は、既に .masonry-gallery-item:hover svg (path) で
+     共通に定義されているため、.h6-arrow svg 用の個別指定は基本的に不要。
+     もし .h6-arrow 内のSVGだけホバーエフェクトを変えたい場合に、ここに追加する。
+
+     現在の .masonry-gallery-item:hover .h6-arrow svg (コンテナのtransform) や path (色) のスタイルは、
+     基本スタイルのホバーと全く同じ効果なので、理論上は省略可能だが、
+     意図を明確にするため、または将来的な個別変更のために残しておくのもアリ。 */
 }
