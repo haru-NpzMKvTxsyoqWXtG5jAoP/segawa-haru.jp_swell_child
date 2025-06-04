@@ -38,16 +38,17 @@
 =========================================================== */
 div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
-  --card-grid-gap: 1px;                       /* カード間の隙間 (30px から 1px に変更) */
-  --card-grid-min-item-width: 375px;          /* カードの最小幅 (250px から 375px に変更: 1.5倍) */
-  --card-item-height: 450px;                  /* カードの高さ (300px から 450px に変更: 1.5倍) */
-  --card-border-color: #000000;               /* カードの通常時の枠線色 (今のスタイルに合わせる) */
+  --card-grid-gap: 1px;                       /* カード間の隙間 */
+  --card-grid-min-item-width: 375px;          /* カードの最小幅 */
+  --card-item-height: 450px;                  /* カードの高さ */
+  --card-border-color: #000000;               /* カードの通常時の枠線色 */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-max-height: 180px;             /* カード画像の最大高さ (200px から 180px に変更してより横長に) */
-  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
-  --arrow-size: 24px;                         /* 矢印のサイズ (20pxから24pxに変更) */
+  --card-image-max-height: 180px;             /* カード画像の高さ */
+  --card-image-padding: 15px;                 /* カード内画像の上下左右の余白（内側へのオフセット） */
+  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
+  --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
@@ -86,11 +87,16 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  height: var(--card-image-max-height); /* 高さを固定（180px） */
-  width: 100%; /* 画像の幅をカードに合わせる */
-  object-fit: cover; /* 画像がコンテナに合わせてトリミングされるように */
-  object-position: center; /* トリミング時の位置を中央に */
-  display: block; /* ブロック表示で確実に矩形として配置 */
+  height: var(--card-image-max-height);
+  width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin-top: var(--card-image-padding); /* 上のパディング */
+  margin-left: auto; /* 中央寄せ */
+  margin-right: auto; /* 中央寄せ */
+  border-radius: var(--card-border-radius); /* カードと同じ角丸を適用 */
+  box-sizing: border-box; /* width計算にpaddingとborderを含める */
 }
 
 /* カード内見出し (h3) */
