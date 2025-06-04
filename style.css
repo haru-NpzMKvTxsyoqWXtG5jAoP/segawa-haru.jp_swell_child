@@ -349,37 +349,28 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   harusegawa-title (H1) スタイル
+   harusegawa-title-svg (インラインSVGタイトル) スタイル
 =========================================================== */
-.harusegawa-title {
-  font-size: 22vw; /* さらに大きくしてみる (調整用) */
-  line-height: 1;  /* 行間を可能な限り詰める */
-  font-weight: bold;
-  color: #FFFFFF;
-  text-align: center;
-  margin-top: 0.2em; /* 少し調整 */
-  margin-bottom: 0.1em;
-  padding-left: 2%; /* 少し調整 */
-  padding-right: 2%;
-  width: 100%;
-  box-sizing: border-box;
-  overflow-wrap: normal; /* break-word から変更 */
-  white-space: nowrap; /* 折り返しを禁止 */
-  letter-spacing: -0.03em; /* 文字間を少し詰めてみる (調整用) */
-  /* overflow: hidden; */ /* 親要素かここで必要に応じて */
+.harusegawa-title-svg svg {
+  width: 100%; /* 親要素の幅いっぱいに広げる */
+  height: auto; /* 縦横比を保って高さを自動調整 */
+  display: block; /* SVGが余計な余白を持たないように */
+  fill: #FFFFFF; /* SVGの文字色を白に */
+  margin-top: 0.2em; /* 上の余白 (調整用) */
+  margin-bottom: 0.05em; /* 下のキャプションとの余白 (調整用) */
 }
 
 /* ===========================================================
-   harusegawa-title-caption (H2) スタイル
+   harusegawa-title-caption (H2) スタイル (これはそのままのはず)
 =========================================================== */
 .harusegawa-title-caption {
   font-size: 14px !important; /* !important を追加して強制 */
   font-weight: normal;
-  color: #FFFFFF;
+  color: #FFFFFF;      /* 文字色を白に */
   text-align: center;
-  margin-top: 0;
+  margin-top: 0;     /* H1との間の余白はH1側で調整 */
   margin-bottom: 1em;
-  padding-left: 10%;
+  padding-left: 10%;  /* タイトルより少し内側に入るように */
   padding-right: 10%;
   line-height: 1.6;
 }
