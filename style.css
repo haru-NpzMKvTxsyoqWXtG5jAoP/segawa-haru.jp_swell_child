@@ -45,7 +45,7 @@ div.wp-block-group.card-grid {
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-max-height: 150px;             /* カード画像の最大高さ */
+  --card-image-max-height: 180px;             /* カード画像の最大高さ (200px から 180px に変更してより横長に) */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ (約3行分) */
   --arrow-size: 24px;                         /* 矢印のサイズ (20pxから24pxに変更) */
   --arrow-color: #333;                        /* 矢印の色 */
@@ -86,9 +86,11 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  max-height: var(--card-image-max-height); /* 最大高さをカスタムプロパティで指定 */
-  object-fit: cover; /* 画像がコンテナに合わせてトリミングされるように */
+  height: var(--card-image-max-height); /* 高さを固定（180px） */
   width: 100%; /* 画像の幅をカードに合わせる */
+  object-fit: cover; /* 画像がコンテナに合わせてトリミングされるように */
+  object-position: center; /* トリミング時の位置を中央に */
+  display: block; /* ブロック表示で確実に矩形として配置 */
 }
 
 /* カード内見出し (h3) */
