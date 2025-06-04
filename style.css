@@ -351,10 +351,17 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    harusegawa-title-svg (インラインSVGタイトル) スタイル
 =========================================================== */
+.harusegawa-title-svg { /* インラインSVGブロック自体にスタイルを適用 */
+  padding-left: 50px;  /* カードグリッド風の左右の余白 */
+  padding-right: 50px;
+  box-sizing: border-box; /* パディングを幅の内側に含める */
+  width: 100%; /* 親の全幅グループの中で、利用可能な幅を100%使う */
+}
+
 .harusegawa-title-svg svg {
-  width: 100%; /* 親要素の幅いっぱいに広げる */
-  height: auto; /* 縦横比を保って高さを自動調整 */
-  display: block; /* SVGが余計な余白を持たないように */
+  width: 100%; /* 上記パディングの内側で、幅100%に広がる */
+  height: auto;
+  display: block;
   fill: #FFFFFF; /* SVGの文字色を白に */
   margin-top: 0.2em; /* 上の余白 (調整用) */
   margin-bottom: 0.05em; /* 下のキャプションとの余白 (調整用) */
