@@ -161,6 +161,15 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
+   全幅グループ内の制約付きインナーコンテナの幅制限を解除
+=========================================================== */
+.wp-block-group.alignfull > .wp-block-group__inner-container.is-layout-constrained {
+  max-width: none !important; /* SWELLの最大幅制限を解除 */
+  padding-left: 0 !important;   /* SWELLが付与する可能性のある左右paddingも解除 */
+  padding-right: 0 !important;
+}
+
+/* ===========================================================
    メイソンリー：基本スタイル
 =========================================================== */
 .masonry-gallery {
@@ -351,11 +360,12 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    harusegawa-title-svg (インラインSVGタイトル) スタイル
 =========================================================== */
-.harusegawa-title-svg { /* インラインSVGブロック自体にスタイルを適用 */
-  padding-left: 50px;  /* カードグリッド風の左右の余白 */
+.harusegawa-title-svg {
+  padding-left: 50px;
   padding-right: 50px;
-  box-sizing: border-box; /* パディングを幅の内側に含める */
-  width: 100%; /* 親の全幅グループの中で、利用可能な幅を100%使う */
+  box-sizing: border-box;
+  width: 100%;
+  /* height と background-color, color の !important は不要になるはず */
 }
 
 .harusegawa-title-svg svg {
@@ -368,7 +378,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   harusegawa-title-caption (H2) スタイル (これはそのままのはず)
+   harusegawa-title-caption (H2) スタイル
 =========================================================== */
 .harusegawa-title-caption {
   font-size: 14px !important; /* !important を追加して強制 */
@@ -377,7 +387,9 @@ div.wp-block-group.card-grid {
   text-align: center;
   margin-top: 0;     /* H1との間の余白はH1側で調整 */
   margin-bottom: 1em;
-  padding-left: 10%;  /* タイトルより少し内側に入るように */
-  padding-right: 10%;
+  /* キャプションの左右パディングはここで調整 (SVGタイトルとは別に) */
+  padding-left: calc(50px + 5%); /* SVGの50px + さらに5%内側 */
+  padding-right: calc(50px + 5%);
+  box-sizing: border-box; /* パディングを幅の内側に含める */
   line-height: 1.6;
 }
