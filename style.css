@@ -46,7 +46,7 @@ div.wp-block-group.card-grid {
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   /* --card-image-max-height: 350px; */            /* カード画像の最大高さ ← コメントアウト */
-  --card-image-padding: clamp(12px, 1.6vw, 30px); /* ★clamp()で最小・推奨・最大値を指定 */
+  --card-image-padding: clamp(20px, 1.6vw, 45px); /* ★clamp()の最小値と最大値を大きめに変更 */
   /* --card-image-display-height: 280px; */ /* カード内画像の目標の高さを指定 ← コメントアウト */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
