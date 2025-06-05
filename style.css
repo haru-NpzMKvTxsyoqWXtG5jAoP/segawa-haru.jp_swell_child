@@ -102,10 +102,11 @@ div.wp-block-group.card-grid {
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
   /* height: 62%; */ /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
-  height: auto; /* 画像の元のアスペクト比を維持するように変更 */
+  /* height: auto; */ /* 画像の元のアスペクト比を維持するように変更 */
   max-height: var(--card-image-max-height); /* 画像の最大高さを350pxに制限 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  object-fit: cover;
+  aspect-ratio: 4 / 3; /* 画像のアスペクト比を4/3に指定 */
+  object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center;
   display: block;
   margin-top: var(--card-image-padding); /* 上のパディング */
