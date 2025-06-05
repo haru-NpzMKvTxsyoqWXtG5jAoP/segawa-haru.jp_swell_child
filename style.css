@@ -40,19 +40,19 @@ div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 1px;                       /* カード間の隙間 */
   --card-grid-min-item-width: 375px;          /* カードの最小幅 */
-  --card-item-height: 450px;                  /* カードの"最小"高さとして使用 */
+  /* --card-item-height: 450px; */                 /* カードの"最小"高さとして使用 ← コメントアウト */
   --card-border-color: #000000;               /* カードの通常時の枠線色 */
   --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-max-height: 350px;             /* カード画像の最大高さ (280pxから350pxに更新) */
-  --card-image-padding: 15px;                 /* カード内画像の上下左右の余白（内側へのオフセット） */
+  /* --card-image-max-height: 350px; */            /* カード画像の最大高さ ← コメントアウト */
+  /* --card-image-padding: 15px; */                /* カード内画像の上下左右の余白 ← コメントアウト */
+  /* --card-image-display-height: 280px; */ /* カード内画像の目標の高さを指定 ← コメントアウト */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
-  --card-aspect-ratio: 375 / 450;             /* カードのアスペクト比 (幅 / 高さ) */
-  --card-image-display-height: 280px; /* ★追加：カード内画像の目標の高さを指定 */
+  --card-aspect-ratio: 1 / 1.25;             /* カードのアスペクト比 (goodportfol.io風) */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
@@ -78,14 +78,14 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   position: relative; /* 子要素のabsolute指定の基準にする */
-  height: var(--card-item-height); /* 通常は固定高さ */
-  min-width: var(--card-grid-min-item-width); /* カードの最小幅を追加 */
-  /* aspect-ratio: var(--card-aspect-ratio); */ /* アスペクト比指定を削除（メディアクエリへ移動） */
-  /* min-height: var(--card-item-height); */  /* 最小高さ保証を削除（メディアクエリへ移動）*/
+  /* height: var(--card-item-height); */ /* 通常は固定高さ ← 削除 */
+  aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
+  min-width: var(--card-grid-min-item-width); /* カードの最小幅 */
+  /* min-height: var(--card-item-height); */  /* 最小高さ保証を削除 */
+  overflow: hidden; /* はみ出た内容を隠す */
   border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
-  overflow: hidden; /* 内容がはみ出た場合に隠す (角丸と画像を合わせるため) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
   transition: background-color .3s; /* 背景色の変化をアニメーション（border-colorは削除） */
@@ -103,17 +103,16 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  height: var(--card-image-display-height); /* 通常画面ではこの固定高さ！ */
-  object-fit: cover;                                /* これでクリッピングマスク効果 */
-  object-position: center;
+  width: 100%; /* カード幅いっぱいに変更 */
+  height: 100%; /* カード高さいっぱいに変更 */
+  object-fit: cover; /* アスペクト比を維持してコンテナに収める */
+  object-position: center; /* 中央揃え */
   display: block;
-  margin-top: var(--card-image-padding);
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: var(--card-border-radius);
+  /* margin-top: var(--card-image-padding); */ /* 不要なので削除 */
+  /* margin-left: auto; */ /* 不要なので削除 */
+  /* margin-right: auto; */ /* 不要なので削除 */
+  /* border-radius: var(--card-border-radius); */ /* 親のoverflow:hiddenでマスクするので不要 */
   box-sizing: border-box;
-  /* aspect-ratio や max-height: none はここには書かない！ */
 }
 
 /* カード内見出し (h3) */
@@ -414,7 +413,7 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    超広画面向けのカードスタイル (例: 2560px以上)
 =========================================================== */
-@media (min-width: 1800px) { /* ← ブレークポイントを 1800px に変更 */
+@media (min-width: 99999px) { /* ← 条件を事実上無効化 (元は1800px) */
   .card-item {
     height: auto; /* 高さを自動に */
     aspect-ratio: var(--card-aspect-ratio); /* カードのアスペクト比を維持 */
