@@ -52,6 +52,7 @@ div.wp-block-group.card-grid {
   --arrow-color: #333;                        /* 矢印の色 */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
   --card-aspect-ratio: 375 / 450;             /* カードのアスペクト比 (幅 / 高さ) */
+  --card-image-display-height: 280px; /* ★追加：カード内画像の目標の高さを指定 */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
@@ -102,11 +103,9 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  /* height: 62%; */ /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
-  height: auto; /* 画像の元のアスペクト比を維持するように変更 */
-  max-height: var(--card-image-max-height); /* 画像の最大高さを350pxに制限 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  /* aspect-ratio: 4 / 3; */ /* 画像のアスペクト比を4/3に指定 ← これを削除 */
+  height: var(--card-image-display-height); /* ★変更：固定の高さに */
+  /* max-height: var(--card-image-max-height); */ /* ← 固定高さにしたのでコメントアウト */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center;
   display: block;
