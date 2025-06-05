@@ -46,7 +46,7 @@ div.wp-block-group.card-grid {
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   /* --card-image-max-height: 350px; */            /* カード画像の最大高さ ← コメントアウト */
-  --card-image-padding: 25px;                /* ★カード内画像の上下左右の余白 ← 15pxから25pxに変更 */
+  --card-image-padding: 25px;                /* ★カード内画像の上下左右の余白 ← コメントアウトを解除 */
   /* --card-image-display-height: 280px; */ /* カード内画像の目標の高さを指定 ← コメントアウト */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --arrow-size: 24px;                         /* 矢印のサイズ */
@@ -103,14 +103,14 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  width: 100%; /* カード幅いっぱいに変更 */
-  height: 100%; /* カード高さいっぱいに変更 ← 60% から 100% に戻す */
+  width: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
+  height: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center; /* 中央揃え */
   display: block;
-  /* padding: var(--card-image-padding); */ /* ★一旦コメントアウト */
-  /* border-radius: var(--card-border-radius); */ /* ★一旦コメントアウト */
-  /* box-sizing: border-box; */ /* paddingがなければ不要なので一旦コメントアウト */
+  margin: var(--card-image-padding); /* ★ 余白を作る */
+  border-radius: calc(var(--card-border-radius) - 5px); /* ★ カードより5px小さい角丸 */
+  box-sizing: border-box; /* ★ 忘れずに復活 */
   flex-shrink: 0; /* flexアイテムとして縮まないようにする */
 }
 
