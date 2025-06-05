@@ -104,8 +104,8 @@ div.wp-block-group.card-grid {
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  height: var(--card-image-display-height); /* ★変更：固定の高さに */
-  /* max-height: var(--card-image-max-height); */ /* ← 固定高さにしたのでコメントアウト */
+  height: 62%; /* ← カード全体の高さに対する割合で指定 (調整可能) */
+  /* max-height: var(--card-image-max-height); */ /* 固定高さなので、これは不要 */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center;
   display: block;
