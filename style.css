@@ -77,9 +77,10 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   position: relative; /* 子要素のabsolute指定の基準にする */
-  /* height: var(--card-item-height); */ /* 固定高さを削除 */
-  aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
-  min-height: var(--card-item-height);  /* 最小高さを保証 */
+  height: var(--card-item-height); /* 通常は固定高さ */
+  min-width: var(--card-grid-min-item-width); /* カードの最小幅を追加 */
+  /* aspect-ratio: var(--card-aspect-ratio); */ /* アスペクト比指定を削除（メディアクエリへ移動） */
+  /* min-height: var(--card-item-height); */  /* 最小高さ保証を削除（メディアクエリへ移動）*/
   border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
@@ -102,10 +103,10 @@ div.wp-block-group.card-grid {
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
   /* height: 62%; */ /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
-  /* height: auto; */ /* 画像の元のアスペクト比を維持するように変更 */
+  height: auto; /* 画像の元のアスペクト比を維持するように変更 */
   max-height: var(--card-image-max-height); /* 画像の最大高さを350pxに制限 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  aspect-ratio: 4 / 3; /* 画像のアスペクト比を4/3に指定 */
+  /* aspect-ratio: 4 / 3; */ /* 画像のアスペクト比を4/3に指定 ← これを削除 */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center;
   display: block;
@@ -174,6 +175,22 @@ div.wp-block-group.card-grid {
 
 .card-item:hover p {
   color: #FFFFFF; /* ホバー時文字色を白に */
+}
+
+/* ===========================================================
+   超広画面向けのカードスタイル (例: 2560px以上)
+=========================================================== */
+@media (min-width: 2560px) {
+  .card-item {
+    height: auto; /* 高さを自動に */
+    aspect-ratio: var(--card-aspect-ratio); /* カードのアスペクト比を維持 */
+    min-height: var(--card-item-height); /* 最小高さは維持 */
+  }
+
+  .card-item img {
+    /* height: auto; は元々設定されているのでここでは不要かも */
+    max-height: none; /* 画像の高さ上限を解除 */
+  }
 }
 
 /* ===========================================================
