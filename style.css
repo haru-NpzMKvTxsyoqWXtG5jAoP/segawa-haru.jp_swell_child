@@ -282,8 +282,8 @@ div.wp-block-group.card-grid {
     width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important; /* 親パディングを引く */
   }
   .masonry-gallery .masonry-gallery-item--wide {
-    /* 現在の計算式全体を 0.9倍 する */
-    width: calc(0.9 * ( ((((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter) )) !important;
+    /* 通常アイテム1列分の幅を A とすると、 A * 2 + gutter (元のサイズに戻す) */
+    width: calc(((((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
     margin-bottom: 25px; /* PCの通常アイテムのmargin-bottomに合わせる */
   }
 }
