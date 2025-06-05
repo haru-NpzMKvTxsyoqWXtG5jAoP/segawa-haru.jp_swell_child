@@ -104,13 +104,13 @@ div.wp-block-group.card-grid {
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
   width: 100%; /* カード幅いっぱいに変更 */
-  height: 60%; /* 仮にカードの高さの60%を画像エリアとする */
+  height: 100%; /* カード高さいっぱいに変更 ← 60% から 100% に戻す */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
   object-position: center; /* 中央揃え */
   display: block;
-  padding: var(--card-image-padding); /* ★パディングを適用 */
-  border-radius: var(--card-border-radius); /* ★画像自体にも角丸を適用 */
-  box-sizing: border-box; /* ★パディングを幅と高さの内側に含める */
+  /* padding: var(--card-image-padding); */ /* ★一旦コメントアウト */
+  /* border-radius: var(--card-border-radius); */ /* ★一旦コメントアウト */
+  /* box-sizing: border-box; */ /* paddingがなければ不要なので一旦コメントアウト */
   flex-shrink: 0; /* flexアイテムとして縮まないようにする */
 }
 
