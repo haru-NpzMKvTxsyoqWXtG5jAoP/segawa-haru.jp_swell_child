@@ -104,16 +104,16 @@ div.wp-block-group.card-grid {
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
-  height: 62%; /* ← カード全体の高さに対する割合で指定 (調整可能) */
-  /* max-height: var(--card-image-max-height); */ /* 固定高さなので、これは不要 */
-  object-fit: cover; /* アスペクト比を維持してコンテナに収める */
+  height: var(--card-image-display-height); /* 通常画面ではこの固定高さ！ */
+  object-fit: cover;                                /* これでクリッピングマスク効果 */
   object-position: center;
   display: block;
-  margin-top: var(--card-image-padding); /* 上のパディング */
-  margin-left: auto; /* 中央寄せ */
-  margin-right: auto; /* 中央寄せ */
-  border-radius: var(--card-border-radius); /* カードと同じ角丸を適用 */
-  box-sizing: border-box; /* width計算にpaddingとborderを含める */
+  margin-top: var(--card-image-padding);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--card-border-radius);
+  box-sizing: border-box;
+  /* aspect-ratio や max-height: none はここには書かない！ */
 }
 
 /* カード内見出し (h3) */
@@ -422,10 +422,11 @@ div.wp-block-group.card-grid {
   }
 
   .card-item img {
-    /* 通常画面で設定した固定の高さを上書き */
-    height: calc(var(--card-image-display-height) / var(--card-item-height) * 100%);
-    /* (例: 280px / 450px * 100% で約 62.2% になる) */
-    max-height: none; /* 画像の高さ上限を解除（これは前回設定済み） */
+    width: calc(100% - (var(--card-image-padding) * 2)); /* 幅は親に合わせる */
+    height: auto;                                     /* 高さはautoに */
+    aspect-ratio: calc((var(--card-grid-min-item-width) - var(--card-image-padding) * 2) / var(--card-image-display-height)); /* 計算したアスペクト比を設定 (345 / 280) */
+    object-fit: cover;                                /* 表示方法 */
+    max-height: none;                                 /* 高さの最大制限は解除 */
   }
 
   /* テキストエリアの調整 */
