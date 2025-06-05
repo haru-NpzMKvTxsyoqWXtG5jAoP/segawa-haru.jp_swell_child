@@ -187,8 +187,18 @@ div.wp-block-group.card-grid {
   }
 
   .card-item img {
-    /* height: auto; は元々設定されているのでここでは不要かも */
-    max-height: none; /* 画像の高さ上限を解除 */
+    /* 通常画面で設定した固定の高さを上書き */
+    height: calc(var(--card-image-display-height) / var(--card-item-height) * 100%);
+    /* (例: 280px / 450px * 100% で約 62.2% になる) */
+    max-height: none; /* 画像の高さ上限を解除（これは前回設定済み） */
+  }
+
+  /* テキストエリアの調整 */
+  .card-item p {
+    flex-grow: 0; /* テキストエリアが不必要に伸びるのを防ぐ */
+    /* max-height: none; */ /* 通常時の3行制限を超広画面では解除（必要なら）*/
+    /* height: auto; */ /* 内容に応じた高さ */
+    padding-bottom: 3rem; /* 矢印とのスペースを確保 */
   }
 }
 
