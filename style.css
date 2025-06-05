@@ -15,7 +15,7 @@
 :root {
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   /* ギャラリー関連のCSS変数を定義 */
-  --gallery-padding: 20px; /* まずは固定値で */
+  --gallery-padding: clamp(15px, 4vw, 50px); /* clamp() に変更 */
   --gallery-gutter: 15px;
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
