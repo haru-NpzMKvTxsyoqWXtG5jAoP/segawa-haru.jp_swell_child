@@ -88,12 +88,13 @@ div.wp-block-group.card-grid {
   background-color: var(--card-bg-color); /* 背景色 (白) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
-  transition: background-color .3s; /* 背景色の変化をアニメーション（border-colorは削除） */
+  transition: transform 0.3s ease-out; /* transformのアニメーションのみに修正 */
 }
 
 .card-item:hover {
-  background-color: var(--card-border-color-hover); /* ホバー時背景色を緑に */
-  color: #FFFFFF; /* ホバー時文字色を白に (復活させる) */
+  /* background-color: var(--card-border-color-hover); */ /* ホバー時背景色を緑に ← コメントアウト */
+  /* color: #FFFFFF; */ /* ホバー時文字色を白に (復活させる) ← コメントアウト */
+  transform: scale(0.95); /* ホバー時にカードを少し縮小する */
 }
 
 /* ===========================================================
@@ -160,18 +161,18 @@ div.wp-block-group.card-grid {
 }
 
 .card-item .arrow svg path { /* SVGの中の<path>要素 (矢印の線を描いてる部分) */
-  stroke: var(--arrow-color); /* 線をカスタムプロパティの色に (今は#333のはず) */
-  fill: var(--arrow-color);   /* 念のためfillも同じ色に (SVGの作りによる) */
+  stroke: var(--arrow-color); /* 線をカスタムプロパティの色に (今は#333のはず) ← コメントアウト解除 */
+  fill: var(--arrow-color);   /* 念のためfillも同じ色に (SVGの作りによる) ← コメントアウト解除 */
   transition: stroke 0.3s, fill 0.3s; /* ホバー時の色変化をアニメーション */
 }
 
 .card-item:hover .arrow svg path {
-  stroke: #FFFFFF; /* ホバー時は白に */
-  fill: #FFFFFF;   /* ホバー時は白に */
+  /* stroke: #FFFFFF; */ /* ホバー時は白に ← コメントアウトのまま */
+  /* fill: #FFFFFF; */   /* ホバー時は白に ← コメントアウトのまま */
 }
 
 .card-item:hover p {
-  color: #FFFFFF; /* ホバー時文字色を白に */
+  /* color: #FFFFFF; */ /* ホバー時文字色を白に ← コメントアウトのまま */
 }
 
 /* ===========================================================
@@ -296,73 +297,14 @@ div.wp-block-group.card-grid {
 }
 
 .masonry-gallery-item svg path {
-  stroke: #333; /* 通常時の矢印の色 (仮) */
-  fill: #333;   /* 通常時の矢印の色 (仮) */
+  /* stroke: #333; */ /* 通常時の矢印の色 (仮) ← コメントアウト */
+  /* fill: #333; */   /* 通常時の矢印の色 (仮) ← コメントアウト */
   transition: stroke 0.3s, fill 0.3s;
 }
 
 .masonry-gallery-item:hover svg path {
-  stroke: #04C58A; /* ホバー時は緑色に */
-  fill: #04C58A;   /* ホバー時は緑色に (復活) */
-}
-
-/* ===========================================================
-   メイソンリー：H6と矢印の2カラムレイアウト (h6-arrow)
-=========================================================== */
-.masonry-gallery-item .h6-arrow.wp-block-columns { /* WordPressのカラムブロックに直接スタイルを当てる */
-  display: flex; /* Flexboxを確実に適用 */
-  justify-content: space-between; /* H6を左、矢印を右に */
-  align-items: center; /* H6と矢印を垂直中央揃え */
-  padding: 0; /* カラムブロックの余白をリセット */
-  margin-bottom: 0.5rem; /* 下の本文との間隔 (pタグのマージンと同じくらい) */
-}
-
-.masonry-gallery-item .h6-arrow > .wp-block-column { /* 各カラムの余白もリセット */
-  padding: 0;
-  margin: 0; /* SWELLがデフォルトでマージンをつける場合があるのでリセット */
-}
-
-.masonry-gallery-item .h6-arrow > .wp-block-column:first-child { /* H6側カラム */
-  flex-grow: 1; /* H6側が余ったスペースを埋める */
-  min-width: 0; /* 縮小できるように */
-  /* padding-right: 5px; */ /* H6と矢印の間の隙間 (お好みで) */
-}
-
-.masonry-gallery-item .h6-arrow > .wp-block-column:last-child { /* 矢印側カラム */
-  flex-shrink: 0; /* 矢印が縮まないように */
-  /* padding-left: 5px; */ /* H6と矢印の間の隙間 (お好みで) */
-  display: flex; /* SVGをflexアイテムとして扱い、中央揃えしやすくする */
-  align-items: center;
-  justify-content: flex-end; /* 矢印をカラム内で右端に */
-}
-
-/* ===========================================================
-   メイソンリー：矢印 (h6-arrow内の専用スタイル)
-   H6見出しの横にFlexboxで配置されるSVG矢印のための専用スタイル。
-   上記の .masonry-gallery-item svg のスタイルを部分的に上書き・補完する。
-=========================================================== */
-.masonry-gallery-item .h6-arrow svg { /* セレクタをh6-arrow内に限定 */
-  /* width は基本スタイル (24px) を継承 */
-  height: 58px;     /* H6と高さを揃えるため、基本スタイルから変更 */
-  display: block;   /* 高さ指定やFlexアイテムとしての挙動のため */
-  transition: transform 0.3s ease-out;
-  /* position, right, bottom はFlexboxによる配置のため、基本スタイルの指定は不要 (または影響なし) */
-  /* transition, transform (for SVG container) は基本スタイルを継承・共通 */
-}
-
-.masonry-gallery-item:hover .h6-arrow svg { /* アイテム全体ホバーで矢印を動かす */
-  transform: translateX(5px);
-}
-
-.masonry-gallery-item .h6-arrow svg path {
-  stroke: #333;
-  fill: #333;
-  transition: stroke 0.3s, fill 0.3s;
-}
-
-.masonry-gallery-item:hover .h6-arrow svg path {
-  stroke: #04C58A;
-  fill: #04C58A;   /* fillを復活 */
+  /* stroke: #04C58A; */ /* ホバー時は緑色に ← コメントアウト */
+  /* fill: #04C58A; */   /* ホバー時は緑色に (復活) ← コメントアウト */
   /* ホバー時のtransformやpathの色指定は、既に .masonry-gallery-item:hover svg (path) で
      共通に定義されているため、.h6-arrow svg 用の個別指定は基本的に不要。
      もし .h6-arrow 内のSVGだけホバーエフェクトを変えたい場合に、ここに追加する。
