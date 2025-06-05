@@ -177,32 +177,6 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   超広画面向けのカードスタイル (例: 2560px以上)
-=========================================================== */
-@media (min-width: 2560px) {
-  .card-item {
-    height: auto; /* 高さを自動に */
-    aspect-ratio: var(--card-aspect-ratio); /* カードのアスペクト比を維持 */
-    min-height: var(--card-item-height); /* 最小高さは維持 */
-  }
-
-  .card-item img {
-    /* 通常画面で設定した固定の高さを上書き */
-    height: calc(var(--card-image-display-height) / var(--card-item-height) * 100%);
-    /* (例: 280px / 450px * 100% で約 62.2% になる) */
-    max-height: none; /* 画像の高さ上限を解除（これは前回設定済み） */
-  }
-
-  /* テキストエリアの調整 */
-  .card-item p {
-    flex-grow: 0; /* テキストエリアが不必要に伸びるのを防ぐ */
-    /* max-height: none; */ /* 通常時の3行制限を超広画面では解除（必要なら）*/
-    /* height: auto; */ /* 内容に応じた高さ */
-    padding-bottom: 3rem; /* 矢印とのスペースを確保 */
-  }
-}
-
-/* ===========================================================
    全幅グループ内の制約付きインナーコンテナの幅制限を解除
    （SVGタイトルの幅制限解除のため）
 =========================================================== */
@@ -435,4 +409,30 @@ div.wp-block-group.card-grid {
   padding-right: calc(50px + 5%);
   box-sizing: border-box; /* パディングを幅の内側に含める */
   line-height: 1.6;
+}
+
+/* ===========================================================
+   超広画面向けのカードスタイル (例: 2560px以上)
+=========================================================== */
+@media (min-width: 99999px) { /* ← 条件を事実上無効化 */
+  .card-item {
+    height: auto; /* 高さを自動に */
+    aspect-ratio: var(--card-aspect-ratio); /* カードのアスペクト比を維持 */
+    min-height: var(--card-item-height); /* 最小高さは維持 */
+  }
+
+  .card-item img {
+    /* 通常画面で設定した固定の高さを上書き */
+    height: calc(var(--card-image-display-height) / var(--card-item-height) * 100%);
+    /* (例: 280px / 450px * 100% で約 62.2% になる) */
+    max-height: none; /* 画像の高さ上限を解除（これは前回設定済み） */
+  }
+
+  /* テキストエリアの調整 */
+  .card-item p {
+    flex-grow: 0; /* テキストエリアが不必要に伸びるのを防ぐ */
+    /* max-height: none; */ /* 通常時の3行制限を超広画面では解除（必要なら）*/
+    /* height: auto; */ /* 内容に応じた高さ */
+    padding-bottom: 3rem; /* 矢印とのスペースを確保 */
+  }
 }
