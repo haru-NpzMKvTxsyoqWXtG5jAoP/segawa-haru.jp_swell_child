@@ -101,7 +101,8 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   pointer-events: none; /* 画像のクリックイベント無効化 */
-  height: 62%; /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
+  /* height: 62%; */ /* カードの高さに対する割合 (280px / 450px ≈ 0.62) */
+  height: auto; /* 画像の元のアスペクト比を維持するように変更 */
   max-height: var(--card-image-max-height); /* 画像の最大高さを350pxに制限 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* 左右のパディング分を引く */
   object-fit: cover;
@@ -396,7 +397,7 @@ div.wp-block-group.card-grid {
    harusegawa-title-caption (H2キャプション) スタイル
 =========================================================== */
 .harusegawa-title-caption {
-  font-size: 14px !important; /* !important を追加して強制 */
+  font-size: 18px !important; /* !important を追加して強制 */
   font-weight: normal;
   color: #FFFFFF;      /* 文字色を白に */
   text-align: center;
