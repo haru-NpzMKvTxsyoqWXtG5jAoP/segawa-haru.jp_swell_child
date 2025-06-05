@@ -88,7 +88,7 @@ div.wp-block-group.card-grid {
   background-color: var(--card-bg-color); /* 背景色 (白) */
   display: flex; /* 内部要素の配置にflexboxを使用 */
   flex-direction: column; /* 子要素を縦方向に並べる */
-  transition: transform 0.3s ease-out; /* transformのアニメーションのみに修正 */
+  transition: transform 0.15s ease-out; /* transformのアニメーション速度を0.15秒に短縮 */
 }
 
 .card-item:hover {
