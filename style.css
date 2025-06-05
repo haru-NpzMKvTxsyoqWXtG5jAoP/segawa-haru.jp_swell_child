@@ -12,6 +12,16 @@
     License URI: http://www.gnu.org/licenses/gpl.html
 */
 
+:root {
+  --card-image-padding: clamp(25px, 1.6vw, 50px);
+  /* ギャラリー関連のCSS変数を定義 */
+  --gallery-padding: 20px; /* まずは固定値で */
+  --gallery-gutter: 15px;
+  --gallery-columns-pc: 3;
+  --gallery-columns-tablet: 2;
+  --gallery-columns-mobile: 1; /* スマホは1列 */
+}
+
 /* ===========================================================
    左端に寄せるセクション：デスクトップ時のみ適用
 =========================================================== */
@@ -191,12 +201,9 @@ div.wp-block-group.card-grid {
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
   position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
-  padding-left: 20px;  /* 左側の余白 */
-  padding-right: 20px; /* 右側の余白 */
+  padding-left: var(--gallery-padding);
+  padding-right: var(--gallery-padding);
   box-sizing: border-box; /* パディングを幅の内側に含めるため */
-  /* display: grid; */ /* Masonry.jsで制御するためコメントアウト済み */
-  /* gap: 15px; */ /* Masonry.jsのgutterで制御するためコメントアウト済み */
-  /* grid-template-columns: 1fr; */ /* Masonry.jsで制御するためコメントアウト済み */
 }
 
 .masonry-gallery .grid-sizer {
@@ -240,41 +247,40 @@ div.wp-block-group.card-grid {
 /* スマホ (デフォルト) */
 @media (max-width: 767px) { 
   .masonry-gallery .grid-sizer {
-    width: 100%; /* 1列 */
+    width: 100%; /* 1列なので100% */
   }
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 15px;
-    width: calc(100% - 40px) !important; /* 親のパディング(左右20pxずつ)を引く */
+    width: 100% !important; /* 1列なので100% */
   }
 }
 
 /* タブレット (768px以上) */
 @media (min-width: 768px) and (max-width: 1023px) { 
   .masonry-gallery .grid-sizer {
-    width: calc((100% - 15px) / 2); /* gutter1つ、2列 (25pxから15pxに変更) */
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 20px;
-    width: calc(((100% - 40px) - 15px) / 2) !important; /* 親のパディングとgutterを引く */
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
   }
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 20px;
-    width: 100%; /* 幅広アイテムはタブレットでは100%のまま (これは一旦維持) */
+    width: 100% !important; /* 幅広アイテムは100% (親パディングは100%に含まれる) */
   }
 }
 
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
   .masonry-gallery .grid-sizer {
-    width: calc((100% - 2 * 15px) / 3); /* (2 * 25px から 2 * 15px に変更) */
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    /* 親のパディング(左右20pxずつ)を考慮して100%から引く */
-    width: calc(((100% - 40px) - 2 * 15px) / 3) !important; /* (2 * 25px から 2 * 15px に変更) */
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important;
   }
-  /* .masonry-gallery-item--wide のスタイル指定は削除しました */
+  /* .masonry-gallery-item--wide のスタイル指定は削除しました (必要なら別途定義) */
 }
 
 /* ===========================================================
