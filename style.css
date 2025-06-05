@@ -252,7 +252,8 @@ div.wp-block-group.card-grid {
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 15px;
-    width: 100% !important; /* 1列なので100% */
+    /* width: 100% !important; */ /* 1列なので100% ← 一旦コメントアウトして下の計算式を試す */
+    width: calc(100% - (var(--gallery-padding) * 2)) !important; /* position:absolute対策で親パディングを引く */
   }
 }
 
@@ -263,11 +264,12 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 20px;
-    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important; /* 親パディングを引く */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     margin-bottom: 20px;
-    width: 100% !important; /* 幅広アイテムは100% (親パディングは100%に含まれる) */
+    /* width: 100% !important; */ /* 幅広アイテムは100% ← 一旦コメントアウトして下の計算式を試す */
+    width: calc(100% - (var(--gallery-padding) * 2)) !important; /* position:absolute対策で親パディングを引く */
   }
 }
 
@@ -278,7 +280,7 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item {
     margin-bottom: 25px;
-    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important;
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important; /* 親パディングを引く */
   }
   /* .masonry-gallery-item--wide のスタイル指定は削除しました (必要なら別途定義) */
 }
