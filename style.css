@@ -68,8 +68,8 @@ div.wp-block-group.card-grid {
       1fr
     )
   );
-  padding-left: 50px;  /* 左側の余白 */
-  padding-right: 50px; /* 右側の余白 */
+  padding-left: clamp(15px, 4vw, 50px);  /* 左側の余白をclampで動的に */
+  padding-right: clamp(15px, 4vw, 50px); /* 右側の余白をclampで動的に */
   box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
