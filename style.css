@@ -254,7 +254,10 @@ div.wp-block-group.card-grid {
 
 /* スマホ (1列) */
 @media (max-width: 767px) {
-  .masonry-gallery .grid-sizer,
+  .masonry-gallery .grid-sizer {
+    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-mobile) - 1))) / var(--gallery-columns-mobile));
+  }
   .masonry-gallery .masonry-gallery-item {
     width: 100%;
   }
@@ -262,7 +265,10 @@ div.wp-block-group.card-grid {
 
 /* タブレット (2列) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .masonry-gallery .grid-sizer,
+  .masonry-gallery .grid-sizer {
+    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
+  }
   .masonry-gallery .masonry-gallery-item {
     /* (100% - 隙間1つ) / 2列 */
     width: calc((100% - 15px) / 2);
@@ -271,7 +277,10 @@ div.wp-block-group.card-grid {
 
 /* PC (3列) */
 @media (min-width: 1024px) {
-  .masonry-gallery .grid-sizer,
+  .masonry-gallery .grid-sizer {
+    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
+  }
   .masonry-gallery .masonry-gallery-item {
     /* (100% - 隙間2つ) / 3列 */
     width: calc((100% - 2 * 15px) / 3);
