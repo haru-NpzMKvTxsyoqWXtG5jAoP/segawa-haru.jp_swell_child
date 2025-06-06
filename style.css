@@ -16,7 +16,7 @@
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   /* ギャラリー関連のCSS変数を定義 */
   --gallery-padding: clamp(15px, 4vw, 50px); /* clamp() に変更 */
-  --gallery-gutter: 15px;
+  --gallery-gutter: 1px;
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1; /* スマホは1列 */
@@ -62,7 +62,7 @@ div.wp-block-group.card-grid {
   --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
-  --card-aspect-ratio: 1 / 1.35;             /* カードのアスペクト比を調整して高さを低く */
+  --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比を調整して高さを低く */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
