@@ -213,8 +213,9 @@ div.wp-block-group.card-grid {
 .masonry-gallery .masonry-gallery-item,
 .masonry-gallery .masonry-gallery-item--wide { 
   border: none; /* 枠線をなしに */
-  padding: 10px;          
+  padding: 0;
   box-sizing: border-box; 
+  margin-bottom: var(--gallery-gutter);
 }
 
 /* ===========================================================
@@ -246,45 +247,32 @@ div.wp-block-group.card-grid {
 
 /* スマホ (デフォルト) */
 @media (max-width: 767px) { 
-  .masonry-gallery .grid-sizer {
-    width: 100%; /* 1列なので100% */
-  }
+  .masonry-gallery .grid-sizer,
   .masonry-gallery .masonry-gallery-item,
-  .masonry-gallery .masonry-gallery-item--wide { /* スマホでは通常アイテムと幅広アイテムを同じスタイルに */
-    margin-bottom: var(--gallery-gutter);
-    width: calc(100% - (var(--gallery-padding) * 2)) !important; /* position:absolute対策で親パディングを引く (1列なのでこれが1列分の幅) */
+  .masonry-gallery .masonry-gallery-item--wide {
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-mobile) - 1))) / var(--gallery-columns-mobile));
   }
 }
 
 /* タブレット (768px以上) */
 @media (min-width: 768px) and (max-width: 1023px) { 
-  .masonry-gallery .grid-sizer {
+  .masonry-gallery .grid-sizer,
+  .masonry-gallery .masonry-gallery-item {
     width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
   }
-  .masonry-gallery .masonry-gallery-item {
-    margin-bottom: var(--gallery-gutter);
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important; /* 親パディングを引く */
-  }
   .masonry-gallery .masonry-gallery-item--wide {
-    /* 通常アイテムと同じ幅 */
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
-    margin-bottom: var(--gallery-gutter);
+    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) * 2) + var(--gallery-gutter));
   }
 }
 
 /* PC (1024px以上) */
 @media (min-width: 1024px) {
-  .masonry-gallery .grid-sizer {
+  .masonry-gallery .grid-sizer,
+  .masonry-gallery .masonry-gallery-item {
     width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
   }
-  .masonry-gallery .masonry-gallery-item {
-    margin-bottom: var(--gallery-gutter);
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important; /* 親パディングを引く */
-  }
   .masonry-gallery .masonry-gallery-item--wide {
-    /* 通常アイテム1列分の幅を A とすると、 A * 2 + gutter (元のサイズに戻す) */
-    width: calc(((((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
-    margin-bottom: var(--gallery-gutter);
+    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter));
   }
 }
 
