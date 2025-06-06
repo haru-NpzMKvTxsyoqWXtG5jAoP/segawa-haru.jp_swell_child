@@ -251,7 +251,7 @@ div.wp-block-group.card-grid {
   }
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide { /* スマホでは通常アイテムと幅広アイテムを同じスタイルに */
-    margin-bottom: 15px;
+    margin-bottom: var(--gallery-gutter);
     width: calc(100% - (var(--gallery-padding) * 2)) !important; /* position:absolute対策で親パディングを引く (1列なのでこれが1列分の幅) */
   }
 }
@@ -262,13 +262,13 @@ div.wp-block-group.card-grid {
     width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
   }
   .masonry-gallery .masonry-gallery-item {
-    margin-bottom: 20px;
+    margin-bottom: var(--gallery-gutter);
     width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important; /* 親パディングを引く */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     /* 通常アイテムと同じ幅 */
     width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
-    margin-bottom: 20px; /* タブレットの通常アイテムのmargin-bottomに合わせる */
+    margin-bottom: var(--gallery-gutter);
   }
 }
 
@@ -278,13 +278,13 @@ div.wp-block-group.card-grid {
     width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
   }
   .masonry-gallery .masonry-gallery-item {
-    margin-bottom: 25px;
+    margin-bottom: var(--gallery-gutter);
     width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important; /* 親パディングを引く */
   }
   .masonry-gallery .masonry-gallery-item--wide {
     /* 通常アイテム1列分の幅を A とすると、 A * 2 + gutter (元のサイズに戻す) */
     width: calc(((((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
-    margin-bottom: 25px; /* PCの通常アイテムのmargin-bottomに合わせる */
+    margin-bottom: var(--gallery-gutter);
   }
 }
 
