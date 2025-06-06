@@ -224,8 +224,8 @@ div.wp-block-group.card-grid {
 .masonry-gallery {
   position: relative; /* これはMasonry.jsのために必須 */
   box-sizing: border-box; /* 左右のpaddingを幅の内側に含めるため */
-  padding-left: 20px;  /* 左右の余白（一旦、固定値で） */
-  padding-right: 20px;
+  padding-left: 0;  /* 左右の余白（一旦、固定値で） */
+  padding-right: 0;
   margin-left: auto; /* 全幅ブロックの中での中央寄せ（念のため） */
   margin-right: auto;
 }
