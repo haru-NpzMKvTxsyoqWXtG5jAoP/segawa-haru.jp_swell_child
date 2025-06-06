@@ -1,47 +1,31 @@
+// Masonry初期化用のカスタムスクリプト（最小構成版）
 document.addEventListener('DOMContentLoaded', function () {
-  // メイソンリーレイアウトを適用するコンテナ要素を取得
-  var elem = document.querySelector('.masonry-gallery');
-  if (elem) {
-    // まず、elem（.masonry-gallery）の中の画像が全部読み込まれるのを待つ
-    imagesLoaded( elem, function() {
-      // 画像が全部読み込まれたら、ここからMasonryの処理を始める！
-      var msnry = new Masonry( elem, {
-        // オプション
-        itemSelector: '.masonry-gallery-item, .masonry-gallery-item--wide',
-        columnWidth: '.grid-sizer',
-        gutter: 1,
-        percentPosition: true,
-        transitionDuration: 0,
-        // RTLサポートのための設定
-        originLeft: document.dir !== 'rtl'
+  var galleryContainer = document.querySelector('.masonry-gallery');
+
+  if (galleryContainer) {
+    // 画像が全部読み込まれたらMasonryを実行する (これは必須！)
+    imagesLoaded(galleryContainer, function () {
+      
+      var msnry = new Masonry(galleryContainer, {
+        itemSelector: '.masonry-gallery-item', // まずは通常アイテムだけを対象にする
+        columnWidth: '.grid-sizer',         // 幅の基準は.grid-sizerから取る
+        gutter: 15,                         // CSSの計算と完全に同じ値に！
+        percentPosition: true,              // calcで%を使ってるから、trueの方がキレイに配置されやすい
+        transitionDuration: '0.2s'          // 再配置時に0.2秒かけてフワッと動くように（お好みで）
       });
 
-      // ResizeObserver を使用して要素のサイズ変更を監視
-      if (window.ResizeObserver) {
-        const resizeObserver = new ResizeObserver(function() {
-          clearTimeout(elem.resizeTimeoutId); // デバウンス処理用のタイマーIDを要素に紐付ける
-          elem.resizeTimeoutId = setTimeout(function() {
-            // console.log('ResizeObserver triggered layout'); // デバッグ用
-            msnry.layout();
-          }, 250); // 250msのデバウンス
-        });
-        resizeObserver.observe(elem);
-      } else {
-        // ResizeObserver が使えない場合のフォールバック
-        let resizeTimeout;
-        window.addEventListener('resize', function() {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(function() {
-            // console.log('Window resize triggered layout'); // デバッグ用
-            msnry.layout();
-          }, 250);
-        });
-      }
-
-      // ウィンドウのリサイズを監視し、Masonryのレイアウトを再計算
+      // ウィンドウサイズが変わった時にも再レイアウトさせる（デバウンス処理付き）
+      // これがないと、ウィンドウ幅を変えた時にレイアウトが崩れる
+      let resizeTimeout;
       window.addEventListener('resize', function() {
-        msnry.layout();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          if (msnry) {
+            msnry.layout();
+          }
+        }, 250); // リサイズが終わってから0.25秒後に再計算
       });
+
     });
   }
 }); 
