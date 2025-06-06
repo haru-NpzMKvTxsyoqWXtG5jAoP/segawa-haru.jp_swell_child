@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // オプション
         itemSelector: '.masonry-gallery-item, .masonry-gallery-item--wide',
         columnWidth: '.grid-sizer',
-        gutter: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gallery-gutter').trim()) || 15,
+        gutter: 1,
         percentPosition: true,
         transitionDuration: 0
       });
