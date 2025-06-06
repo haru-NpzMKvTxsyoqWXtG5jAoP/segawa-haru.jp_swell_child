@@ -250,7 +250,7 @@ div.wp-block-group.card-grid {
   .masonry-gallery .grid-sizer,
   .masonry-gallery .masonry-gallery-item,
   .masonry-gallery .masonry-gallery-item--wide {
-    width: calc(((100% - 40px) - (var(--gallery-gutter) * (var(--gallery-columns-mobile) - 1))) / var(--gallery-columns-mobile)) !important;
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-mobile) - 1))) / var(--gallery-columns-mobile));
   }
 }
 
@@ -258,10 +258,10 @@ div.wp-block-group.card-grid {
 @media (min-width: 768px) and (max-width: 1023px) { 
   .masonry-gallery .grid-sizer,
   .masonry-gallery .masonry-gallery-item {
-    width: calc(((100% - 40px) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
   }
   .masonry-gallery .masonry-gallery-item--wide {
-    width: calc(((((100% - 40px) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) * 2) + var(--gallery-gutter)) !important;
+    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) * 2) + var(--gallery-gutter));
   }
 }
 
@@ -269,10 +269,10 @@ div.wp-block-group.card-grid {
 @media (min-width: 1024px) {
   .masonry-gallery .grid-sizer,
   .masonry-gallery .masonry-gallery-item {
-    width: calc(((100% - 40px) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important;
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
   }
   .masonry-gallery .masonry-gallery-item--wide {
-    width: calc(((((100% - 40px) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
+    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter));
   }
 }
 

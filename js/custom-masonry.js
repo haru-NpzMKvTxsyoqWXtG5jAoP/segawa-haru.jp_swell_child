@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function () {
         columnWidth: '.grid-sizer',
         gutter: 1,
         percentPosition: true,
-        transitionDuration: 0
+        transitionDuration: 0,
+        // RTLサポートのための設定
+        originLeft: document.dir !== 'rtl'
       });
 
       // ResizeObserver を使用して要素のサイズ変更を監視
@@ -35,6 +37,11 @@ document.addEventListener('DOMContentLoaded', function () {
           }, 250);
         });
       }
+
+      // ウィンドウのリサイズを監視し、Masonryのレイアウトを再計算
+      window.addEventListener('resize', function() {
+        msnry.layout();
+      });
     });
   }
 }); 
