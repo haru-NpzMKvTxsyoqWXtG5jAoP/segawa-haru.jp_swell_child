@@ -222,68 +222,92 @@ div.wp-block-group.card-grid {
    メイソンリー：基本スタイル
 =========================================================== */
 .masonry-gallery {
-  position: relative; /* これはMasonry.jsのために必須 */
-  box-sizing: border-box; /* 左右のpaddingを幅の内側に含めるため */
-  padding-left: 0;  /* 左右の余白（一旦、固定値で） */
-  padding-right: 0;
-  margin-left: auto; /* 全幅ブロックの中での中央寄せ（念のため） */
-  margin-right: auto;
+  display: block !important; /* display:grid の上書きを試みる */
+  position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
+  padding-left: var(--gallery-padding);
+  padding-right: var(--gallery-padding);
+  box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
-/* 幅計算の基準になる、目には見えないダミー要素 */
 .masonry-gallery .grid-sizer {
-  box-sizing: border-box;
+  /* 高さやボーダー、パディングは不要 */
 }
 
-/* 各ギャラリーアイテムの基本設定 */
-.masonry-gallery .masonry-gallery-item {
-  margin-bottom: 15px; /* アイテムの縦の隙間 */
-  box-sizing: border-box;
-  background-color: rgba(200, 200, 200, 0.2); /* アイテムの範囲が分かるように、仮でうっすら背景色 */
-  overflow: hidden; /* 中身がはみ出さないように */
+.masonry-gallery .masonry-gallery-item,
+.masonry-gallery .masonry-gallery-item--wide { 
+  border: none; /* 枠線をなしに */
+  padding: 10px;          
+  box-sizing: border-box; 
 }
 
-/* アイテム内の画像 */
-.masonry-gallery .masonry-gallery-item img {
+/* ===========================================================
+   メイソンリー：H6見出し
+=========================================================== */
+.masonry-gallery .masonry-gallery-item h6,
+.masonry-gallery .masonry-gallery-item--wide h6 {
+  font-size: 12px; /* フォントサイズを12pxに */
+  margin-top: 0; /* 上マージンをリセット */
+  margin-bottom: 0; /* 下マージンをリセット */
+  line-height: 1; /* 行の高さをフォントサイズに近づける (お好みで調整) */
+}
+
+/* ===========================================================
+   メイソンリー：本文テキスト
+=========================================================== */
+.masonry-gallery .masonry-gallery-item p,
+.masonry-gallery .masonry-gallery-item--wide p {
+  margin-bottom: 0.5rem; /* テキスト下の余白を調整 */
+}
+
+.masonry-gallery .masonry-gallery-item img,
+.masonry-gallery .masonry-gallery-item--wide img { 
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
-/* --- ここからが、レスポンシブな幅の指定（一番シンプルな形） --- */
-
-/* スマホ (1列) */
-@media (max-width: 767px) {
+/* スマホ (デフォルト) */
+@media (max-width: 767px) { 
   .masonry-gallery .grid-sizer {
-    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-mobile) - 1))) / var(--gallery-columns-mobile));
+    width: 100%; /* 1列なので100% */
+  }
+  .masonry-gallery .masonry-gallery-item,
+  .masonry-gallery .masonry-gallery-item--wide { /* スマホでは通常アイテムと幅広アイテムを同じスタイルに */
+    margin-bottom: 15px;
+    width: calc(100% - (var(--gallery-padding) * 2)) !important; /* position:absolute対策で親パディングを引く (1列なのでこれが1列分の幅) */
+  }
+}
+
+/* タブレット (768px以上) */
+@media (min-width: 768px) and (max-width: 1023px) { 
+  .masonry-gallery .grid-sizer {
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
   }
   .masonry-gallery .masonry-gallery-item {
-    width: 100%;
+    margin-bottom: 20px;
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important; /* 親パディングを引く */
+  }
+  .masonry-gallery .masonry-gallery-item--wide {
+    /* 通常アイテムと同じ幅 */
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) !important;
+    margin-bottom: 20px; /* タブレットの通常アイテムのmargin-bottomに合わせる */
   }
 }
 
-/* タブレット (2列) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .masonry-gallery .grid-sizer {
-    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet));
-  }
-  .masonry-gallery .masonry-gallery-item {
-    /* (100% - 隙間1つ) / 2列 */
-    width: calc((100% - 15px) / 2);
-  }
-}
-
-/* PC (3列) */
+/* PC (1024px以上) */
 @media (min-width: 1024px) {
   .masonry-gallery .grid-sizer {
-    /* ↓ 親パディングを引く計算を、アイテム側と揃える！ */
-    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
+    width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc));
   }
   .masonry-gallery .masonry-gallery-item {
-    /* (100% - 隙間2つ) / 3列 */
-    width: calc((100% - 2 * 15px) / 3);
+    margin-bottom: 25px;
+    width: calc(((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) !important; /* 親パディングを引く */
+  }
+  .masonry-gallery .masonry-gallery-item--wide {
+    /* 通常アイテム1列分の幅を A とすると、 A * 2 + gutter (元のサイズに戻す) */
+    width: calc(((((100% - (var(--gallery-padding) * 2)) - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
+    margin-bottom: 25px; /* PCの通常アイテムのmargin-bottomに合わせる */
   }
 }
 
