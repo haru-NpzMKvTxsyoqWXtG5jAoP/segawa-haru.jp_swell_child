@@ -62,7 +62,7 @@ div.wp-block-group.card-grid {
   --arrow-size: 24px;                         /* 矢印のサイズ */
   --arrow-color: #333;                        /* 矢印の色 */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
-  --card-aspect-ratio: 1 / 1.25;             /* カードのアスペクト比 (goodportfol.io風) */
+  --card-aspect-ratio: 1 / 1.35;             /* カードのアスペクト比を調整して高さを低く */
 
   /* ↓ここから下は、今の .card-grid のスタイル */
   display: grid;
