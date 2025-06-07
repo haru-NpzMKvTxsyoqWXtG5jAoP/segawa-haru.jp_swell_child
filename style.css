@@ -46,27 +46,6 @@
 }
 
 /* ===========================================================
-   左端に寄せるセクション：デスクトップ時のみ適用
-=========================================================== */
-.wp-block-group-edge-left-section {
-  max-width: none !important;   /* SWELLテーマの幅制限を解除 */
-  width: 100%;
-  padding-left: 8px;            /* 完全ベタ付けではなく、僅かに余白を残す */
-}
-
-/* SERVICE見出しと説明文の隙間（必要なブロックに class="edge-left-section"） */
-.edge-left-section {
-  margin-bottom: -0.35em !important;
-}
-
-/* モバイル向け：左右に読みやすい余白を確保
-=========================================================== */
-@media (max-width: 599px) {
-  .wp-block-group-edge-left-section {
-    padding-left: 16px;
-  }
-}
-/* ===========================================================
    カード一覧
 =========================================================== */
 div.wp-block-group.card-grid {
@@ -366,9 +345,9 @@ div.wp-block-group.card-grid {
   width: 100%; /* 上記パディングの内側で、幅100%に広がる */
   height: auto;
   display: block;
-  fill: #FFFFFF; /* SVGの文字色を白に */
+  fill: #000000; /* SVGの文字色を白に */
   margin-top: 0.2em; /* 上の余白 (調整用) */
-  margin-bottom: 0.05em; /* 下のキャプションとの余白 (調整用) */
+  margin-bottom: 0; /* 下のキャプションとの余白 (調整用) */
 }
 
 /* ===========================================================
@@ -377,7 +356,6 @@ div.wp-block-group.card-grid {
 .harusegawa-title-caption {
   font-size: 18px !important; /* !important を追加して強制 */
   font-weight: normal;
-  color: #FFFFFF;      /* 文字色を白に */
   text-align: center;
   margin-top: 0;     /* SVGタイトルとの間の余白はSVG側で調整 */
   margin-bottom: 1em;
