@@ -238,7 +238,7 @@ div.wp-block-group.card-grid {
 .masonry-gallery .masonry-gallery-item,
 .masonry-gallery .masonry-gallery-item--wide { 
   border: none; /* 枠線をなしに */
-  padding: 10px;          
+  padding: 0; /* 10px から 0 に変更 */
   box-sizing: border-box; 
 }
 
