@@ -16,7 +16,7 @@
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   /* ギャラリー関連のCSS変数を定義 */
   --gallery-padding: clamp(15px, 4vw, 50px);
-  --gallery-gutter: 15px; /* JSのgutterと値を合わせる */
+  --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1; /* スマホは1列 */
