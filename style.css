@@ -240,6 +240,15 @@ div.wp-block-group.card-grid {
   border: none; /* 枠線をなしに */
   padding: 0; /* 10px から 0 に変更 */
   box-sizing: border-box; 
+  transition: transform 0.15s ease-out; /* ← この行を追加 */
+}
+
+/* ===========================================================
+   メイソンリー：ホバー効果
+=========================================================== */
+.masonry-gallery-item:hover,
+.masonry-gallery-item--wide:hover {
+  transform: scale(0.95); /* ホバー時に少し縮小 */
 }
 
 /* ===========================================================
