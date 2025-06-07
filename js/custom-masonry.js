@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         itemSelector: '.masonry-gallery-item, .masonry-gallery-item--wide',
         columnWidth: '.grid-sizer',
         gutter: parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gallery-gutter').trim()) || 15,
-        percentPosition: true,
+        percentPosition: false,
         transitionDuration: 0
       });
 

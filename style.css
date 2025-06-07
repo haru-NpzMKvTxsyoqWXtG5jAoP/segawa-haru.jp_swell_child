@@ -222,13 +222,13 @@ div.wp-block-group.card-grid {
    メイソンリー：基本スタイル
 =========================================================== */
 .masonry-gallery {
-  display: block !important; /* display:grid の上書きを試みる */
-  position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
-  /* paddingを削除し、widthとmarginで余白を表現する */
-  width: calc(100% - (var(--gallery-padding) * 2));
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box; /* パディングを幅の内側に含めるため */
+  display: block !important;
+  position: relative;
+
+  /* ▼▼▼【この状態に戻す】▼▼▼ */
+  padding-left: var(--gallery-padding);
+  padding-right: var(--gallery-padding);
+  box-sizing: border-box; 
 }
 
 .masonry-gallery .grid-sizer {
