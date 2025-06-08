@@ -222,61 +222,40 @@ div.wp-block-group.card-grid {
    カードとギャラリーのホバーオーバーレイ
 =========================================================== */
 
-/* 【カード用】カード全体をオーバーレイの基準にする */
-.card-item {
+/* --- 基準点の設定 --- */
+/* オーバーレイの基準にするため、position:relativeは必要 */
+.card-item,
+.masonry-gallery-item .wp-block-image {
   position: relative;
 }
 
-.card-item::before {
+/* --- 共通オーバーレイスタイルの定義 --- */
+/* カードとギャラリー、両方のオーバーレイに共通するスタイル */
+.card-item::before,
+.masonry-gallery-item .wp-block-image::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #00c387;
-  mix-blend-mode: multiply;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  pointer-events: none;
+  background-color: #008e5b; /* オーバーレイの共通の色 */
+  mix-blend-mode: multiply; /* 下の画像と色が「乗算」で混ざるように */
+  opacity: 0; /* 最初は透明にして隠しておく */
+  transition: opacity 0.3s ease-out; /* 透明度がふわっと変わるようにアニメーションを設定 */
+  pointer-events: none; /* オーバーレイが下のリンクなどの邪魔をしないように */
 }
 
-.card-item:hover::before {
-  opacity: 0.2;
-}
-
-
-/* 【ギャラリー用】 */
-
-/* 画像エリア(figure)を、重ね順の基準(1階席)にする */
-.masonry-gallery-item .wp-block-image {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  z-index: 0; 
-}
-
-/* オーバーレイ(::before)を、画像より手前(2階席)に配置 */
-.masonry-gallery-item .wp-block-image::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-color: #00c387;
-  mix-blend-mode: multiply;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-  pointer-events: none;
-  z-index: 1; 
-}
-
-/* ホバー時にオーバーレイを表示 */
+/* --- 共通のホバー効果 --- */
+/* ホバー時にオーバーレイを表示する */
+.card-item:hover::before,
 .masonry-gallery-item:hover .wp-block-image::before {
   opacity: 0.2;
 }
 
-/* 【追記】キャプションを最前面(VIP席)に持ってくる */
-.masonry-gallery-item .wp-block-image figcaption {
-  position: relative; /* z-indexを効かせるためのおまじない */
-  z-index: 2;
+/* --- ギャラリーだけの個別ルール --- */
+/* ギャラリーの画像コンテナの角を丸める */
+.masonry-gallery-item .wp-block-image {
+  border-radius: 8px;
+  overflow: hidden;
 }
-
