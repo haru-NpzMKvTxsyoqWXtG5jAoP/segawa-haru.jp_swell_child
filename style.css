@@ -76,7 +76,7 @@
 /* ===========================================================
    セクション見出しのパディング調整
 =========================================================== */
-.is-style-section_ttl.section-b.horizontal {
+.is-style-section_ttl.section-b {
   padding: 0 var(--gallery-padding);
 }
 
