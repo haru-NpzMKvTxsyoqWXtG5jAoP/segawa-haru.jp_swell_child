@@ -23,13 +23,8 @@
 
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
   --card-grid-min-item-width: 375px;          /* カードの最小幅 */
-  /* --card-item-height: 450px; */                 /* カードの"最小"高さとして使用 ← コメントアウト */
-  --card-border-color: #000000;               /* カードの通常時の枠線色 */
-  --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
-  /* --card-image-max-height: 350px; */            /* カード画像の最大高さ ← コメントアウト */
-  /* --card-image-display-height: 280px; */ /* カード内画像の目標の高さを指定 ← コメントアウト */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
@@ -50,14 +45,9 @@ div.wp-block-group.card-grid {
   /* ここにカスタムプロパティを定義 */
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
   --card-grid-min-item-width: 375px;          /* カードの最小幅 */
-  /* --card-item-height: 450px; */                 /* カードの"最小"高さとして使用 ← コメントアウト */
-  --card-border-color: #000000;               /* カードの通常時の枠線色 */
-  --card-border-color-hover: #04C58A;           /* カードのホバー時の枠線色 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   --card-image-padding: clamp(25px, 1.6vw, 50px); /* 削除されてしまっていたので復活 */
-  /* --card-image-max-height: 350px; */            /* カード画像の最大高さ ← コメントアウト */
-  /* --card-image-display-height: 280px; */ /* カード内画像の目標の高さを指定 ← コメントアウト */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
@@ -86,10 +76,8 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   position: relative; /* 子要素のabsolute指定の基準にする */
-  /* height: var(--card-item-height); */ /* 通常は固定高さ ← 削除 */
   aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
   min-width: var(--card-grid-min-item-width); /* カードの最小幅 */
-  /* min-height: var(--card-item-height); */  /* 最小高さ保証を削除 */
   overflow: hidden; /* はみ出た内容を隠す */
   border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
@@ -100,8 +88,6 @@ div.wp-block-group.card-grid {
 }
 
 .card-item:hover {
-  /* background-color: var(--card-border-color-hover); */ /* ホバー時背景色を緑に ← コメントアウト */
-  /* color: #FFFFFF; */ /* ホバー時文字色を白に (復活させる) ← コメントアウト */
   transform: scale(0.95); /* ホバー時にカードを少し縮小する */
 }
 
@@ -111,7 +97,6 @@ div.wp-block-group.card-grid {
 
 /* カード内画像 */
 .card-item img {
-  pointer-events: none; /* 画像のクリックイベント無効化 */
   width: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
   height: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
   object-fit: cover; /* アスペクト比を維持してコンテナに収める */
@@ -259,39 +244,28 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   harusegawa-title-svg (インラインSVGタイトル) スタイル
+   harusegawa-title-svg (カスタムHTML)
 =========================================================== */
 .harusegawa-title-svg {
-  padding-left: clamp(15px, 4vw, 50px); /* カードグリッドと同じclamp余白に変更 */
-  padding-right: clamp(15px, 4vw, 50px); /* カードグリッドと同じclamp余白に変更 */
-  box-sizing: border-box;
-  width: 100% !important; /* インラインスタイルの width を上書き */
-  height: auto !important; /* インラインスタイルの height も上書き */
+  /* 上下は0、左右にclampの余白を指定するのが正しい */
+  padding: 0 clamp(15px, 4vw, 50px);
 }
 
+/* SVG本体
+---------------------------------------------------------- */
 .harusegawa-title-svg svg {
-  width: 100%; /* 上記パディングの内側で、幅100%に広がる */
-  height: auto;
   display: block;
-  fill: #000000; /* SVGの文字色を白に */
-  margin-top: 0.2em; /* 上の余白 (調整用) */
-  margin-bottom: 0; /* 下のキャプションとの余白 (調整用) */
+  fill: #000000;
 }
 
 /* ===========================================================
-   harusegawa-title-caption (H2キャプション) スタイル
+   harusegawa-title-caption (H2) 
 =========================================================== */
-.harusegawa-title-caption {
-  font-size: 18px !important; /* !important を追加して強制 */
-  font-weight: normal;
-  text-align: center;
-  margin-top: 0;     /* SVGタイトルとの間の余白はSVG側で調整 */
-  margin-bottom: 1em;
-  /* キャプションの左右パディングはSVGタイトルとは別に調整 */
-  padding-left: calc(50px + 5%); /* SVGの50px + さらに5%内側 */
-  padding-right: calc(50px + 5%);
-  box-sizing: border-box; /* パディングを幅の内側に含める */
+.post_content .harusegawa-title-caption {
+  font-size: clamp(5px, calc(12px + 0.5vw), 18px);
+  margin-top: 0;
   line-height: 1.6;
+  padding: 0 clamp(15px, 4vw, 50px);
 }
 
 /* ===========================================================
@@ -315,8 +289,6 @@ div.wp-block-group.card-grid {
   /* テキストエリアの調整 */
   .card-item p {
     flex-grow: 0; /* テキストエリアが不必要に伸びるのを防ぐ */
-    /* max-height: none; */ /* 通常時の3行制限を超広画面では解除（必要なら）*/
-    /* height: auto; */ /* 内容に応じた高さ */
     padding-bottom: 3rem; /* 矢印とのスペースを確保 */
   }
 }
