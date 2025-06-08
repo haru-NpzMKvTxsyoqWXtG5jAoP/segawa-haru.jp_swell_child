@@ -172,12 +172,14 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    メイソンリーギャラリー：H6見出し
 =========================================================== */
+/*
 .masonry-gallery .masonry-gallery-item h6,
 .masonry-gallery .masonry-gallery-item--wide h6 {
-  font-size: 12px; /* フォントサイズを12pxに */
-  margin-bottom: 0; /* 下マージンをリセット */
-  line-height: 1; /* 行の高さ */
+  font-size: 12px; /* フォントサイズを12pxに **
+  margin-bottom: 0; /* 下マージンをリセット **
+  line-height: 1; /* 行の高さ **
 }
+*/
 
 /* ===========================================================
    メイソンリーギャラリー：本文テキスト
