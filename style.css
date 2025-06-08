@@ -13,29 +13,22 @@
 */
 
 :root {
+ /* カード関連のCSS変数を定義 */
   --card-image-padding: clamp(25px, 1.6vw, 50px);
-  /* ギャラリー関連のCSS変数を定義 */
-  --gallery-padding: clamp(15px, 4vw, 50px);
-  --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
-  --gallery-columns-pc: 3;
-  --gallery-columns-tablet: 2;
-  --gallery-columns-mobile: 1; /* スマホは1列 */
-
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-grid-min-item-width: 375px;          /* カードの最小幅 */
+  --card-grid-min-item-width: 345px;          /* カードの最小幅 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
-  /* サイト全体に関わるCSS変数を定義 */
-  --base-font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-  --brand-color: #333; /* ブランドカラーを定義 */
-  --link-color: var(--brand-color); /* リンク色をブランドカラーに設定 */
-  --content-width: 1200px; /* コンテンツの最大幅 */
-  --sidebar-width: 300px; /* サイドバーの幅 */
-  --header-height: 80px; /* ヘッダーの高さ */
-  --footer-height: 60px; /* フッターの高さ */
+
+  /* ギャラリー関連のCSS変数を定義 */
+  --gallery-padding: clamp(15px, 4vw, 50px);
+  --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
+  --gallery-columns-pc: 3;
+  --gallery-columns-tablet: 2;
+  --gallery-columns-mobile: 1;
 }
 
 /* ===========================================================
@@ -56,22 +49,17 @@ div.wp-block-group.card-grid {
   );
   padding-left: clamp(15px, 4vw, 50px);  /* 左側の余白をclampで動的に */
   padding-right: clamp(15px, 4vw, 50px); /* 右側の余白をclampで動的に */
-  box-sizing: border-box; /* パディングを幅の内側に含めるため */
 }
 
 /* ===========================================================
    カード本体
 =========================================================== */
 .card-item {
-  position: relative; /* 子要素のabsolute指定の基準にする */
   aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
   min-width: var(--card-grid-min-item-width); /* カードの最小幅 */
   overflow: hidden; /* はみ出た内容を隠す */
-  border: none; /* 枠線を削除 */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
-  display: flex; /* 内部要素の配置にflexboxを使用 */
-  flex-direction: column; /* 子要素を縦方向に並べる */
   transition: transform 0.15s ease-out; /* transformのアニメーション速度を0.15秒に短縮 */
 }
 
@@ -86,14 +74,9 @@ div.wp-block-group.card-grid {
 /* カード内画像 */
 .card-item img {
   width: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
-  height: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
-  object-fit: cover; /* アスペクト比を維持してコンテナに収める */
-  object-position: center; /* 中央揃え */
   display: block;
   margin: var(--card-image-padding); /* ★ 余白を作る */
   border-radius: calc(var(--card-border-radius) - 5px); /* ★ カードより5px小さい角丸 */
-  box-sizing: border-box; /* ★ 忘れずに復活 */
-  flex-shrink: 0; /* flexアイテムとして縮まないようにする */
 }
 
 /* カード内見出し (h3) */
@@ -102,8 +85,6 @@ div.wp-block-group.card-grid {
   font-size: 1.35rem;             /* フォントサイズ */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
-  color: #333333;                 /* 通常時の文字色 (ホバーで白になるので、通常時も定義) */
-  transition: color .3s;          /* 文字色の変化をアニメーション */
 }
 
 /* カード内テキスト (p) */
@@ -113,16 +94,11 @@ div.wp-block-group.card-grid {
   padding-right: 0.8rem;      /* 内側の右パディング */
   padding-bottom: 0.5rem;
   padding-left: 0.8rem;       /* 内側の左パディング */
-  box-sizing: border-box;
-  margin-top: 0;
   margin-right: 0.5rem;         /* 外側の右余白を0.5remに変更 */
-  margin-bottom: 0.5rem;      /* 下にも少しマージンを（flex-growとの兼ね合いで調整）に戻す */
   margin-left: 0.5rem;          /* 外側の左余白を0.5remに変更 */
   line-height: 1.6;           /* 行の高さ */
-  flex-grow: 1;               /* 残りのスペースを埋めるように伸びる */
   max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
-  text-align: justify;        /* 均等割り付けを試す */
-  transition: color .3s; /* 文字色の変化をアニメーション */
+  text-align: justify;        /* 均等割り付け */
 }
 
 /* ===========================================================
