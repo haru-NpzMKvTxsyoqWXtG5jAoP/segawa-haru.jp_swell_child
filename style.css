@@ -32,6 +32,38 @@
 }
 
 /* ===========================================================
+   全幅グループ内の制約付きインナーコンテナの幅制限を解除
+   （harusegawa-title-svgの幅制限解除のため）
+=========================================================== */
+.wp-block-group.alignfull > .wp-block-group__inner-container.is-layout-constrained {
+  max-width: none !important; /* SWELLの最大幅制限を解除 */
+}
+
+/* ===========================================================
+   harusegawa-title-svg (カスタムHTML)
+=========================================================== */
+.harusegawa-title-svg {
+  padding: 0 clamp(15px, 4vw, 50px);
+}
+
+/* SVG本体
+---------------------------------------------------------- */
+.harusegawa-title-svg svg {
+  display: block;
+  fill: #000000;
+}
+
+/* ===========================================================
+   harusegawa-title-caption (H2) 
+=========================================================== */
+.post_content .harusegawa-title-caption {
+  padding: 0 clamp(15px, 4vw, 50px);
+  font-size: clamp(14px, calc(12px + 0.5vw), 18px);
+  margin-top: 0;
+  line-height: 1.6;
+}
+
+/* ===========================================================
    カード一覧
 =========================================================== */
 div.wp-block-group.card-grid {
@@ -101,18 +133,9 @@ div.wp-block-group.card-grid {
   text-align: justify;        /* 均等割り付け */
 }
 
-/* ===========================================================
-   全幅グループ内の制約付きインナーコンテナの幅制限を解除
-   （SVGタイトルの幅制限解除のため）
-=========================================================== */
-.wp-block-group.alignfull > .wp-block-group__inner-container.is-layout-constrained {
-  max-width: none !important; /* SWELLの最大幅制限を解除 */
-  padding-left: 0 !important;   /* SWELLが付与する可能性のある左右paddingも解除 */
-  padding-right: 0 !important;
-}
 
 /* ===========================================================
-   メイソンリー：基本スタイル
+   メイソンリーギャラリー：基本スタイル
 =========================================================== */
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
@@ -136,7 +159,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：ホバー効果
+   メイソンリーギャラリー：ホバー効果
 =========================================================== */
 .masonry-gallery-item:hover,
 .masonry-gallery-item--wide:hover {
@@ -144,7 +167,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：H6見出し
+   メイソンリーギャラリー：H6見出し
 =========================================================== */
 .masonry-gallery .masonry-gallery-item h6,
 .masonry-gallery .masonry-gallery-item--wide h6 {
@@ -155,7 +178,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリー：本文テキスト
+   メイソンリーギャラリー：本文テキスト
 =========================================================== */
 .masonry-gallery .masonry-gallery-item p,
 .masonry-gallery .masonry-gallery-item--wide p {
@@ -206,27 +229,3 @@ div.wp-block-group.card-grid {
   }
 }
 
-/* ===========================================================
-   harusegawa-title-svg (カスタムHTML)
-=========================================================== */
-.harusegawa-title-svg {
-  /* 上下は0、左右にclampの余白を指定するのが正しい */
-  padding: 0 clamp(15px, 4vw, 50px);
-}
-
-/* SVG本体
----------------------------------------------------------- */
-.harusegawa-title-svg svg {
-  display: block;
-  fill: #000000;
-}
-
-/* ===========================================================
-   harusegawa-title-caption (H2) 
-=========================================================== */
-.post_content .harusegawa-title-caption {
-  font-size: clamp(14px, calc(12px + 0.5vw), 18px);
-  margin-top: 0;
-  line-height: 1.6;
-  padding: 0 clamp(15px, 4vw, 50px);
-}
