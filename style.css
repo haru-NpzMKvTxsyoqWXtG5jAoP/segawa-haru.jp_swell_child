@@ -218,3 +218,40 @@ div.wp-block-group.card-grid {
   }
 }
 
+/* ===========================================================
+   ホバーオーバーレイの準備
+=========================================================== */
+.card-item,
+.masonry-gallery-item,
+.masonry-gallery-item--wide {
+  position: relative; /* 結界を張る（中のオーバーレイの基準点になる） */
+}
+
+/* ===========================================================
+   オーバーレイ用の架空のレイヤーを作る
+=========================================================== */
+.card-item::before,
+.masonry-gallery-item::before,
+.masonry-gallery-item--wide::before {
+  content: ''; /* 疑似要素には必須のおまじない */
+  position: absolute; /* 親の箱を基準に、自由に動けるようにする */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00c387; /* オーバーレイの色 */
+  mix-blend-mode: multiply;  /* 描画モードを「乗算」に */
+  opacity: 0; /* 最初は透明で見えないようにする */
+  transition: opacity 0.3s ease-out; /* 透明度が0.3秒かけてフワッと変わるように */
+  pointer-events: none; /* オーバーレイがクリックの邪魔をしないように */
+}
+
+/* ===========================================================
+   ホバーした時に、そのレイヤーを表示させる
+=========================================================== */
+.card-item:hover::before,
+.masonry-gallery-item:hover::before,
+.masonry-gallery-item--wide:hover::before {
+  opacity: 0.2; /* 透明度を20%にして、うっすら表示させる */
+}
+
