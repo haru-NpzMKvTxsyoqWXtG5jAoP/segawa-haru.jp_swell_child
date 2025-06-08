@@ -42,18 +42,6 @@
    カード一覧
 =========================================================== */
 div.wp-block-group.card-grid {
-  /* ここにカスタムプロパティを定義 */
-  --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-grid-min-item-width: 375px;          /* カードの最小幅 */
-  --card-bg-color: #fff;                      /* カードの背景色 */
-  --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-image-padding: clamp(25px, 1.6vw, 50px); /* 削除されてしまっていたので復活 */
-  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
-  --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
-  --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
-
-  /* ↓ここから下は、今の .card-grid のスタイル */
-  display: grid;
   gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
   /* 最大4列に制限しつつ、レスポンシブに列数を調整 */
   grid-template-columns: repeat(
@@ -152,7 +140,6 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
-  position: relative; /* Masonry.jsのアイテム絶対配置の基準 */
   /* paddingを削除し、widthとmarginで余白を表現する */
   width: calc(100% - (var(--gallery-padding) * 2));
   margin-left: auto;
@@ -262,33 +249,8 @@ div.wp-block-group.card-grid {
    harusegawa-title-caption (H2) 
 =========================================================== */
 .post_content .harusegawa-title-caption {
-  font-size: clamp(5px, calc(12px + 0.5vw), 18px);
+  font-size: clamp(14px, calc(12px + 0.5vw), 18px);
   margin-top: 0;
   line-height: 1.6;
   padding: 0 clamp(15px, 4vw, 50px);
-}
-
-/* ===========================================================
-   超広画面向けのカードスタイル (例: 2560px以上)
-=========================================================== */
-@media (min-width: 99999px) { /* ← 条件を事実上無効化 (元は1800px) */
-  .card-item {
-    height: auto; /* 高さを自動に */
-    aspect-ratio: var(--card-aspect-ratio); /* カードのアスペクト比を維持 */
-    min-height: var(--card-item-height); /* 最小高さは維持 */
-  }
-
-  .card-item img {
-    width: calc(100% - (var(--card-image-padding) * 2)); /* 幅は親に合わせる */
-    height: auto;                                     /* 高さはautoに */
-    aspect-ratio: calc((var(--card-grid-min-item-width) - var(--card-image-padding) * 2) / var(--card-image-display-height)); /* 計算したアスペクト比を設定 (345 / 280) */
-    object-fit: cover;                                /* 表示方法 */
-    max-height: none;                                 /* 高さの最大制限は解除 */
-  }
-
-  /* テキストエリアの調整 */
-  .card-item p {
-    flex-grow: 0; /* テキストエリアが不必要に伸びるのを防ぐ */
-    padding-bottom: 3rem; /* 矢印とのスペースを確保 */
-  }
 }
