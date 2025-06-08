@@ -38,7 +38,8 @@
   position: sticky;
   position: -webkit-sticky;
   top: var(--swl-adminbarH,0);
-  }
+  background: transparent;
+}
 
 /* ===========================================================
    全幅グループ内の制約付きインナーコンテナの幅制限を解除
