@@ -466,7 +466,7 @@ html::after {
   border-radius: 5px; /* ★角を少し丸める */
   display: block;
   margin: 40px auto 0;
-  width: auto;
+  width: fit-content; /* ★テキストの長さに幅を合わせる */
   min-width: 250px;
   text-align: center;
   cursor: pointer;
