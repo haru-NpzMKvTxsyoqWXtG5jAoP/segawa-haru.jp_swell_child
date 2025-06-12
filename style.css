@@ -286,9 +286,9 @@ div.wp-block-group.card-grid {
   display: none !important;
 }
 
-/* サイト全体に右マージンを追加して、ヘッダー分のスペースを確保 */
-body {
-  margin-right: 40px !important; /* スマホ用のマージン */
+/* ページ全体(html)に右パディングを追加して、ヘッダー分のスペースを確保 */
+html {
+  padding-right: 40px !important; /* スマホ用のパディング */
 }
 
 /* 縦型ヘッダー本体 */
@@ -340,9 +340,9 @@ body {
 
 /* PC表示 (960px以上) のスタイル */
 @media (min-width: 960px) {
-  /* サイト全体の右マージンを調整 */
-  body {
-    margin-right: 50px !important; /* PC用のマージン */
+  /* ページ全体の右パディングを調整 */
+  html {
+    padding-right: 50px !important; /* PC用のパディング */
   }
 
   /* 縦型ヘッダーの幅を調整 */
