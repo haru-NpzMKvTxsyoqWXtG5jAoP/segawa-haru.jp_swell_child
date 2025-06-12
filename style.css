@@ -404,7 +404,7 @@ html::after {
   width: 100%;
   padding: 0.8em 1em; /* ★入力欄の高さを調整 */
   border: none; /* 枠線をなしに */
-  margin-bottom: 10px; /* ★下に10pxの隙間を作る */
+  margin-bottom: 20px; /* ★下に20pxの隙間を作る */
   font-size: 16px;
   background-color: #fff;
   border-radius: 5px; /* ★角を少し丸める */
