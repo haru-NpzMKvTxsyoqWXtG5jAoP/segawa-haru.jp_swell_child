@@ -407,6 +407,7 @@ html::after {
   margin-bottom: 10px; /* ★下に10pxの隙間を作る */
   font-size: 16px;
   background-color: #fff;
+  border-radius: 5px; /* ★角を少し丸める */
 }
 
 /* ★お問い合わせ内容(textarea)だけ高さを出す */
@@ -450,7 +451,7 @@ html::after {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 0;
+  border-radius: 5px; /* ★角を少し丸める */
   display: block;
   margin: 40px auto 0;
   width: auto;
@@ -459,7 +460,7 @@ html::after {
   cursor: pointer;
   
   /* --- テキストのデザイン --- */
-  font-size: 14px;
+  font-size: 16px; /* ★テキストを大きくする */
   font-weight: bold;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -469,14 +470,14 @@ html::after {
   padding: 18px 30px;
 
   /* --- ホバーアニメーション --- */
-  color: #000;
+  color: #fff; /* ★初期の文字色を白に */
   background: linear-gradient(to right, #000 50%, transparent 50%);
   background-size: 200% 100%;
-  background-position: right bottom;
+  background-position: left bottom; /* ★初期状態を塗りつぶしに */
   transition: all .4s ease-out;
 }
 
 .wpcf7-form .wpcf7-submit:hover {
-  color: #fff;
-  background-position: left bottom;
+  color: #000; /* ★ホバー時の文字色を黒に */
+  background-position: right bottom; /* ★ホバーで線を出す */
 }
