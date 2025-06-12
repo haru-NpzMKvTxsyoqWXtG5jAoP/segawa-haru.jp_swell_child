@@ -380,7 +380,7 @@ html::after {
 }
 
 /* ★PC表示のときだけ、フォーム左右の余白を広げる */
-@media (min-width: 1024px) {
+@media (min-width: 1366px) { /* ブレイクポイントを1024pxから変更 */
   .wpcf7 {
     padding: 0 188px; /* 125pxから1.5倍に */
   }
