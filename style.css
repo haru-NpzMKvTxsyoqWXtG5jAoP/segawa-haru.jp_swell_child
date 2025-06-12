@@ -278,82 +278,47 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   カスタム縦型ヘッダー
+   カスタム縦型ヘッダー (デバッグ用)
 =========================================================== */
 
-/* 既存のSWELLヘッダーは常に非表示 */
+/* 既存のSWELLヘッダーは非表示 */
 .l-header {
   display: none !important;
 }
 
-/* ページ全体(html)に右パディングを追加して、ヘッダー分のスペースを確保 */
+/* ページ全体(html)の右パディングは一時的にリセット */
 html {
-  padding-right: 40px !important; /* スマホ用のパディング */
-  box-sizing: border-box;
+  padding-right: 0 !important;
 }
 
-/* 縦型ヘッダー本体 */
+/* ヘッダー本体 */
 .custom-vertical-header {
   position: fixed;
-  top: 0;
-  right: 0;
-  width: 40px; /* ヘッダーの幅 (スマホ) */
-  height: 100vh;
-  background: linear-gradient(135deg, #00FF7F 0%, #32CD32 100%);
-  z-index: 1000;
-  box-sizing: border-box;
+  top: 10px;
+  right: 10px;
+  width: 250px; /* ★デバッグのために幅を広げる */
+  height: auto;
+  background: yellow; /* ★デバッグのために目立つ色に */
+  z-index: 9999; /* ★最前面に表示 */
+  border: 5px solid red; /* ★デバッグのために枠線をつける */
+  padding: 15px;
 }
 
-/* ナビゲーションコンテナ */
-.custom-vertical-nav {
-  display: flex;
-  height: 100%;
-}
-
-/* メニューリスト <ul> */
-.custom-vertical-menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;       /* 項目を縦に並べる */
-  justify-content: space-around; /* 縦方向に均等配置 */
-}
-
-/* メニュー項目 <li> */
+/* いったん全てのスタイルをリセット */
+.custom-vertical-nav,
+.custom-vertical-menu-list,
 .custom-vertical-menu-list li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 25%; /* 各メニュー項目が親(ul)の高さの25%を占めるように */
+  all: revert;
 }
 
-/* メニュー項目 <a> */
+/* メニューのリンクを普通に表示する */
 .custom-vertical-menu-list li a {
+  all: revert; /* いったんスタイルをすべてリセット */
   display: block;
-  color: #000;
-  text-decoration: none;
-  font-size: 16px;
+  color: blue; /* 目立つように青色に */
+  font-size: 24px;
   font-weight: bold;
-  white-space: nowrap; /* テキストを折り返さない */
-  transition: color 0.3s ease;
-  
-  /* テキストを-90度回転させる */
-  transform: rotate(-90deg);
-}
-
-.custom-vertical-menu-list li a:hover {
-  color: #fff;
-}
-
-/* PC表示 (960px以上) のスタイル */
-@media (min-width: 960px) {
-  html {
-    padding-right: 50px !important;
-  }
-
-  .custom-vertical-header {
-    width: 50px;
-  }
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 2px dashed blue; /* リンクの範囲が分かるように */
 }
