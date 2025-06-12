@@ -324,7 +324,7 @@ html::after {
   right: 0;
   width: var(--vertical-header-width);
   height: 100%;
-  background: linear-gradient(to bottom, #98FB98, #3CB371); /* 縦のグラデーション */
+  background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); /* ★指定の4色グラデーションに変更 */
   z-index: -1; /* コンテンツの背面に配置 */
 }
 
@@ -372,7 +372,7 @@ html::after {
   color: #000;
   text-decoration: none;
   font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
-  font-weight: bold;
+  font-weight: 600; /* ★フォントを少し細くする */
   white-space: nowrap;
   transition: color 0.3s ease;
   transform: rotate(90deg); /* 回転方向を修正 */
