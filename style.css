@@ -471,13 +471,13 @@ html::after {
 
   /* --- ホバーアニメーション --- */
   color: #fff; /* ★初期の文字色を白に */
-  background: linear-gradient(to right, #000 50%, transparent 50%);
+  background: linear-gradient(to left, #000 50%, transparent 50%); /* ★グラデーションの向きを逆(to left)に */
   background-size: 200% 100%;
-  background-position: left bottom; /* ★初期状態を塗りつぶしに */
+  background-position: right bottom; /* ★初期状態を右側(黒)に */
   transition: all .4s ease-out;
 }
 
 .wpcf7-form .wpcf7-submit:hover {
   color: #000; /* ★ホバー時の文字色を黒に */
-  background-position: right bottom; /* ★ホバーで線を出す */
+  background-position: left bottom; /* ★ホバーで左側(透明)に */
 }
