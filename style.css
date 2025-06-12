@@ -16,7 +16,7 @@
  /* カード関連のCSS変数を定義 */
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-grid-min-item-width: 370px;          /* カードの最小幅 */
+  --card-grid-min-item-width: 345px;          /* カードの最小幅 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
