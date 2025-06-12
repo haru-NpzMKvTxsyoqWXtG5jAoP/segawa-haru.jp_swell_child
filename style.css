@@ -294,22 +294,20 @@ html {
 
 /* 縦型ヘッダー本体 */
 .custom-vertical-header {
-  position: fixed; /* 画面に固定 */
+  position: fixed;
   top: 0;
   right: 0;
   width: 40px; /* ヘッダーの幅 (スマホ) */
-  height: 100vh; /* 画面の高さに合わせる */
+  height: 100vh;
   background: linear-gradient(135deg, #00FF7F 0%, #32CD32 100%);
   z-index: 1000;
-  display: flex;
-  justify-content: center; /* メニューを中央揃え */
-  padding: 20px 5px; /* 上下の余白と左右の余白 */
+  padding: 10px 0; /* 上下の余白を調整 */
   box-sizing: border-box;
 }
 
 /* ナビゲーションコンテナ */
 .custom-vertical-nav {
-  width: 100%;
+  height: 100%;
 }
 
 /* メニューリスト <ul> */
@@ -317,9 +315,11 @@ html {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* liを横に並べる */
-  justify-content: space-around; /* li間のスペースを均等に */
   height: 100%;
+  display: flex;
+  flex-direction: column; /* ★ 項目を縦に並べる */
+  justify-content: space-around; /* ★ 縦方向に均等配置 */
+  align-items: center; /* ★ 横方向に中央揃え */
 }
 
 /* メニュー項目 <a> */
@@ -330,29 +330,21 @@ html {
   font-weight: bold;
   writing-mode: vertical-rl; /* 文字を縦書きに */
   text-orientation: mixed;
-  transform: rotate(180deg); /* 文字の向きを正す */
   transition: color 0.3s ease;
-  line-height: 1;
-  display: block;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 1.2; /* 文字間の余白 */
 }
 
 .custom-vertical-menu-list li a:hover {
-  color: #fff; /* ホバー時に白文字に */
+  color: #fff;
 }
 
 /* PC表示 (960px以上) のスタイル */
 @media (min-width: 960px) {
-  /* ページ全体の右パディングを調整 */
   html {
-    padding-right: 50px !important; /* PC用のパディング */
+    padding-right: 50px !important;
   }
 
-  /* 縦型ヘッダーの幅を調整 */
   .custom-vertical-header {
-    width: 50px; /* ヘッダーの幅 (PC) */
+    width: 50px;
   }
 }
