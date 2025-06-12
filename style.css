@@ -16,7 +16,7 @@
  /* カード関連のCSS変数を定義 */
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-grid-min-item-width: 345px;          /* カードの最小幅 */
+  --card-grid-min-item-width: 370px;          /* カードの最小幅 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
@@ -89,7 +89,7 @@
    カード一覧
 =========================================================== */
 div.wp-block-group.card-grid {
-  gap: var(--card-grid-gap); /* カスタムプロパティを使用 */
+  gap: var(--card-grid-gap);
   /* 最大4列に制限しつつ、レスポンシブに列数を調整 */
   grid-template-columns: repeat(
     auto-fit, 
@@ -103,6 +103,27 @@ div.wp-block-group.card-grid {
   );
   padding-left: clamp(15px, 4vw, 50px);  /* 左側の余白をclampで動的に */
   padding-right: clamp(15px, 4vw, 50px); /* 右側の余白をclampで動的に */
+}
+
+/* 非常に広い画面(1921px以上)では4列表示に */
+@media (min-width: 1921px) {
+  div.wp-block-group.card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* タブレットサイズ(1200px以下)では2列表示に */
+@media (max-width: 1200px) {
+  div.wp-block-group.card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* スマートフォンサイズ(767px以下)では1列表示に */
+@media (max-width: 767px) {
+  div.wp-block-group.card-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===========================================================
