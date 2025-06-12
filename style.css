@@ -147,14 +147,14 @@ div.wp-block-group.card-grid {
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 0.5rem 1.25rem 0.3rem; /* 上下左右のマージン */
-  font-size: 1.35rem;             /* フォントサイズ */
+  font-size: 1.5rem;             /* フォントサイズを大きく */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: 15px;            /* フォントサイズを13pxから変更 */
+  font-size: 15px;            /* フォントサイズを大きく */
   padding-top: 0;
   padding-right: 0.8rem;      /* 内側の右パディング */
   padding-bottom: 0.5rem;
