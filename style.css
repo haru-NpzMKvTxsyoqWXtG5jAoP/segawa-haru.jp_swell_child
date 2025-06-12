@@ -289,7 +289,7 @@ div.wp-block-group.card-grid {
 /* ページ全体(html)に右パディングを追加して、ヘッダー分のスペースを確保 */
 html {
   padding-right: 40px !important; /* スマホ用のパディング */
-  box-sizing: border-box; /* パディングを幅の計算に含める */
+  box-sizing: border-box;
 }
 
 /* 縦型ヘッダー本体 */
@@ -301,12 +301,12 @@ html {
   height: 100vh;
   background: linear-gradient(135deg, #00FF7F 0%, #32CD32 100%);
   z-index: 1000;
-  padding: 10px 0; /* 上下の余白を調整 */
   box-sizing: border-box;
 }
 
 /* ナビゲーションコンテナ */
 .custom-vertical-nav {
+  display: flex;
   height: 100%;
 }
 
@@ -315,23 +315,32 @@ html {
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column; /* ★ 項目を縦に並べる */
-  justify-content: space-around; /* ★ 縦方向に均等配置 */
-  align-items: center; /* ★ 横方向に中央揃え */
+  flex-direction: column;       /* 項目を縦に並べる */
+  justify-content: space-around; /* 縦方向に均等配置 */
+}
+
+/* メニュー項目 <li> */
+.custom-vertical-menu-list li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25%; /* 各メニュー項目が親(ul)の高さの25%を占めるように */
 }
 
 /* メニュー項目 <a> */
 .custom-vertical-menu-list li a {
+  display: block;
   color: #000;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
-  writing-mode: vertical-rl; /* 文字を縦書きに */
-  text-orientation: mixed;
+  white-space: nowrap; /* テキストを折り返さない */
   transition: color 0.3s ease;
-  line-height: 1.2; /* 文字間の余白 */
+  
+  /* テキストを-90度回転させる */
+  transform: rotate(-90deg);
 }
 
 .custom-vertical-menu-list li a:hover {
