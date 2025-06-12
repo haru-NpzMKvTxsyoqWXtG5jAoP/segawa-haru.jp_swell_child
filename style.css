@@ -370,3 +370,59 @@ html::after {
 .custom-vertical-menu-list li a:hover {
   color: #fff;
 }
+
+/* ===========================================================
+   Contact Form 7
+=========================================================== */
+/* --- フォーム全体のコンテナ --- */
+.wpcf7 {
+  padding: 0 var(--gallery-padding);
+}
+
+/* --- フォームのラッパー (背景色などを設定) --- */
+.wpcf7-form {
+  background-color: #fdf5e6; /* スクリーンショットを参考にした背景色 */
+  padding: clamp(20px, 3vw, 40px);
+}
+
+/* --- 各フォーム要素のラッパー (pタグ) --- */
+.wpcf7-form p {
+  margin: 0;
+  padding: 0;
+}
+
+/* --- 入力フィールド (input, textarea) --- */
+.wpcf7-form .wpcf7-form-control {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.2em 1em;
+  border: none; /* 枠線をなしに */
+  margin-bottom: 1px; /* 下に1pxの隙間を作る */
+  font-size: 16px;
+  background-color: #fff;
+}
+
+/* 最後の入力欄の下には隙間をつけない */
+.wpcf7-form p:last-of-type .wpcf7-form-control {
+  margin-bottom: 0;
+}
+
+/* --- プレースホルダーの文字色 --- */
+.wpcf7-form .wpcf7-form-control::placeholder {
+  color: #b3b3b3;
+}
+
+/* --- テキストエリアのリサイズを縦方向のみに --- */
+.wpcf7-form textarea.wpcf7-form-control {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* --- 同意チェックボックス --- */
+.wpcf7-form .checkbox-cl01 {
+  margin-top: 20px;
+}
+
+.wpcf7-form .wpcf7-list-item-label {
+  color: #555;
+}
