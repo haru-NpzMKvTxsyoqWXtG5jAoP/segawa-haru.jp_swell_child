@@ -381,8 +381,8 @@ html::after {
 
 /* --- フォームのラッパー (背景色などを設定) --- */
 .wpcf7-form {
-  background-color: #fdf5e6; /* スクリーンショットを参考にした背景色 */
-  padding: clamp(20px, 3vw, 40px);
+  background-color: transparent; /* 背景色を透過に */
+  padding: 0; /* 親ブロックで余白を制御 */
 }
 
 /* --- 各フォーム要素のラッパー (pタグ) --- */
@@ -395,11 +395,19 @@ html::after {
 .wpcf7-form .wpcf7-form-control {
   box-sizing: border-box;
   width: 100%;
-  padding: 1.2em 1em;
+  padding: 0.8em 1em; /* ★入力欄の高さを調整 */
   border: none; /* 枠線をなしに */
   margin-bottom: 1px; /* 下に1pxの隙間を作る */
   font-size: 16px;
   background-color: #fff;
+}
+
+/* ★お問い合わせ内容(textarea)だけ高さを出す */
+.wpcf7-form textarea.wpcf7-form-control {
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  resize: vertical;
+  min-height: 150px;
 }
 
 /* 最後の入力欄の下には隙間をつけない */
@@ -412,15 +420,15 @@ html::after {
   color: #b3b3b3;
 }
 
-/* --- テキストエリアのリサイズを縦方向のみに --- */
-.wpcf7-form textarea.wpcf7-form-control {
-  resize: vertical;
-  min-height: 150px;
-}
-
 /* --- 同意チェックボックス --- */
 .wpcf7-form .checkbox-cl01 {
   margin-top: 20px;
+}
+
+/* ★同意チェックボックスの背景をなくす */
+.wpcf7-form .wpcf7-acceptance {
+  background-color: transparent;
+  padding: 0;
 }
 
 .wpcf7-form .wpcf7-list-item-label {
