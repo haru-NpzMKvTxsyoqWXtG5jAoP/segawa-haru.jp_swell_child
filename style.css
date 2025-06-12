@@ -455,9 +455,10 @@ html::after {
 }
 
 /* ===========================================================
-   Contact Form 7: 送信ボタン
+   Contact Form 7: 送信ボタン & 共通ボタンスタイル
 =========================================================== */
-.wpcf7-form .wpcf7-submit {
+.wpcf7-form .wpcf7-submit,
+.btn--slide-fill {
   /* --- 基本のスタイルリセット & 設定 --- */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -469,6 +470,7 @@ html::after {
   min-width: 250px;
   text-align: center;
   cursor: pointer;
+  text-decoration: none; /* ★リンクの下線を消す */
   
   /* --- テキストのデザイン --- */
   font-size: 16px; /* ★テキストを大きくする */
@@ -488,7 +490,8 @@ html::after {
   transition: all .4s ease-out;
 }
 
-.wpcf7-form .wpcf7-submit:hover {
+.wpcf7-form .wpcf7-submit:hover,
+.btn--slide-fill:hover {
   color: #000; /* ★ホバー時の文字色を黒に */
   background-position: left bottom; /* ★ホバーで左側(透明)に */
 }
