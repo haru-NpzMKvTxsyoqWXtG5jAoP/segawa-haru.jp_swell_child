@@ -16,11 +16,9 @@
  /* カード関連のCSS変数を定義 */
   --card-image-padding: clamp(25px, 1.6vw, 50px);
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-grid-min-item-width: 430px;          /* カードの最小幅を再調整 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
-  --card-grid-max-columns: 4;                 /* 最大列数を4に指定 */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
 
   /* ギャラリー関連のCSS変数を定義 */
@@ -89,37 +87,30 @@
    カード一覧
 =========================================================== */
 div.wp-block-group.card-grid {
+  display: grid;
   gap: var(--card-grid-gap);
-  /* 最大4列に制限しつつ、レスポンシブに列数を調整 */
-  grid-template-columns: repeat(
-    auto-fit, 
-    minmax(
-      max(
-        var(--card-grid-min-item-width), 
-        calc((100% - 100px - (var(--card-grid-max-columns) - 1) * var(--card-grid-gap)) / var(--card-grid-max-columns))
-      ), 
-      1fr
-    )
-  );
-  padding-left: clamp(15px, 4vw, 50px);  /* 左側の余白をclampで動的に */
-  padding-right: clamp(15px, 4vw, 50px); /* 右側の余白をclampで動的に */
+  padding-left: clamp(15px, 4vw, 50px);
+  padding-right: clamp(15px, 4vw, 50px);
+
+  /* デフォルト（PC）は3列表示 */
+  grid-template-columns: repeat(3, 1fr);
 }
 
-/* 非常に広い画面(1921px以上)では4列表示に */
-@media (min-width: 1921px) {
+/* 巨大なモニター(1920px以上)では4列 */
+@media (min-width: 1920px) {
   div.wp-block-group.card-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* タブレットサイズ(1200px以下)では2列表示に */
-@media (max-width: 1200px) {
+/* タブレット(1024px以下)では2列 */
+@media (max-width: 1024px) {
   div.wp-block-group.card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* スマートフォンサイズ(767px以下)では1列表示に */
+/* スマホ(767px以下)では1列 */
 @media (max-width: 767px) {
   div.wp-block-group.card-grid {
     grid-template-columns: 1fr;
@@ -131,7 +122,6 @@ div.wp-block-group.card-grid {
 =========================================================== */
 .card-item {
   aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
-  min-width: var(--card-grid-min-item-width); /* カードの最小幅 */
   overflow: hidden; /* はみ出た内容を隠す */
   border-radius: var(--card-border-radius); /* 角丸 (10px) */
   background-color: var(--card-bg-color); /* 背景色 (白) */
@@ -164,7 +154,7 @@ div.wp-block-group.card-grid {
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: 13px;            /* フォントサイズを13pxに指定 */
+  font-size: 15px;            /* フォントサイズを13pxから変更 */
   padding-top: 0;
   padding-right: 0.8rem;      /* 内側の右パディング */
   padding-bottom: 0.5rem;
