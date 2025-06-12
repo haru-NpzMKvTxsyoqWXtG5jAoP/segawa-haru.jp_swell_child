@@ -33,3 +33,32 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_script( 'custom-masonry', get_stylesheet_directory_uri() . '/js/custom-masonry.js', array('masonry-pkgd', 'imagesloaded'), $custom_masonry_timestamp, true );
 
 }, 11);
+
+/**
+ * カスタムの縦型ヘッダーを生成し、メニューを配置する
+ */
+function add_custom_vertical_header() {
+    // ヘッダーを表示したくないページ（例: LP）では何もしない
+    if ( is_page_template( 'lp.php' ) ) {
+        return;
+    }
+
+    // 新しい縦型ヘッダーのHTMLを生成
+    ?>
+    <header class="custom-vertical-header">
+        <nav class="custom-vertical-nav">
+            <?php
+            // SWELLのグローバルナビゲーション('swell_gnav')に設定されたメニューを動的に出力
+            wp_nav_menu( array(
+                'theme_location' => 'swell_gnav', // SWELLのグローバルナビと同じメニューを利用
+                'container'      => false, // 余分なコンテナdivを生成しない
+                'menu_class'     => 'custom-vertical-menu-list', // ul要素に付与するCSSクラス
+                'fallback_cb'    => false, // メニューが存在しない場合に何もしない
+            ) );
+            ?>
+        </nav>
+    </header>
+    <?php
+}
+// <body>タグの直後にカスタムヘッダーを挿入
+add_action( 'wp_body_open', 'add_custom_vertical_header' );
