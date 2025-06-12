@@ -473,8 +473,8 @@ html::after {
   text-decoration: none; /* ★リンクの下線を消す */
   
   /* --- テキストのデザイン --- */
-  font-size: 16px; /* ★テキストを大きくする */
-  font-weight: bold;
+  font-size: 18px; /* ★テキストを大きくする */
+  font-weight: 400; /* ★テキストを細くする */
   letter-spacing: 2px;
   text-transform: uppercase;
   
