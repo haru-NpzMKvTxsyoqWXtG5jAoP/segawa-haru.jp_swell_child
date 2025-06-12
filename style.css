@@ -29,6 +29,9 @@
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1;
+
+  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  --vertical-header-width: clamp(35px, 4vw, 50px);
 }
 
 /* ===========================================================
@@ -289,7 +292,7 @@ div.wp-block-group.card-grid {
 /* ページ全体(html)に右パディングを追加 & グラデーション背景用の基準点を設定 */
 html {
   position: relative; /* 疑似要素の基準点 */
-  padding-right: 40px !important; /* スマホ用のパディング */
+  padding-right: var(--vertical-header-width) !important;
   box-sizing: border-box;
 }
 
@@ -299,7 +302,7 @@ html::after {
   position: absolute;
   top: 0;
   right: 0;
-  width: 40px; /* スマホ用の幅 */
+  width: var(--vertical-header-width);
   height: 100%;
   background: linear-gradient(to bottom, #98FB98, #3CB371); /* 縦のグラデーション */
   z-index: -1; /* コンテンツの背面に配置 */
@@ -310,7 +313,7 @@ html::after {
   position: fixed;
   top: 0;
   right: 0;
-  width: 40px; /* ヘッダーの幅 (スマホ) */
+  width: var(--vertical-header-width);
   height: 100vh;
   background: transparent; /* 背景は透明に */
   z-index: 1000;
@@ -332,9 +335,10 @@ html::after {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 項目を中央に寄せる */
+  justify-content: flex-start; /* ★項目を上に寄せる */
   align-items: center;
-  gap: 50px; /* メニュー間の隙間を調整 */
+  gap: 80px; /* ★メニュー間の隙間を調整 */
+  padding-top: 100px; /* ★上からの余白を追加 */
 }
 
 /* メニュー項目 <li> */
@@ -356,19 +360,4 @@ html::after {
 
 .custom-vertical-menu-list li a:hover {
   color: #fff;
-}
-
-/* PC表示 (960px以上) のスタイル */
-@media (min-width: 960px) {
-  html {
-    padding-right: 50px !important;
-  }
-  
-  html::after {
-    width: 50px; /* PC用のグラデーション幅 */
-  }
-
-  .custom-vertical-header {
-    width: 50px; /* PC用のヘッダー幅 */
-  }
 }
