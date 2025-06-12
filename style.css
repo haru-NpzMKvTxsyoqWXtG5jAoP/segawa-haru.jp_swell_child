@@ -32,6 +32,8 @@
 
   /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
   --vertical-header-width: clamp(35px, 4vw, 50px);
+  /* ★縦型ヘッダーのフォントサイズを動的に変更するための変数を定義 */
+  --vertical-header-font-size: clamp(13px, 2.5vw, 16px);
 }
 
 /* ===========================================================
@@ -338,7 +340,7 @@ html::after {
   justify-content: flex-start; /* ★項目を上に寄せる */
   align-items: center;
   gap: 80px; /* ★メニュー間の隙間を調整 */
-  padding-top: 100px; /* ★上からの余白を追加 */
+  padding-top: 60px; /* ★上からの余白をさらに詰める */
 }
 
 /* メニュー項目 <li> */
@@ -351,7 +353,7 @@ html::after {
   display: block;
   color: #000;
   text-decoration: none;
-  font-size: 16px;
+  font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
   font-weight: bold;
   white-space: nowrap;
   transition: color 0.3s ease;
