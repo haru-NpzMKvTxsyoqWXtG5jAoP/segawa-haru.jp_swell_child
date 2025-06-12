@@ -50,7 +50,7 @@ function add_custom_vertical_header() {
             <?php
             // SWELLのグローバルナビゲーション('swell_gnav')に設定されたメニューを動的に出力
             wp_nav_menu( array(
-                'theme_location' => 'swell_gnav', // SWELLのグローバルナビと同じメニューを利用
+                'theme_location' => 'header_menu', // ★正しいメニュー名に修正
                 'container'      => false, // 余分なコンテナdivを生成しない
                 'menu_class'     => 'custom-vertical-menu-list', // ul要素に付与するCSSクラス
                 'fallback_cb'    => false, // メニューが存在しない場合に何もしない
