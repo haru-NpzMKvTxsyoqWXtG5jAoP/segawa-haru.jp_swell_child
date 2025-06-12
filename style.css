@@ -280,58 +280,73 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    カスタム縦型ヘッダー
 =========================================================== */
-@media (min-width: 960px) { /* PC表示のみ適用 */
 
-  /* 既存のヘッダーを非表示に */
-  .l-header {
-    display: none !important;
+/* 既存のSWELLヘッダーは常に非表示 */
+.l-header {
+  display: none !important;
+}
+
+/* サイト全体に右マージンを追加して、ヘッダー分のスペースを確保 */
+body {
+  margin-right: 40px !important; /* スマホ用のマージン */
+}
+
+/* 縦型ヘッダー本体 */
+.custom-vertical-header {
+  position: fixed; /* 画面に固定 */
+  top: 0;
+  right: 0;
+  width: 40px; /* ヘッダーの幅 (スマホ) */
+  height: 100vh; /* 画面の高さに合わせる */
+  background: linear-gradient(135deg, #00FF7F 0%, #32CD32 100%); /* グラデーション背景 */
+  z-index: 1000; /* 他の要素より手前に表示 */
+  display: flex;
+  justify-content: center; /* 縦方向の中央揃え */
+  padding-top: 50px; /* 上部の余白 */
+}
+
+/* ナビゲーションメニュー */
+.custom-vertical-nav {
+  writing-mode: vertical-rl; /* テキストを縦書き（右から左へ）に */
+  text-orientation: mixed; /* 文字の向きを調整 */
+  transform: rotate(180deg); /* 全体を180度回転して上下を反転 */
+}
+
+/* メニューリスト */
+.custom-vertical-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 30px; /* メニュー間の余白 */
+  transform: rotate(180deg); /* テキストを正しい向きに戻す */
+}
+
+/* メニュー項目 */
+.custom-vertical-menu-list li a {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+/* ホバー効果 */
+.custom-vertical-menu-list li a:hover {
+  color: #fff; /* ホバー時に白文字に */
+}
+
+/* PC表示 (960px以上) のスタイル */
+@media (min-width: 960px) {
+  /* サイト全体の右マージンを調整 */
+  body {
+    margin-right: 50px !important; /* PC用のマージン */
   }
 
-  /* 縦型ヘッダー本体 */
+  /* 縦型ヘッダーの幅を調整 */
   .custom-vertical-header {
-    position: fixed; /* 画面に固定 */
-    top: 0;
-    right: 0;
-    width: 100px; /* ヘッダーの幅 */
-    height: 100vh; /* 画面の高さに合わせる */
-    background: linear-gradient(135deg, #00FF7F 0%, #32CD32 100%); /* グラデーション背景 */
-    z-index: 1000; /* 他の要素より手前に表示 */
-    display: flex;
-    justify-content: center; /* 縦方向の中央揃え */
-    padding-top: 50px; /* 上部の余白 */
+    width: 50px; /* ヘッダーの幅 (PC) */
   }
-
-  /* ナビゲーションメニュー */
-  .custom-vertical-nav {
-    writing-mode: vertical-rl; /* テキストを縦書き（右から左へ）に */
-    text-orientation: mixed; /* 文字の向きを調整 */
-    transform: rotate(180deg); /* 全体を180度回転して上下を反転 */
-  }
-
-  /* メニューリスト */
-  .custom-vertical-menu-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 30px; /* メニュー間の余白 */
-    transform: rotate(180deg); /* テキストを正しい向きに戻す */
-  }
-
-  /* メニュー項目 */
-  .custom-vertical-menu-list li a {
-    color: #000;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 0;
-    display: block;
-    transition: color 0.3s ease;
-  }
-
-  /* ホバー効果 */
-  .custom-vertical-menu-list li a:hover {
-    color: #fff; /* ホバー時に白文字に */
-  }
-
 }
