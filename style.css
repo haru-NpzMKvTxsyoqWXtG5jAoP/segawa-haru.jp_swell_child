@@ -492,3 +492,12 @@ html::after {
   color: #000; /* ★ホバー時の文字色を黒に */
   background-position: left bottom; /* ★ホバーで左側(透明)に */
 }
+
+/* ===========================================================
+   Google reCAPTCHAバッジを非表示にする
+=========================================================== */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
