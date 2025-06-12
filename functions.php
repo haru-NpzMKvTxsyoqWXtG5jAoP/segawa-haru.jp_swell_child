@@ -65,14 +65,3 @@ function setup_custom_header() {
     add_action( 'wp_body_open', 'add_custom_vertical_header' );
 }
 add_action( 'init', 'setup_custom_header' );
-
-/**
- * デバッグ用：登録されているメニューの位置をすべて表示する
- */
-function debug_print_nav_menus() {
-    $menus = get_registered_nav_menus();
-    echo '<pre style="position:fixed;top:10px;left:10px;background:white;color:black;padding:20px;z-index:99999;border:2px solid green;">';
-    print_r($menus);
-    echo '</pre>';
-}
-add_action('wp_footer', 'debug_print_nav_menus');
