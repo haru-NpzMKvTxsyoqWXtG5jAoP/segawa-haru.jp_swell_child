@@ -29,7 +29,7 @@
   --gallery-columns-mobile: 1;
 
   /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  --vertical-header-width: clamp(35px, 4vw, 50px);
+  --vertical-header-width: clamp(28px, 3.2vw, 40px);
   /* ★縦型ヘッダーのフォントサイズを動的に変更するための変数を定義 */
   --vertical-header-font-size: clamp(13px, 2.5vw, 16px);
 }
@@ -372,7 +372,7 @@ html::after {
   color: #000;
   text-decoration: none;
   font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
-  font-weight: 600; /* ★フォントを少し細くする */
+  font-weight: 400; /* ★フォントをさらに細くする */
   white-space: nowrap;
   transition: color 0.3s ease;
   transform: rotate(90deg); /* 回転方向を修正 */
