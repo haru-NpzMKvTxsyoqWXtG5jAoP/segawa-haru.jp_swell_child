@@ -404,7 +404,7 @@ html::after {
   width: 100%;
   padding: 0.8em 1em; /* ★入力欄の高さを調整 */
   border: none; /* 枠線をなしに */
-  margin-bottom: 5px; /* ★下に5pxの隙間を作る */
+  margin-bottom: 10px; /* ★下に10pxの隙間を作る */
   font-size: 16px;
   background-color: #fff;
 }
@@ -440,4 +440,43 @@ html::after {
 
 .wpcf7-form .wpcf7-list-item-label {
   color: #555;
+}
+
+/* ===========================================================
+   Contact Form 7: 送信ボタン
+=========================================================== */
+.wpcf7-form .wpcf7-submit {
+  /* --- 基本のスタイルリセット & 設定 --- */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  display: block;
+  margin: 40px auto 0;
+  width: auto;
+  min-width: 250px;
+  text-align: center;
+  cursor: pointer;
+  
+  /* --- テキストのデザイン --- */
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+  /* --- 枠線と余白 --- */
+  border: 2px solid #000;
+  padding: 18px 30px;
+
+  /* --- ホバーアニメーション --- */
+  color: #000;
+  background: linear-gradient(to right, #000 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .4s ease-out;
+}
+
+.wpcf7-form .wpcf7-submit:hover {
+  color: #fff;
+  background-position: left bottom;
 }
