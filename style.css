@@ -379,6 +379,13 @@ html::after {
   padding: 0 var(--gallery-padding);
 }
 
+/* ★PC表示のときだけ、フォーム左右の余白を広げる */
+@media (min-width: 1024px) {
+  .wpcf7 {
+    padding: 0 125px;
+  }
+}
+
 /* --- フォームのラッパー (背景色などを設定) --- */
 .wpcf7-form {
   background-color: transparent; /* 背景色を透過に */
@@ -397,7 +404,7 @@ html::after {
   width: 100%;
   padding: 0.8em 1em; /* ★入力欄の高さを調整 */
   border: none; /* 枠線をなしに */
-  margin-bottom: 1px; /* 下に1pxの隙間を作る */
+  margin-bottom: 5px; /* ★下に5pxの隙間を作る */
   font-size: 16px;
   background-color: #fff;
 }
