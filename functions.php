@@ -60,5 +60,11 @@ function add_custom_vertical_header() {
     </header>
     <?php
 }
-// <body>タグの直後にカスタムヘッダーを挿入
-add_action( 'wp_body_open', 'add_custom_vertical_header' );
+
+/**
+ * カスタムヘッダーのセットアップを適切なタイミングで行う
+ */
+function setup_custom_header() {
+    add_action( 'wp_body_open', 'add_custom_vertical_header' );
+}
+add_action( 'init', 'setup_custom_header' );
