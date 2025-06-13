@@ -184,7 +184,8 @@ div.wp-block-group.card-grid {
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: clamp(14px, calc(12px + 0.5vw), 16px); /* ★レスポンシブなフォントサイズに再修正 */
+  font-size: clamp(14px, calc(12px + 0.5vw), 17px); /* ★フォントサイズをさらに大きく */
+  font-weight: 500;                           /* ★フォントを少し太く */
   padding-top: 0;
   padding-right: 0.8rem;      /* 内側の右パディング */
   padding-bottom: 0.5rem;
