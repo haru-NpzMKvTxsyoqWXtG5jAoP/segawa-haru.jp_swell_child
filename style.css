@@ -99,11 +99,11 @@ body {
 /*
   使い方：
   スペーサーブロックの「高度な設定」→「追加CSSクラス」に
-  `spacer-responsive-60` のようにクラス名を入力します。
+  `spacer-responsive-80` のようにクラス名を入力します。
   （ブロック側で設定した高さは無視されます）
 */
-.wp-block-spacer.spacer-responsive-60 {
-  height: clamp(20px, 6vw, 60px) !important;
+.wp-block-spacer.spacer-responsive-80 {
+  height: clamp(20px, 4vw, 80px) !important;
 }
 
 /* ===========================================================
