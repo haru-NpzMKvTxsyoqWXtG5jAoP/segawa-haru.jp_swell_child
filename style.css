@@ -79,7 +79,7 @@ body {
 =========================================================== */
 .post_content .harusegawa-title-caption {
   padding: 0 clamp(15px, 4vw, 50px);
-  font-size: clamp(14px, calc(12px + 0.5vw), 18px);
+  font-size: clamp(14px, calc(12px + 0.5vw), 22px);
   margin-top: 0;
   line-height: 1.6;
 }
