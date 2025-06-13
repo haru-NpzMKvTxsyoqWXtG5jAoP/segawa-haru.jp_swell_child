@@ -366,7 +366,7 @@ html::after {
   justify-content: flex-start; /* ★項目を上に寄せる */
   align-items: center;
   gap: 80px; /* ★メニュー間の隙間を調整 */
-  padding-top: 80px; /* ★上からの余白を調整して、少し下にずらす */
+  padding-top: 77px; /* ★上からの余白を再調整 */
 }
 
 /* メニュー項目 <li> */
@@ -380,7 +380,7 @@ html::after {
   color: #000;
   text-decoration: none;
   font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
-  font-weight: 400; /* ★フォントをさらに細くする */
+  font-weight: 500; /* ★フォントを少し太くする */
   white-space: nowrap;
   transition: color 0.3s ease;
   transform: rotate(90deg); /* 回転方向を修正 */
