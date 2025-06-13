@@ -63,7 +63,7 @@ body {
 /* ===========================================================
    harusegawa-title-svg (カスタムHTML)
 =========================================================== */
-.harusegawa-title-svg {
+.alignfull .harusegawa-title-svg { /* ★SWELLのスタイルに打ち勝つためにセレクタを強化 */
   padding: 0 clamp(15px, 4vw, 50px);
   margin-bottom: clamp(1.5em, 4vw, 3em); /* ★可変マージンを追加 */
 }
