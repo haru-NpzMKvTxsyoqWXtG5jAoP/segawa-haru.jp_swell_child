@@ -89,9 +89,8 @@ body {
    セクション見出し(H2) section-c
 =========================================================== */
 .post_content h2.section-c {
-  font-size: clamp(14px, calc(12px + 0.5vw), 18px);
+  font-size: clamp(16px, calc(14px + 0.5vw), 18px); /* ★計算式を修正 */
   padding: 0 clamp(15px, 4vw, 50px); /* 他の見出しとpaddingを合わせる */
-  margin-bottom: 1em; /* 見出し下の余白 */
 }
 
 /* ===========================================================
