@@ -103,7 +103,7 @@ body {
   （ブロック側で設定した高さは無視されます）
 */
 .wp-block-spacer.spacer-responsive-60 {
-  height: clamp(30px, 6vw, 60px) !important;
+  height: clamp(20px, 6vw, 60px) !important;
 }
 
 /* ===========================================================
