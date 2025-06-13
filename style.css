@@ -12,6 +12,14 @@
     License URI: http://www.gnu.org/licenses/gpl.html
 */
 
+/* ===========================================================
+   基本のフォント設定
+=========================================================== */
+body {
+  font-family: "source-han-sans-japanese", sans-serif;
+  font-weight: 400; /* 基本の太さを400に */
+}
+
 :root {
  /* カード関連のCSS変数を定義 */
   --card-image-padding: clamp(25px, 1.6vw, 50px);
