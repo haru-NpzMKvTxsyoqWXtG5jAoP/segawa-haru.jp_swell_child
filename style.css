@@ -363,10 +363,10 @@ html::after {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ★項目を上に寄せる */
+  justify-content: center; /* ★項目を上下中央に配置 */
   align-items: center;
   gap: 80px; /* ★メニュー間の隙間を調整 */
-  padding-top: 60px; /* ★上からの余白をさらに詰める */
+  padding-bottom: 20px; /* ★テキスト1文字分くらい下にずらす */
 }
 
 /* メニュー項目 <li> */
