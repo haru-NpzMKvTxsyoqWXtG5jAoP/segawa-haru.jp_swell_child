@@ -176,8 +176,8 @@ div.wp-block-group.card-grid {
 
 /* カード内見出し (h3) */
 .card-item h3 {
-  margin: 1rem 1.25rem 0.8rem;   /* ★ 上下のマージンを調整 */
-  font-size: clamp(16px, 2vw, 19px); /* ★レスポンシブなフォントサイズに変更 */
+  margin: 1.2rem 1.25rem 1rem;   /* ★ 上下のマージンを再調整 */
+  font-size: clamp(17px, 2vw, 19px); /* ★最小フォントサイズを17pxに */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
@@ -402,7 +402,7 @@ html::after {
   color: #000;
   text-decoration: none;
   font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
-  font-weight: 500; /* ★フォントを少し太くする */
+  font-weight: 400; /* ★フォントの太さを調整 */
   white-space: nowrap;
   transition: color 0.3s ease;
   transform: rotate(90deg); /* 回転方向を修正 */
