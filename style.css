@@ -170,14 +170,14 @@ div.wp-block-group.card-grid {
 .card-item img {
   width: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
   display: block;
-  margin: var(--card-image-padding); /* ★ 余白を作る */
+  margin: var(--card-image-padding) auto 0; /* ★ 上マージンは維持、左右は自動、下マージンは0に */
   border-radius: calc(var(--card-border-radius) - 5px); /* ★ カードより5px小さい角丸 */
 }
 
 /* カード内見出し (h3) */
 .card-item h3 {
-  margin: 0.5rem 1.25rem 0.3rem; /* 上下左右のマージン */
-  font-size: 1.2rem;             /* フォントサイズを調整 */
+  margin: 1rem 1.25rem 0.8rem;   /* ★ 上下のマージンを調整 */
+  font-size: clamp(16px, 2vw, 19px); /* ★レスポンシブなフォントサイズに変更 */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
