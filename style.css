@@ -22,7 +22,7 @@ body {
 
 :root {
  /* カード関連のCSS変数を定義 */
-  --card-image-padding: clamp(25px, calc(16px + 2.3vw), 50px);
+  --card-image-padding: clamp(25px, 1.6vw, 50px);
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
@@ -415,7 +415,7 @@ html::after {
   padding: 0.8em 1em; /* ★入力欄の高さを調整 */
   border: none; /* 枠線をなしに */
   margin-bottom: 20px; /* ★下に20pxの隙間を作る */
-  font-size: 16px;
+  font-size: 14px; /* ★基本フォントサイズに統一 */
   background-color: #fff;
   border-radius: 5px; /* ★角を少し丸める */
 }
@@ -451,6 +451,7 @@ html::after {
 
 .wpcf7-form .wpcf7-list-item-label {
   color: #555;
+  font-size: 14px; /* ★基本フォントサイズに統一 */
 }
 
 /* ===========================================================
@@ -472,7 +473,7 @@ html::after {
   text-decoration: none; /* ★リンクの下線を消す */
   
   /* --- テキストのデザイン --- */
-  font-size: 16px; /* ★テキストサイズを調整 */
+  font-size: 14px; /* ★テキストサイズを調整 */
   font-weight: 400; /* ★テキストを細くする */
   letter-spacing: 2px;
   text-transform: uppercase;
