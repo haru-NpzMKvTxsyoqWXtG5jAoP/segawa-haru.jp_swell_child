@@ -176,7 +176,7 @@ div.wp-block-group.card-grid {
 
 /* カード内見出し (h3) */
 .card-item h3 {
-  margin: 1.2rem 1.25rem 1rem;   /* ★ 上下のマージンを再調整 */
+  margin: 1.2rem var(--card-image-padding) 1rem;   /* ★ 左右のマージンを画像と揃える */
   font-size: clamp(17px, 2vw, 19px); /* ★最小フォントサイズを17pxに */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
@@ -186,9 +186,9 @@ div.wp-block-group.card-grid {
 .card-item p {
   font-size: clamp(14px, calc(12px + 0.5vw), 15px); /* ★PCでの最大フォントサイズを15pxに */
   padding-top: 0;
-  padding-right: 1.25rem;      /* 内側の右パディングを見出しと揃える */
+  padding-right: var(--card-image-padding); /* ★ 左右のパディングを画像と揃える */
   padding-bottom: 0.5rem;
-  padding-left: 1.25rem;       /* 内側の左パディングを見出しと揃える */
+  padding-left: var(--card-image-padding);  /* ★ 左右のパディングを画像と揃える */
   margin-right: 0;         /* 外側の右余白をリセット */
   margin-left: 0;          /* 外側の左余白をリセット */
   line-height: 1.6;           /* 行の高さ */
