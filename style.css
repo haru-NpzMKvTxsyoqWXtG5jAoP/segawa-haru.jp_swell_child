@@ -177,15 +177,14 @@ div.wp-block-group.card-grid {
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 0.5rem 1.25rem 0.3rem; /* 上下左右のマージン */
-  font-size: 1.5rem;             /* フォントサイズを大きく */
+  font-size: 1.2rem;             /* フォントサイズを調整 */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: clamp(14px, calc(12px + 0.5vw), 17px); /* ★フォントサイズをさらに大きく */
-  font-weight: 500;                           /* ★フォントを少し太く */
+  font-size: clamp(14px, calc(12px + 0.5vw), 15px); /* ★PCでの最大フォントサイズを15pxに */
   padding-top: 0;
   padding-right: 0.8rem;      /* 内側の右パディング */
   padding-bottom: 0.5rem;
@@ -303,7 +302,7 @@ div.wp-block-group.card-grid {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #008e5b; /* オーバーレイの共通の色 */
+  background-color: #008e5a; /* オーバーレイの共通の色 */
   mix-blend-mode: multiply; /* 下の画像と色が「乗算」で混ざるように */
   opacity: 0; /* 最初は透明にして隠しておく */
   transition: opacity 0.3s ease-out; /* 透明度がふわっと変わるようにアニメーションを設定 */
