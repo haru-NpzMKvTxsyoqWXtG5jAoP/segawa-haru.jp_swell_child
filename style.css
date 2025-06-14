@@ -22,7 +22,7 @@ body {
 
 :root {
  /* カード関連のCSS変数を定義 */
-  --card-image-padding: clamp(25px, 1.6vw, 50px);
+  --card-image-padding: clamp(25px, calc(16px + 2.3vw), 50px);
   --card-grid-gap: 1px; /* 1px から 1px に変更 */
   --card-bg-color: #fff;                      /* カードの背景色 */
   --card-border-radius: 10px;                 /* カードの角丸 */
@@ -30,16 +30,16 @@ body {
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
 
   /* ギャラリー関連のCSS変数を定義 */
-  --gallery-padding: clamp(15px, 4vw, 50px);
+  --gallery-padding: clamp(15px, calc(2.5px + 3.3vw), 50px);
   --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1;
 
   /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  --vertical-header-width: clamp(28px, 3.2vw, 40px);
+  --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);
   /* ★縦型ヘッダーのフォントサイズを動的に変更するための変数を定義 */
-  --vertical-header-font-size: clamp(13px, 2.5vw, 16px);
+  --vertical-header-font-size: clamp(13px, calc(12px + 0.28vw), 16px);
 }
 
 /* ===========================================================
@@ -64,8 +64,8 @@ body {
    harusegawa-title-svg (カスタムHTML)
 =========================================================== */
 .alignfull .harusegawa-title-svg { /* ★SWELLのスタイルに打ち勝つためにセレクタを強化 */
-  padding: 0 clamp(15px, 4vw, 50px);
-  margin-bottom: clamp(1em, 2vw, 2em); /* ★可変マージンをさらに狭める */
+  padding: 0 clamp(15px, calc(2.5px + 3.3vw), 50px); /* ★計算式を修正 */
+  margin-bottom: clamp(1em, calc(0.5em + 1vw), 2em); /* ★可変マージンをさらに狭める & 計算式を修正 */
 }
 
 /* SVG本体
@@ -103,7 +103,7 @@ body {
   （ブロック側で設定した高さは無視されます）
 */
 .wp-block-spacer.spacer-responsive-80 {
-  height: clamp(20px, 4vw, 80px) !important;
+  height: clamp(20px, calc(-1.1px + 5.6vw), 80px) !important;
 }
 
 /* ===========================================================
@@ -177,7 +177,7 @@ div.wp-block-group.card-grid {
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 1.2rem var(--card-image-padding) 1rem;   /* ★ 左右のマージンを画像と揃える */
-  font-size: clamp(17px, 2vw, 19px); /* ★最小フォントサイズを17pxに */
+  font-size: clamp(17px, calc(15px + 0.5vw), 19px); /* ★計算式を修正して、フォントサイズのスケーリングを滑らかに */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
