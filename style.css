@@ -107,9 +107,10 @@ body {
 }
 
 /* ===========================================================
-   セクション見出しのパディング調整
+   セクション見出しとカスタムテキストのパディング調整
 =========================================================== */
-.is-style-section_ttl.section-b {
+.is-style-section_ttl.section-b,
+.post_content p.text-a {
   padding: 0 var(--gallery-padding);
 }
 
@@ -413,6 +414,9 @@ html::after {
 @media (min-width: 1366px) { /* ブレイクポイントを1024pxから変更 */
   .wpcf7 {
     padding: 0 188px; /* 125pxから1.5倍に */
+  }
+  .post_content p.text-b {
+    padding: 0 188px; /* コンタクトフォームとパディングを合わせる */
   }
 }
 
