@@ -32,6 +32,23 @@ add_action('wp_enqueue_scripts', function() {
 	$custom_masonry_timestamp = date( 'Ymdgis', filemtime( get_stylesheet_directory() . '/js/custom-masonry.js' ) );
 	wp_enqueue_script( 'custom-masonry', get_stylesheet_directory_uri() . '/js/custom-masonry.js', array('masonry-pkgd', 'imagesloaded'), $custom_masonry_timestamp, true );
 
+	// メイソンリーギャラリー用のjsを読み込む
+	if ( is_front_page() || is_home() ) {
+		$custom_masonry_timestamp = filemtime( get_stylesheet_directory() . '/js/custom-masonry.js' );
+		wp_enqueue_script( 'masonry-pkgd', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), '4.2.2', true );
+		wp_enqueue_script( 'imagesloaded', 'https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js', array('masonry-pkgd'), '5.0.0', true );
+		wp_enqueue_script( 'custom-masonry', get_stylesheet_directory_uri() . '/js/custom-masonry.js', array('masonry-pkgd', 'imagesloaded'), $custom_masonry_timestamp, true );
+	}
+
+	// プロフィールカード用のJSを読み込む
+	wp_enqueue_script(
+		'profile-card-script', // ハンドル名
+		get_stylesheet_directory_uri() . '/js/profile-card.js', // ファイルのパス
+		[], // 依存関係
+		'1.0.0', // バージョン
+		true // フッターで読み込むか
+	);
+
 }, 11);
 
 /**

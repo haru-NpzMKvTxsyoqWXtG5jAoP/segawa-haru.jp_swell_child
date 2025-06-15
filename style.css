@@ -551,14 +551,19 @@ html::after {
 .haru-profile-card {
   width: 100%;
   max-width: 800px; /* PCでの最大幅 */
-  aspect-ratio: 2 / 1; /* PCでのアスペクト比 */
+  aspect-ratio: 2 / 1.1; /* ★PCでのアスペクト比を少し縦長に */
   position: relative;
   transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
   transform-style: preserve-3d;
   cursor: pointer;
 }
 
-.haru-profile-card-container:hover .haru-profile-card {
+/* .haru-profile-card-container:hover .haru-profile-card {
+  transform: rotateY(180deg);
+} */
+
+/* ★JSで .is-flipped クラスをトグルして回転させる */
+.haru-profile-card.is-flipped {
   transform: rotateY(180deg);
 }
 
@@ -572,7 +577,7 @@ html::after {
   backface-visibility: hidden;
   border-radius: 15px;
   background-color: #fff;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */ /* ★枠線を削除 */
   box-sizing: border-box;
   padding: 2.5vw 3vw; /* 内側の余白を可変に */
   display: flex;
@@ -711,6 +716,10 @@ html::after {
     padding: 20px;
   }
 
+  .haru-card-front {
+    text-align: left; /* ★スマホでは全体を左揃えに */
+  }
+
   .haru-card-header .en {
     font-size: 12vw;
   }
@@ -720,13 +729,13 @@ html::after {
 
   .haru-card-body {
     flex-direction: column;
-    text-align: center;
+    /* text-align: center; */ /* 中央揃えを削除 */
     padding: 15px 0;
   }
 
   .haru-card-image {
     width: 60%;
-    margin: 0 auto 15px;
+    margin: 0 auto 15px; /* イラストは中央揃えを維持 */
   }
 
   .haru-card-text-jp {
@@ -735,8 +744,8 @@ html::after {
   
   .haru-card-footer {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* ★左揃えに変更 */
+    text-align: left; /* ★左揃えに変更 */
   }
   
   .haru-card-text-en {
@@ -747,6 +756,7 @@ html::after {
   
   .haru-card-arrow {
     font-size: 8vw;
+    align-self: flex-end; /* 矢印は右下に配置 */
   }
   
   /* 裏面 */
@@ -754,6 +764,7 @@ html::after {
     font-size: 13px;
     line-height: 1.7;
     padding: 25px;
+    text-align: left; /* ★左揃えに変更 */
   }
 
   .haru-card-back-separator {
@@ -763,5 +774,6 @@ html::after {
   .haru-card-back-sns {
     flex-direction: column;
     gap: 10px;
+    align-items: flex-start; /* ★左揃えに変更 */
   }
 }
