@@ -131,6 +131,9 @@ div.wp-block-group.card-grid {
   div.wp-block-group.card-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+  .card-item p {
+    font-size: 15px; /* ★4列時のみテキストを大きく */
+  }
 }
 
 /* タブレット(1308px以下)では2列 */
@@ -204,9 +207,6 @@ div.wp-block-group.card-grid {
 @media (min-width: 768px) {
   .card-item h3 {
     font-size: 18px;
-  }
-  .card-item p {
-    font-size: 15px;
   }
 }
 
