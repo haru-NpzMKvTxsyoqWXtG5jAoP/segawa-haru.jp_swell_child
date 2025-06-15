@@ -133,8 +133,8 @@ div.wp-block-group.card-grid {
   }
 }
 
-/* タブレット(1024px以下)では2列 */
-@media (max-width: 1024px) {
+/* タブレット(1308px以下)では2列 */
+@media (max-width: 1308px) {
   div.wp-block-group.card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
