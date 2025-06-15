@@ -203,18 +203,17 @@ div.wp-block-group.card-grid {
 /* タブレット (768px以上) */
 @media (min-width: 768px) {
   .card-item h3 {
-    font-size: 18px; /* 見出しをタブレットサイズに */
-  }
-  /* テキストはこのブレークポイントではスマホと同じ14pxのまま */
-}
-
-/* PC (1309px以上) */
-@media (min-width: 1309px) {
-  .card-item h3 {
-    font-size: 19px; /* 見出しをPCサイズに */
+    font-size: 18px;
   }
   .card-item p {
-    font-size: 15px; /* テキストをPCサイズに */
+    font-size: 15px;
+  }
+}
+
+/* PC (1024px以上) */
+@media (min-width: 1024px) {
+  .card-item h3 {
+    font-size: 19px;
   }
 }
 
