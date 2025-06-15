@@ -535,3 +535,233 @@ html::after {
 .l-footer {
   display: none;
 }
+
+/* ===========================================================
+   ひっくり返るプロフィールカード
+=========================================================== */
+
+/* --- カード全体のコンテナ --- */
+.haru-profile-card-container {
+  padding: 40px 20px; /* 上下の余白 */
+  perspective: 2000px; /* 3Dに見せるための奥行き */
+  display: flex;
+  justify-content: center;
+}
+
+.haru-profile-card {
+  width: 100%;
+  max-width: 800px; /* PCでの最大幅 */
+  aspect-ratio: 2 / 1; /* PCでのアスペクト比 */
+  position: relative;
+  transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.haru-profile-card-container:hover .haru-profile-card {
+  transform: rotateY(180deg);
+}
+
+/* --- カードの表と裏の共通スタイル --- */
+.haru-card-front,
+.haru-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  box-sizing: border-box;
+  padding: 2.5vw 3vw; /* 内側の余白を可変に */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- カード表面のデザイン --- */
+.haru-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  justify-content: space-between;
+}
+
+.haru-card-header {
+  border-bottom: 2px solid #000;
+  padding-bottom: 1.5vw;
+}
+
+.haru-card-header h1 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+}
+
+.haru-card-header .en {
+  font-size: clamp(32px, 6vw, 72px);
+}
+
+.haru-card-header .jp {
+  font-size: clamp(16px, 2.5vw, 24px);
+  font-weight: 500;
+  margin: 0 1vw;
+  transform: translateY(-0.2em); /* 少し上に配置 */
+}
+
+.haru-card-body {
+  display: flex;
+  gap: 2vw;
+  padding: 1.5vw 0;
+}
+
+.haru-card-image {
+  width: 35%;
+  flex-shrink: 0; /* 縮まないように */
+}
+
+.haru-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.haru-card-text-jp {
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.7;
+}
+
+.haru-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.haru-card-text-en {
+  font-size: clamp(12px, 1.1vw, 14px);
+  line-height: 1.5;
+  width: 80%;
+}
+
+.haru-card-arrow {
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+/* --- カード裏面のデザイン --- */
+.haru-card-back {
+  transform: rotateY(180deg);
+  justify-content: space-between;
+  font-size: clamp(13px, 1.2vw, 15px);
+  line-height: 1.8;
+}
+
+.haru-card-back-separator {
+  border-top: 1px solid #ccc;
+  margin: 1vw 0;
+}
+
+.haru-card-back-tools p,
+.haru-card-back-hashtags p,
+.haru-card-back-sns p,
+.haru-card-back-text p {
+  margin: 0.5em 0;
+}
+
+.haru-card-back-tools {
+  margin-bottom: 1vw;
+}
+
+.haru-card-back-sns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vw;
+}
+
+.sns-icons {
+  display: flex;
+  gap: 15px;
+}
+.sns-icons a {
+  display: block;
+}
+.sns-icons svg {
+  width: 28px;
+  height: 28px;
+  fill: #000;
+}
+
+.haru-card-back .haru-card-arrow {
+    align-self: flex-end; /* 右下に配置 */
+}
+
+/* --- スマホ対応 (画面幅が768px以下) --- */
+@media screen and (max-width: 768px) {
+  .haru-profile-card {
+    max-width: 380px; /* スマホでの幅 */
+    aspect-ratio: 3 / 4.8; /* スマホでのアスペクト比 */
+  }
+
+  .haru-card-front,
+  .haru-card-back {
+    padding: 20px;
+  }
+
+  .haru-card-header .en {
+    font-size: 12vw;
+  }
+  .haru-card-header .jp {
+    font-size: 5vw;
+  }
+
+  .haru-card-body {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .haru-card-image {
+    width: 60%;
+    margin: 0 auto 15px;
+  }
+
+  .haru-card-text-jp {
+    font-size: 14px;
+  }
+  
+  .haru-card-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .haru-card-text-en {
+    width: 100%;
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+  
+  .haru-card-arrow {
+    font-size: 8vw;
+  }
+  
+  /* 裏面 */
+  .haru-card-back {
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 25px;
+  }
+
+  .haru-card-back-separator {
+    margin: 10px 0;
+  }
+  
+  .haru-card-back-sns {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
