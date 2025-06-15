@@ -136,8 +136,8 @@ div.wp-block-group.card-grid {
   }
 }
 
-/* タブレット(1308px以下)では2列 */
-@media (max-width: 1308px) {
+/* タブレット(1180px以下)では2列 */
+@media (max-width: 1180px) {
   div.wp-block-group.card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -523,4 +523,11 @@ html::after {
   visibility: hidden !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+/* ===========================================================
+   フッターを非表示にする
+=========================================================== */
+.l-footer {
+  display: none;
 }
