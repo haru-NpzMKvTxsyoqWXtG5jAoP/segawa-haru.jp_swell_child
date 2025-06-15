@@ -553,7 +553,7 @@ html::after {
   max-width: 800px; /* PCでの最大幅 */
   aspect-ratio: 2 / 1.1; /* ★PCでのアスペクト比を少し縦長に */
   position: relative;
-  transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 1.5s; /* ★回転時間を調整 */
   transform-style: preserve-3d;
   cursor: pointer;
 }
@@ -564,7 +564,7 @@ html::after {
 
 /* ★JSで .is-flipped クラスをトグルして回転させる */
 .haru-profile-card.is-flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) rotateZ(180deg); /* ★斜めに回転させる */
 }
 
 /* --- カードの表と裏の共通スタイル --- */
@@ -658,7 +658,7 @@ html::after {
 
 /* --- カード裏面のデザイン --- */
 .haru-card-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) rotateZ(180deg); /* ★裏面も回転させておく */
   justify-content: space-between;
   font-size: clamp(13px, 1.2vw, 15px);
   line-height: 1.8;
