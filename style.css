@@ -554,12 +554,12 @@ html::after {
   perspective: 2000px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease; /* ★アニメーションをスムーズに */
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* ★アニメーションを元に戻す */
 }
 
 /* ★ホバーで少し起き上がるように */
 .haru-profile-card-container:hover .haru-profile-card {
-    /* transform: rotateY(0deg) rotateX(0deg); */ /* ★この行を削除 */
+  justify-content: center;
 }
 
 .haru-profile-card.is-flipped {
@@ -629,9 +629,8 @@ html::after {
 
 .haru-card-image img {
   width: 100%;
-  height: auto; /* ★高さを自動にしてアスペクト比を維持 */
-  max-height: 100%; /* ★コンテナの高さを超えないように */
-  object-fit: contain; /* ★全体が表示されるようにcontainに変更 */
+  height: 100%; /* ★コンテナいっぱいに高さを広げる */
+  object-fit: contain; /* ★画像の比率を維持したまま、コンテナに収める */
   border-radius: 8px;
 }
 
