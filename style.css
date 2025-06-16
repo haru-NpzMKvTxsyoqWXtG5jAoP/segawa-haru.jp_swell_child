@@ -555,12 +555,11 @@ html::after {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  transform: rotateY(-10deg) rotateX(5deg); /* ★少し斜めにする */
 }
 
 /* ★ホバーで少し起き上がるように */
 .haru-profile-card-container:hover .haru-profile-card {
-    transform: rotateY(0deg) rotateX(0deg);
+    /* transform: rotateY(0deg) rotateX(0deg); */ /* ★この行を削除 */
 }
 
 .haru-profile-card.is-flipped {
