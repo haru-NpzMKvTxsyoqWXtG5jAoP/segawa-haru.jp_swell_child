@@ -612,11 +612,16 @@ html::after {
     justify-content: space-between;
     flex-grow: 1; /* 残りの高さを埋める */
     padding-top: 1.5vw;
+    min-width: 0; /* ★flexアイテムのはみ出し防止 */
 }
 
 .haru-card-body {
   display: flex;
   gap: 2vw;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .haru-card-image {
@@ -642,6 +647,7 @@ html::after {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 1.5vw; /* ★要素間の余白を追加 */
 }
 
 .haru-card-text-en {
@@ -653,7 +659,7 @@ html::after {
 }
 
 .haru-card-arrow {
-  margin-left: 1.5vw; /* ★テキストとの余白 */
+  flex-shrink: 0; /* ★縮まないようにする */
 }
 
 .haru-card-arrow svg {
@@ -735,13 +741,18 @@ html::after {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%; /* ★高さを親要素に合わせる */
   }
 
   .header-svg-pc {
     display: none; /* PC用は隠す */
   }
   .header-svg-mobile {
-    display: block; /* スマホ用を表示 */
+    display: flex; /* ★flexコンテナにして中央揃え */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   .header-svg-mobile svg {
       height: 100%; /* ★親要素の高さいっぱいに */
