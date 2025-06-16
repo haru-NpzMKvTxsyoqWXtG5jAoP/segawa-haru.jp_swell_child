@@ -582,13 +582,13 @@ html::after {
 
 /* --- カード表面のデザイン --- */
 .haru-card-front {
-  padding: 1.5vw 3.5vw 2.5vw; /* ★上下のパディングを調整 */
+  padding: 0; /* ★パディングを削除し、ヘッダーを全幅にする */
 }
 
 .haru-card-header {
   border-bottom: 2px solid #000;
   padding-bottom: 1.5vw;
-  margin-bottom: 1.5vw; /* ★下の余白を調整 */
+  margin-bottom: 0; /* ★main-content側で余白を管理するため削除 */
   flex-shrink: 0;
 }
 
@@ -610,18 +610,20 @@ html::after {
     justify-content: space-between;
     flex-grow: 1;
     min-height: 0; /* flexアイテムの高さの計算を助ける */
+    padding: 1.5vw 3vw 2.5vw; /* ★ヘッダー以外のコンテンツにパディングを適用 */
 }
 
 .haru-card-body {
   display: flex;
-  gap: 2.5vw;
+  gap: 2vw; /* ★ギャップを調整 */
   flex-grow: 1; /* ★高さを埋める */
   min-height: 0;
   align-items: stretch; /* ★子要素の高さを揃える */
 }
 
 .haru-card-image {
-  width: 48%; /* ★幅を調整 */
+  width: 45%; /* ★幅を調整 */
+  aspect-ratio: 1 / 1; /* ★アスペクト比を1:1に */
   flex-shrink: 0;
 }
 
@@ -634,7 +636,7 @@ html::after {
 }
 
 .haru-card-text-jp {
-  font-size: clamp(14px, 1.3vw, 16px);
+  font-size: 15px; /* ★フォントサイズを15pxに */
   line-height: 1.8;
   flex-grow: 1;
 }
@@ -648,7 +650,7 @@ html::after {
 }
 
 .haru-card-text-en {
-  font-size: clamp(13px, 1.1vw, 14px);
+  font-size: 13px; /* ★フォントサイズを調整 */
   line-height: 1.6;
   flex-grow: 1;
 }
