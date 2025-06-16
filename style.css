@@ -551,20 +551,16 @@ html::after {
 .haru-profile-card {
   width: 100%;
   max-width: 800px; /* PCでの最大幅 */
-  aspect-ratio: 2 / 1.1; /* ★PCでのアスペクト比を少し縦長に */
+  aspect-ratio: 2 / 1.1; /* PCでのアスペクト比 */
   position: relative;
-  transition: transform 1.5s; /* ★回転時間を調整 */
+  transition: transform 1.5s;
   transform-style: preserve-3d;
   cursor: pointer;
 }
 
-/* .haru-profile-card-container:hover .haru-profile-card {
-  transform: rotateY(180deg);
-} */
-
 /* ★JSで .is-flipped クラスをトグルして回転させる */
 .haru-profile-card.is-flipped {
-  transform: rotateY(180deg) rotateZ(180deg); /* ★斜めに回転させる */
+  transform: rotateY(180deg) rotateZ(180deg);
 }
 
 /* --- カードの表と裏の共通スタイル --- */
@@ -577,9 +573,7 @@ html::after {
   backface-visibility: hidden;
   border-radius: 15px;
   background-color: #fff;
-  /* border: 1px solid #000; */ /* ★枠線を削除 */
   box-sizing: border-box;
-  padding: 2.5vw 3vw; /* 内側の余白を可変に */
   display: flex;
   flex-direction: column;
 }
@@ -588,6 +582,7 @@ html::after {
 .haru-card-front {
   z-index: 2;
   transform: rotateY(0deg);
+  padding: 2.5vw 3vw;
   justify-content: space-between;
 }
 
@@ -596,35 +591,34 @@ html::after {
   padding-bottom: 1.5vw;
 }
 
-.haru-card-header h1 {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  font-weight: 900;
-  margin: 0;
-  line-height: 1;
+/* SVGヘッダーのスタイル */
+.header-svg-pc svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  fill: #000;
+}
+.header-svg-mobile {
+  display: none; /* スマホ用は普段は隠す */
 }
 
-.haru-card-header .en {
-  font-size: clamp(32px, 6vw, 72px);
-}
-
-.haru-card-header .jp {
-  font-size: clamp(16px, 2.5vw, 24px);
-  font-weight: 500;
-  margin: 0 1vw;
-  transform: translateY(-0.2em); /* 少し上に配置 */
+/* ★新しいラッパー */
+.haru-card-main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* 残りの高さを埋める */
+    padding-top: 1.5vw;
 }
 
 .haru-card-body {
   display: flex;
   gap: 2vw;
-  padding: 1.5vw 0;
 }
 
 .haru-card-image {
   width: 35%;
-  flex-shrink: 0; /* 縮まないように */
+  flex-shrink: 0;
 }
 
 .haru-card-image img {
@@ -658,10 +652,11 @@ html::after {
 
 /* --- カード裏面のデザイン --- */
 .haru-card-back {
-  transform: rotateY(180deg) rotateZ(180deg); /* ★裏面も回転させておく */
+  transform: rotateY(180deg) rotateZ(180deg);
   justify-content: space-between;
   font-size: clamp(13px, 1.2vw, 15px);
   line-height: 1.8;
+  padding: 2.5vw 3vw;
 }
 
 .haru-card-back-separator {
@@ -701,70 +696,89 @@ html::after {
 }
 
 .haru-card-back .haru-card-arrow {
-    align-self: flex-end; /* 右下に配置 */
+    align-self: flex-end;
 }
 
 /* --- スマホ対応 (画面幅が768px以下) --- */
 @media screen and (max-width: 768px) {
   .haru-profile-card {
-    max-width: 380px; /* スマホでの幅 */
-    aspect-ratio: 3 / 4.8; /* スマホでのアスペクト比 */
-  }
-
-  .haru-card-front,
-  .haru-card-back {
-    padding: 20px;
+    max-width: 380px;
+    aspect-ratio: 3 / 4.8;
   }
 
   .haru-card-front {
-    text-align: left; /* ★スマホでは全体を左揃えに */
+    flex-direction: row; /* 横並びに変更 */
+    align-items: stretch;
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  /* 左のタイトルエリア */
+  .haru-card-header {
+    flex: 0 0 50px; /* 幅を固定 */
+    border-bottom: none;
+    border-right: 2px solid #000; /* 右に境界線 */
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .haru-card-header .en {
-    font-size: 12vw;
+  .header-svg-pc {
+    display: none; /* PC用は隠す */
   }
-  .haru-card-header .jp {
-    font-size: 5vw;
+  .header-svg-mobile {
+    display: block; /* スマホ用を表示 */
+  }
+  .header-svg-mobile svg {
+      height: 90%;
+      width: auto;
+      fill: #000;
+  }
+
+  /* 右のメインコンテンツエリア */
+  .haru-card-main-content {
+      padding-top: 0;
+      flex: 1;
+      justify-content: flex-start; /* 上から詰める */
   }
 
   .haru-card-body {
     flex-direction: column;
-    /* text-align: center; */ /* 中央揃えを削除 */
-    padding: 15px 0;
+    gap: 15px;
+    padding: 0;
   }
 
   .haru-card-image {
-    width: 60%;
-    margin: 0 auto 15px; /* イラストは中央揃えを維持 */
+    width: 100%;
+    aspect-ratio: 1 / 1.1; /* 縦長の比率 */
   }
-
+  
   .haru-card-text-jp {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.6;
   }
   
   .haru-card-footer {
-    flex-direction: column;
-    align-items: flex-start; /* ★左揃えに変更 */
-    text-align: left; /* ★左揃えに変更 */
+      margin-top: auto; /* 一番下に配置 */
+      padding-top: 15px;
   }
-  
+
   .haru-card-text-en {
+    font-size: 11px;
+    line-height: 1.5;
     width: 100%;
-    font-size: 13px;
-    margin-bottom: 15px;
   }
-  
+
   .haru-card-arrow {
     font-size: 8vw;
-    align-self: flex-end; /* 矢印は右下に配置 */
   }
-  
+
   /* 裏面 */
   .haru-card-back {
     font-size: 13px;
     line-height: 1.7;
     padding: 25px;
-    text-align: left; /* ★左揃えに変更 */
   }
 
   .haru-card-back-separator {
@@ -773,7 +787,7 @@ html::after {
   
   .haru-card-back-sns {
     flex-direction: column;
+    align-items: flex-start; /* 左揃えに */
     gap: 10px;
-    align-items: flex-start; /* ★左揃えに変更 */
   }
 }
