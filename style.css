@@ -586,6 +586,8 @@ html::after {
 }
 
 .haru-card-header {
+  position: relative;
+  top: -2px; /* ★ロゴを少し上に移動 */
   border-bottom: 2px solid #000;
   padding-bottom: 1.5vw;
   margin-bottom: 0; /* ★main-content側で余白を管理するため削除 */
@@ -610,12 +612,12 @@ html::after {
     justify-content: space-between;
     flex-grow: 1;
     min-height: 0; /* flexアイテムの高さの計算を助ける */
-    padding: 1.5vw 3vw 2.5vw; /* ★ヘッダー以外のコンテンツにパディングを適用 */
+    padding: 1vw 2vw 1.8vw; /* ★パディングを調整 */
 }
 
 .haru-card-body {
   display: flex;
-  gap: 2vw; /* ★ギャップを調整 */
+  gap: 1.8vw; /* ★ギャップを調整 */
   flex-grow: 1; /* ★高さを埋める */
   min-height: 0;
   align-items: stretch; /* ★子要素の高さを揃える */
@@ -645,7 +647,7 @@ html::after {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 1.5vw; /* 上の要素との余白 */
+  padding-top: 1.2vw; /* 上の要素との余白を調整 */
   flex-shrink: 0;
 }
 
