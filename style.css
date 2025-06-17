@@ -593,7 +593,7 @@ html::after {
   padding: 0 0 15px; /* ★ロゴと区切り線の間に余白を設定 */
   margin: 0 -15px; /* ★親のパディングを打ち消して左右いっぱいにする */
   flex-shrink: 0;
-  border-bottom: 2px solid #000; /* ★区切り線を復活させる */
+  border-bottom: 1.5px solid #000; /* ★区切り線を復活させる */
 }
 
 .header-svg-pc svg {
@@ -684,7 +684,7 @@ html::after {
   flex-direction: column; /* ★縦並びに */
   font-size: 14px; /* ★フォントサイズを固定 */
   line-height: 1.8;
-  color: #333; /* ★テキストの色を少し柔らかく */
+  color: #000; /* ★テキストの色を少し柔らかく */
 }
 
 .haru-card-back-text {
@@ -692,8 +692,8 @@ html::after {
 }
 
 .haru-card-back-separator {
-  height: 1px;
-  background-color: #e0e0e0;
+  height: 1.1px;
+  background-color: #000;
   margin: 25px 35px; /* 上下のマージンを25px、左右を35pxに */
 }
 
@@ -758,6 +758,9 @@ html::after {
   flex-direction: column;
 }
 
+/* ===========================================================
+   プロフィールカード：レスポンシブ (SP)
+=========================================================== */
 /* --- スマホ対応 (画面幅が768px以下) --- */
 @media screen and (max-width: 768px) {
   .haru-profile-card {
@@ -857,5 +860,21 @@ html::after {
     flex-direction: column;
     align-items: flex-start; /* 左揃えに */
     gap: 10px;
+  }
+
+  .haru-card-back-sns {
+    padding-bottom: 25px; /* 下の余白を少し調整 */
+  }
+}
+
+/* ===========================================================
+   プロフィールカード：レスポンシブ (PC)
+=========================================================== */
+@media screen and (min-width: 1024px) {
+  .haru-card-back-text p,
+  .haru-card-back-tools p,
+  .haru-card-back-hashtags p,
+  .sns-icons-wrapper p {
+    font-size: 15px;
   }
 }
