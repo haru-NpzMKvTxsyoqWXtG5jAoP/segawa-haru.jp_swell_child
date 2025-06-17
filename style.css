@@ -661,7 +661,7 @@ html::after {
   font-size: 13px; /* ★フォントサイズを13pxに固定 */
   line-height: 1.6;
   flex-grow: 0; /* ★自動で幅が伸びないように変更 */
-  max-width: 80%; /* ★テキストの最大幅を制限して折り返しを促す */
+  max-width: 60%; /* ★テキストの最大幅をさらに制限 */
 }
 
 .haru-card-arrow {
