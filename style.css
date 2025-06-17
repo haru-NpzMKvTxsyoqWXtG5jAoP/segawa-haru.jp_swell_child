@@ -610,9 +610,9 @@ html::after {
   flex-grow: 1; /* ★中央のエリアが可変のスペースを埋めるようにする */
   display: flex;
   flex-direction: column;
-  padding: 0 15px; /* ★イラストとテキスト部分の左右パディングを調整 */
+  padding: 20px 15px 0; /* ★パディングを調整(上20px, 左右15px, 下0) */
   min-height: 0; /* ★flexアイテムの縮小時の問題を回避 */
-  justify-content: center; /* ★中身を上下中央揃えにする */
+  /* justify-content: center; */ /* ★中央揃えを解除 */
 }
 
 .haru-card-body {
