@@ -550,12 +550,11 @@ html::after {
 .haru-profile-card {
   width: 100%;
   max-width: 800px; /* ★理想のレイアウトに合わせて幅を調整 */
-  /* aspect-ratio: 16 / 10; */  /* ★コンテンツに合わせて高さを可変にするためコメントアウト */
+  aspect-ratio: 16 / 10;   /* ★カードの比率を固定するため復活 */
   perspective: 2000px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out; /* ★よりスムーズなアニメーションに */
-  display: grid; /* ★Gridレイアウトで重ね合わせと高さの自動調整を実現 */
 }
 
 /* ★ホバーエフェクトは不要なので削除 */
@@ -568,8 +567,9 @@ html::after {
 
 .haru-card-front,
 .haru-card-back {
-  grid-area: 1 / 1; /* ★Gridでカードの表と裏を重ねる */
+  position: absolute;
   width: 100%;
+  height: 100%;
   backface-visibility: hidden;
   background-color: #fff;
   border-radius: 12px;
@@ -581,7 +581,7 @@ html::after {
 
 /* --- カード表面のデザイン --- */
 .haru-card-front {
-  padding: 0; /* ★パディングを削除し、ヘッダーを全幅にする */
+  padding: 0;
 }
 
 .haru-card-header {
@@ -623,7 +623,7 @@ html::after {
 }
 
 .haru-card-image {
-  width: 44%; /* ★幅を%で指定し、レスポンシブにする */
+  width: 40%; /* ★画像を小さくしてテキスト領域を確保 */
   aspect-ratio: 1 / 1; /* ★アスペクト比を1:1に */
   flex-shrink: 0;
 }
