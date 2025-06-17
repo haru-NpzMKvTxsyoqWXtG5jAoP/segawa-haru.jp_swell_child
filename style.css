@@ -618,8 +618,10 @@ html::after {
 }
 
 .haru-card-body {
-  flex-direction: column; /* イラストとテキストを縦並びに */
-  padding: 0;
+  display: flex;
+  gap: 10px;
+  min-height: 0;
+  align-items: flex-start;
 }
 
 .haru-card-image {
@@ -802,7 +804,7 @@ html::after {
   }
 
   .haru-card-body {
-    padding: 0;
+    flex-direction: column; /* イラストとテキストを縦並びに */
   }
 
   .haru-card-image {
