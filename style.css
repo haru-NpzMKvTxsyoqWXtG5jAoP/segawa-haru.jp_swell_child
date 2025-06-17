@@ -620,7 +620,7 @@ html::after {
   gap: 1.8vw; /* ★ギャップを調整 */
   flex-grow: 1; /* ★高さを埋める */
   min-height: 0;
-  align-items: stretch; /* ★子要素の高さを揃える */
+  align-items: flex-start; /* ★stretchをやめて、上揃えにすることで画像の比率を維持 */
 }
 
 .haru-card-image {
