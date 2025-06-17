@@ -618,10 +618,8 @@ html::after {
 }
 
 .haru-card-body {
-  display: flex;
-  gap: 10px; /* ★イラストと日本語テキストの間の隙間を10pxに */
-  min-height: 0;
-  align-items: flex-start; /* ★テキストを上揃えにするため flex-start に戻す */
+  flex-direction: column; /* イラストとテキストを縦並びに */
+  padding: 0;
 }
 
 .haru-card-image {
