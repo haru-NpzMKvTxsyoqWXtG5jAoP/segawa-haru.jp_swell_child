@@ -614,7 +614,7 @@ html::after {
   flex-direction: column;
   padding: 0; /* ★左右のパディングを削除 */
   min-height: 0;
-  margin-bottom: 15px; /* ★フッターとの間に余白を追加 */
+  gap: 15px; /* ★flexアイテム間の隙間を指定 */
 }
 
 .haru-card-body {
