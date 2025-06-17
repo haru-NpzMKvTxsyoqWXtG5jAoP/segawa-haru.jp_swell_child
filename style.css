@@ -753,10 +753,10 @@ html::after {
 }
 
 /* ★Flexboxレイアウトのためのスタイルを追加 */
-.haru-card-back {
+/* .haru-card-back {
   display: flex;
   flex-direction: column;
-}
+} */
 
 /* ===========================================================
    プロフィールカード：レスポンシブ (SP)
