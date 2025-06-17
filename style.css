@@ -764,13 +764,12 @@ html::after {
 /* --- スマホ対応 (画面幅が768px以下) --- */
 @media screen and (max-width: 768px) {
   .haru-profile-card {
-    height: auto; /* 高さを自動に */
-    max-width: 380px;
-    aspect-ratio: 3 / 4.8;
+    border-radius: 15px;
   }
 
   .haru-card-front {
     display: flex; /* ★flexboxレイアウトに変更 */
+    flex-direction: row; /* 横並びにする */
     padding: 25px; /* ★内側に余白を追加 */
     gap: 15px; /* ★ヘッダーとメインコンテンツの間に余白 */
   }
