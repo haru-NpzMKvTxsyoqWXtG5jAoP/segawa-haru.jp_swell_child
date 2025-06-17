@@ -638,7 +638,7 @@ html::after {
 }
 
 .haru-card-text-jp {
-  font-size: 15px; /* ★フォントサイズを15pxに */
+  font-size: clamp(13px, 1.04vw, 16px); /* ★レスポンシブフォントサイズに変更 */
   line-height: 1.8;
   flex-grow: 1;
 }
@@ -652,7 +652,7 @@ html::after {
 }
 
 .haru-card-text-en {
-  font-size: 13px; /* ★フォントサイズを調整 */
+  font-size: clamp(11px, 0.9vw, 14px); /* ★レスポンシブフォントサイズに変更 */
   line-height: 1.6;
   flex-grow: 1;
 }
