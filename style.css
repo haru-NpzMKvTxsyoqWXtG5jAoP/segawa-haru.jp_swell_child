@@ -620,11 +620,11 @@ html::after {
   gap: 1.8vw; /* ★ギャップを調整 */
   flex-grow: 1; /* ★高さを埋める */
   min-height: 0;
-  align-items: stretch; /* ★画像の高さをテキストの高さに合わせる */
+  align-items: flex-start; /* ★stretchを解除し、画像のレスポンシブ化を可能にする */
 }
 
 .haru-card-image {
-  /* width: 44%; */ /* ★widthを削除し、高さ基準で幅を自動調整 */
+  width: 44%; /* ★幅を%で指定し、レスポンシブにする */
   aspect-ratio: 1 / 1; /* ★アスペクト比を1:1に */
   flex-shrink: 0;
 }
@@ -638,7 +638,7 @@ html::after {
 }
 
 .haru-card-text-jp {
-  font-size: clamp(13px, 1.04vw, 16px); /* ★レスポンシブフォントサイズに変更 */
+  font-size: 15px; /* ★フォントサイズを15pxに固定 */
   line-height: 1.8;
   flex-grow: 1;
 }
@@ -652,7 +652,7 @@ html::after {
 }
 
 .haru-card-text-en {
-  font-size: clamp(11px, 0.9vw, 14px); /* ★レスポンシブフォントサイズに変更 */
+  font-size: 13px; /* ★フォントサイズを13pxに固定 */
   line-height: 1.6;
   flex-grow: 1;
 }
