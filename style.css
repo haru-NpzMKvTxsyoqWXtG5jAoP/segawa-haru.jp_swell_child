@@ -679,7 +679,7 @@ html::after {
 /* --- カード裏面のデザイン --- */
 .haru-card-back {
   transform: rotateY(180deg); /* ★左右反転に修正 */
-  padding: 0 35px; /* 上下のパディングを調整 */
+  padding: 0; /* ★余白をなくす */
   display: flex; /* ★flexboxレイアウトに変更 */
   flex-direction: column; /* ★縦並びに */
   font-size: 14px; /* ★フォントサイズを固定 */
@@ -720,7 +720,8 @@ html::after {
 }
 
 .haru-card-back-hashtags {
-  padding: 0 35px; /* 左右のパディングを35pxに */
+  margin-top: auto;
+  padding: 0 35px; /* 上下は0、左右に35pxのパディング */
 }
 
 .haru-card-back-sns {
@@ -755,11 +756,6 @@ html::after {
 .haru-card-back {
   display: flex;
   flex-direction: column;
-}
-
-.haru-card-back-hashtags {
-  margin-top: auto;
-  padding-bottom: 20px; /* SNSセクションとの間に余白を追加 */
 }
 
 /* --- スマホ対応 (画面幅が768px以下) --- */
