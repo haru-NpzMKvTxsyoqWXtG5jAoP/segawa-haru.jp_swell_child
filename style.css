@@ -764,6 +764,9 @@ html::after {
 /* --- スマホ対応 (画面幅が768px以下) --- */
 @media screen and (max-width: 768px) {
   .haru-profile-card {
+    height: auto;
+    max-width: 380px;
+    aspect-ratio: unset;
     border-radius: 15px;
   }
 
