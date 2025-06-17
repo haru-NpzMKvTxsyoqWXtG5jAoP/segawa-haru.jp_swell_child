@@ -654,16 +654,18 @@ html::after {
   align-items: flex-end;
   padding: 0; /* ★左右のパディングを削除 */
   flex-shrink: 0;
+  gap: 15px; /* テキストと矢印の間の最小の隙間を確保 */
 }
 
 .haru-card-text-en {
   font-size: 13px; /* ★フォントサイズを13pxに固定 */
   line-height: 1.6;
-  flex-grow: 1;
+  flex-grow: 0; /* ★自動で幅が伸びないように変更 */
+  max-width: 80%; /* ★テキストの最大幅を制限して折り返しを促す */
 }
 
 .haru-card-arrow {
-  margin-left: 25px; /* vwからpxに変更 */
+  /* margin-left: 25px; */ /* space-betweenで管理するため不要 */
 }
 
 .haru-card-arrow svg {
