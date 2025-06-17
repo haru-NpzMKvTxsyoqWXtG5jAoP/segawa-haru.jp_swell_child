@@ -679,7 +679,7 @@ html::after {
 /* --- カード裏面のデザイン --- */
 .haru-card-back {
   transform: rotateY(180deg); /* ★左右反転に修正 */
-  padding: 25px; /* ★余白を固定値に */
+  padding: 0 35px; /* 上下のパディングを調整 */
   display: flex; /* ★flexboxレイアウトに変更 */
   flex-direction: column; /* ★縦並びに */
   font-size: 14px; /* ★フォントサイズを固定 */
@@ -688,16 +688,17 @@ html::after {
 }
 
 .haru-card-back-text {
-  padding-bottom: 20px; /* ★下の要素との余白 */
-  border-bottom: 1px solid #e0e0e0; /* ★下線を引く */
+  padding: 35px 35px 0; /* 上下のパディングを調整 */
 }
 
 .haru-card-back-separator {
-  display: none; /* ★区切り線を非表示に */
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 25px 35px; /* 上下のマージンを25px、左右を35pxに */
 }
 
 .haru-card-back-tools {
-  padding-top: 20px;
+  padding: 0 35px; /* 左右のパディングを35pxに */
 }
 
 .haru-card-back-tools p,
@@ -728,14 +729,13 @@ html::after {
 }
 
 .sns-icons-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block; /* flexをやめてblock要素に */
 }
 
 .sns-icons {
   display: flex;
   gap: 10px; /* アイコン間の余白 */
+  margin-top: 10px; /* テキストとの間に余白を追加 */
 }
 .sns-icons a {
   display: block;
@@ -759,6 +759,7 @@ html::after {
 
 .haru-card-back-hashtags {
   margin-top: auto;
+  padding-bottom: 20px; /* SNSセクションとの間に余白を追加 */
 }
 
 /* --- スマホ対応 (画面幅が768px以下) --- */
