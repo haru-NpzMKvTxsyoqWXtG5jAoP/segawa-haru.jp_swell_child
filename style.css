@@ -583,14 +583,16 @@ html::after {
 .haru-card-front {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* ★上下に要素を配置するため復活 */
-  padding: 15px 0; /* ★上下の余白のみに修正 */
+  justify-content: space-between;
+  padding: 15px 0; /* ★上下の余白のみ */
 }
 
 .haru-card-header {
-  padding: 0 0 15px; /* ★下側の余白だけ15pxに設定 */
+  position: relative;
+  top: -17px; /* ★カード上部の余白15px + 2px分を上に移動 */
+  padding: 0 0 15px; /* ★ロゴと区切り線の間に余白を設定 */
   flex-shrink: 0;
-  border-bottom: 2px solid #000; /* ★区切り線を再設定 */
+  border-bottom: 2px solid #000; /* ★区切り線を復活させる */
 }
 
 .header-svg-pc svg {
@@ -606,18 +608,18 @@ html::after {
 }
 
 .haru-card-main-content {
-  flex-grow: 1; /* ★中央のエリアが可変のスペースを埋めるようにする */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px 15px 0; /* ★パディングを調整(上20px, 左右15px, 下0) */
-  min-height: 0; /* ★flexアイテムの縮小時の問題を回避 */
+  padding: 0 15px; /* ★左右のパディングを15pxに統一 */
+  min-height: 0;
 }
 
 .haru-card-body {
   display: flex;
-  gap: 25px; /* vwからpxに変更 */
+  gap: 25px;
   min-height: 0;
-  align-items: flex-start; /* ★テキストを上揃えにするため変更 */
+  align-items: flex-start; /* ★テキストを上揃えにするため flex-start に戻す */
 }
 
 .haru-card-image {
@@ -645,10 +647,10 @@ html::after {
 }
 
 .haru-card-footer {
-  display: flex; /* ★flexboxを再適用 */
-  justify-content: space-between; /* ★両端揃え */
-  align-items: flex-end; /* ★下揃え */
-  padding: 0 15px; /* ★左右に15pxのパディングを追加 */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 15px; /* ★左右のパディングを15pxに統一 */
   flex-shrink: 0;
 }
 
