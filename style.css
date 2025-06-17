@@ -641,6 +641,7 @@ html::after {
 .haru-card-text-jp {
   font-size: 15px; /* ★フォントサイズを15pxに固定 */
   line-height: 1.8;
+  font-weight: 500; /* ★フォントの太さを調整 */
 }
 
 .haru-card-text-jp p,
@@ -678,28 +679,60 @@ html::after {
 /* --- カード裏面のデザイン --- */
 .haru-card-back {
   transform: rotateY(180deg); /* ★左右反転に修正 */
-  padding: 2.5vw 3.5vw;
-  justify-content: space-between;
-  font-size: clamp(14px, 1.3vw, 16px);
+  padding: 25px; /* ★余白を固定値に */
+  display: flex; /* ★flexboxレイアウトに変更 */
+  flex-direction: column; /* ★縦並びに */
+  font-size: 14px; /* ★フォントサイズを固定 */
   line-height: 1.8;
+  color: #333; /* ★テキストの色を少し柔らかく */
+}
+
+.haru-card-back-text {
+  padding-bottom: 20px; /* ★下の要素との余白 */
+  border-bottom: 1px solid #e0e0e0; /* ★下線を引く */
 }
 
 .haru-card-back-separator {
-  border-top: 1px solid #ccc;
-  margin: 1.5vw 0;
+  display: none; /* ★区切り線を非表示に */
+}
+
+.haru-card-back-tools {
+  padding-top: 20px;
 }
 
 .haru-card-back-tools p,
 .haru-card-back-hashtags p,
 .haru-card-back-sns p,
 .haru-card-back-text p {
-  margin: 0.5em 0;
+  margin: 0 0 1em; /* ★各段落の下に余白を設定 */
+}
+
+/* ★最後の段落の下には余白をつけない */
+.haru-card-back-tools p:last-child,
+.haru-card-back-hashtags p:last-child,
+.haru-card-back-text p:last-child {
+  margin-bottom: 0;
+}
+
+.haru-card-back-tools p b {
+  font-weight: 600; /* Main toolを少し太く */
+}
+
+.haru-card-back-hashtags {
+  padding: 20px 0;
 }
 
 .haru-card-back-sns {
+  margin-top: auto; /* ★要素を一番下に配置 */
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.sns-icons-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .sns-icons {
@@ -716,7 +749,7 @@ html::after {
 }
 
 .haru-card-back .haru-card-arrow {
-    align-self: flex-end;
+    align-self: initial; /* ★リセット */
 }
 
 /* --- スマホ対応 (画面幅が768px以下) --- */
