@@ -584,11 +584,11 @@ html::after {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 15px 0; /* ★上下の余白を調整 */
+  padding: 0 0 15px; /* ★上下の余白を再調整（上は0, 下は15px） */
 }
 
 .haru-card-header {
-  padding: 0; /* ★左右のパディングを削除 */
+  padding: 0; /* ★左右のパディングはなし */
   margin-bottom: 15px; /* ★下の余白を調整 */
   flex-shrink: 0;
 }
@@ -647,7 +647,10 @@ html::after {
 }
 
 .haru-card-footer {
-  padding: 0; /* ★左右のパディングを削除 */
+  display: flex; /* ★flexboxを再適用 */
+  justify-content: space-between; /* ★両端揃え */
+  align-items: flex-end; /* ★下揃え */
+  padding: 0 15px; /* ★左右のパディングを再設定 */
   margin-top: 15px; /* ★上の余白を調整 */
   flex-shrink: 0;
 }
