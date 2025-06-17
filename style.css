@@ -550,7 +550,7 @@ html::after {
 .haru-profile-card {
   width: 100%;
   max-width: 800px; /* ★理想のレイアウトに合わせて幅を調整 */
-  aspect-ratio: 16 / 10;   /* ★アスペクト比を調整 */
+  /* aspect-ratio: 16 / 10; */   /* ★コンテンツに合わせて高さを可変にするためコメントアウト */
   perspective: 2000px;
   position: relative;
   transform-style: preserve-3d;
@@ -609,7 +609,7 @@ html::after {
 .haru-card-main-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* ★レイアウトを元に戻す */
     flex-grow: 1;
     min-height: 0; /* flexアイテムの高さの計算を助ける */
     padding: 0.7vw 1.2vw 1.2vw; /* ★パディングをさらに狭く */
@@ -641,6 +641,11 @@ html::after {
   font-size: 15px; /* ★フォントサイズを15pxに固定 */
   line-height: 1.8;
   flex-grow: 1;
+}
+
+.haru-card-text-jp p,
+.haru-card-text-en p {
+    margin: 0;
 }
 
 .haru-card-footer {
