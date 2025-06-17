@@ -555,6 +555,7 @@ html::after {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out; /* ★よりスムーズなアニメーションに */
+  display: grid; /* ★高さを可変にするためGridレイアウトに変更 */
 }
 
 /* ★ホバーエフェクトは不要なので削除 */
@@ -567,9 +568,10 @@ html::after {
 
 .haru-card-front,
 .haru-card-back {
-  position: absolute;
+  /* position: absolute; */ /* ★Gridで配置するためコメントアウト */
+  grid-area: 1 / 1; /* ★Gridでカードの表と裏を重ねる */
   width: 100%;
-  height: 100%;
+  /* height: 100%; */ /* ★高さをコンテンツに合わせるためコメントアウト */
   backface-visibility: hidden;
   background-color: #fff;
   border-radius: 12px;
