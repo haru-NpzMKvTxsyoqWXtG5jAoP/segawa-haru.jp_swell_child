@@ -550,7 +550,7 @@ html::after {
 .haru-profile-card {
   width: 100%;
   max-width: 800px; /* ★理想のレイアウトに合わせて幅を調整 */
-  /* aspect-ratio: 16 / 10; */  /* ★コンテンツの高さに合わせるため一旦コメントアウト */
+  aspect-ratio: 16 / 10;   /* ★高さを固定するため復活させる */
   perspective: 2000px;
   position: relative;
   transform-style: preserve-3d;
@@ -583,15 +583,15 @@ html::after {
 .haru-card-front {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */ /* ★余白はmarginで制御するため削除 */
-  padding: 15px 0; /* ★上下の余白をカード自体に持たせる */
+  justify-content: space-between; /* ★上下に要素を配置するため復活 */
+  padding: 15px 0; /* ★カードの上下に余白を持たせる */
 }
 
 .haru-card-header {
   padding: 0; /* ★左右のパディングはなし */
-  margin-bottom: 15px; /* ★下の余白を調整 */
+  /* margin-bottom: 15px; */ /* ★space-betweenで管理するため削除 */
   flex-shrink: 0;
-  border-bottom: 2px solid #000; /* ★区切り線を復活 */
+  border-bottom: 2px solid #000; /* ★区切り線を再設定 */
 }
 
 .header-svg-pc svg {
@@ -607,19 +607,20 @@ html::after {
 }
 
 .haru-card-main-content {
-  /* flex-grow: 1; */ /* ★高さ固定をやめたので不要 */
+  flex-grow: 1; /* ★中央のエリアが可変のスペースを埋めるようにする */
   display: flex;
   flex-direction: column;
   padding: 0 15px; /* ★イラストとテキスト部分の左右パディングを調整 */
-  min-height: 0; /* ★flexアイテムの縮小時の問題を回避するため復活 */
+  min-height: 0; /* ★flexアイテムの縮小時の問題を回避 */
+  justify-content: center; /* ★中身を上下中央揃えにする */
 }
 
 .haru-card-body {
   display: flex;
   gap: 25px; /* vwからpxに変更 */
-  /* flex-grow: 1; */ /* ★高さ固定をやめたので不要 */
+  /* flex-grow: 1; */ /* 不要なため削除 */
   min-height: 0;
-  align-items: flex-start; /* ★画像のレスポンシブ化のため、stretchを解除 */
+  align-items: center; /* ★画像を中央揃えにするため flex-start から変更 */
 }
 
 .haru-card-image {
@@ -639,7 +640,7 @@ html::after {
 .haru-card-text-jp {
   font-size: 15px; /* ★フォントサイズを15pxに固定 */
   line-height: 1.8;
-  /* flex-grow: 1; */ /* ★高さ固定をやめたので不要 */
+  /* flex-grow: 1; */ /* 不要なため削除 */
 }
 
 .haru-card-text-jp p,
@@ -652,7 +653,7 @@ html::after {
   justify-content: space-between; /* ★両端揃え */
   align-items: flex-end; /* ★下揃え */
   padding: 0 15px; /* ★左右のパディングを再設定 */
-  margin-top: 15px; /* ★上の余白を調整 */
+  /* margin-top: 15px; */ /* ★space-betweenで管理するため削除 */
   flex-shrink: 0;
 }
 
