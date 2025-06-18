@@ -835,7 +835,7 @@ html::after {
       "logo   logo"
       "image  jp"
       "footer footer";
-    gap: 20px;
+    gap: 15px;
     padding: 15px; /* PC用のパディングを再設定 */
   }
 
@@ -845,13 +845,14 @@ html::after {
   .haru-card-text-jp { grid-area: jp; }
   .haru-card-footer  { grid-area: footer; }
 
-  /* ④ いらなくなった固定幅を解除・調整 */
+  /* ④ いらくなった固定幅を解除・調整 */
   .haru-card-header {
     flex: 0 0 auto; /* モバイルの70px指定を解除 */
     border-right: none; /* スマホ用の区切り線を解除 */
     padding-right: 0;
     border-bottom: 1.5px solid #000; /* PC用の区切り線を復活 */
-    padding-bottom: 15px;
+    padding-bottom: 0; /* ★パディングを削除 */
+    margin: -15px -15px 0; /* ★ネガティブマージンで親のパディングを相殺 */
   }
   
   .haru-card-image {
