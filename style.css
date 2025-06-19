@@ -809,16 +809,16 @@ html::after {
     align-self: flex-end; /* 右端に配置 */
   }
   
-  /* 古いレイアウト指定を削除 */
   .haru-card-main-content, .haru-card-body, .haru-card-text-en, .haru-card-arrow {
-    padding: 0;
+    /* スマホでは非表示 */
+    display: none;
   }
 }
 
 /* ===========================================================
    プロフィールカード：レスポンシブ (PC)
 =========================================================== */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 769px) {
 
   /* ① "箱" を消して中の要素だけ親グリッドに流す */
   .haru-card-top,
@@ -853,17 +853,31 @@ html::after {
     border-bottom: 1.5px solid #000; /* PC用の区切り線を復活 */
     padding-bottom: 0; /* ★パディングを削除 */
     margin: -15px -15px 0; /* ★ネガティブマージンで親のパディングを相殺 */
+    border-radius: 10px 10px 0 0;
+    overflow: hidden; /* SVGのはみ出しをマスク */
   }
   
   .haru-card-image {
+    grid-area: image;
+    position: relative;
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 0;
+    padding-top: 100%; /* 幅100%分の高さを確保し正方形にする */
+    overflow: hidden;
+  }
+
+  .haru-card-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .haru-card-back-text p,
   .haru-card-back-tools p,
-  .haru-card-back-hashtags p,
-  .sns-icons-wrapper p {
-    font-size: 15px;
+  .haru-card-back-hashtags,
+  .sns-icons {
+    text-align: left; /* テキストを左揃えに */
   }
 }
