@@ -783,19 +783,20 @@ html::after {
   }
 
   .haru-card-text-jp {
-    align-self: end;
+    align-self: start;
     padding-bottom: 2em;
   }
 
   .haru-card-footer {
     flex-direction: row;
-    align-items: flex-start;
-    height: 100%;
-    object-fit: cover;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-height: 1px;
   }
 
   .haru-card-image {
     height: 100%;
+    object-fit: cover;
   }
   .haru-card-image img {
     width: 100%;
@@ -823,6 +824,10 @@ html::after {
   .haru-card-arrow {
     display: block;
     cursor: pointer;
+  }
+  .haru-card-arrow svg {
+    width: 40px;
+    height: auto;
   }
 }
 
