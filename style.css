@@ -868,18 +868,66 @@ html::after {
 }
 
 @media (min-width: 769px) {
-  /* --- PC(769px以上) --- */
-  .haru-card-logo-pc {
+  /* 1) グリッドの再定義  */
+  .haru-card-front{
+    grid-template-columns: clamp(260px,30%,380px) 1fr; /* 画像 | テキスト */
+    grid-template-rows: auto       /* logo  */
+                         4px        /* rule  */
+                         1fr        /* image + jp */
+                         auto;      /* en + arrow */
+    grid-template-areas:
+      "logo  logo"
+      "rule  rule"
+      "image jp"
+      "foot  foot";
+    gap: var(--card-pad-inner);
+    padding: var(--card-pad-outer);
+  }
+
+  /* 2) 区切り線を独立行に */
+  .haru-card-front::before{
+    content:"";
+    grid-area: rule;
+    width:100%;
+    height:1.5px;
+    background: var(--border-color);
+    display: block; /* 念のため */
+  }
+
+  /* 3) 各エリア微調整 */
+  .haru-card-header{        /* ロゴ */
+    grid-area: logo;
+    border:none;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .haru-card-image{         /* 画像 */
+    grid-area: image;
     display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 280px;
   }
-  .haru-card-logo-sp {
-    display: none;
+
+  .haru-card-text-jp{       /* 日本語 */
+    grid-area: jp;
+    align-self:start;
+    margin:0;
+    padding: 0;
   }
-  .haru-card-text-en {
-    grid-area: foot; /* フッターセクションに移動 */
-    margin: 0;
-  }
-  .haru-card-footer {
+
+  .haru-card-footer{        /* EN + → */
     grid-area: foot;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
   }
+  .haru-card-text-en{display:block;margin:0;}
+  .haru-card-arrow {display:block;cursor:pointer;}
+
+  /* 4) PC 用ロゴ／SP 用ロゴ 切替 */
+  .haru-card-logo-pc{display:block;}
+  .haru-card-logo-sp{display:none;}
 }
