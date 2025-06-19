@@ -656,17 +656,23 @@ html::after {
   grid-area: foot;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: var(--card-pad-inner);
   border-top: none;
+  justify-content: space-between;
 }
 
-.haru-card-text-en {
-  display: none;
+.haru-card-text-en,
+.haru-card-arrow {
+  display: block;
 }
 
 .haru-card-arrow {
-  display: none;
+  /*
+  width: clamp(32px, 8.5vw, 48px);
+  height: auto;
+  */
+  margin-left: auto;
 }
 
 /* PCで表示する要素は、デフォルト（スマホ）では非表示にする */
@@ -760,16 +766,16 @@ html::after {
 
   .haru-card-front {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
-    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "logo  logo"
+      "rule  rule"
       "image jp"
-      "image foot";
+      "foot  foot";
     gap: var(--card-pad-inner) var(--card-pad-inner);
     padding: var(--card-pad-outer);
   }
   .haru-card-front::before {
-    display: none;
+    display: block;
   }
 
   .haru-card-header {
@@ -777,14 +783,15 @@ html::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 1.5px solid var(--border-color);
+    border-bottom: none;
     overflow: hidden;
-    padding: 0 var(--card-pad-inner) var(--card-pad-inner);
+    padding: 0 var(--card-pad-inner);
   }
 
   .haru-card-text-jp {
     align-self: start;
     padding-bottom: 2em;
+    min-height: 1px;
   }
 
   .haru-card-footer {
@@ -833,3 +840,32 @@ html::after {
 
 /* --- カード裏面のデザイン --- */
 /* ... */
+
+.s-btn-arrow::after,
+.p-postList__arrow,
+.c-arrowCircle::before {
+  content: "";
+}
+
+@media (max-width: 768px) {
+  .haru-card-footer {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 769px) {
+  /* --- PC(769px以上) --- */
+  .haru-card-logo-pc {
+    display: block;
+  }
+  .haru-card-logo-sp {
+    display: none;
+  }
+  .haru-card-text-en {
+    grid-area: foot; /* フッターセクションに移動 */
+    margin: 0;
+  }
+  .haru-card-footer {
+    grid-area: foot;
+  }
+}
