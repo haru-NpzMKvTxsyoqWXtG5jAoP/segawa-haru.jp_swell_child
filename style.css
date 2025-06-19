@@ -785,12 +785,13 @@ html::after {
   .haru-card-text-jp {
     align-self: end;
     padding-bottom: 2em;
-    object-fit: cover;
   }
 
   .haru-card-footer {
     flex-direction: row;
     align-items: flex-start;
+    height: 100%;
+    object-fit: cover;
   }
 
   .haru-card-image {
@@ -804,6 +805,7 @@ html::after {
 
   /* 表示切替 */
   .header-svg-pc {
+    display: block;
     width: 100%;
   }
   .header-svg-pc svg {
