@@ -604,7 +604,7 @@ html::after {
 /* --- カード表面（スマホ表示が基準） --- */
 .haru-card-front {
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 90px 1fr;
   grid-template-areas:
     "logo image"
     "rule rule"
@@ -639,6 +639,10 @@ html::after {
 }
 .header-svg-mobile {
   display: block;
+}
+.header-svg-mobile svg {
+  width: 100%;
+  height: auto;
 }
 .haru-card-image {
   grid-area: image;
@@ -746,20 +750,24 @@ html::after {
    プロフィールカード：レスポンシブ (PC)
 =========================================================== */
 @media (min-width: 769px) {
+  .haru-profile-card {
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+  }
   .haru-profile-card-container {
     padding: clamp(2rem, 3.5vw, 4rem);
   }
 
-  /* カード表面のグリッドレイアウト */
   .haru-card-front {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
-      "logo   logo"
-      "image  jp"
-      "image  foot";
-    padding: 0 var(--card-pad-inner) var(--card-pad-outer);
+      "logo  logo"
+      "image jp"
+      "image foot";
+    gap: var(--card-pad-inner) var(--card-pad-inner);
+    padding: var(--card-pad-outer);
   }
-
   .haru-card-front::before {
     display: none;
   }
@@ -769,8 +777,23 @@ html::after {
     border-bottom: 1.5px solid var(--border-color);
   }
 
+  .haru-card-text-jp {
+    align-self: end;
+    padding-bottom: 2em;
+  }
+
   .haru-card-footer {
-    /* PCでは特別なスタイルは不要 */
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .haru-card-image {
+    height: 100%;
+  }
+  .haru-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* 表示切替 */
@@ -782,7 +805,7 @@ html::after {
   }
   .haru-card-text-en {
     display: block;
-    max-width: 60%;
+    max-width: none;
   }
   .haru-card-arrow {
     display: block;
