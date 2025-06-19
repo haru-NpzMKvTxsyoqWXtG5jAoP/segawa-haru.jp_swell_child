@@ -539,65 +539,95 @@ html::after {
 /* ===========================================================
    プロフィールカード
 =========================================================== */
-
-/* --- 全体のコンテナと傾き --- */
 .haru-profile-card-container {
-  padding: 2rem 0; /* 上下の余白 */
-  display: grid;
-  place-items: center;
+  padding: 5vw 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.haru-card-tilt {
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease-in-out;
-}
-.haru-card-tilt:hover {
-  transform: scale(1.05);
-}
-
-/* --- カードの基本設定（モバイルファースト） --- */
+/* --- カード全体のスタイル --- */
 .haru-profile-card {
-  width: min(100% - 2rem, 450px); /* 横幅は最大450px */
-  min-height: 580px;
+  width: 100%;
+  max-width: 800px; /* ★理想のレイアウトに合わせて幅を調整 */
+  aspect-ratio: 16 / 10;   /* ★高さを固定するため復活させる */
+  perspective: 2000px;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.haru-profile-card.is-flipped {
-  transform: rotateY(180deg);
+  transition: transform 0.8s ease-in-out; /* ★よりスムーズなアニメーションに */
 }
 
-/* --- カードの表と裏の共通スタイル --- */
+/* ★ホバーエフェクトは不要なので削除 */
+.haru-profile-card-container:hover .haru-profile-card {
+}
+
+.haru-profile-card.is-flipped {
+  transform: rotateY(180deg); /* ★左右反転に修正 */
+}
+
 .haru-card-front,
 .haru-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: var(--card-border-radius);
-  background: #fff;
-  color: #121212;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-}
-
-/* --- カード表面（モバイルファースト） --- */
-.haru-card-front {
-  transform: rotateY(0);
   display: flex;
   flex-direction: column;
 }
 
-.header-svg-pc {
-  display: none; /* PC用はデフォルトで非表示 */
+/* --- カード表面のデザイン --- */
+.haru-card-front {
+  display: flex;
+  flex-direction: column; /* 常に縦積みレイアウトを基本とする */
+  justify-content: space-between;
+  padding: 15px; 
 }
 
-.header-svg-mobile {
+/* ★追加：上段（ロゴ＋イラスト）を囲むコンテナ */
+.haru-card-top {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* ★追加：下段（テキスト＋フッター）を囲むコンテナ */
+.haru-card-bottom {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0; /* flexアイテムの縮小問題を回避するため */
+}
+
+.haru-card-header {
+  position: relative;
+  top: 0; /* PCレイアウトで不要になるためリセット */
+  padding: 0;
+  margin: 0;
+  border-bottom: none; /* PCレイアウトで不要になるためリセット */
+  flex: 0 0 70px; /* スマホ用に幅を固定 */
+}
+
+.header-svg-pc svg,
+.header-svg-mobile svg {
+  width: 100%;
+  height: auto;
   display: block;
+  fill: #000;
+}
+
+/* ★スマホ用のSVGはPCでは非表示 */
+.header-svg-mobile {
+  display: none;
 }
 
 .haru-card-image {
-  width: 100%;
-  aspect-ratio: 1/1;
+  width: auto; /* 幅の制御は親のflex/gridで行う */
+  aspect-ratio: 1 / 1;
+  flex-shrink: 1; /* flexアイテムとして縮むことを許可 */
 }
 
 .haru-card-image img {
@@ -605,98 +635,184 @@ html::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 0;
 }
 
 .haru-card-text-jp {
-  font-size: 15px;
+  font-size: 15px; /* ★フォントサイズを15pxに固定 */
   line-height: 1.8;
-  padding: 15px;
-  flex-grow: 1;
+  font-weight: 500; /* ★フォントの太さを調整 */
 }
 
 .haru-card-text-jp p,
 .haru-card-text-en p {
-  margin: 0;
+    margin: 0;
 }
 
 .haru-card-footer {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 15px 15px;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0; /* ★左右のパディングを削除 */
+  flex-shrink: 0;
+  gap: 15px; /* テキストと矢印の間の最小の隙間を確保 */
+  margin-top: auto; /* ★一番下に配置 */
+}
+
+.haru-card-text-en {
+  font-size: 13px; /* ★フォントサイズを13pxに固定 */
+  line-height: 1.6;
+  flex-grow: 0; /* ★自動で幅が伸びないように変更 */
+  max-width: 60%; /* ★テキストの最大幅をさらに制限 */
 }
 
 .haru-card-arrow {
-  width: 40px;
-  cursor: pointer;
+  /* margin-left: 25px; */ /* space-betweenで管理するため不要 */
 }
+
 .haru-card-arrow svg {
-  display: block;
-  width: 100%;
+  width: 40px; /* vwからpxに変更 */
+  max-width: 45px;
   height: auto;
+  fill: #000;
 }
 
-/* PC専用要素はデフォルトで非表示 */
-.haru-card-text-en,
-.haru-card-top, 
-.haru-card-bottom {
-  display: none;
-}
-
-/* --- カード裏面（モバイル・PC共通） --- */
+/* --- カード裏面のデザイン --- */
 .haru-card-back {
-  transform: rotateY(180deg);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 15px;
+  transform: rotateY(180deg); /* ★左右反転に修正 */
+  padding: 0; /* ★余白をなくす */
+  display: flex; /* ★flexboxレイアウトに変更 */
+  flex-direction: column; /* ★縦並びに */
+  font-size: 14px; /* ★フォントサイズを固定 */
+  line-height: 1.8;
+  color: #000; /* ★テキストの色を少し柔らかく */
 }
 
-.haru-card-back-text p,
+.haru-card-back-text {
+  padding: 35px 35px 0; /* 上下のパディングを調整 */
+}
+
+.haru-card-back-separator {
+  height: 1.1px;
+  background-color: #000;
+  margin: 25px 35px; /* 上下のマージンを25px、左右を35pxに */
+}
+
+.haru-card-back-tools {
+  padding: 0 35px; /* 左右のパディングを35pxに */
+}
+
 .haru-card-back-tools p,
-.haru-card-back-hashtags {
-  margin: 0;
-  text-align: center; /* デフォルトは中央揃え */
+.haru-card-back-hashtags p,
+.haru-card-back-sns p,
+.haru-card-back-text p {
+  margin: 0 0 1em; /* ★各段落の下に余白を設定 */
 }
 
-.haru-card-back-tools p:last-child {
+/* ★最後の段落の下には余白をつけない */
+.haru-card-back-tools p:last-child,
+.haru-card-back-hashtags p:last-child,
+.haru-card-back-text p:last-child {
   margin-bottom: 0;
 }
 
 .haru-card-back-tools p b {
   font-weight: 700;
-  margin-right: .5em;
 }
 
-.haru-card-back-separator {
-  border-bottom: 1px solid #e0e0e0;
-  margin: 0;
+.haru-card-back-hashtags {
+  margin-top: auto;
+  padding: 0 35px; /* 上下は0、左右に35pxのパディング */
+}
+
+.haru-card-back-sns {
+  padding: 20px 35px 30px; /* パディングを調整 (上、左右、下) */
+  margin-top: 0; /* 上マージンをリセット */
 }
 
 .sns-icons-wrapper {
-  text-align: center;
+  display: block; /* flexをやめてblock要素に */
 }
+
 .sns-icons {
-  display: inline-flex;
-  gap: 15px;
-  padding-top: 10px;
+  display: flex;
+  gap: 10px; /* アイコン間の余白 */
+  margin-top: 10px; /* テキストとの間に余白を追加 */
 }
 .sns-icons a {
   display: block;
-  transition: transform .2s ease;
-}
-.sns-icons a:hover {
-  transform: translateY(-3px);
 }
 .sns-icons svg {
-  width: 28px;
-  height: 28px;
-  fill: #333;
+  width: 32px; /* アイコンサイズを32pxに */
+  fill: #121212;
 }
 
 .haru-card-back .haru-card-arrow {
-  transform: scaleX(-1); /* 矢印を反転 */
+  position: absolute; /* absoluteに変更 */
+  bottom: 30px; /* 位置調整 */
+  right: 30px;  /* 位置調整 */
+}
+
+/* ★Flexboxレイアウトのためのスタイルを追加 */
+/* .haru-card-back {
+  display: flex;
+  flex-direction: column;
+} */
+
+/* ===========================================================
+   プロフィールカード：レスポンシブ (SP)
+=========================================================== */
+/* --- スマホ対応 (画面幅が768px以下) --- */
+@media screen and (max-width: 768px) {
+  .haru-profile-card {
+    aspect-ratio: 3 / 5;
+    height: auto;
+    max-width: 380px;
+    border-radius: 15px;
+  }
+
+  .haru-card-front {
+    /* display: flex; はPCと共通なので不要 */
+    /* flex-direction: row; は削除 */
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .haru-card-header {
+    flex: 0 0 70px; /* ヘッダーの幅を70pxに固定 */
+    border-right: 1.5px solid #000;
+    padding-right: 15px;
+  }
+
+  .header-svg-pc {
+    display: none;
+  }
+  .header-svg-mobile {
+    display: block;
+    height: 100%;
+  }
+
+  .haru-card-image {
+    width: 100%; /* 親のharu-card-topのflex itemとして幅を自動調整 */
+  }
+
+  .haru-card-text-jp {
+    margin-top: 15px; /* 上段との余白 */
+  }
+
+  .haru-card-footer {
+    /* margin-top: auto; */ /* ←ベーススタイルに移動したため不要 */
+    padding-top: 15px;
+  }
+
+  .haru-card-arrow svg {
+    align-self: flex-end; /* 右端に配置 */
+  }
+  
+  .haru-card-main-content, .haru-card-body, .haru-card-text-en, .haru-card-arrow {
+    /* スマホでは非表示 */
+    display: none;
+  }
 }
 
 /* ===========================================================
@@ -704,98 +820,64 @@ html::after {
 =========================================================== */
 @media screen and (min-width: 769px) {
 
-  /* --- PC用のカードサイズ調整 --- */
-  .haru-profile-card {
-    width: min(100% - 2rem, 500px); /* PCでは少し大きく */
-    aspect-ratio: 4/3;
-    min-height: auto;
-  }
-
-  /* --- PC用のレイアウト（Gridに切り替え） --- */
+  /* ① "箱" を消して中の要素だけ親グリッドに流す */
   .haru-card-top,
   .haru-card-bottom {
     display: contents;
   }
 
+  /* ② カード全体をグリッド化 */
   .haru-card-front {
     display: grid;
-    grid-template-columns: 35% 1fr;
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 35% 1fr;     /* 左：イラスト　右：JP 文 */
+    grid-template-rows: auto 1fr auto;  /* ロゴ / 本文 / フッター */
     grid-template-areas:
       "logo   logo"
       "image  jp"
       "footer footer";
     gap: 15px;
-    padding: 15px;
+    padding: 15px; /* PC用のパディングを再設定 */
   }
-  
-  /* --- グリッドエリア割り当て --- */
+
+  /* ③ エリア割り当て */
   .haru-card-header  { grid-area: logo; }
   .haru-card-image   { grid-area: image; }
   .haru-card-text-jp { grid-area: jp; }
   .haru-card-footer  { grid-area: footer; }
-  
-  /* --- PC用ヘッダー（ネガティブマージンで上に詰める） --- */
+
+  /* ④ いらくなった固定幅を解除・調整 */
   .haru-card-header {
-    margin: -15px -15px 0;
-    padding: 0;
+    flex: 0 0 auto; /* モバイルの70px指定を解除 */
+    border-right: none; /* スマホ用の区切り線を解除 */
+    padding-right: 0;
+    border-bottom: 1.5px solid #000; /* PC用の区切り線を復活 */
+    padding-bottom: 0; /* ★パディングを削除 */
+    margin: -15px -15px 0; /* ★ネガティブマージンで親のパディングを相殺 */
     border-radius: 10px 10px 0 0;
-    overflow: hidden;
+    overflow: hidden; /* SVGのはみ出しをマスク */
   }
-
-  .header-svg-pc { display: block; }
-  .header-svg-mobile { display: none; }
   
-  .header-svg-pc svg,
-  .header-svg-mobile svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    fill: #121212;
-  }
-
-  /* --- PC用画像（パディングトリックで高さを確保） --- */
   .haru-card-image {
+    grid-area: image;
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 100%;
+    padding-top: 100%; /* 幅100%分の高さを確保し正方形にする */
     overflow: hidden;
-    aspect-ratio: auto; /* パディングトリックのためリセット */
   }
 
   .haru-card-image img {
     position: absolute;
     inset: 0;
-  }
-
-  /* --- PC用テキストとフッターの調整 --- */
-  .haru-card-text-jp {
-    padding: 0;
-    flex-grow: 0; /* flexプロパティをリセット */
-  }
-
-  .haru-card-text-en {
-    display: block; /* PCで表示 */
-    padding: 0 0 1em;
-    font-size: 14px;
-    color: #757575;
-  }
-  
-  .haru-card-footer {
-    padding: 0;
-  }
-
-  .haru-card-arrow {
-    width: auto;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
   }
 
-  /* --- PC用カード裏面のテキスト揃え --- */
   .haru-card-back-text p,
   .haru-card-back-tools p,
   .haru-card-back-hashtags,
   .sns-icons {
-    text-align: left;
+    text-align: left; /* テキストを左揃えに */
   }
 }
