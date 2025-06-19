@@ -766,16 +766,16 @@ html::after {
 
   .haru-card-front {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
       "logo  logo"
-      "rule  rule"
       "image jp"
       "foot  foot";
     gap: var(--card-pad-inner) var(--card-pad-inner);
     padding: var(--card-pad-outer);
   }
   .haru-card-front::before {
-    display: block;
+    display: none;
   }
 
   .haru-card-header {
@@ -783,7 +783,7 @@ html::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: none;
+    border-bottom: 1.5px solid var(--border-color);
     overflow: hidden;
     padding: 0 var(--card-pad-inner);
   }
@@ -835,6 +835,20 @@ html::after {
   .haru-card-arrow svg {
     width: 40px;
     height: auto;
+  }
+
+  .haru-card-logo-pc {
+    display: block;
+  }
+  .haru-card-logo-sp {
+    display: none;
+  }
+  .haru-card-text-en {
+    grid-area: foot;
+    margin: 0;
+  }
+  .haru-card-footer {
+    grid-area: foot;
   }
 }
 
