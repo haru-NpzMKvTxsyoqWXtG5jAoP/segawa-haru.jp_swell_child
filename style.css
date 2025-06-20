@@ -776,7 +776,25 @@ html::after {
 .haru-card-back-tools p, .haru-card-back-hashtags p { font-size: .85rem; line-height: 1.6; margin: 0 0 1em; }
 .haru-card-back-tools p:last-child, .haru-card-back-hashtags p:last-child { margin-bottom: 0; }
 .haru-card-back-tools strong { font-weight: 700; }
-.haru-card-back-sns p { font-size: .85rem; margin-bottom: 10px; }
-.sns-icons { display: flex; gap: var(--haru-gap); }
-.sns-icons img { width: 32px; height: 32px; }
-.haru-card-arrow-back { /* 裏面の矢印、必要ならここにスタイルを追加 */ }
+.haru-card-back-sns {
+  display: grid;                       /* 見出し +（アイコン | 矢印）の2行構成 */
+  gap: var(--haru-gap);
+  grid-template-columns: 1fr auto;    /* 左:可変  右:最小幅(矢印) */
+  grid-template-areas:
+    "heading heading"
+    "icons   arrow";
+}
+.haru-card-back-sns p {               /* 見出しテキスト */
+  grid-area: heading;
+  margin: 0 0 var(--haru-gap) 0;      /* 下だけ余白 */
+}
+.haru-card-back-sns .sns-icons {      /* アイコン行 */
+  grid-area: icons;
+  display: flex;
+  gap: var(--haru-gap);
+}
+.haru-card-back-sns .haru-card-arrow {
+  grid-area: arrow;
+  justify-self: end;                  /* 右端に寄せる */
+  align-self: center;                 /* 垂直中央 */
+}
