@@ -672,14 +672,14 @@ html::after {
   flex-direction: column;
   justify-content: space-between;
 }
-.haru-card-text-jp p { font-size: 0.9rem; line-height: 1.6; margin: 0 0 1em; }
+.haru-card-text-jp p { font-size: 15px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card-text-jp p:last-child { margin-bottom: 0; }
 .haru-card-footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-.haru-card-text-en p { font-size: 0.8rem; line-height: 1.5; margin: 0; }
+.haru-card-text-en p { font-size: 14px; line-height: 1.5; margin: 0; }
 .haru-card-arrow img { width: 35px; }
 
 
