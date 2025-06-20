@@ -628,8 +628,10 @@ html::after {
 =========================================================== */
 .haru-card-front {
   display: grid;
-  grid-template-columns: 1fr 150px;
+  /* 1列目(ロゴ列)は 80〜120px の可変幅、2列目は残り全部 */
+  grid-template-columns: clamp(80px, 28vw, 120px) 1fr;
   grid-template-rows: auto 1.5px 1fr;
+  /* 行間 gap は維持し、列間 gap を 15px に調整 */
   gap: var(--haru-gap) 15px;
 }
 .header-svg-pc { display: none; }
@@ -641,7 +643,11 @@ html::after {
   display: flex;
   align-items: center;
 }
-.header-svg-mobile img { height: 120px; width: auto; }
+.header-svg-mobile img {
+  width: 100%;     /* 列幅いっぱいに広げる */
+  height: auto;    /* 比率維持 */
+  max-width: 120px;/* 上限を設けて過度な拡大を防ぐ */
+}
 
 .haru-card-image {
   grid-row: 1;
