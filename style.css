@@ -629,8 +629,8 @@ html::after {
 =========================================================== */
 .haru-card-front {
   display: grid;
-  /* 左ロゴ列 : 右画像列 = 1 : 2.2 の固定比率 */
-  grid-template-columns: 1fr 2.2fr;
+  /* 左ロゴ列 : 右画像列 = 1.5 : 2.2 の固定比率 */
+  grid-template-columns: 1.5fr 2.2fr;
   grid-template-rows: auto 1.5px 1fr;
   /* 行間 gap は維持し、列間 gap を 15px に調整 */
   gap: var(--haru-gap) 15px;
@@ -645,9 +645,8 @@ html::after {
   align-items: stretch; /* ロゴを行全体の高さに伸ばす */
 }
 .header-svg-mobile img {
-  height: 100%;    /* 行高いっぱいに伸ばす */
-  width: auto;     /* 比率維持 */
-  max-height: 100%;
+  height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
+  width: 100%;     /* 列幅いっぱいに広げる */
 }
 
 .haru-card-image {
