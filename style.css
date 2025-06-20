@@ -563,154 +563,154 @@ html::after {
 }
 
 /* ===========================================================
-   プロフィールカード
+   グローバル変数
 =========================================================== */
-/* 旧スタイルは2025リファクタにより削除されました */
-
-.s-btn-arrow::after,
-.p-postList__arrow,
-.c-arrowCircle::before {
-  content: "";
-}
-
-/* ---------- 旧プロフィールカード v1 レスポンシブブロックを丸ごと削除 ---------- */
-/*
-@media (max-width: 768px) {
-  .haru-card-footer {
-    align-items: flex-start;
-  }
-}
-
-@media (min-width: 769px) {
-  ・・・（旧グリッド定義一式）・・・
-}
-*/
-
-/* ===========================================================
-   プロフィールカード（2025 リファクタ）
-=========================================================== */
-
-/* ── 共通変数 ────────────────────────── */
-/*
 :root {
+  /* (他の変数は省略) */
+
+  /* ★プロフィールカード用の変数を一元管理 */
+  --haru-gap: clamp(14px, 3vw, 22px);
   --haru-card-radius: 12px;
-  --haru-gap: clamp(12px, 2vw, 20px);
   --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
 }
-*/
 
-/* ── 外枠 & カード本体 ────────────────── */
-.haru-profile-card-container{
-  perspective:1000px;
-  display:flex;
-  justify-content:center;
+/* ===========================================================
+   プロフィールカード【最終完成版】
+=========================================================== */
+
+/* --- カードの基本コンテナ --- */
+.haru-profile-card-container {
+  padding: clamp(2rem, 5vw, 4rem);
+}
+.haru-profile-card {
+  position: relative;
+}
+.haru-card-front {
+  background: #fff;
+  border-radius: var(--haru-card-radius);
+  box-shadow: var(--haru-shadow);
+  overflow: hidden;
+  padding: var(--haru-gap);
 }
 
-.haru-profile-card{
-  width:clamp(280px, 90vw, 420px);
-  aspect-ratio:3/4;                /* 高さは比率で管理 */
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+/* ===========================================================
+   スマホ表示のレイアウト (< 768px)
+=========================================================== */
+.haru-profile-card {
+  width: clamp(320px, 90vw, 420px);
+  aspect-ratio: 3 / 4.5;
+  min-height: 480px; /* ★Safari旧バグ対策 */
+}
+.haru-card-front {
+  display: grid;
+  /* ★SPの列幅をより安全な指定に */
+  grid-template-columns: 1fr 150px;
+  grid-template-rows: auto 1.5px 1fr;
+  gap: var(--haru-gap) 15px;
+}
+/* 表示切り替え */
+.header-svg-pc { display: none; }
+.header-svg-mobile { display: block; }
+
+/* 1. ロゴ+イラスト画像 */
+.haru-card-head {
+  grid-row: 1;
+  grid-column: 1; /* ロゴは左列 */
+}
+.header-svg-mobile svg { height: 120px; width: auto; }
+
+.haru-card-image {
+  grid-row: 1;
+  grid-column: 2; /* 画像は右列 */
+}
+.haru-card-image img, .haru-card-image picture {
+  width: 100%;
+  border-radius: 6px;
 }
 
-.haru-profile-card.is-flipped{
-  transform:rotateY(180deg);
+/* 2. 区切り線 */
+.haru-card-rule {
+  grid-row: 2;
+  grid-column: 1 / 3; /* 全幅 */
+  background: #121212;
 }
 
-/* ── 表裏共通フェース ─────────────────── */
-.haru-card-front,
-.haru-card-back{
-  inset:0;
-  position:absolute;
-  display:grid;
-  grid-template-rows:auto 1fr auto;/* 頭／本文／フッタ */
-  border-radius:var(--haru-card-radius);
-  background:#fff;
-  box-shadow:var(--haru-shadow);
-  backface-visibility:hidden;
-  overflow:hidden;
+/* 3. テキスト関連 */
+.haru-card-main-content {
+  grid-row: 3;
+  grid-column: 1 / 3; /* 全幅 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+.haru-card-text-jp p { font-size: 0.9rem; line-height: 1.6; margin: 0 0 1em; }
+.haru-card-text-jp p:last-child { margin-bottom: 0; }
+.haru-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.haru-card-text-en p { font-size: 0.8rem; line-height: 1.5; margin: 0; }
+.haru-card-arrow svg { width: 35px; }
 
-/* 裏面は 180° 反転しておく */
-.haru-card-back{transform:rotateY(180deg);}
 
-/* ──────────────────────────────── */
-/* ==========  表面  (haru-card-front)  ========== */
-.haru-card-head{
-  display:flex;
-  align-items:center;
-  gap:var(--haru-gap);
-  padding:var(--haru-gap);
-  border-bottom:1px solid #eee;
-}
-/* PC ロゴ or モバイルロゴを同じ枠で制御 */
-.header-svg-pc,
-.header-svg-mobile{
-  width:120px;
-  max-width:40%;
-}
-
-.haru-card-body{
-  display:grid;
-  gap:var(--haru-gap);
-  padding:var(--haru-gap);
-}
-.haru-card-image img,
-.haru-card-image picture{width:100%;height:auto;border-radius:8px;}
-
-.haru-card-text-jp p{margin:0 0 .8em;font-size:.9rem;line-height:1.5;}
-
-.haru-card-footer{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:var(--haru-gap);
-  border-top:1px solid #eee;
-}
-.haru-card-text-en{font-size:.85rem;font-weight:500;}
-.haru-card-arrow svg{width:48px;height:auto;}
-
-/* ──────────────────────────────── */
-/* ==========  裏面  (haru-card-back)  ========== */
-.haru-card-back-text,
-.haru-card-back-tools,
-.haru-card-back-hashtags{
-  padding:var(--haru-gap);
-}
-.haru-card-back-separator{
-  height:1px;
-  background:#eee;
-  margin:0 var(--haru-gap);
-}
-
-.haru-card-back-sns{
-  margin-top:auto;                 /* 下寄せ */
-  padding:var(--haru-gap);
-  text-align:center;
-}
-.sns-icons{
-  display:flex;
-  justify-content:center;
-  gap:var(--haru-gap);
-}
-.sns-icons svg{width:32px;height:32px;}
-
-/* ── モバイル → PC ブレイクポイント ───────── */
-@media(min-width:768px){
-  /* 表面レイアウトを横並びに拡張 */
-  .haru-card-front{
-    grid-template-columns:100px 1fr; /* 1列目：イラスト／2列目：テキスト */
-    grid-template-rows:auto 1fr auto;
+/* ===========================================================
+   PC/タブレット表示のレイアウト (≥ 768px)
+=========================================================== */
+@media (min-width: 768px) {
+  .haru-profile-card {
+    width: clamp(700px, 90vw, 900px);
+    aspect-ratio: 16 / 9;
+    min-height: initial; /* PCではリセット */
   }
-  .haru-card-head{grid-column:1 / -1;}      /* 横幅いっぱい */
-  .haru-card-image{grid-row:2 / span 2;}     /* 左列で縦に伸ばす */
-  .haru-card-body{grid-column:2;}
-  .haru-card-footer{grid-column:2;}
-}
+  .haru-card-front {
+    display: grid;
+    grid-template-columns: clamp(200px, 30%, 260px) 1fr; /* 画像 | テキスト */
+    grid-template-rows: auto 1.5px 1fr; /* ヘッダー / 線 / メイン */
+    padding: var(--haru-gap);
+    gap: 0 var(--haru-gap);
+  }
+  /* 表示切り替え */
+  .header-svg-pc { display: block; }
+  .header-svg-mobile { display: none; }
 
-/* 旧スタイル打ち消し ------------------------------- */
-.haru-card-front::before{display:none !important;}
-@media (max-width:768px){
-  .haru-card-footer{align-items:center !important;}
+  /* 1. ロゴ */
+  .haru-card-head {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: var(--haru-gap);
+  }
+  .header-svg-pc svg { height: 50px; }
+
+  /* 2. 区切り線 */
+  .haru-card-rule {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+
+  /* 3. 画像＆テキスト */
+  .haru-card-main-content {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    display: grid;
+    /* ★subgridの代わりに親と同じ値を書くことで互換性を担保 */
+    grid-template-columns: clamp(200px, 30%, 260px) 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "image jp"
+      "image foot";
+    padding-top: var(--haru-gap);
+    gap: 0 var(--haru-gap);
+  }
+  .haru-card-image {
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+  }
+  .haru-card-image img { height: 100%; object-fit: cover; }
+  .haru-card-text-jp { grid-area: jp; }
+  .haru-card-footer { grid-area: foot; align-self: end; }
 }
