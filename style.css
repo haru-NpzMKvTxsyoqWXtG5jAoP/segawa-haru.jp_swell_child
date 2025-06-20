@@ -593,9 +593,9 @@ html::after {
 /* --- カード回転の土台 --- */
 .haru-profile-card {
   width: clamp(320px, 90vw, 420px);
-  /* スマホでは高さをやや高めに確保し、内部が切れないようにする */
-  aspect-ratio: 3 / 5.8;
-  min-height: 560px; /* Safari旧バグ対策 */
+  /* スマホでは高さを程よく確保しつつ、以前より低めに */
+  aspect-ratio: 3 / 5;
+  min-height: 500px; /* Safari旧バグ対策 */
   
   /* ▼▼▼ GPTが指摘してくれた3D設定 ▼▼▼ */
   position: relative;
@@ -653,9 +653,15 @@ html::after {
 .haru-card-image {
   grid-row: 1;
   grid-column: 2;
+  /* 行高いっぱいに画像を伸ばす */
+  align-self: stretch;
 }
-.haru-card-image img, .haru-card-image picture {
+/* picture 自体も stretch させたいので別々に指定 */
+.haru-card-image picture,
+.haru-card-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;  /* 縦横比を保ちつつ塗りつぶす */
   border-radius: 6px;
   display: block;
 }
