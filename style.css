@@ -628,8 +628,8 @@ html::after {
 =========================================================== */
 .haru-card-front {
   display: grid;
-  /* 1列目(ロゴ列)は 80〜120px の可変幅、2列目は残り全部 */
-  grid-template-columns: clamp(80px, 28vw, 120px) 1fr;
+  /* 左ロゴ列 : 右画像列 = 1 : 2.2 の固定比率 */
+  grid-template-columns: 1fr 2.2fr;
   grid-template-rows: auto 1.5px 1fr;
   /* 行間 gap は維持し、列間 gap を 15px に調整 */
   gap: var(--haru-gap) 15px;
