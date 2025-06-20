@@ -45,15 +45,14 @@
 
         <!-- 日本語テキスト -->
         <div class="haru-card-text-jp">
-          <p>一人ひとりの「やりたいこと」に、応える教えるクリエイターとして、クリエイティブツールのレクチャー/デザイン/制作を承っています。</p>
-          <p>アートが好きで、日本画やパターンデザインの制作も行っています。</p>
+          <p>一人ひとりの「やりたいこと」に、応える教えるクリエイターとして、レクチャー/デザイン/制作を承っています。アートが好きで、日本画やパターンデザインの制作もしています。</p>
         </div>
 
         <!-- ▼ フッター（英語テキスト & 矢印） -->
         <footer class="haru-card-footer">
           <div class="haru-card-text-en">
-            <p>I'm a creator who helps people bring their ideas to life through creative tool lectures, design, and production.</p>
-            <p>I also enjoy making art, including Japanese painting and pattern design.</p>
+            <p>Creator & Lecturer｜Design, Production</p>
+            <p>Also Nihonga & Pattern Design.</p>
           </div>
 
           <!-- 矢印（82×15 ≒5.47:1） -->

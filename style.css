@@ -632,8 +632,8 @@ html::after {
   /* 左ロゴ列 : 右画像列 = 1.5 : 2.2 の固定比率 */
   grid-template-columns: 1.5fr 2.2fr;
   grid-template-rows: auto 1.5px 1fr;
-  /* 行間 gap は維持し、列間 gap を 15px に調整 */
-  gap: var(--haru-gap) 15px;
+  /* 行間gapは0、列間のみ 15px 固定 */
+  gap: 0 15px;
 }
 .header-svg-pc { display: none; }
 .header-svg-mobile { display: block; }
@@ -643,6 +643,7 @@ html::after {
   grid-column: 1;
   display: flex;
   align-items: stretch; /* ロゴを行全体の高さに伸ばす */
+  margin-bottom: var(--haru-gap); /* 区切り線までの固定余白 */
 }
 .header-svg-mobile img {
   height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
@@ -661,7 +662,6 @@ html::after {
   width: 100%;
   height: 100%;
   object-fit: cover;  /* 縦横比を保ちつつ塗りつぶす */
-  border-radius: 6px;
   display: block;
 }
 
@@ -694,7 +694,7 @@ html::after {
     padding: 0;
   }
   .haru-card-main-content {
-    padding: 0 var(--haru-gap) var(--haru-gap);
+    padding: var(--haru-gap);
   }
 }
 
