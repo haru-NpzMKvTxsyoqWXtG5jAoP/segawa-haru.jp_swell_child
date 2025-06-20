@@ -695,7 +695,7 @@ html::after {
     padding: 0;
   }
   .haru-card-main-content {
-    padding: var(--haru-gap);
+    padding: 0 var(--haru-gap) var(--haru-gap);
   }
 }
 
