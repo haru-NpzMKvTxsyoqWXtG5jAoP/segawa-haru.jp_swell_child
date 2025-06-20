@@ -714,9 +714,8 @@ html::after {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
     /* 1行目: ロゴ  2行目: 区切り線  3行目: 画像+テキスト */
     grid-template-rows: auto 1.5px 1fr;
-    padding: var(--haru-gap);
-    /* 行間・列間とも var(--haru-gap) で統一 */
-    gap: var(--haru-gap) var(--haru-gap);
+    padding: 0; /* ロゴ・区切り線は左右0でフルブリード */
+    gap: var(--haru-gap) var(--haru-gap); /* 行・列ともに余白を統一 */
   }
   .header-svg-pc { display: block; }
   .header-svg-mobile { display: none; }
@@ -742,6 +741,7 @@ html::after {
     grid-row: 3;
     width: 100%;
     height: 100%;
+    padding-left: var(--haru-gap);
   }
   .haru-card-image img {
     width: 100%;
@@ -757,6 +757,7 @@ html::after {
     flex-direction: column;
     justify-content: space-between;
     padding-left: 0; /* 列gapで余白を管理 */
+    padding-right: var(--haru-gap);
   }
   .haru-card-text-jp { padding-left: 0; }
   .haru-card-footer  { align-self: flex-end; }
