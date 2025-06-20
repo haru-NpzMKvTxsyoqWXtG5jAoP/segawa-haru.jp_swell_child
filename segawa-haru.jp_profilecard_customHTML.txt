@@ -27,21 +27,21 @@
         </div>
       </header>
 
+      <!-- ▼▼ 画像ブロックを header 横に配置するため .haru-card-front 直下へ移動 ▼▼ -->
+      <picture class="haru-card-image">
+        <source media="(min-width: 768px)"
+                srcset="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon_pc.webp">
+        <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon_sp.webp"
+             alt="HARU SEGAWA のイラスト"
+             width="300" height="300"
+             loading="lazy" decoding="async">
+      </picture>
+
       <!-- 区切り線 -->
       <div class="haru-card-rule"></div>
 
-      <!-- === 2段目 : 画像 / JP / フッター === -->
+      <!-- === 2段目 : JP / フッター === -->
       <div class="haru-card-main-content">
-
-        <!-- イラスト画像：PC⇔SP 切り替え（1:1） -->
-        <picture class="haru-card-image">
-          <source media="(min-width: 768px)"
-                  srcset="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon.webp">
-          <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon_sp.webp"
-               alt="HARU SEGAWA のイラスト"
-               width="300" height="300"
-               loading="lazy" decoding="async">
-        </picture>
 
         <!-- 日本語テキスト -->
         <div class="haru-card-text-jp">
