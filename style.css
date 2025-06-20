@@ -563,29 +563,53 @@ html::after {
 }
 
 /* ===========================================================
-   グローバル変数
+   プロフィールカード用の変数を:rootにまとめる
 =========================================================== */
 :root {
-  /* (他の変数は省略) */
+  /* (君のサイトの他の変数はそのまま残してな) */
 
-  /* ★プロフィールカード用の変数を一元管理 */
+  /* ★プロフィールカード用の変数をここに追加 */
   --haru-gap: clamp(14px, 3vw, 22px);
   --haru-card-radius: 12px;
   --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
 }
 
+
 /* ===========================================================
-   プロフィールカード【最終完成版】
+   プロフィールカード【最終完成版 Ver.3D】
 =========================================================== */
 
 /* --- カードの基本コンテナ --- */
 .haru-profile-card-container {
   padding: clamp(2rem, 5vw, 4rem);
 }
+
+/* --- カード回転の土台 --- */
 .haru-profile-card {
+  width: clamp(320px, 90vw, 420px);
+  aspect-ratio: 3 / 4.5;
+  min-height: 480px; /* Safari旧バグ対策 */
+  
+  /* ▼▼▼ GPTが指摘してくれた3D設定 ▼▼▼ */
   position: relative;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
+  cursor: pointer;
 }
-.haru-card-front {
+.haru-profile-card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* --- カード表面・裏面の共通スタイル --- */
+.haru-card-front,
+.haru-card-back {
+  /* ▼▼▼ 表と裏を重ねて、裏側を非表示にする設定 ▼▼▼ */
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Safari用 */
+
   background: #fff;
   border-radius: var(--haru-card-radius);
   box-shadow: var(--haru-shadow);
@@ -596,49 +620,42 @@ html::after {
 /* ===========================================================
    スマホ表示のレイアウト (< 768px)
 =========================================================== */
-.haru-profile-card {
-  width: clamp(320px, 90vw, 420px);
-  aspect-ratio: 3 / 4.5;
-  min-height: 480px; /* ★Safari旧バグ対策 */
-}
 .haru-card-front {
   display: grid;
-  /* ★SPの列幅をより安全な指定に */
   grid-template-columns: 1fr 150px;
   grid-template-rows: auto 1.5px 1fr;
   gap: var(--haru-gap) 15px;
 }
-/* 表示切り替え */
 .header-svg-pc { display: none; }
 .header-svg-mobile { display: block; }
 
-/* 1. ロゴ+イラスト画像 */
 .haru-card-head {
   grid-row: 1;
-  grid-column: 1; /* ロゴは左列 */
+  grid-column: 1;
+  display: flex;
+  align-items: center;
 }
-.header-svg-mobile svg { height: 120px; width: auto; }
+.header-svg-mobile img { height: 120px; width: auto; }
 
 .haru-card-image {
   grid-row: 1;
-  grid-column: 2; /* 画像は右列 */
+  grid-column: 2;
 }
 .haru-card-image img, .haru-card-image picture {
   width: 100%;
   border-radius: 6px;
+  display: block;
 }
 
-/* 2. 区切り線 */
 .haru-card-rule {
   grid-row: 2;
-  grid-column: 1 / 3; /* 全幅 */
+  grid-column: 1 / 3;
   background: #121212;
 }
 
-/* 3. テキスト関連 */
 .haru-card-main-content {
   grid-row: 3;
-  grid-column: 1 / 3; /* 全幅 */
+  grid-column: 1 / 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -651,7 +668,7 @@ html::after {
   align-items: flex-end;
 }
 .haru-card-text-en p { font-size: 0.8rem; line-height: 1.5; margin: 0; }
-.haru-card-arrow svg { width: 35px; }
+.haru-card-arrow img { width: 35px; }
 
 
 /* ===========================================================
@@ -661,20 +678,18 @@ html::after {
   .haru-profile-card {
     width: clamp(700px, 90vw, 900px);
     aspect-ratio: 16 / 9;
-    min-height: initial; /* PCではリセット */
+    min-height: initial;
   }
   .haru-card-front {
     display: grid;
-    grid-template-columns: clamp(200px, 30%, 260px) 1fr; /* 画像 | テキスト */
-    grid-template-rows: auto 1.5px 1fr; /* ヘッダー / 線 / メイン */
+    grid-template-columns: clamp(200px, 30%, 260px) 1fr;
+    grid-template-rows: auto 1.5px 1fr;
     padding: var(--haru-gap);
     gap: 0 var(--haru-gap);
   }
-  /* 表示切り替え */
   .header-svg-pc { display: block; }
   .header-svg-mobile { display: none; }
 
-  /* 1. ロゴ */
   .haru-card-head {
     grid-column: 1 / 3;
     grid-row: 1;
@@ -683,20 +698,17 @@ html::after {
     align-items: center;
     padding-bottom: var(--haru-gap);
   }
-  .header-svg-pc svg { height: 50px; }
+  .header-svg-pc img { height: 50px; width: auto; }
 
-  /* 2. 区切り線 */
   .haru-card-rule {
     grid-column: 1 / 3;
     grid-row: 2;
   }
 
-  /* 3. 画像＆テキスト */
   .haru-card-main-content {
     grid-column: 1 / 3;
     grid-row: 3;
     display: grid;
-    /* ★subgridの代わりに親と同じ値を書くことで互換性を担保 */
     grid-template-columns: clamp(200px, 30%, 260px) 1fr;
     grid-template-rows: 1fr auto;
     grid-template-areas:
@@ -711,6 +723,26 @@ html::after {
     height: 100%;
   }
   .haru-card-image img { height: 100%; object-fit: cover; }
-  .haru-card-text-jp { grid-area: jp; }
-  .haru-card-footer { grid-area: foot; align-self: end; }
+  .haru-card-text-jp { grid-area: jp; padding-left: var(--haru-gap); }
+  .haru-card-footer { grid-area: foot; align-self: end; padding-left: var(--haru-gap); }
 }
+
+/* ===========================================================
+   プロフィールカード裏面のスタイル
+=========================================================== */
+.haru-card-back {
+  transform: rotateY(180deg); /* ★裏面は最初からひっくり返しておく */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.haru-card-back-text p { font-size: 0.9rem; line-height: 1.7; margin: 0 0 1em; }
+.haru-card-back-text p:last-child { margin-bottom: 0; }
+.haru-card-back-separator { height: 1.5px; background: #eee; }
+.haru-card-back-tools p, .haru-card-back-hashtags p { font-size: .85rem; line-height: 1.6; margin: 0 0 1em; }
+.haru-card-back-tools p:last-child, .haru-card-back-hashtags p:last-child { margin-bottom: 0; }
+.haru-card-back-tools strong { font-weight: 700; }
+.haru-card-back-sns p { font-size: .85rem; margin-bottom: 10px; }
+.sns-icons { display: flex; gap: var(--haru-gap); }
+.sns-icons img { width: 32px; height: 32px; }
+.haru-card-arrow-back { /* 裏面の矢印、必要ならここにスタイルを追加 */ }
