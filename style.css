@@ -48,12 +48,24 @@ body {
   /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
   --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);
   /* ★縦型ヘッダーのフォントサイズを動的に変更するための変数を定義 */
-  --vertical-header-font-size: clamp(13px, calc(12px + 0.28vw), 16px);
+  /* --vertical-header-font-size: clamp(13px, calc(12px + 0.28vw), 16px);  ← duplicate */
 
-  --card-width: clamp(300px, 90vw, 420px);
-  --card-height: 580px;
-  --border-color: #000;
-  --gap-pc: var(--card-pad-inner);
+  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  /* --card-width: clamp(300px, 90vw, 420px);  ← duplicate */
+
+  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  /* --card-height: 580px;                     ← duplicate */
+
+  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  /* --border-color: #000;                      ← duplicate */
+
+  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  /* --gap-pc: var(--card-pad-inner);           ← duplicate */
+
+  /* プロフィールカードの新変数 */
+  --haru-card-radius: 12px;
+  --haru-gap: clamp(12px, 2vw, 20px);
+  --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
 }
 
 /* ===========================================================
@@ -553,307 +565,7 @@ html::after {
 /* ===========================================================
    プロフィールカード
 =========================================================== */
-.haru-profile-card-container {
-  padding: 5vw 2vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ===========================================================
-   プロフィールカード（モバイルファースト）
-=========================================================== */
-
-/* --- カード全体のコンテナ --- */
-.haru-profile-card-container {
-  padding: 5vw 2vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* --- カードの基本スタイル（スマホ表示が基準） --- */
-.haru-profile-card {
-  width: 100%;
-  max-width: 380px;
-  aspect-ratio: 3 / 5;
-  perspective: 2000px;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease-in-out;
-}
-.haru-profile-card.is-flipped {
-  transform: rotateY(180deg);
-}
-
-/* --- カードの表と裏の共通スタイル --- */
-.haru-card-front,
-.haru-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  background-color: #fff;
-  border-radius: var(--card-radius);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- カード表面（スマホ表示が基準） --- */
-.haru-card-front {
-  display: grid;
-  grid-template-columns: 90px 1fr;
-  grid-template-areas:
-    "logo image"
-    "rule rule"
-    "jp   jp"
-    "foot foot";
-  gap: var(--card-pad-inner);
-  padding: var(--card-pad-outer);
-  background-color: #fff;
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-elevation-medium);
-}
-.haru-card-front::before {
-  content: "";
-  grid-area: rule;
-  border-top: 1.5px solid var(--border-color);
-}
-
-.haru-card-header {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: none;
-}
-.header-svg-pc {
-  display: none;
-}
-.header-svg-mobile {
-  display: block;
-}
-.header-svg-mobile svg {
-  width: 100%;
-  height: auto;
-}
-.haru-card-image {
-  grid-area: image;
-}
-
-.haru-card-text-jp {
-  grid-area: jp;
-}
-
-.haru-card-footer {
-  grid-area: foot;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: var(--card-pad-inner);
-  border-top: none;
-  justify-content: space-between;
-}
-
-.haru-card-text-en,
-.haru-card-arrow {
-  display: block;
-}
-
-.haru-card-arrow {
-  /*
-  width: clamp(32px, 8.5vw, 48px);
-  height: auto;
-  */
-  margin-left: auto;
-}
-
-/* PCで表示する要素は、デフォルト（スマホ）では非表示にする */
-.haru-card-main-content,
-.haru-card-body,
-.haru-card-text-en {
-  display: none;
-}
-
-/* --- カード裏面のデザイン --- */
-.haru-card-back {
-  background-color: #fff;
-  backface-visibility: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--card-radius);
-  box-shadow: var(--shadow-elevation-medium);
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  padding: var(--card-pad-outer);
-  gap: var(--card-pad-inner);
-  justify-content: space-between;
-}
-
-.haru-card-back-text {
-  font-size: 0.9rem;
-  line-height: 1.8;
-}
-
-.haru-card-back-separator {
-  height: 1.1px;
-  background-color: #000;
-  margin: var(--card-pad-inner) 0;
-}
-
-.haru-card-back-tools { /* paddingは親に任せる */ }
-
-.haru-card-back-tools p,
-.haru-card-back-hashtags p,
-.haru-card-back-text p {
-  margin: 0 0 1em;
-}
-
-.haru-card-back-tools p:last-child,
-.haru-card-back-hashtags p:last-child,
-.haru-card-back-text p:last-child {
-  margin-bottom: 0;
-}
-
-.haru-card-back-tools p b { font-weight: 700; }
-
-.haru-card-back-hashtags {
-  margin-top: auto;
-}
-
-.haru-card-back-sns {
-  padding-top: var(--card-pad-inner);
-}
-
-.sns-icons-wrapper { display: block; }
-.sns-icons {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-.sns-icons a { display: block; }
-.sns-icons svg {
-  width: 32px;
-  fill: #121212;
-}
-
-.haru-card-back .haru-card-arrow {
-  position: absolute;
-  bottom: var(--card-pad-outer);
-  right: var(--card-pad-outer);
-}
-
-/* ===========================================================
-   プロフィールカード：レスポンシブ (PC)
-=========================================================== */
-@media (min-width: 769px) {
-  .haru-profile-card {
-    max-width: 900px;
-    aspect-ratio: 16 / 9;
-  }
-  .haru-profile-card-container {
-    padding: clamp(2rem, 3.5vw, 4rem);
-  }
-
-  .haru-card-front {
-    grid-template-columns: clamp(260px, 30%, 380px) 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "logo  logo"
-      "image jp"
-      "foot  foot";
-    gap: var(--card-pad-inner) var(--card-pad-inner);
-    padding: var(--card-pad-outer);
-  }
-  .haru-card-front::before {
-    display: none;
-  }
-
-  .haru-card-header {
-    min-height: 88px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1.5px solid var(--border-color);
-    overflow: hidden;
-    padding: 0 var(--card-pad-inner);
-  }
-
-  .haru-card-text-jp {
-    align-self: start;
-    padding-bottom: 2em;
-    min-height: 1px;
-  }
-
-  .haru-card-footer {
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    min-height: 1px;
-  }
-
-  .haru-card-image {
-    height: 100%;
-    object-fit: cover;
-  }
-  .haru-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* 表示切替 */
-  .header-svg-pc {
-    display: block;
-    width: 100%;
-  }
-  .header-svg-pc svg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .header-svg-mobile {
-    display: none;
-  }
-  .haru-card-text-en {
-    display: block;
-    max-width: none;
-  }
-  .haru-card-arrow {
-    display: block;
-    cursor: pointer;
-  }
-  .haru-card-arrow svg {
-    width: 40px;
-    height: auto;
-  }
-
-  .haru-card-logo-pc {
-    display: block;
-  }
-  .haru-card-logo-sp {
-    display: none;
-  }
-  .haru-card-text-en {
-    grid-area: foot;
-    margin: 0;
-  }
-  .haru-card-footer {
-    grid-area: foot;
-  }
-}
-
-/* --- カード裏面のデザイン --- */
-/* ... */
+/* 旧スタイルは2025リファクタにより削除されました */
 
 .s-btn-arrow::after,
 .p-postList__arrow,
@@ -861,6 +573,8 @@ html::after {
   content: "";
 }
 
+/* ---------- 旧プロフィールカード v1 レスポンシブブロックを丸ごと削除 ---------- */
+/*
 @media (max-width: 768px) {
   .haru-card-footer {
     align-items: flex-start;
@@ -868,66 +582,135 @@ html::after {
 }
 
 @media (min-width: 769px) {
-  /* 1) グリッドの再定義  */
+  ・・・（旧グリッド定義一式）・・・
+}
+*/
+
+/* ===========================================================
+   プロフィールカード（2025 リファクタ）
+=========================================================== */
+
+/* ── 共通変数 ────────────────────────── */
+/*
+:root {
+  --haru-card-radius: 12px;
+  --haru-gap: clamp(12px, 2vw, 20px);
+  --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+*/
+
+/* ── 外枠 & カード本体 ────────────────── */
+.haru-profile-card-container{
+  perspective:1000px;
+  display:flex;
+  justify-content:center;
+}
+
+.haru-profile-card{
+  width:clamp(280px, 90vw, 420px);
+  aspect-ratio:3/4;                /* 高さは比率で管理 */
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.haru-profile-card.is-flipped{
+  transform:rotateY(180deg);
+}
+
+/* ── 表裏共通フェース ─────────────────── */
+.haru-card-front,
+.haru-card-back{
+  inset:0;
+  position:absolute;
+  display:grid;
+  grid-template-rows:auto 1fr auto;/* 頭／本文／フッタ */
+  border-radius:var(--haru-card-radius);
+  background:#fff;
+  box-shadow:var(--haru-shadow);
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+
+/* 裏面は 180° 反転しておく */
+.haru-card-back{transform:rotateY(180deg);}
+
+/* ──────────────────────────────── */
+/* ==========  表面  (haru-card-front)  ========== */
+.haru-card-head{
+  display:flex;
+  align-items:center;
+  gap:var(--haru-gap);
+  padding:var(--haru-gap);
+  border-bottom:1px solid #eee;
+}
+/* PC ロゴ or モバイルロゴを同じ枠で制御 */
+.header-svg-pc,
+.header-svg-mobile{
+  width:120px;
+  max-width:40%;
+}
+
+.haru-card-body{
+  display:grid;
+  gap:var(--haru-gap);
+  padding:var(--haru-gap);
+}
+.haru-card-image img,
+.haru-card-image picture{width:100%;height:auto;border-radius:8px;}
+
+.haru-card-text-jp p{margin:0 0 .8em;font-size:.9rem;line-height:1.5;}
+
+.haru-card-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:var(--haru-gap);
+  border-top:1px solid #eee;
+}
+.haru-card-text-en{font-size:.85rem;font-weight:500;}
+.haru-card-arrow svg{width:48px;height:auto;}
+
+/* ──────────────────────────────── */
+/* ==========  裏面  (haru-card-back)  ========== */
+.haru-card-back-text,
+.haru-card-back-tools,
+.haru-card-back-hashtags{
+  padding:var(--haru-gap);
+}
+.haru-card-back-separator{
+  height:1px;
+  background:#eee;
+  margin:0 var(--haru-gap);
+}
+
+.haru-card-back-sns{
+  margin-top:auto;                 /* 下寄せ */
+  padding:var(--haru-gap);
+  text-align:center;
+}
+.sns-icons{
+  display:flex;
+  justify-content:center;
+  gap:var(--haru-gap);
+}
+.sns-icons svg{width:32px;height:32px;}
+
+/* ── モバイル → PC ブレイクポイント ───────── */
+@media(min-width:768px){
+  /* 表面レイアウトを横並びに拡張 */
   .haru-card-front{
-    grid-template-columns: clamp(260px,30%,380px) 1fr; /* 画像 | テキスト */
-    grid-template-rows: auto       /* logo  */
-                         4px        /* rule  */
-                         1fr        /* image + jp */
-                         auto;      /* en + arrow */
-    grid-template-areas:
-      "logo  logo"
-      "rule  rule"
-      "image jp"
-      "foot  foot";
-    gap: var(--card-pad-inner);
-    padding: var(--card-pad-outer);
+    grid-template-columns:100px 1fr; /* 1列目：イラスト／2列目：テキスト */
+    grid-template-rows:auto 1fr auto;
   }
+  .haru-card-head{grid-column:1 / -1;}      /* 横幅いっぱい */
+  .haru-card-image{grid-row:2 / span 2;}     /* 左列で縦に伸ばす */
+  .haru-card-body{grid-column:2;}
+  .haru-card-footer{grid-column:2;}
+}
 
-  /* 2) 区切り線を独立行に */
-  .haru-card-front::before{
-    content:"";
-    grid-area: rule;
-    width:100%;
-    height:1.5px;
-    background: var(--border-color);
-    display: block; /* 念のため */
-  }
-
-  /* 3) 各エリア微調整 */
-  .haru-card-header{        /* ロゴ */
-    grid-area: logo;
-    border:none;
-    padding: 0;
-    min-height: auto;
-  }
-
-  .haru-card-image{         /* 画像 */
-    grid-area: image;
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-height: 280px;
-  }
-
-  .haru-card-text-jp{       /* 日本語 */
-    grid-area: jp;
-    align-self:start;
-    margin:0;
-    padding: 0;
-  }
-
-  .haru-card-footer{        /* EN + → */
-    grid-area: foot;
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-  }
-  .haru-card-text-en{display:block;margin:0;}
-  .haru-card-arrow {display:block;cursor:pointer;}
-
-  /* 4) PC 用ロゴ／SP 用ロゴ 切替 */
-  .haru-card-logo-pc{display:block;}
-  .haru-card-logo-sp{display:none;}
+/* 旧スタイル打ち消し ------------------------------- */
+.haru-card-front::before{display:none !important;}
+@media (max-width:768px){
+  .haru-card-footer{align-items:center !important;}
 }
