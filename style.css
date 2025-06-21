@@ -45,23 +45,9 @@ body {
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1;
 
-  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
+  
   --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);
-  /* ★縦型ヘッダーのフォントサイズを動的に変更するための変数を定義 */
-  /* --vertical-header-font-size: clamp(13px, calc(12px + 0.28vw), 16px);  ← duplicate */
-
-  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  /* --card-width: clamp(300px, 90vw, 420px);  ← duplicate */
-
-  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  /* --card-height: 580px;                     ← duplicate */
-
-  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  /* --border-color: #000;                      ← duplicate */
-
-  /* ★縦型ヘッダーの幅を動的に変更するための変数を定義 */
-  /* --gap-pc: var(--card-pad-inner);           ← duplicate */
-
+  
   /* プロフィールカードの新変数 */
   --haru-card-radius: 12px;
   --haru-gap: clamp(12px, 2vw, 20px);
@@ -89,9 +75,9 @@ body {
 /* ===========================================================
    harusegawa-title-svg (カスタムHTML)
 =========================================================== */
-.alignfull .harusegawa-title-svg { /* ★SWELLのスタイルに打ち勝つためにセレクタを強化 */
-  padding: 0 clamp(15px, calc(2.5px + 3.3vw), 50px); /* ★計算式を修正 */
-  margin-bottom: clamp(1em, calc(0.5em + 1vw), 2em); /* ★可変マージンをさらに狭める & 計算式を修正 */
+.alignfull .harusegawa-title-svg { 
+  padding: 0 clamp(15px, calc(2.5px + 3.3vw), 50px); 
+  margin-bottom: clamp(1em, calc(0.5em + 1vw), 2em); 
 }
 
 /* SVG本体
@@ -106,7 +92,7 @@ body {
 =========================================================== */
 .post_content .harusegawa-title-caption {
   padding: 0 clamp(15px, 4vw, 50px);
-  font-size: clamp(12px, calc(10px + 0.8vw), 20px); /* ★計算式を修正 */
+  font-size: clamp(12px, calc(10px + 0.8vw), 20px); 
   margin-top: 0;
   line-height: 1.6;
 }
@@ -115,7 +101,7 @@ body {
    セクション見出し(H2) section-c
 =========================================================== */
 .post_content h2.section-c {
-  font-size: clamp(16px, calc(12px + 1vw), 22px); /* ★計算式を再修正 */
+  font-size: clamp(16px, calc(12px + 1vw), 22px); 
   padding: 0 clamp(15px, 4vw, 50px); /* 他の見出しとpaddingを合わせる */
 }
 
@@ -159,7 +145,7 @@ div.wp-block-group.card-grid {
     grid-template-columns: repeat(4, 1fr);
   }
   .card-item p {
-    font-size: 15px; /* ★4列時のみテキストを大きく */
+    font-size: 15px; 
   }
 }
 
@@ -198,27 +184,27 @@ div.wp-block-group.card-grid {
 
 /* カード内画像 */
 .card-item img {
-  width: calc(100% - (var(--card-image-padding) * 2)); /* ★ 余白分を引く */
+  width: calc(100% - (var(--card-image-padding) * 2)); 
   display: block;
-  margin: var(--card-image-padding) auto 0; /* ★ 上マージンは維持、左右は自動、下マージンは0に */
-  border-radius: calc(var(--card-border-radius) - 5px); /* ★ カードより5px小さい角丸 */
+  margin: var(--card-image-padding) auto 0; 
+  border-radius: calc(var(--card-border-radius) - 5px); 
 }
 
 /* カード内見出し (h3) */
 .card-item h3 {
-  margin: 1.2rem var(--card-image-padding) 1rem;   /* ★ 左右のマージンを画像と揃える */
-  font-size: 17px; /* ★スマホサイズをデフォルトに */
+  margin: 1.2rem var(--card-image-padding) 1rem;   
+  font-size: 17px; 
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
 
 /* カード内テキスト (p) */
 .card-item p {
-  font-size: 14px; /* ★スマホサイズをデフォルトに */
+  font-size: 14px; 
   padding-top: 0;
-  padding-right: var(--card-image-padding); /* ★ 左右のパディングを画像と揃える */
+  padding-right: var(--card-image-padding); 
   padding-bottom: 0.5rem;
-  padding-left: var(--card-image-padding);  /* ★ 左右のパディングを画像と揃える */
+  padding-left: var(--card-image-padding);  
   margin-right: 0;         /* 外側の右余白をリセット */
   margin-left: 0;          /* 外側の左余白をリセット */
   line-height: 1.6;           /* 行の高さ */
@@ -370,7 +356,7 @@ html::after {
   right: 0;
   width: var(--vertical-header-width);
   height: 100%;
-  background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); /* ★指定の4色グラデーションに変更 */
+  background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); 
   z-index: -1; /* コンテンツの背面に配置 */
 }
 
@@ -401,10 +387,10 @@ html::after {
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ★項目を上に寄せる */
+  justify-content: flex-start; 
   align-items: center;
-  gap: 80px; /* ★メニュー間の隙間を調整 */
-  padding-top: 77px; /* ★上からの余白を再調整 */
+  gap: 80px; 
+  padding-top: 77px; 
 }
 
 /* メニュー項目 <li> */
@@ -417,8 +403,8 @@ html::after {
   display: block;
   color: #000;
   text-decoration: none;
-  font-size: var(--vertical-header-font-size); /* ★可変フォントサイズを適用 */
-  font-weight: 400; /* ★フォントの太さを調整 */
+  font-size: var(--vertical-header-font-size); 
+  font-weight: 400; 
   white-space: nowrap;
   transition: color 0.3s ease;
   transform: rotate(90deg); /* 回転方向を修正 */
@@ -436,7 +422,7 @@ html::after {
   padding: 0 var(--gallery-padding);
 }
 
-/* ★PC表示のときだけ、フォーム左右の余白を広げる */
+
 @media (min-width: 1366px) { /* ブレイクポイントを1024pxから変更 */
   .wpcf7 {
     padding: 0 188px; /* 125pxから1.5倍に */
@@ -462,15 +448,15 @@ html::after {
 .wpcf7-form .wpcf7-form-control {
   box-sizing: border-box;
   width: 100%;
-  padding: 0.8em 1em; /* ★入力欄の高さを調整 */
+  padding: 0.8em 1em; 
   border: none; /* 枠線をなしに */
-  margin-bottom: 20px; /* ★下に20pxの隙間を作る */
-  font-size: 14px; /* ★基本フォントサイズに統一 */
+  margin-bottom: 20px; 
+  font-size: 14px; 
   background-color: #fff;
-  border-radius: 5px; /* ★角を少し丸める */
+  border-radius: 5px; 
 }
 
-/* ★お問い合わせ内容(textarea)だけ高さを出す */
+
 .wpcf7-form textarea.wpcf7-form-control {
   padding-top: 1.2em;
   padding-bottom: 1.2em;
@@ -493,7 +479,7 @@ html::after {
   margin-top: 20px;
 }
 
-/* ★同意チェックボックスの背景をなくす */
+
 .wpcf7-form .wpcf7-acceptance {
   background-color: transparent;
   padding: 0;
@@ -501,7 +487,7 @@ html::after {
 
 .wpcf7-form .wpcf7-list-item-label {
   color: #555;
-  font-size: 14px; /* ★基本フォントサイズに統一 */
+  font-size: 14px; 
 }
 
 /* ===========================================================
@@ -513,37 +499,37 @@ html::after {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 5px; /* ★角を少し丸める */
+  border-radius: 5px; 
   display: block;
-  margin: 30px auto 0; /* ★上マージンを調整 */
-  width: fit-content; /* ★テキストの長さに幅を合わせる */
-  min-width: 220px; /* ★最小幅を調整 */
+  margin: 30px auto 0; 
+  width: fit-content; 
+  min-width: 220px; 
   text-align: center;
   cursor: pointer;
-  text-decoration: none; /* ★リンクの下線を消す */
+  text-decoration: none; 
   
   /* --- テキストのデザイン --- */
-  font-size: 14px; /* ★テキストサイズを調整 */
-  font-weight: 400; /* ★テキストを細くする */
+  font-size: 14px; 
+  font-weight: 400; 
   letter-spacing: 2px;
   text-transform: uppercase;
   
   /* --- 枠線と余白 --- */
   border: 2px solid #000;
-  padding: 15px 25px; /* ★余白を調整 */
+  padding: 15px 25px; 
 
   /* --- ホバーアニメーション --- */
-  color: #fff; /* ★初期の文字色を白に */
-  background: linear-gradient(to left, #000 50%, transparent 50%); /* ★グラデーションの向きを逆(to left)に */
+  color: #fff; 
+  background: linear-gradient(to left, #000 50%, transparent 50%); 
   background-size: 200% 100%;
-  background-position: right bottom; /* ★初期状態を右側(黒)に */
+  background-position: right bottom; 
   transition: all .4s ease-out;
 }
 
 .wpcf7-form .wpcf7-submit:hover,
 .btn--slide-fill:hover {
-  color: #000; /* ★ホバー時の文字色を黒に */
-  background-position: left bottom; /* ★ホバーで左側(透明)に */
+  color: #000; 
+  background-position: left bottom; 
 }
 
 /* ===========================================================
@@ -589,7 +575,7 @@ html::after {
   aspect-ratio: 3 / 5;
   min-height: 500px; /* Safari旧バグ対策 */
   
-  /* ▼▼▼ GPTが指摘してくれた3D設定 ▼▼▼ */
+  
   position: relative;
   perspective: 1200px;
   transform-style: preserve-3d;
@@ -603,7 +589,7 @@ html::after {
 /* --- カード表面・裏面の共通スタイル --- */
 .haru-card__front,
 .haru-card__back {
-  /* ▼▼▼ 表と裏を重ねて、裏側を非表示にする設定 ▼▼▼ */
+  
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
@@ -760,7 +746,7 @@ html::after {
    プロフィールカード裏面のスタイル
 =========================================================== */
 .haru-card__back {
-  transform: rotateY(180deg); /* ★裏面は最初からひっくり返しておく */
+  transform: rotateY(180deg); 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
