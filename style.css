@@ -683,12 +683,10 @@ html::after {
 .haru-card-text-jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card-text-jp p:last-child { margin-bottom: 0; }
 .haru-card-footer {
-  grid-column: 1 / 3;
-  grid-row: 4;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 var(--haru-gap) var(--haru-gap);
+  padding: 0; /* 二重paddingを防ぐ */
 }
 .haru-card-text-en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card-arrow img { width: 35px; }
@@ -764,7 +762,7 @@ html::after {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 var(--haru-gap) var(--haru-gap);
+    padding: 0; /* 行gapとカードpaddingで余白管理 */
   }
 }
 
