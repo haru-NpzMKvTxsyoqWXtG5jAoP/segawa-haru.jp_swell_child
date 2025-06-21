@@ -8,23 +8,28 @@
     <!-- ============== カード表面 ============== -->
     <div class="haru-card-front">
 
-      <!-- === 1段目 : ロゴ + 区切り線 === -->
-      <header class="haru-card-head">
-        <!-- PC 横ロゴ（1271×128 ≒10:1） -->
-        <div class="header-svg-pc">
-          <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_pc.svg"
-               alt="HARU SEGAWA ロゴ"
-               loading="lazy" decoding="async">
-        </div>
+      <!-- === 1段目 : ロゴ + 区切り線（ラッパーで包む） === -->
+      <div class="haru-card-headerBlock">
+        <header class="haru-card-head">
+          <!-- PC 横ロゴ（1271×128 ≒10:1） -->
+          <div class="header-svg-pc">
+            <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_pc.svg"
+                 alt="HARU SEGAWA ロゴ"
+                 loading="lazy" decoding="async">
+          </div>
 
-        <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->
-        <div class="header-svg-mobile">
-          <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_sp.svg"
-               alt="HARU SEGAWA ロゴ（縦）"
-               width="50" height="118"
-               loading="lazy" decoding="async">
-        </div>
-      </header>
+          <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->
+          <div class="header-svg-mobile">
+            <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_sp.svg"
+                 alt="HARU SEGAWA ロゴ（縦）"
+                 width="50" height="118"
+                 loading="lazy" decoding="async">
+          </div>
+        </header>
+
+        <!-- 区切り線 -->
+        <div class="haru-card-rule"></div>
+      </div><!-- /.haru-card-headerBlock -->
 
       <!-- ▼▼ 画像ブロックを header 横に配置するため .haru-card-front 直下へ移動 ▼▼ -->
       <picture class="haru-card-image">
