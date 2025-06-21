@@ -709,6 +709,10 @@ html::after {
   .haru-card-main-content {
     padding: 0 0 var(--haru-gap);
   }
+  /* 1段目のイラストもロゴと同じくフルブリードにする */
+  .haru-card-image {
+    margin: calc(-1 * var(--haru-gap)) calc(-1 * var(--haru-gap)) 0 0; /* top & right を相殺 */
+  }
 }
 
 /* ===========================================================
