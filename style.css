@@ -717,7 +717,10 @@ html::after {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
     grid-template-rows: auto 1.5px 1fr auto;
   }
-  .header-svg-pc { display: block; }
+  .header-svg-pc {
+    display: block;
+    width: 100%;
+  }
   .header-svg-mobile { display: none; }
 
   .haru-card-head {
