@@ -48,22 +48,18 @@
           <p>一人ひとりの「やりたいこと」に、応える教えるクリエイターとして、レクチャー/デザイン/制作を承っています。アートが好きで、日本画やパターンデザインの制作もしています。</p>
         </div>
 
-        <!-- ▼ フッター（英語テキスト & 矢印） -->
-        <footer class="haru-card-footer">
-          <div class="haru-card-text-en">
-            <p>Creator & Lecturer｜Design, Production</p>
-            <p>Also Nihonga & Pattern Design.</p>
-          </div>
-
-          <!-- 矢印（82×15 ≒5.47:1） -->
-          <div class="haru-card-arrow">
-            <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/arrow.svg"
-                 alt="" aria-hidden="true"
-                 width="110" height="20"
-                 loading="lazy" decoding="async">
-          </div>
-        </footer>
+        <!-- ▼ フッター（英語テキスト & 矢印） をJPテキストの下に独立配置 -->
       </div><!-- /.haru-card-main-content -->
+
+      <footer class="haru-card-footer">
+        <div class="haru-card-text-en">
+          <p>Creator & Lecturer｜Design, Production</p>
+          <p>Also Nihonga & Pattern Design.</p>
+        </div>
+        <div class="haru-card-arrow">
+          <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/arrow.svg" alt="" aria-hidden="true" width="110" height="20" loading="lazy" decoding="async">
+        </div>
+      </footer>
     </div><!-- /.haru-card-front -->
 
 
