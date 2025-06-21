@@ -640,11 +640,14 @@ html::after {
 .header-svg-mobile { display: block; }
 
 .haru-card-head {
+  grid-column: 1 / 3; /* ヘッダーは全幅 */
   grid-row: 1;
-  grid-column: 1;
   display: flex;
-  align-items: stretch; /* ロゴを行全体の高さに伸ばす */
-  margin-bottom: 0; /* 行間gapで余白を管理するためリセット */
+  justify-content: flex-start; /* 左寄せ */
+  align-items: center;
+  padding-bottom: 0; /* 下余白なし */
+  /* 上左右のパディングを相殺してフルブリード */
+  margin: calc(-1 * var(--haru-gap)) calc(-1 * var(--haru-gap)) 0;
 }
 .header-svg-mobile img {
   height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
