@@ -713,6 +713,23 @@ html::after {
   .haru-card-main-content {
     padding: 0 var(--haru-gap) var(--haru-gap);
   }
+  /* ▼ 列比率を見直して画像サイズを抑制 */
+  .haru-card-front {
+    grid-template-columns: 1.4fr 1.4fr; /* ほぼ 50:50 に近づける */
+  }
+
+  /* ▼ スマホ縦ロゴ：幅上限を設定して自然サイズに */
+  .header-svg-mobile img {
+    width: auto;
+    height: auto;
+    max-width: 100px; /* 必要に応じて調整 */
+  }
+
+  /* ▼ イラスト画像：正方形を維持しつつ上限高さを設定 */
+  .haru-card-image {
+    aspect-ratio: 1 / 1;
+    max-height: 200px; /* 必要に応じて調整 */
+  }
 }
 
 /* ===========================================================
