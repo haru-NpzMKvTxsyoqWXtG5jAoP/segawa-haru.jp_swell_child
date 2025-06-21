@@ -655,8 +655,11 @@ html::after {
   flex-direction: column;
 }
 .header-svg-mobile img {
-  height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
-  width: 100%;     /* 列幅いっぱいに広げる */
+  width: auto;
+  height: 100%;          /* 行高いっぱいで縮小 */
+  max-height: 200px;     /* イラストと同じ上限に合わせる */
+  max-width: 120px;      /* 横に広がり過ぎないよう保険 */
+  object-fit: contain;
 }
 
 .haru-card-image {
@@ -718,11 +721,13 @@ html::after {
     grid-template-columns: 1.4fr 1.4fr; /* ほぼ 50:50 に近づける */
   }
 
-  /* ▼ スマホ縦ロゴ：幅上限を設定して自然サイズに */
+  /* ▼ スマホ縦ロゴ：列高に合わせてフィット */
   .header-svg-mobile img {
     width: auto;
-    height: auto;
-    max-width: 100px; /* 必要に応じて調整 */
+    height: 100%;          /* 行高いっぱいで縮小 */
+    max-height: 200px;     /* イラストと同じ上限に合わせる */
+    max-width: 120px;      /* 横に広がり過ぎないよう保険 */
+    object-fit: contain;
   }
 
   /* ▼ イラスト画像：正方形を維持しつつ上限高さを設定 */
