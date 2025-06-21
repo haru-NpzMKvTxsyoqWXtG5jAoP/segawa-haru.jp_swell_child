@@ -559,7 +559,9 @@ html::after {
    フッターを非表示にする
 =========================================================== */
 .l-footer {
-  display: none;
+  /* display:none;  ← デバッグ用に一時的に隠していた。不要なので無効化 */
+  /* もしフッターを非表示にしたい場合は、下記のコメントアウトを外してください */
+  /* display: none; */
 }
 
 /* ===========================================================
@@ -650,8 +652,9 @@ html::after {
   margin: calc(-1 * var(--haru-gap)) calc(-1 * var(--haru-gap)) 0;
 }
 .header-svg-mobile img {
-  height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
-  width: 100%;     /* 列幅いっぱいに広げる */
+  height: auto;
+  width: 100%;
+  max-width: 120px; /* モバイルでロゴが巨大化しないよう上限を設定 */
 }
 
 .haru-card-image {
@@ -719,6 +722,7 @@ html::after {
     /* 4行構成: ヘッダー / 区切り線 / 画像+JP / EN+矢印 */
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
     grid-template-rows: auto 1.5px 1fr auto;
+    padding-top: 0; /* 上余白を相殺してフルブリード */
   }
   .header-svg-pc {
     display: block;
