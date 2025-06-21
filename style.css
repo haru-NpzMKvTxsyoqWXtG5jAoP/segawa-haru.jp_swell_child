@@ -672,6 +672,8 @@ html::after {
   background: #121212;
   height: 1.5px;
   flex: 0 0 1.5px;
+  position: relative;
+  z-index: 2; /* 画像より上に表示 */
 }
 
 .haru-card-main-content {
@@ -730,6 +732,8 @@ html::after {
     margin-right: 0;
     height: 1.5px;  /* 明示的に高さを固定 */
     flex: 0 0 1.5px;
+    position: relative;
+    z-index: 2; /* 画像より上に表示 */
   }
   .header-svg-pc {
     display: block;
