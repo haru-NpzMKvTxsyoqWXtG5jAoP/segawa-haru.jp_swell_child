@@ -701,11 +701,13 @@ html::after {
 
 /* --- スマホ限定：1段目をフルブリードにするための余白調整 --- */
 @media (max-width: 767px) {
+  /* ▼ カード内側の左右パディングを復活させて画像のはみ出しを防止 */
   .haru-card-front {
-    padding: 0;
+    padding: var(--haru-gap);
   }
+  /* JP テキストブロックの横パディングは二重になるので打ち消す */
   .haru-card-main-content {
-    padding: 0 var(--haru-gap) var(--haru-gap);
+    padding: 0 0 var(--haru-gap);
   }
 }
 
