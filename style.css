@@ -629,7 +629,7 @@ html::after {
 =========================================================== */
 .haru-card-front {
   display: grid;
-  /* 左ロゴ列 : 右画像列 = 1.5 : 2.2 の固定比率 */
+  /* 左ロゴ列 : 右画像列 = 1.5 : 2.2 (デフォルト) */
   grid-template-columns: 1.5fr 2.2fr;
   /* 1行目: ヘッダー+画像  2行目: JPテキスト  3行目: EN+矢印 */
   grid-template-rows: auto 1fr auto;
@@ -712,15 +712,12 @@ html::after {
 @media (max-width: 767px) {
   .haru-card-front {
     padding: 0;
+    /* 左：ロゴ列 (固定 90px)  右：イラスト列 (残り幅) */
+    grid-template-columns: 90px 1fr;
   }
   .haru-card-main-content {
     padding: 0 var(--haru-gap) var(--haru-gap);
   }
-  /* ▼ 列比率を見直して画像サイズを抑制 */
-  .haru-card-front {
-    grid-template-columns: 1.4fr 1.4fr; /* ほぼ 50:50 に近づける */
-  }
-
   /* ▼ スマホ縦ロゴ：列高に合わせてフィット */
   .header-svg-mobile img {
     width: auto;
