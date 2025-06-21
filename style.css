@@ -727,12 +727,19 @@ html::after {
     justify-content: flex-start; /* 左寄せ */
     align-items: center;
     padding-bottom: var(--haru-gap);
+    margin-left: calc(-1 * var(--haru-gap));
+    margin-right: calc(-1 * var(--haru-gap));
   }
-  .header-svg-pc img { height: 50px; width: auto; }
+  .header-svg-pc img {
+    width: 100%;
+    height: auto;
+  }
 
   .haru-card-rule {
     grid-column: 1 / 3;
     grid-row: 2;
+    margin-left: calc(-1 * var(--haru-gap));
+    margin-right: calc(-1 * var(--haru-gap));
   }
 
   /* 画像は左列、正方形 */
