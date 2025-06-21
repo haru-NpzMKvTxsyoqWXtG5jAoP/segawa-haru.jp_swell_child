@@ -10,7 +10,7 @@
 
       <!-- === 1段目 : ロゴ + 区切り線 === -->
       <header class="haru-card__header">
-        <picture class="haru-card-logo">
+        <picture class="haru-card__logo">
           <!-- PC 横ロゴ（1271×128 ≒10:1） -->
           <source media="(min-width: 768px)" srcset="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_pc.svg">
           <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->

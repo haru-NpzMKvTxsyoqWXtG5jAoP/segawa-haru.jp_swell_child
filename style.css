@@ -557,15 +557,11 @@ html::after {
    プロフィールカード【最終完成版 Ver.3D】
 =========================================================== */
 
-/* --- カードの基本コンテナ --- */
+/* カードコンテナ */
 .haru-card-container {
   padding: clamp(2rem, 5vw, 4rem);
-}
-
-/* カードを中央寄せ */
-.haru-card-container{
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
 
 /* --- カード回転の土台 --- */
@@ -615,7 +611,7 @@ html::after {
   gap: var(--haru-gap) 15px;
 }
 
-.haru-card-logo img {
+.haru-card__logo img {
   width: 100%;
   height: auto;
 }
