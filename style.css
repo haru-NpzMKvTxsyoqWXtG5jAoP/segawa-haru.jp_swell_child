@@ -686,7 +686,9 @@ html::after {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0; /* 二重paddingを防ぐ */
+  grid-column: 1 / 3; /* モバイルでも左右フル幅 */
+  grid-row: 4;        /* 4行目に固定 */
+  padding: 0 var(--haru-gap) var(--haru-gap); /* カード内側の左右・下余白 */
 }
 .haru-card-text-en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card-arrow img { width: 35px; }
