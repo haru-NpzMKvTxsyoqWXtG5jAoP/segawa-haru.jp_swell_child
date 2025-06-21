@@ -636,7 +636,7 @@ html::after {
   /* 行間を var(--haru-gap) に戻し、列間は 15px 固定 */
   gap: var(--haru-gap) 15px;
 }
-.header-svg-pc { display: block; width: 100%; }
+.header-svg-pc { display: none; }
 .header-svg-mobile { display: block; }
 
 .haru-card-head {
