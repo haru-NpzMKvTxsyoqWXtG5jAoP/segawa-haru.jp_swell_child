@@ -708,30 +708,35 @@ html::after {
 .haru-card-text-en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card-arrow img { width: 35px; }
 
-/* --- スマホ限定：1段目をフルブリードにするための余白調整 --- */
+/* ===== モバイルレイアウト原点回帰 ================================= */
 @media (max-width: 767px) {
+  /* グリッド構成を昔の 1 + 線 + JP + EN に戻す */
   .haru-card-front {
-    padding: 0;
-    /* 左：ロゴ列 (固定 90px)  右：イラスト列 (残り幅) */
-    grid-template-columns: 90px 1fr;
+    grid-template-columns: 1.5fr 2.2fr;   /* ロゴ列 : 画像列 */
+    grid-template-rows: auto 1.5px 1fr auto; /* ヘッダー/線/本文/フッター */
+    gap: var(--haru-gap) 15px;             /* 行gap・列gap 固定 */
   }
-  .haru-card-main-content {
-    padding: 0 var(--haru-gap) var(--haru-gap);
+  /* 区切り線はグリッド2行目全幅 */
+  .haru-card-rule {
+    grid-row: 2;
+    grid-column: 1 / 3;
+    height: 1.5px;
   }
-  /* ▼ スマホ縦ロゴ：列高に合わせてフィット */
+  /* ロゴ画像は列幅いっぱいに自然表示 */
   .header-svg-mobile img {
-    width: auto;
-    height: 100%;          /* 行高いっぱいで縮小 */
-    max-height: 200px;     /* イラストと同じ上限に合わせる */
-    max-width: 120px;      /* 横に広がり過ぎないよう保険 */
+    width: 100%;
+    height: auto;
+    max-width: none;
     object-fit: contain;
   }
-
-  /* ▼ イラスト画像：正方形を維持しつつ上限高さを設定 */
+  /* イラスト画像は行高いっぱい (列gapで縦横比維持) */
   .haru-card-image {
-    aspect-ratio: 1 / 1;
-    max-height: 200px; /* 必要に応じて調整 */
+    aspect-ratio: unset;
+    max-height: none;
   }
+  /* テキスト＆フッターの行指定を戻す */
+  .haru-card-main-content { grid-row: 3; }
+  .haru-card-footer        { grid-row: 4; }
 }
 
 /* ===========================================================

@@ -26,8 +26,6 @@
                  loading="lazy" decoding="async">
           </div>
         </header>
-        <!-- 区切り線 -->
-        <div class="haru-card-rule"></div>
       </div><!-- /.haru-card-headerBlock -->
 
       <!-- ▼▼ 画像ブロックを header 横に配置するため .haru-card-front 直下へ移動 ▼▼ -->
@@ -39,6 +37,9 @@
              width="300" height="300"
              loading="lazy" decoding="async">
       </picture>
+
+      <!-- 区切り線 (1行目とJPテキストの間) -->
+      <div class="haru-card-rule"></div>
 
       <!-- === 2段目 : JP / フッター === -->
       <div class="haru-card-main-content">
