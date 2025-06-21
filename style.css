@@ -565,15 +565,7 @@ html::after {
 /* ===========================================================
    プロフィールカード用の変数を:rootにまとめる
 =========================================================== */
-:root {
-  /* (君のサイトの他の変数はそのまま残してな) */
-
-  /* ★プロフィールカード用の変数をここに追加 */
-  --haru-gap: clamp(14px, 3vw, 22px);
-  --haru-card-radius: 12px;
-  --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
-}
-
+/* ↑ファイル冒頭の :root で同変数を定義済みのため重複削除 */
 
 /* ===========================================================
    プロフィールカード【最終完成版 Ver.3D】
@@ -636,8 +628,11 @@ html::after {
   /* 行間を var(--haru-gap) に戻し、列間は 15px 固定 */
   gap: var(--haru-gap) 15px;
 }
-.header-svg-pc { display: none; }
-.header-svg-mobile { display: block; }
+
+.haru-card-logo img {
+  width: 100%;
+  height: auto;
+}
 
 .haru-card-head {
   grid-row: 1;
@@ -645,10 +640,6 @@ html::after {
   display: flex;
   align-items: stretch; /* ロゴを行全体の高さに伸ばす */
   margin-bottom: 0; /* 行間gapで余白を管理するためリセット */
-}
-.header-svg-mobile img {
-  height: auto;    /* ロゴが縦いっぱいに伸びるように修正 */
-  width: 100%;     /* 列幅いっぱいに広げる */
 }
 
 .haru-card-image {
@@ -672,7 +663,7 @@ html::after {
   background: #121212;
 }
 
-.haru-card-main-content {
+.haru-card__body {
   grid-row: 3;
   grid-column: 1 / 3;
   display: flex;
@@ -680,8 +671,8 @@ html::after {
   justify-content: space-between;
   padding: 0 var(--haru-gap) var(--haru-gap);
 }
-.haru-card-text-jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
-.haru-card-text-jp p:last-child { margin-bottom: 0; }
+.haru-card__text--jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
+.haru-card__text--jp p:last-child { margin-bottom: 0; }
 .haru-card-footer {
   display: flex;
   justify-content: space-between;
@@ -690,7 +681,7 @@ html::after {
   grid-row: 4;        /* 4行目に固定 */
   padding: 0 var(--haru-gap) var(--haru-gap); /* カード内側の左右・下余白 */
 }
-.haru-card-text-en p { font-size: 13px; line-height: 1.5; margin: 0; }
+.haru-card__text--en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card-arrow img { width: 35px; }
 
 /* --- スマホ限定：1段目をフルブリードにするための余白調整 --- */
@@ -698,7 +689,7 @@ html::after {
   .haru-card-front {
     padding: 0;
   }
-  .haru-card-main-content {
+  .haru-card__body {
     padding: 0 var(--haru-gap) var(--haru-gap);
   }
 }
@@ -717,9 +708,6 @@ html::after {
     grid-template-columns: clamp(260px, 30%, 380px) 1fr;
     grid-template-rows: auto 1.5px 1fr auto;
   }
-  .header-svg-pc { display: block; }
-  .header-svg-mobile { display: none; }
-
   .haru-card-head {
     grid-column: 1 / 3; /* ヘッダーは全幅 */
     grid-row: 1;
@@ -728,11 +716,6 @@ html::after {
     align-items: center;
     padding-bottom: 0; /* 余白を削除 */
   }
-  .header-svg-pc img {
-    width: 100%;
-    height: auto;
-  }
-
   .haru-card-rule {
     grid-column: 1 / 3;
     grid-row: 2;
@@ -753,7 +736,7 @@ html::after {
   }
 
   /* JPテキスト列 */
-  .haru-card-main-content {
+  .haru-card__body {
     grid-column: 2;
     grid-row: 3;
     padding: 0; /* 列gapで余白管理 */

@@ -1,29 +1,24 @@
 <!-- ===============================================
-     プロフィールカード（SVG を外部 img に置換・width/height 付与済み）
+     プロフィールカード（ロゴを <picture> へ統合／無駄な wrapper 削除）
 ================================================ -->
 
 <div class="haru-profile-card-container">
-  <div class="haru-profile-card">
+  <article class="haru-profile-card">
 
     <!-- ============== カード表面 ============== -->
     <div class="haru-card-front">
 
       <!-- === 1段目 : ロゴ + 区切り線 === -->
       <header class="haru-card-head">
-        <!-- PC 横ロゴ（1271×128 ≒10:1） -->
-        <div class="header-svg-pc">
-          <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_pc.svg"
-               alt="HARU SEGAWA ロゴ"
-               loading="lazy" decoding="async">
-        </div>
-
-        <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->
-        <div class="header-svg-mobile">
+        <picture class="haru-card-logo">
+          <!-- PC 横ロゴ（1271×128 ≒10:1） -->
+          <source media="(min-width: 768px)" srcset="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_pc.svg">
+          <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->
           <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_sp.svg"
-               alt="HARU SEGAWA ロゴ（縦）"
+               alt="HARU SEGAWA ロゴ"
                width="50" height="118"
                loading="lazy" decoding="async">
-        </div>
+        </picture>
       </header>
 
       <!-- ▼▼ 画像ブロックを header 横に配置するため .haru-card-front 直下へ移動 ▼▼ -->
@@ -40,18 +35,18 @@
       <div class="haru-card-rule"></div>
 
       <!-- === 2段目 : JP / フッター === -->
-      <div class="haru-card-main-content">
+      <div class="haru-card__body">
 
         <!-- 日本語テキスト -->
-        <div class="haru-card-text-jp">
+        <div class="haru-card__text--jp">
           <p>一人ひとりの「やりたいこと」に、応える教えるクリエイターとして、レクチャー/デザイン/制作を承っています。アートが好きで、日本画やパターンデザインの制作もしています。</p>
         </div>
 
         <!-- ▼ フッター（英語テキスト & 矢印） をJPテキストの下に独立配置 -->
-      </div><!-- /.haru-card-main-content -->
+      </div><!-- /.haru-card__body -->
 
       <footer class="haru-card-footer">
-        <div class="haru-card-text-en">
+        <div class="haru-card__text--en">
           <p>Creator & Lecturer｜Design, Production</p>
           <p>Also Nihonga & Pattern Design.</p>
         </div>
@@ -119,5 +114,5 @@
       </div>
     </div><!-- /.haru-card-back -->
 
-  </div><!-- /.haru-profile-card -->
+  </article><!-- /.haru-profile-card -->
 </div><!-- /.haru-profile-card-container -->
