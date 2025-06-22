@@ -39,7 +39,7 @@ body {
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1;
 
-/* 縦バー型サイドヘッダー */
+/* カスタム縦型サイドヘッダー */
   --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);    /* J帯・固定メニュー・html右padding */
   
 /* プロフィールカード */
@@ -47,7 +47,7 @@ body {
 }
 
 /* ===========================================================
-   カスタム縦型ヘッダー & 背景グラデーション
+   カスタム縦型サイドヘッダー
 =========================================================== */
 
 /* 既存のSWELLヘッダーは常に非表示 */
@@ -58,7 +58,7 @@ body {
 /* ページ全体(html)に右パディングを追加 & グラデーション背景用の基準点を設定 */
 html {
   position: relative; /* 疑似要素の基準点 */
-  padding-right: var(--vertical-header-width) !important;
+  padding-inline-end: var(--vertical-header-width);
   box-sizing: border-box;
 }
 
@@ -71,6 +71,7 @@ html::after {
   width: var(--vertical-header-width);
   height: 100%;
   background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); 
+  pointer-events: none;          /* Safari のクリック貫通バグ対策 */
   z-index: -1; /* コンテンツの背面に配置 */
 }
 
