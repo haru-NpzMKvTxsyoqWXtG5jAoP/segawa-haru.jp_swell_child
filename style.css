@@ -42,18 +42,90 @@ body {
 /* 縦バー型サイドヘッダー */
   --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);    /* J帯・固定メニュー・html右padding */
   
-/* プロフィールカードの余白用変数 */
-  --haru-gap: clamp(12px, 2vw, 20px);
+/* プロフィールカード */
+  --haru-gap: clamp(12px, 2vw, 18px);
 }
 
 /* ===========================================================
-   ヘッダーを固定追従
+   カスタム縦型ヘッダー & 背景グラデーション
 =========================================================== */
+
+/* 既存のSWELLヘッダーは常に非表示 */
 .l-header {
-  position: sticky;
-  position: -webkit-sticky;
-  top: var(--swl-adminbarH,0);
-  background: transparent;
+  display: none !important;
+}
+
+/* ページ全体(html)に右パディングを追加 & グラデーション背景用の基準点を設定 */
+html {
+  position: relative; /* 疑似要素の基準点 */
+  padding-right: var(--vertical-header-width) !important;
+  box-sizing: border-box;
+}
+
+/* ページ全体に及ぶ縦長のグラデーション背景を疑似要素で作成 */
+html::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--vertical-header-width);
+  height: 100%;
+  background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); 
+  z-index: -1; /* コンテンツの背面に配置 */
+}
+
+/* 追従するヘッダー（メニューテキストのコンテナ） */
+.custom-vertical-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: var(--vertical-header-width);
+  height: 100vh;
+  background: transparent; /* 背景は透明に */
+  z-index: 1000;
+  box-sizing: border-box;
+  pointer-events: none; /* ヘッダーが下の要素のクリックを邪魔しないように */
+}
+
+/* ナビゲーションコンテナ */
+.custom-vertical-nav {
+  display: flex;
+  height: 100%;
+}
+
+/* メニューリスト <ul> */
+.custom-vertical-menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  align-items: center;
+  gap: 80px; 
+  padding-top: 77px; 
+}
+
+/* メニュー項目 <li> */
+.custom-vertical-menu-list li {
+  pointer-events: auto; /* リンクはクリックできるように */
+}
+
+/* メニュー項目 <a> */
+.custom-vertical-menu-list li a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-size: clamp(13px, calc(12px + 0.28vw), 16px); 
+  font-weight: 400; 
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  transform: rotate(90deg); /* 回転方向を修正 */
+}
+
+.custom-vertical-menu-list li a:hover {
+  color: #fff;
 }
 
 /* ===========================================================
@@ -322,88 +394,6 @@ div.wp-block-group.card-grid {
 =========================================================== */
 body {
   padding-top: 50px; /* ヘッダーを非表示にした分の上の余白 */
-}
-
-/* ===========================================================
-   カスタム縦型ヘッダー & 背景グラデーション
-=========================================================== */
-
-/* 既存のSWELLヘッダーは常に非表示 */
-.l-header {
-  display: none !important;
-}
-
-/* ページ全体(html)に右パディングを追加 & グラデーション背景用の基準点を設定 */
-html {
-  position: relative; /* 疑似要素の基準点 */
-  padding-right: var(--vertical-header-width) !important;
-  box-sizing: border-box;
-}
-
-/* ページ全体に及ぶ縦長のグラデーション背景を疑似要素で作成 */
-html::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: var(--vertical-header-width);
-  height: 100%;
-  background: linear-gradient(to bottom, #7dffc8, #ffff82, #fab95f, #ffafb4); 
-  z-index: -1; /* コンテンツの背面に配置 */
-}
-
-/* 追従するヘッダー（メニューテキストのコンテナ） */
-.custom-vertical-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: var(--vertical-header-width);
-  height: 100vh;
-  background: transparent; /* 背景は透明に */
-  z-index: 1000;
-  box-sizing: border-box;
-  pointer-events: none; /* ヘッダーが下の要素のクリックを邪魔しないように */
-}
-
-/* ナビゲーションコンテナ */
-.custom-vertical-nav {
-  display: flex;
-  height: 100%;
-}
-
-/* メニューリスト <ul> */
-.custom-vertical-menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; 
-  align-items: center;
-  gap: 80px; 
-  padding-top: 77px; 
-}
-
-/* メニュー項目 <li> */
-.custom-vertical-menu-list li {
-  pointer-events: auto; /* リンクはクリックできるように */
-}
-
-/* メニュー項目 <a> */
-.custom-vertical-menu-list li a {
-  display: block;
-  color: #000;
-  text-decoration: none;
-  font-size: clamp(13px, calc(12px + 0.28vw), 16px); 
-  font-weight: 400; 
-  white-space: nowrap;
-  transition: color 0.3s ease;
-  transform: rotate(90deg); /* 回転方向を修正 */
-}
-
-.custom-vertical-menu-list li a:hover {
-  color: #fff;
 }
 
 /* ===========================================================
