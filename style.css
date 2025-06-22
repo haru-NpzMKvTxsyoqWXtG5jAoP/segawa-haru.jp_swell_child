@@ -15,45 +15,35 @@
 /* ===========================================================
    共通設定
 =========================================================== */
+/* フォント */
 body {
   font-family: "source-han-sans-japanese", sans-serif;
   font-weight: 400; /* 基本の太さを400に */
 }
 
 :root {
- /* カード関連のCSS変数を定義 */
-  --card-image-padding: clamp(25px, 1.6vw, 50px);
-  --card-grid-gap: 1px; /* 1px から 1px に変更 */
-  --card-bg-color: #fff;                      /* カードの背景色 */
-  --card-border-radius: 10px;                 /* カードの角丸 */
-  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
-  --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 (1.15から変更) */
-  --card-pad-outer: 25px;
-  --card-pad-inner: 15px;
-  --card-radius: 15px;
-  --shadow-elevation-medium: 0 10px 30px rgba(0, 0, 0, .1);
-  --vertical-header-font-size: clamp(13px, calc(12px + 0.28vw), 16px);
-  --card-width: clamp(300px, 90vw, 420px);
-  --card-height: 580px;
-  --border-color: #000;
-  --gap-pc: var(--card-pad-inner);
-
-  /* メイン左右パディング共通変数へ改名 */
+/* メイン左右パディング */
   --content-main-padding: clamp(15px, calc(2.5px + 3.3vw), 50px);
 
-  /* ギャラリー関連のCSS変数を定義 */
-  --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
+/* サービスカード関連のCSS変数を定義 */
+  --card-image-padding: clamp(25px, 1.6vw, 50px); /* カード内パディング */
+  --card-grid-gap: 1px;
+  --card-bg-color: #fff;
+  --card-border-radius: 10px;
+  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
+  --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 */
+
+/* ギャラリー関連のCSS変数を定義 */
+  --gallery-gutter: 1px;    /* JSのgutterと値を合わせる */
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
   --gallery-columns-mobile: 1;
 
+/* 縦バー型サイドヘッダー */
+  --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);    /* J帯・固定メニュー・html右padding */
   
-  --vertical-header-width: clamp(28px, calc(24px + 1.1vw), 40px);
-  
-  /* プロフィールカードの新変数 */
-  --haru-card-radius: 12px;
+/* プロフィールカードの余白用変数 */
   --haru-gap: clamp(12px, 2vw, 20px);
-  --haru-shadow: 0 10px 30px rgba(0, 0, 0, .12);
 }
 
 /* ===========================================================
@@ -405,7 +395,7 @@ html::after {
   display: block;
   color: #000;
   text-decoration: none;
-  font-size: var(--vertical-header-font-size); 
+  font-size: clamp(13px, calc(12px + 0.28vw), 16px); 
   font-weight: 400; 
   white-space: nowrap;
   transition: color 0.3s ease;
@@ -551,11 +541,6 @@ html::after {
 }
 
 /* ===========================================================
-   プロフィールカード用の変数を:rootにまとめる
-=========================================================== */
-/* ↑ファイル冒頭の :root で同変数を定義済みのため重複削除 */
-
-/* ===========================================================
    プロフィールカード【最終完成版 Ver.3D】
 =========================================================== */
 
@@ -594,8 +579,8 @@ html::after {
   -webkit-backface-visibility: hidden; /* Safari用 */
 
   background: #fff;
-  border-radius: var(--haru-card-radius);
-  box-shadow: var(--haru-shadow);
+  border-radius: 12px; /* 固定値に切替 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .12); /* 固定値に切替 */
   overflow: hidden;
   padding: var(--haru-gap);
 }
