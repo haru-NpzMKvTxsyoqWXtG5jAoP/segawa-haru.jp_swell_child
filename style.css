@@ -690,6 +690,7 @@ html::after {
     max-width: 900px;      /* もっと広い画面でも 900px で頭打ち */
     aspect-ratio: 5 / 3;   /* PC は少し横長に調整 */
     min-height: unset;     /* 不要なら高さの固定値は外す */
+    padding: 0 var(--haru-gap) var(--haru-gap);
   }
   .haru-card__front {
     display: grid;
@@ -704,6 +705,9 @@ html::after {
     justify-content: flex-start; /* 左寄せ */
     align-items: center;
     padding-bottom: 0; /* 余白を削除 */
+    padding: 0;
+    margin-inline: calc(-1 * var(--haru-gap));
+    width: calc(100% + var(--haru-gap) * 2);
   }
   .haru-card__divider {
     grid-column: 1 / 3;
