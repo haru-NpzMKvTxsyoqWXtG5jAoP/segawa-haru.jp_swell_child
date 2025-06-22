@@ -29,7 +29,7 @@ body {
   --card-image-padding: clamp(25px, 1.6vw, 50px); /* カード内パディング */
   --card-grid-gap: 1px;
   --card-bg-color: #fff;
-  --card-border-radius: 10px;
+  --card-border-radius: 20px;
   --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 */
 
@@ -130,6 +130,19 @@ html::after {
 }
 
 /* ===========================================================
+   レスポンシブ・スペーサー
+=========================================================== */
+/*
+  使い方：
+  スペーサーブロックの「高度な設定」→「追加CSSクラス」に
+  `spacer-responsive-80` のようにクラス名を入力します。
+  （ブロック側で設定した高さは無視されます）
+*/
+.wp-block-spacer.spacer-responsive-80 {
+  height: clamp(20px, calc(-1.1px + 5.6vw), 80px) !important;
+}
+
+/* ===========================================================
    全幅グループ内の制約付きインナーコンテナの幅制限を解除
    （harusegawa-title-svgの幅制限解除のため）
 =========================================================== */
@@ -151,10 +164,11 @@ html::after {
   display: block;
   width: 100%;   /* レスポンシブで横幅いっぱい */
   height: auto;  /* 比率を保って縮む */
+  fill: #222;
 }
 
 /* ===========================================================
-   harusegawa-title-caption (H2) 
+   ロゴ下キャッチコピー(追加クラス名：harusegawa-title-caption)
 =========================================================== */
 .post_content .harusegawa-title-caption {
   padding: 0 var(--content-main-padding);
@@ -164,7 +178,7 @@ html::after {
 }
 
 /* ===========================================================
-   セクション見出し(H2) section-c
+   セクション見出しC (追加クラス名：section-c)
 =========================================================== */
 .post_content h2.section-c {
   font-size: clamp(16px, calc(12px + 1vw), 22px); 
@@ -172,23 +186,9 @@ html::after {
 }
 
 /* ===========================================================
-   レスポンシブ・スペーサー
+   セクション見出しB (追加クラス名：section-b)
 =========================================================== */
-/*
-  使い方：
-  スペーサーブロックの「高度な設定」→「追加CSSクラス」に
-  `spacer-responsive-80` のようにクラス名を入力します。
-  （ブロック側で設定した高さは無視されます）
-*/
-.wp-block-spacer.spacer-responsive-80 {
-  height: clamp(20px, calc(-1.1px + 5.6vw), 80px) !important;
-}
-
-/* ===========================================================
-   セクション見出しとカスタムテキストのパディング調整
-=========================================================== */
-.is-style-section_ttl.section-b,
-.post_content p.text-a {
+.section-b {
   padding: 0 var(--content-main-padding);
 }
 
