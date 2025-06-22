@@ -744,6 +744,12 @@ html::after {
     align-items: flex-end;
     padding: 0; /* 行gapとカードpaddingで余白管理 */
   }
+
+  /* PC だけロゴ列をフル幅に */
+  .haru-card__logo{
+    display:block;
+    width:100%;
+  }
 }
 
 /* ===========================================================
