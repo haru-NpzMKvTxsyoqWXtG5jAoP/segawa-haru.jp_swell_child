@@ -566,10 +566,10 @@ html::after {
 
 /* --- カード回転の土台 --- */
 .haru-card {
-  width: clamp(320px, 90vw, 420px);
-  /* スマホでは高さを程よく確保しつつ、以前より低めに */
-  aspect-ratio: 3 / 5;
-  min-height: 500px; /* Safari旧バグ対策 */
+  width: 100%;          /* コンテナ内でフル幅 */
+  max-width: 900px;     /* 画面が広いときの上限 */
+  aspect-ratio: 3 / 5;  /* 比率を固定（スマホと同じ縦長） */
+  min-height: unset;    /* 固定高さは不要 */
   
   
   position: relative;
@@ -629,6 +629,9 @@ html::after {
   grid-column: 2;
   /* 行高いっぱいに画像を伸ばす */
   align-self: stretch;
+  /* グリッド計算で押し広げないように下限を解除 */
+  min-width: 0;
+  max-width: 100%;
 }
 /* picture 自体も stretch させたいので別々に指定 */
 .haru-card__image picture,
@@ -652,6 +655,8 @@ html::after {
   flex-direction: column;
   justify-content: space-between;
   padding: 0 var(--haru-gap) var(--haru-gap);
+  /* 列幅を押し広げない */
+  min-width: 0;
 }
 .haru-card__text--jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card__text--jp p:last-child { margin-bottom: 0; }
@@ -725,6 +730,7 @@ html::after {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    min-width: 0; /* PC でも下限解除 */
   }
 
   /* ENテキスト+矢印（フッター）を4行目全幅に配置 */
