@@ -38,8 +38,10 @@ body {
   --border-color: #000;
   --gap-pc: var(--card-pad-inner);
 
+  /* メイン左右パディング共通変数へ改名 */
+  --content-main-padding: clamp(15px, calc(2.5px + 3.3vw), 50px);
+
   /* ギャラリー関連のCSS変数を定義 */
-  --gallery-padding: clamp(15px, calc(2.5px + 3.3vw), 50px);
   --gallery-gutter: 1px; /* JSのgutterと値を合わせる */
   --gallery-columns-pc: 3;
   --gallery-columns-tablet: 2;
@@ -76,7 +78,7 @@ body {
    harusegawa-title-svg (カスタムHTML)
 =========================================================== */
 .alignfull .harusegawa-title-svg { 
-  padding: 0 clamp(15px, calc(2.5px + 3.3vw), 50px); 
+  padding: 0 var(--content-main-padding); 
   margin-bottom: clamp(1em, calc(0.5em + 1vw), 2em); 
 }
 
@@ -92,7 +94,7 @@ body {
    harusegawa-title-caption (H2) 
 =========================================================== */
 .post_content .harusegawa-title-caption {
-  padding: 0 clamp(15px, 4vw, 50px);
+  padding: 0 var(--content-main-padding);
   font-size: clamp(12px, calc(10px + 0.8vw), 20px); 
   margin-top: 0;
   line-height: 1.6;
@@ -103,7 +105,7 @@ body {
 =========================================================== */
 .post_content h2.section-c {
   font-size: clamp(16px, calc(12px + 1vw), 22px); 
-  padding: 0 clamp(15px, 4vw, 50px); /* 他の見出しとpaddingを合わせる */
+  padding: 0 var(--content-main-padding); /* 他の見出しとpaddingを合わせる */
 }
 
 /* ===========================================================
@@ -124,7 +126,7 @@ body {
 =========================================================== */
 .is-style-section_ttl.section-b,
 .post_content p.text-a {
-  padding: 0 var(--gallery-padding);
+  padding: 0 var(--content-main-padding);
 }
 
 /* ===========================================================
@@ -133,9 +135,8 @@ body {
 div.wp-block-group.card-grid {
   display: grid;
   gap: var(--card-grid-gap);
-  padding-left: clamp(15px, 4vw, 50px);
-  padding-right: clamp(15px, 4vw, 50px);
-
+  padding: 0 var(--content-main-padding);
+  
   /* デフォルト（PC）は3列表示 */
   grid-template-columns: repeat(3, 1fr);
 }
@@ -237,7 +238,7 @@ div.wp-block-group.card-grid {
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
   /* paddingを削除し、widthとmarginで余白を表現する */
-  width: calc(100% - (var(--gallery-padding) * 2));
+  width: calc(100% - (var(--content-main-padding) * 2));
   margin-left: auto;
   margin-right: auto;
 }
@@ -420,7 +421,7 @@ html::after {
 =========================================================== */
 /* --- フォーム全体のコンテナ --- */
 .wpcf7 {
-  padding: 0 var(--gallery-padding);
+  padding: 0 var(--content-main-padding);
 }
 
 
