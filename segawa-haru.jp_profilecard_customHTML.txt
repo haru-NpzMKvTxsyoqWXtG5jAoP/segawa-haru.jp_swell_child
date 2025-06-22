@@ -27,7 +27,6 @@
                 srcset="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon_pc.webp">
         <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/dummy_icon_sp.webp"
              alt="HARU SEGAWA のイラスト"
-             width="300" height="300"
              loading="lazy" decoding="async">
       </picture>
 

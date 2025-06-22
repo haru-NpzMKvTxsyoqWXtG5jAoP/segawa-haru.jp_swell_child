@@ -566,10 +566,10 @@ html::after {
 
 /* --- カード回転の土台 --- */
 .haru-card {
-  width: 100%;          /* コンテナ内でフル幅 */
-  max-width: 900px;     /* 画面が広いときの上限 */
-  aspect-ratio: 3 / 5;  /* 比率を固定（スマホと同じ縦長） */
-  min-height: unset;    /* 固定高さは不要 */
+  width: clamp(320px, 90vw, 420px);
+  /* スマホでは高さを程よく確保しつつ、以前より低めに */
+  aspect-ratio: 3 / 5;
+  min-height: 500px; /* Safari旧バグ対策 */
   
   
   position: relative;
@@ -686,8 +686,10 @@ html::after {
 =========================================================== */
 @media (min-width: 768px) {
   .haru-card {
-    width: clamp(700px, 90vw, 900px);
-    aspect-ratio: unset; /* 高さを内容に合わせる */
+    width: 100%;           /* コンテナ内でフル幅を使う */
+    max-width: 900px;      /* もっと広い画面でも 900px で頭打ち */
+    aspect-ratio: 16 / 9;  /* 好きな比率に固定 */
+    min-height: unset;     /* 不要なら高さの固定値は外す */
   }
   .haru-card__front {
     display: grid;
