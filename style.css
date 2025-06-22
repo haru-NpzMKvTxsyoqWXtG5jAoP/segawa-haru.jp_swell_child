@@ -688,7 +688,7 @@ html::after {
   .haru-card {
     width: 100%;           /* コンテナ内でフル幅を使う */
     max-width: 900px;      /* もっと広い画面でも 900px で頭打ち */
-    aspect-ratio: 3 / 2;   /* PC はほんのり縦長に */
+    aspect-ratio: 5 / 3;   /* PC は少し横長に調整 */
     min-height: unset;     /* 不要なら高さの固定値は外す */
   }
   .haru-card__front {
