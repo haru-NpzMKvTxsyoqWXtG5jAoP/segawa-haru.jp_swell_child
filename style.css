@@ -766,11 +766,19 @@ html::after {
   transform: rotateY(180deg); 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: var(--haru-gap);
 }
+
+/* SNS ブロックはカード下部に留まるように自動で押し下げる → ハッシュタグとペアで下げる */
+.haru-card__back-hashtags {
+  margin-top: auto; /* 残余スペースを吸収し、下端へ寄せる */
+}
+
+/* ハッシュタグとSNSの間隔は通常 gap で管理（約12〜20px） */
 .haru-card__back-text p { font-size: 0.9rem; line-height: 1.7; margin: 0 0 1em; }
 .haru-card__back-text p:last-child { margin-bottom: 0; }
-.haru-card__back-separator { height: 1.5px; background: #eee; }
+.haru-card__back-separator { height: 0.5px; background: #000; }
 .haru-card__back-tools p, .haru-card__back-hashtags p { font-size: .85rem; line-height: 1.6; margin: 0 0 1em; }
 .haru-card__back-tools p:last-child, .haru-card__back-hashtags p:last-child { margin-bottom: 0; }
 .haru-card__back-tools strong { font-weight: 700; }
@@ -795,4 +803,15 @@ html::after {
   grid-area: arrow;
   justify-self: end;                  /* 右端に寄せる */
   align-self: center;                 /* 垂直中央 */
+}
+
+@media (min-width: 768px) {
+  /* プロフィールカード裏面：PC だけフォントを +1px */
+  .haru-card__back-text p {
+    font-size: 15px; /* 14px → 15px */
+  }
+  .haru-card__back-tools p,
+  .haru-card__back-hashtags p {
+    font-size: 14px; /* 13px → 14px */
+  }
 }

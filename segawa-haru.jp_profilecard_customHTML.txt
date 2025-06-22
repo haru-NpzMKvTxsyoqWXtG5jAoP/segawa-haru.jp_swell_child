@@ -16,7 +16,6 @@
           <!-- SP 縦ロゴ（235×550 ≒1:2.34） -->
           <img src="https://segawa-haru.jp/240524_segawa/wp-content/uploads/2025/06/harusegawa_sp.svg"
                alt="HARU SEGAWA ロゴ"
-               width="50" height="118"
                loading="lazy" decoding="async">
         </picture>
       </header>
