@@ -639,7 +639,7 @@ div.wp-block-group.card-grid {
 
   /* スマホ専用：カードをほんのり縦長に調整（余白確保） */
   .haru-card {
-    aspect-ratio: 3 / 5.3; /* 5 → 5.3 で約 6% 高く */
+    aspect-ratio: 3 / 5.2;
   }
 
   /* スマホ専用：画像を 99% 高で収め、微妙な隙間を解消 */
@@ -778,7 +778,7 @@ div.wp-block-group.card-grid {
 .haru-card__back-sns .haru-card__arrow {
   grid-area: arrow;
   justify-self: end;                  /* 右端に寄せる */
-  align-self: center;                 /* 垂直中央 */
+  align-self: end;                    /* フッターと高さを合わせて下寄せ */
 }
 
 @media (min-width: 768px) {
