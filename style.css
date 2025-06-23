@@ -608,10 +608,11 @@ div.wp-block-group.card-grid {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 var(--haru-gap) var(--haru-gap);
+  padding: 0 var(--haru-gap);
   /* 列幅を押し広げない */
   min-width: 0;
 }
+
 .haru-card__text--jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card__text--jp p:last-child { margin-bottom: 0; }
 .haru-card__footer {
@@ -742,14 +743,9 @@ div.wp-block-group.card-grid {
   gap: var(--haru-gap);
 }
 
-/* ハッシュタグは通常の余白扱い */
+/* SNS ブロックはカード下部に留まるように自動で押し下げる → ハッシュタグとペアで下げる */
 .haru-card__back-hashtags {
-  margin-top: 0;
-}
-
-/* SNS ブロックをカード下端へ押し下げる */
-.haru-card__back-sns {
-  margin-top: auto;
+  margin-top: auto; /* 残余スペースを吸収し、下端へ寄せる */
 }
 
 /* ハッシュタグとSNSの間隔は通常 gap で管理（約12〜20px） */
