@@ -229,7 +229,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ── コンテナ幅が ↓px 未満なら 1 列 ───────────────── */
-@container (max-width: 500px) {
+@container (max-width: 600px) {
   div.wp-block-group.card-grid {
     --card-cols: 1;
   }
@@ -265,7 +265,7 @@ div.wp-block-group.card-grid {
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 1.2rem var(--card-image-padding) 1rem;   
-  font-size: 17px; 
+  font-size: clamp(17px, 2.2vw, 19px); /* ビューポートに応じて17→19pxに滑らかに可変 */
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
@@ -282,24 +282,6 @@ div.wp-block-group.card-grid {
   line-height: 1.6;           /* 行の高さ */
   max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   text-align: justify;        /* 均等割り付け */
-}
-
-/* ===========================================================
-   カード内フォントサイズ：レスポンシブ
-=========================================================== */
-
-/* タブレット (768px以上) */
-@media (min-width: 768px) {
-  .card-item h3 {
-    font-size: 18px;
-  }
-}
-
-/* PC (1024px以上) */
-@media (min-width: 1024px) {
-  .card-item h3 {
-    font-size: 19px;
-  }
 }
 
 /* ===========================================================
