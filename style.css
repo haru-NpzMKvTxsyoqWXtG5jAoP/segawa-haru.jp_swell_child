@@ -435,10 +435,9 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   Contact Form 7: 送信ボタン & 共通ボタンスタイル
+   共通ボタンスタイル
 =========================================================== */
 .wpcf7-form .wpcf7-submit,
-.btn--slide-fill,
 .wp-block-button__link {
   /* --- 基本のスタイルリセット & 設定 --- */
   -webkit-appearance: none;
@@ -472,7 +471,6 @@ div.wp-block-group.card-grid {
 }
 
 .wpcf7-form .wpcf7-submit:hover,
-.btn--slide-fill:hover,
 .wp-block-button__link:hover {
   color: #000; 
   background-position: left bottom; 
@@ -602,11 +600,11 @@ div.wp-block-group.card-grid {
 .haru-card__text--jp p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card__text--jp p:last-child { margin-bottom: 0; }
 .haru-card__footer {
+  grid-column: 1 / 3; /* モバイルでも左右フル幅 */
+  grid-row: 4;        /* 4行目に固定 */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  grid-column: 1 / 3; /* モバイルでも左右フル幅 */
-  grid-row: 4;        /* 4行目に固定 */
   padding: 0 var(--haru-gap) var(--haru-gap); /* カード内側の左右・下余白 */
 }
 .haru-card__text--en p { font-size: 13px; line-height: 1.5; margin: 0; }
@@ -665,11 +663,6 @@ div.wp-block-group.card-grid {
     grid-column: 1;
     grid-row: 3;
     aspect-ratio: 1 / 1; /* 正方形 */
-  }
-  .haru-card__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   /* JPテキスト列 */
