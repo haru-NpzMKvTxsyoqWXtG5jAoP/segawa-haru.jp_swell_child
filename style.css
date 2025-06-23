@@ -19,6 +19,7 @@ body {
   font-family: "source-han-sans-japanese", sans-serif;
   font-weight: 400; /* 基本の太さを400に */
   container-type: inline-size; /* カード一覧のコンテナクエリ用 */
+  padding-top: 50px; /* ヘッダーを非表示にした分の上の余白 */
 }
 
 :root {
@@ -315,10 +316,9 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    メイソンリーギャラリー：(追加クラス名：gallery-category-name)
 =========================================================== */
-.masonry-gallery-item h3,gallery-category-name
-.masonry-gallery-item--wide h3,gallery-category-name {
-  font-size: 12px; /* フォントサイズを12pxに */
-  margin-bottom: 0; /* 下マージンをリセット */
+.masonry-gallery-item h3.gallery-category-name {
+  font-size: 13px;
+  margin-bottom: 0;
 }
 
 /* ===========================================================
@@ -369,13 +369,6 @@ div.wp-block-group.card-grid {
 .masonry-gallery-item .wp-block-image {
   border-radius: 8px;
   overflow: hidden;
-}
-
-/* ===========================================================
-   全体レイアウト調整
-=========================================================== */
-body {
-  padding-top: 50px; /* ヘッダーを非表示にした分の上の余白 */
 }
 
 /* ===========================================================
