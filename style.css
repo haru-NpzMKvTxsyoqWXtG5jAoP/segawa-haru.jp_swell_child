@@ -44,7 +44,8 @@ body {
   
 /* プロフィールカード */
   --haru-gap: clamp(12px, 2vw, 18px);
-  /* Contact Form 7 用余白制御 */
+
+/* Contact Form 7 用パディング制御 */
   --form-max-padding: 188px;   /* 左右パディングの最大値 */
   --form-breakpoint : 1000px;  /* この幅から余白を滑らかに拡大 */
 }
@@ -385,8 +386,6 @@ div.wp-block-group.card-grid {
      最大でも --form-max-padding で頭打ち */
   padding-left : clamp(var(--content-main-padding), calc((100vw - var(--form-breakpoint)) / 2), var(--form-max-padding));
   padding-right: clamp(var(--content-main-padding), calc((100vw - var(--form-breakpoint)) / 2), var(--form-max-padding));
-  padding-top: 0;
-  padding-bottom: 0;
 }
 
 /* --- フォームのラッパー (背景色などを設定) --- */
@@ -408,11 +407,9 @@ div.wp-block-group.card-grid {
   padding: 0.8em 1em; 
   border: none; /* 枠線をなしに */
   margin-bottom: 20px; 
-  font-size: 14px; 
   background-color: #fff;
   border-radius: 5px; 
 }
-
 
 .wpcf7-form textarea.wpcf7-form-control {
   padding-top: 1.2em;
@@ -431,20 +428,10 @@ div.wp-block-group.card-grid {
   color: #b3b3b3;
 }
 
-/* --- 同意チェックボックス --- */
-.wpcf7-form .checkbox-cl01 {
-  margin-top: 20px;
-}
-
-
+/* --- 同意チェックボックス隣のテキスト --- */
 .wpcf7-form .wpcf7-acceptance {
   background-color: transparent;
   padding: 0;
-}
-
-.wpcf7-form .wpcf7-list-item-label {
-  color: #555;
-  font-size: 14px; 
 }
 
 /* ===========================================================
