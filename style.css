@@ -12,19 +12,9 @@
     License URI: http://www.gnu.org/licenses/gpl.html
 */
 
-/* ========== 目次 ==========
-1. 共通設定
-2. カスタム縦型サイドヘッダー
-3. レスポンシブ・スペーサー
-4. 全幅制限解除 + harusegawa-title-svg
-5. キャッチコピー & 見出し
-6. サービスカード
-7. メイソンリーギャラリー
-8. Contact Form 7 & 共通ボタン
-9. プロフィールカード
-========================== */
-
-/* --- 共通設定 --- */
+/* ===========================================================
+   共通設定
+=========================================================== */
 body {
   font-family: "source-han-sans-japanese", sans-serif;
   font-weight: 400; /* 基本の太さを400に */
@@ -503,7 +493,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   プロフィールカード【最終完成版 Ver.3D】
+   プロフィールカード
 =========================================================== */
 
 /* カードコンテナ */
@@ -518,7 +508,7 @@ div.wp-block-group.card-grid {
   width: clamp(320px, 90vw, 420px);
   /* スマホでは高さを程よく確保しつつ、以前より低めに */
   aspect-ratio: 3 / 5;
-  min-height: 500px; /* Safari旧バグ対策 */
+  /* "min-height" は aspect-ratio が使えない古いブラウザのみで適用 */
   
   
   position: relative;
@@ -531,6 +521,16 @@ div.wp-block-group.card-grid {
   transform: rotateY(180deg);
 }
 
+/* =========================================================
+   aspect-ratio 非対応ブラウザ向けフォールバック
+   （Safari 14 以前 など）
+=========================================================== */
+@supports not (aspect-ratio: 3 / 5) {
+  .haru-card {
+    min-height: 500px; /* Safari 旧バグ対策 */
+  }
+}
+
 /* --- カード表面・裏面の共通スタイル --- */
 .haru-card__front,
 .haru-card__back {
@@ -540,7 +540,8 @@ div.wp-block-group.card-grid {
   backface-visibility: hidden;
 
   background: #fff;
-  border-radius: 12px; /* 固定値に切替 */
+  /* サービスカードより 5px 小さく */
+  border-radius: calc(var(--card-border-radius) - 5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, .12); /* 固定値に切替 */
   overflow: hidden;
   padding: var(--haru-gap);
