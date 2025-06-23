@@ -59,23 +59,23 @@
     <div class="haru-card__back">
 
       <div class="haru-card__back-text">
-        <p>企業でのグラフィックデザイナー・DTPオペレーターとしての経験を経て、フリーランスとして活動。新しい技術に関心が強く、AIなども積極的に勉強して取り入れるようにしています。</p>
+        <p>企業でのデザイナー経験を経て、フリーランスとして活動。新しい技術に関心が強く、AIなども積極的に勉強して取り入れるようにしています。</p>
         <p>サービス内容や作品については、当サイトをご覧ください。まずはお気軽にご相談くださいませ。</p>
       </div>
 
       <div class="haru-card__back-separator"></div>
 
       <div class="haru-card__back-tools">
-        <p><strong>Main tool :</strong> Illustrator / Photoshop / Canva / Adobe Fresco / WordPress / STUDIO / 岩絵具 / 色鉛筆</p>
+        <p><strong>MAIN TOOL :</strong> Illustrator / Photoshop / Canva / Adobe Fresco / WordPress / STUDIO / 岩絵具 / 色鉛筆</p>
       </div>
 
       <div class="haru-card__back-hashtags">
-        <p>#クリエイティブツールのレクチャー #イラスト #日本画 #パターンデザイン #グラフィックデザイン #Webデザイン #ネットショップ運営 #教えるのが好き</p>
+        <p>#レクチャー #イラスト #日本画 #パターンデザイン #グラフィックデザイン #Webデザイン #ネットショップ運営 #教えるのが好き</p>
       </div>
 
       <!-- SNS ＆ 矢印 -->
       <div class="haru-card__back-sns">
-        <p>SNS始めました</p>
+        <p>SNS準備中</p>
         <div class="sns-icons">
           <!-- Instagram -->
           <a href="#" target="_blank" aria-label="Instagram">

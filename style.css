@@ -27,7 +27,7 @@ body {
   --content-main-padding: clamp(15px, calc(2.5px + 3.3vw), 50px);
 
 /* サービスカード関連のCSS変数を定義 */
-  --card-image-padding: clamp(25px, 1.6vw, 50px); /* カード内パディング */
+  --card-image-padding: clamp(20px, 1.6vw, 50px);
   --card-grid-gap: 1px;
   --card-bg-color: #fff;
   --card-border-radius: 20px;
@@ -543,7 +543,6 @@ div.wp-block-group.card-grid {
   backface-visibility: hidden;
 
   background: #fff;
-  /* サービスカードより 5px 小さく */
   border-radius: calc(var(--card-border-radius) - 5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, .12); /* 固定値に切替 */
   overflow: hidden;
@@ -674,7 +673,7 @@ div.wp-block-group.card-grid {
     margin-inline: calc(-1 * var(--haru-gap));
     width: calc(100% + var(--haru-gap) * 2);
     position: relative; /* グリッド位置のまま微調整 */
-    top: -1px;          /* 上へ 2px 食い込ませる */
+    top: -1.5px;          /* 上へ食い込ませる */
   }
   .haru-card__divider {
     grid-column: 1 / 3;
