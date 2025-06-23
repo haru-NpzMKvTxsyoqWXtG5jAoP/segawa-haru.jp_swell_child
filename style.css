@@ -138,7 +138,7 @@ html::after {
   `spacer-responsive-80` のようにクラス名を入力します。
   （ブロック側で設定した高さは無視されます）
 */
-.wp-block-spacer.spacer-responsive-80 {
+.wp-block-spacer.spacer-responsive-regular {
   height: clamp(20px, calc(-1.1px + 5.6vw), 80px) !important;
 }
 
@@ -182,8 +182,7 @@ html::after {
 =========================================================== */
 .post_content h2.section-c {
   font-size: clamp(16px, calc(12px + 1vw), 22px); 
-  padding: 0 var(--content-main-padding); /* 他の見出しとpaddingを合わせる */
-  margin-bottom: 0.5em;
+  padding: 0 var(--content-main-padding);
 }
 
 /* ===========================================================
@@ -203,31 +202,36 @@ div.wp-block-group.card-grid {
   gap: var(--card-grid-gap);
   padding: 0 var(--content-main-padding);
   
-  /* デフォルト（PC）は3列表示 */
-  grid-template-columns: repeat(3, 1fr);
+  /* コンテナクエリ用に自身をサイズ基準のコンテナに指定 */
+  container-type: inline-size;  /* 親要素の横幅で条件分岐 */
+
+  /* デフォルト（標準 PC 幅）は 3 列 */
+  --card-cols: 3;
+  grid-template-columns: repeat(var(--card-cols), 1fr);
 }
 
-/* 巨大なモニター(1920px以上)では4列 */
-@media (min-width: 1920px) {
+/* ── コンテナ幅が 1600px 以上なら 4 列 ───────────────── */
+@container (min-width: 1920px) {
   div.wp-block-group.card-grid {
-    grid-template-columns: repeat(4, 1fr);
+    --card-cols: 4;
   }
+  /* 文字サイズの微調整も従来仕様を踏襲 */
   .card-item p {
     font-size: 15px; 
   }
 }
 
-/* タブレット(1180px以下)では2列 */
-@media (max-width: 1180px) {
+/* ── コンテナ幅が 960px 未満なら 2 列 ───────────────── */
+@container (max-width: 1180px) {
   div.wp-block-group.card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    --card-cols: 2;
   }
 }
 
-/* スマホ(767px以下)では1列 */
-@media (max-width: 767px) {
+/* ── コンテナ幅が 600px 未満なら 1 列 ───────────────── */
+@container (max-width: 767px) {
   div.wp-block-group.card-grid {
-    grid-template-columns: 1fr;
+    --card-cols: 1;
   }
 }
 
