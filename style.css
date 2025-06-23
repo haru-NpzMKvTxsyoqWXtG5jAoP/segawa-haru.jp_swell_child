@@ -168,7 +168,7 @@ html::after {
 }
 
 /* ===========================================================
-   ロゴ下キャッチコピー(追加クラス名：harusegawa-title-caption)
+   ロゴ下キャッチコピー
 =========================================================== */
 .post_content .harusegawa-title-caption {
   padding: 0 var(--content-main-padding);
@@ -178,24 +178,24 @@ html::after {
 }
 
 /* ===========================================================
-   セクション見出しC (追加クラス名：section-c)
+   セクション見出しC
 =========================================================== */
-.post_content h2.section-c {
+.post_content .section-c {
   font-size: clamp(16px, calc(12px + 1vw), 22px); 
   padding: 0 var(--content-main-padding);
 }
 
 /* ===========================================================
-   セクション見出しB (追加クラス名：section-b)
+   セクション見出しB
 =========================================================== */
-.post_content h2.section-b {
+.post_content .section-b {
   font-size: clamp(32px, 8vw, 5rem);
   padding: 0 var(--content-main-padding);
   margin: 0 0 0.5em;
 }
 
 /* ===========================================================
-   カード一覧
+   サービスカード：一覧
 =========================================================== */
 div.wp-block-group.card-grid {
   display: grid;
@@ -236,7 +236,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   カード本体
+   サービスカード：本体
 =========================================================== */
 .card-item {
   aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
@@ -251,7 +251,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   カード内の要素
+   サービスカード：内の要素
 =========================================================== */
 
 /* カード内画像 */
@@ -279,7 +279,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリーギャラリー：基本スタイル
+   メイソンリーギャラリー：ベーススタイル
 =========================================================== */
 .masonry-gallery {
   display: block !important; /* display:grid の上書きを試みる */
@@ -302,7 +302,7 @@ div.wp-block-group.card-grid {
 .masonry-gallery .masonry-gallery-item img,
 .masonry-gallery .masonry-gallery-item--wide img { 
   width: 100%;
-  border-radius: 8px;
+  border-radius: var(--card-border-radius);
 }
 
 /* ===========================================================
@@ -314,9 +314,9 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリーギャラリー：(追加クラス名：gallery-category-name)
+   メイソンリーギャラリー：カテゴリ見出し
 =========================================================== */
-.masonry-gallery-item h3.gallery-category-name {
+.masonry-gallery-item .gallery-category-name {
   font-size: 13px;
   margin-bottom: 0;
 }
@@ -324,40 +324,31 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    メイソンリーギャラリー：本文テキスト
 =========================================================== */
-/* スマホ (デフォルト) */
-@media (max-width: 767px) { 
-  .masonry-gallery .grid-sizer,
-  .masonry-gallery .masonry-gallery-item,
-  .masonry-gallery .masonry-gallery-item--wide {
-    margin-bottom: 8px; /* 上下の隙間 */
-    width: 100% !important; 
-  }
+/* --- ベース値（PC想定: 3列・ギャップ12px） --- */
+.masonry-gallery {
+  --gallery-cols: var(--gallery-columns-pc);
+  --gallery-gap : 12px;
 }
 
-/* タブレット (768px以上) */
-@media (min-width: 768px) and (max-width: 1023px) { 
-  .masonry-gallery .grid-sizer,
-  .masonry-gallery .masonry-gallery-item {
-    margin-bottom: 10px; /* 上下の隙間 */
-    width: calc(((100% - var(--gallery-gutter))) / var(--gallery-columns-tablet)) !important; 
-  }
-  .masonry-gallery .masonry-gallery-item--wide {
-    margin-bottom: 10px; /* 上下の隙間 */
-    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-tablet) - 1))) / var(--gallery-columns-tablet)) * 2) + var(--gallery-gutter)) !important; 
-  }
+/* 共通レイアウト：列幅＆上下ギャップを1回だけ記述 */
+.masonry-gallery .grid-sizer,
+.masonry-gallery .masonry-gallery-item {
+  margin-bottom: var(--gallery-gap);
+  width: calc((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) !important;
+}
+.masonry-gallery .masonry-gallery-item--wide {
+  margin-bottom: var(--gallery-gap);
+  width: calc(((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) * 2 + var(--gallery-gutter)) !important;
 }
 
-/* PC (1024px以上) */
-@media (min-width: 1024px) {
-  .masonry-gallery .grid-sizer,
-  .masonry-gallery .masonry-gallery-item {
-    margin-bottom: 12px; /* 上下の隙間 */
-    width: calc(((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc))) !important; 
-  }
-  .masonry-gallery .masonry-gallery-item--wide {
-    margin-bottom: 12px; /* 上下の隙間 */
-    width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns-pc) - 1))) / var(--gallery-columns-pc)) * 2) + var(--gallery-gutter)) !important;
-  }
+/* タブレット (768px–1023px)：2列・ギャップ10px */
+@media (max-width: 1023px) {
+  .masonry-gallery { --gallery-cols: var(--gallery-columns-tablet); --gallery-gap: 10px; }
+}
+
+/* スマホ (<768px)：1列・ギャップ8px */
+@media (max-width: 767px) {
+  .masonry-gallery { --gallery-cols: var(--gallery-columns-mobile); --gallery-gap: 8px; }
 }
 
 /* ===========================================================
