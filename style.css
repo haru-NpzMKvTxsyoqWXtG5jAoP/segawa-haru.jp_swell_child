@@ -563,12 +563,14 @@ div.wp-block-group.card-grid {
 .haru-card__logo img {
   width: 100%;
   height: auto;
+  display: block; /* 余白原因のインライン基準線を除去 */
 }
 
 .haru-card__header {
   grid-row: 1;
   grid-column: 1;
   display: flex;
+  line-height: 0; /* インライン要素の行ボックスを潰す */
   align-items: stretch; /* ロゴを行全体の高さに伸ばす */
   margin-bottom: 0; /* 行間gapで余白を管理するためリセット */
 }
