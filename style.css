@@ -15,7 +15,6 @@
 /* ===========================================================
    共通設定
 =========================================================== */
-/* フォント */
 body {
   font-family: "source-han-sans-japanese", sans-serif;
   font-weight: 400; /* 基本の太さを400に */
@@ -211,8 +210,8 @@ div.wp-block-group.card-grid {
   grid-template-columns: repeat(var(--card-cols), 1fr);
 }
 
-/* ── コンテナ幅が 1600px 以上なら 4 列 ───────────────── */
-@container (min-width: 1920px) {
+/* ── コンテナ幅が ↓px 以上なら 4 列 ───────────────── */
+@container (min-width: 1800px) {
   div.wp-block-group.card-grid {
     --card-cols: 4;
   }
@@ -222,15 +221,15 @@ div.wp-block-group.card-grid {
   }
 }
 
-/* ── コンテナ幅が 960px 未満なら 2 列 ───────────────── */
-@container (max-width: 1180px) {
+/* ── コンテナ幅が ↓px 未満なら 2 列 ───────────────── */
+@container (max-width: 1200px) {
   div.wp-block-group.card-grid {
     --card-cols: 2;
   }
 }
 
-/* ── コンテナ幅が 600px 未満なら 1 列 ───────────────── */
-@container (max-width: 767px) {
+/* ── コンテナ幅が ↓px 未満なら 1 列 ───────────────── */
+@container (max-width: 500px) {
   div.wp-block-group.card-grid {
     --card-cols: 1;
   }
