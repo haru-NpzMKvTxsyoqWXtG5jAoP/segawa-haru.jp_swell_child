@@ -508,6 +508,9 @@ div.wp-block-group.card-grid {
   width: clamp(320px, 90vw, 420px);
   /* スマホでは高さを程よく確保しつつ、以前より低めに */
   aspect-ratio: 3 / 5;
+  /* iOS Safari のテキスト自動拡大を無効化 */
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   /* "min-height" は aspect-ratio が使えない古いブラウザのみで適用 */
   
   
@@ -745,10 +748,10 @@ div.wp-block-group.card-grid {
 }
 
 /* ハッシュタグとSNSの間隔は通常 gap で管理（約12〜20px） */
-.haru-card__back-text p { font-size: 0.9rem; line-height: 1.7; margin: 0 0 1em; }
+.haru-card__back-text p { font-size: 14px; line-height: 1.7; margin: 0 0 1em; }
 .haru-card__back-text p:last-child { margin-bottom: 0; }
 .haru-card__back-separator { height: 0.5px; background: #000; }
-.haru-card__back-tools p, .haru-card__back-hashtags p { font-size: .85rem; line-height: 1.6; margin: 0 0 1em; }
+.haru-card__back-tools p, .haru-card__back-hashtags p { font-size: 14px; line-height: 1.6; margin: 0 0 1em; }
 .haru-card__back-tools p:last-child, .haru-card__back-hashtags p:last-child { margin-bottom: 0; }
 .haru-card__back-tools strong { font-weight: 700; }
 .haru-card__back-sns {
@@ -761,7 +764,6 @@ div.wp-block-group.card-grid {
 }
 .haru-card__back-sns p {               /* 見出しテキスト */
   grid-area: heading;
-  margin: 0 0 var(--haru-gap) 0;      /* 下だけ余白 */
 }
 .haru-card__back-sns .sns-icons {      /* アイコン行 */
   grid-area: icons;
@@ -776,11 +778,9 @@ div.wp-block-group.card-grid {
 
 @media (min-width: 768px) {
   /* プロフィールカード裏面：PC だけフォントを +1px */
-  .haru-card__back-text p {
-    font-size: 15px; /* 14px → 15px */
-  }
+  .haru-card__back-text p,
   .haru-card__back-tools p,
   .haru-card__back-hashtags p {
-    font-size: 14px; /* 13px → 14px */
+    font-size: 15px; /* 14px → 15px */
   }
 }
