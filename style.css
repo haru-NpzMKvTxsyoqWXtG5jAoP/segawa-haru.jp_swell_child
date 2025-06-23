@@ -630,9 +630,14 @@ div.wp-block-group.card-grid {
   /* スマホ専用：ロゴを少し上・左へ食い込ませる */
   .haru-card__header {
     position: relative;
-    top: -2px; /* 上へ 2px */
-    margin-inline-start: -2px; /* 左へ 2px だけ食い込む */
-    width: calc(100% + 2px); /* 左へ伸ばした分だけ横幅を拡張 */
+    top: -5px; /* 上へ食い込む */
+    margin-inline-start: -2px; /* 左へ食い込む */
+  }
+
+  /* スマホ専用：画像を 99% 高で収め、微妙な隙間を解消 */
+  .haru-card__image picture,
+  .haru-card__image img {
+    height: 99%;
   }
 }
 
