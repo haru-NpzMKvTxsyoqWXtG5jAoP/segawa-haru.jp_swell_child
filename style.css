@@ -313,13 +313,12 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリーギャラリー：H6見出し
+   メイソンリーギャラリー：(追加クラス名：gallery-category-name)
 =========================================================== */
-.masonry-gallery .masonry-gallery-item h6,
-.masonry-gallery .masonry-gallery-item--wide h6 {
+.masonry-gallery-item h3,gallery-category-name
+.masonry-gallery-item--wide h3,gallery-category-name {
   font-size: 12px; /* フォントサイズを12pxに */
   margin-bottom: 0; /* 下マージンをリセット */
-  line-height: 1; /* 行の高さ */
 }
 
 /* ===========================================================
