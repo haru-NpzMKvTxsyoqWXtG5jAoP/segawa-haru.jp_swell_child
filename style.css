@@ -19,6 +19,7 @@
 body {
   font-family: "source-han-sans-japanese", sans-serif;
   font-weight: 400; /* 基本の太さを400に */
+  container-type: inline-size; /* カード一覧のコンテナクエリ用 */
 }
 
 :root {
