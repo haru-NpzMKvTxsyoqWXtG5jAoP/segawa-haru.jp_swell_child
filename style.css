@@ -135,7 +135,7 @@ html::after {
 /*
   使い方：
   スペーサーブロックの「高度な設定」→「追加CSSクラス」に
-  `spacer-responsive-80` のようにクラス名を入力します。
+  `spacer-responsive-regular` のようにクラス名を入力します。
   （ブロック側で設定した高さは無視されます）
 */
 .wp-block-spacer.spacer-responsive-regular {
@@ -191,7 +191,7 @@ html::after {
 .post_content h2.section-b {
   font-size: clamp(32px, 8vw, 5rem);
   padding: 0 var(--content-main-padding);
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em;
 }
 
 /* ===========================================================
@@ -229,7 +229,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ── コンテナ幅が ↓px 未満なら 1 列 ───────────────── */
-@container (max-width: 600px) {
+@container (max-width: 700px) {
   div.wp-block-group.card-grid {
     --card-cols: 1;
   }
@@ -265,7 +265,7 @@ div.wp-block-group.card-grid {
 /* カード内見出し (h3) */
 .card-item h3 {
   margin: 1.2rem var(--card-image-padding) 1rem;   
-  font-size: clamp(17px, 2.2vw, 19px); /* ビューポートに応じて17→19pxに滑らかに可変 */
+  font-size: clamp(17px, 2.2vw, 19px);
   font-weight: 700;               /* フォントの太さ */
   line-height: 1.4;               /* 行の高さ */
 }
