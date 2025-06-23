@@ -622,6 +622,20 @@ div.wp-block-group.card-grid {
 .haru-card__text--en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card__arrow img { width: 35px; }
 
+@media (max-width: 767px) {
+  .haru-card__front {
+    padding: 0;
+  }
+
+  /* スマホ専用：ロゴを少し上・左へ食い込ませる */
+  .haru-card__header {
+    position: relative;
+    top: -2px; /* 上へ 2px */
+    margin-inline-start: -2px; /* 左へ 2px だけ食い込む */
+    width: calc(100% + 2px); /* 左へ伸ばした分だけ横幅を拡張 */
+  }
+}
+
 /* ===========================================================
    PC/タブレット表示のレイアウト (≥ 768px)
 =========================================================== */
@@ -764,18 +778,4 @@ div.wp-block-group.card-grid {
   .haru-card__back-hashtags p {
     font-size: 14px; /* 13px → 14px */
   }
-}
-
-@media (max-width: 767px) {
-   .haru-card__front {
-     padding: 0;
-   }
-
-   /* スマホ専用：ロゴを少し上・左へ食い込ませる */
-   .haru-card__header {
-     position: relative;
-     top: -2px; /* 上へ 2px */
-     margin-inline-start: calc(-1 * var(--haru-gap)); /* 左へ食い込む */
-     width: calc(100% + var(--haru-gap)); /* はみ出し分も含め満幅化 */
-   }
 }
