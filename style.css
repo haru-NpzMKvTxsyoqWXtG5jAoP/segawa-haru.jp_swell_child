@@ -180,7 +180,7 @@ html::after {
 /* ===========================================================
    セクション見出しC (追加クラス名：section-c)
 =========================================================== */
-.post_content h2 .section-c {
+.post_content h2.section-c {
   font-size: clamp(16px, calc(12px + 1vw), 22px); 
   padding: 0 var(--content-main-padding); /* 他の見出しとpaddingを合わせる */
 }
@@ -188,7 +188,7 @@ html::after {
 /* ===========================================================
    セクション見出しB (追加クラス名：section-b)
 =========================================================== */
-.post_content h2 .section-b {
+.post_content h2.section-b {
   font-size: clamp(25px, calc(12px + 1vw), 30px); 
   padding: 0 var(--content-main-padding);
 }
