@@ -635,8 +635,8 @@ div.wp-block-group.card-grid {
   }
   .haru-card__front {
     display: grid;
-    /* 4行構成: ヘッダー / 区切り線 / 画像+JP / EN+矢印 */
-    grid-template-columns: clamp(260px, 30%, 380px) 1fr;
+    /* 左列(画像)をカード幅に応じて可変に — 180px を下限に 35% まで伸張 */
+    grid-template-columns: clamp(180px, 35%, 380px) 1fr;
     grid-template-rows: auto 1.5px 1fr auto;
     padding: 0 var(--haru-gap) var(--haru-gap);
   }
@@ -665,6 +665,12 @@ div.wp-block-group.card-grid {
     grid-column: 1;
     grid-row: 3;
     aspect-ratio: 1 / 1; /* 正方形 */
+  }
+
+  /* PC では元画像を完全表示（cropping しない）*/
+  .haru-card__image img {
+    object-fit: contain;
+    object-position: center;
   }
 
   /* JPテキスト列 */
