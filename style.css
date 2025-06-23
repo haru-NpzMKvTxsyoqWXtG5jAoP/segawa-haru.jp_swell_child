@@ -30,7 +30,6 @@ body {
   --card-grid-gap: 1px;
   --card-bg-color: #fff;
   --card-border-radius: 20px;
-  --card-text-max-height: calc(1.5em * 3);    /* カード内テキストの最大高さ */
   --card-aspect-ratio: 1 / 1.05;             /* カードのアスペクト比 */
 
 /* ギャラリー関連のCSS変数を定義 */
@@ -211,7 +210,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ── コンテナ幅が ↓px 以上なら 4 列 ───────────────── */
-@container (min-width: 1800px) {
+@container (min-width: 1850px) {
   div.wp-block-group.card-grid {
     --card-cols: 4;
   }
@@ -222,14 +221,14 @@ div.wp-block-group.card-grid {
 }
 
 /* ── コンテナ幅が ↓px 未満なら 2 列 ───────────────── */
-@container (max-width: 1200px) {
+@container (max-width: 1130px) {
   div.wp-block-group.card-grid {
     --card-cols: 2;
   }
 }
 
 /* ── コンテナ幅が ↓px 未満なら 1 列 ───────────────── */
-@container (max-width: 700px) {
+@container (max-width: 717px) {
   div.wp-block-group.card-grid {
     --card-cols: 1;
   }
@@ -241,9 +240,9 @@ div.wp-block-group.card-grid {
 .card-item {
   aspect-ratio: var(--card-aspect-ratio); /* アスペクト比を指定 */
   overflow: hidden; /* はみ出た内容を隠す */
-  border-radius: var(--card-border-radius); /* 角丸 (10px) */
-  background-color: var(--card-bg-color); /* 背景色 (白) */
-  transition: transform 0.15s ease-out; /* transformのアニメーション速度を0.15秒に短縮 */
+  border-radius: var(--card-border-radius); /* 角丸 */
+  background-color: var(--card-bg-color); /* 背景色 */
+  transition: transform 0.15s ease-out; /* transformのアニメーション速度 */
 }
 
 .card-item:hover {
@@ -267,20 +266,14 @@ div.wp-block-group.card-grid {
   margin: 1.2rem var(--card-image-padding) 1rem;   
   font-size: clamp(17px, 2.2vw, 19px);
   font-weight: 700;               /* フォントの太さ */
-  line-height: 1.4;               /* 行の高さ */
 }
 
 /* カード内テキスト (p) */
 .card-item p {
   font-size: 14px; 
-  padding-top: 0;
   padding-right: var(--card-image-padding); 
-  padding-bottom: 0.5rem;
   padding-left: var(--card-image-padding);  
-  margin-right: 0;         /* 外側の右余白をリセット */
-  margin-left: 0;          /* 外側の左余白をリセット */
   line-height: 1.6;           /* 行の高さ */
-  max-height: var(--card-text-max-height); /* テキストエリアの最大高さを制限 */
   text-align: justify;        /* 均等割り付け */
 }
 
