@@ -287,22 +287,65 @@ div.wp-block-group.card-grid {
   width: calc(100% - (var(--content-main-padding) * 2));
   margin-left: auto;
   margin-right: auto;
+  container-type: inline-size; /* カードと同様にコンテナクエリ対応 */
 }
 
-.masonry-gallery .grid-sizer {
-  /* 高さやボーダー、パディングは不要 */
+.masonry-gallery .grid-sizer,
+.masonry-gallery .masonry-gallery-item {
+  margin-bottom: var(--gallery-gap);
+  width: calc((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) !important;
 }
 
-.masonry-gallery .masonry-gallery-item,
-.masonry-gallery .masonry-gallery-item--wide { 
-  padding: 0;
-  transition: transform 0.15s ease-out;
+.masonry-gallery .masonry-gallery-item--wide {
+  margin-bottom: var(--gallery-gap);
+  width: calc(((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) * 2 + var(--gallery-gutter)) !important;
 }
 
 .masonry-gallery .masonry-gallery-item img,
 .masonry-gallery .masonry-gallery-item--wide img { 
   width: 100%;
   border-radius: var(--card-border-radius);
+}
+
+/* ===========================================================
+   メイソンリーギャラリー：アイテム幅と下余白
+=========================================================== */
+/* --- ベース値（PC想定: 3列・ギャップ12px） --- */
+.masonry-gallery {
+  --gallery-cols: var(--gallery-columns-pc);
+  --gallery-gap : 12px;
+}
+
+/* ────────────────────────────────────────────────
+   メイソンリーギャラリー：コンテナクエリで列数制御
+   カードグリッドと同じブレイクポイントを使用
+──────────────────────────────────────────────── */
+
+/* ── コンテナ幅が ↓px 以上なら 4 列 ───────────────── */
+@container (min-width: 1850px) {
+  .masonry-gallery {
+    --gallery-cols: 4;
+  }
+}
+
+/* ── コンテナ幅が ↓px 未満なら 2 列 ───────────────── */
+@container (max-width: 1130px) {
+  .masonry-gallery {
+    --gallery-cols: 2;
+    --gallery-gap: 10px;
+  }
+}
+
+/* ── コンテナ幅が ↓px 未満なら 1 列 ───────────────── */
+@container (max-width: 717px) {
+  .masonry-gallery {
+    --gallery-cols: 1;
+    --gallery-gap: 8px;
+  }
+  /* スマホではワイドカードも 1 列表示に合わせて100%幅に */
+  .masonry-gallery .masonry-gallery-item--wide {
+    width: 100% !important;
+  }
 }
 
 /* ===========================================================
@@ -319,49 +362,6 @@ div.wp-block-group.card-grid {
 .masonry-gallery-item .gallery-category-name {
   font-size: 13px;
   margin-bottom: 0;
-}
-
-/* ===========================================================
-   メイソンリーギャラリー：アイテム幅と下余白
-=========================================================== */
-/* --- ベース値（PC想定: 3列・ギャップ12px） --- */
-.masonry-gallery {
-  --gallery-cols: var(--gallery-columns-pc);
-  --gallery-gap : 12px;
-}
-
-/* 共通レイアウト：列幅＆上下ギャップを1回だけ記述 */
-.masonry-gallery .grid-sizer,
-.masonry-gallery .masonry-gallery-item {
-  margin-bottom: var(--gallery-gap);
-  width: calc((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) !important;
-}
-.masonry-gallery .masonry-gallery-item--wide {
-  margin-bottom: var(--gallery-gap);
-  width: calc(((100% - (var(--gallery-gutter) * (var(--gallery-cols) - 1))) / var(--gallery-cols)) * 2 + var(--gallery-gutter)) !important;
-}
-
-/* タブレット (768px–1023px)：2列・ギャップ10px */
-@media (max-width: 1023px) {
-  .masonry-gallery { --gallery-cols: var(--gallery-columns-tablet); --gallery-gap: 10px; }
-}
-
-/* スマホ (<768px)：1列・ギャップ8px */
-@media (max-width: 767px) {
-  .masonry-gallery { --gallery-cols: var(--gallery-columns-mobile); --gallery-gap: 8px; }
-  /* スマホではワイドカードも 1 列表示に合わせて100%幅に */
-  .masonry-gallery .masonry-gallery-item--wide { width: 100% !important; }
-}
-
-/* ===========================================================
-   カードとギャラリーのホバーオーバーレイ
-=========================================================== */
-
-/* --- ギャラリーだけの個別ルール --- */
-/* ギャラリーの画像コンテナの角を丸める */
-.masonry-gallery-item .wp-block-image {
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 /* ===========================================================
@@ -759,4 +759,11 @@ div.wp-block-group.card-grid {
   .haru-card__back-hashtags p {
     font-size: 14px; /* 13px → 14px */
   }
+}
+
+/* --- アイテム共通ベース（余白リセット & アニメーション） --- */
+.masonry-gallery .masonry-gallery-item,
+.masonry-gallery .masonry-gallery-item--wide {
+  padding: 0;
+  transition: transform 0.15s ease-out;
 }
