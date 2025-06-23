@@ -44,6 +44,9 @@ body {
   
 /* プロフィールカード */
   --haru-gap: clamp(12px, 2vw, 18px);
+  /* Contact Form 7 用余白制御 */
+  --form-max-padding: 188px;   /* 左右パディングの最大値 */
+  --form-breakpoint : 1000px;  /* この幅から余白を滑らかに拡大 */
 }
 
 /* ===========================================================
@@ -139,7 +142,7 @@ html::after {
   （ブロック側で設定した高さは無視されます）
 */
 .wp-block-spacer.spacer-responsive-regular {
-  height: clamp(20px, calc(-1.1px + 5.6vw), 80px) !important;
+  height: clamp(20px, calc(-1.1px + 5.6vw), 60px) !important;
 }
 
 /* ===========================================================
@@ -307,6 +310,13 @@ div.wp-block-group.card-grid {
   border-radius: var(--card-border-radius);
 }
 
+/* --- 余白リセット & アニメーション --- */
+.masonry-gallery .masonry-gallery-item,
+.masonry-gallery .masonry-gallery-item--wide {
+  padding: 0;
+  transition: transform 0.15s ease-out;
+}
+
 /* ===========================================================
    メイソンリーギャラリー：アイテム幅と下余白
 =========================================================== */
@@ -367,19 +377,16 @@ div.wp-block-group.card-grid {
 /* ===========================================================
    Contact Form 7
 =========================================================== */
-/* --- フォーム全体のコンテナ --- */
-.wpcf7 {
-  padding: 0 var(--content-main-padding);
-}
-
-
-@media (min-width: 1366px) { /* ブレイクポイントを1024pxから変更 */
-  .wpcf7 {
-    padding: 0 188px; /* 125pxから1.5倍に */
-  }
-  .post_content p.text-b {
-    padding: 0 188px; /* コンタクトフォームとパディングを合わせる */
-  }
+/* --- フォーム全体のコンテナ + 前後説明文 --- */
+.wpcf7,
+.post_content p.text-b {
+  /* 狭い画面では --content-main-padding、画面が広がるにつれて
+     calc((100vw - var(--form-breakpoint)) / 2) が増加し、
+     最大でも --form-max-padding で頭打ち */
+  padding-left : clamp(var(--content-main-padding), calc((100vw - var(--form-breakpoint)) / 2), var(--form-max-padding));
+  padding-right: clamp(var(--content-main-padding), calc((100vw - var(--form-breakpoint)) / 2), var(--form-max-padding));
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* --- フォームのラッパー (背景色などを設定) --- */
@@ -759,11 +766,4 @@ div.wp-block-group.card-grid {
   .haru-card__back-hashtags p {
     font-size: 14px; /* 13px → 14px */
   }
-}
-
-/* --- アイテム共通ベース（余白リセット & アニメーション） --- */
-.masonry-gallery .masonry-gallery-item,
-.masonry-gallery .masonry-gallery-item--wide {
-  padding: 0;
-  transition: transform 0.15s ease-out;
 }
