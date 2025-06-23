@@ -438,7 +438,8 @@ div.wp-block-group.card-grid {
    Contact Form 7: 送信ボタン & 共通ボタンスタイル
 =========================================================== */
 .wpcf7-form .wpcf7-submit,
-.btn--slide-fill {
+.btn--slide-fill,
+.wp-block-button__link {
   /* --- 基本のスタイルリセット & 設定 --- */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -471,7 +472,8 @@ div.wp-block-group.card-grid {
 }
 
 .wpcf7-form .wpcf7-submit:hover,
-.btn--slide-fill:hover {
+.btn--slide-fill:hover,
+.wp-block-button__link:hover {
   color: #000; 
   background-position: left bottom; 
 }
