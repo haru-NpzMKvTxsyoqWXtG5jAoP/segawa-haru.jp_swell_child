@@ -322,7 +322,7 @@ div.wp-block-group.card-grid {
 }
 
 /* ===========================================================
-   メイソンリーギャラリー：本文テキスト
+   メイソンリーギャラリー：アイテム幅と下余白
 =========================================================== */
 /* --- ベース値（PC想定: 3列・ギャップ12px） --- */
 .masonry-gallery {
@@ -349,6 +349,8 @@ div.wp-block-group.card-grid {
 /* スマホ (<768px)：1列・ギャップ8px */
 @media (max-width: 767px) {
   .masonry-gallery { --gallery-cols: var(--gallery-columns-mobile); --gallery-gap: 8px; }
+  /* スマホではワイドカードも 1 列表示に合わせて100%幅に */
+  .masonry-gallery .masonry-gallery-item--wide { width: 100% !important; }
 }
 
 /* ===========================================================
