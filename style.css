@@ -636,7 +636,7 @@ div.wp-block-group.card-grid {
   .haru-card__front {
     display: grid;
     /* 左列(画像)をカード幅に応じて可変に — 180px を下限に 35% まで伸張 */
-    grid-template-columns: clamp(180px, 35%, 380px) 1fr;
+    grid-template-columns: clamp(180px, 39%, 380px) 1fr;
     grid-template-rows: auto 1.5px 1fr auto;
     padding: 0 var(--haru-gap) var(--haru-gap);
   }
@@ -670,7 +670,7 @@ div.wp-block-group.card-grid {
   /* PC では元画像を完全表示（cropping しない）*/
   .haru-card__image img {
     object-fit: contain;
-    object-position: center;
+    object-position: top center; /* 上揃えで余白を下側に寄せる */
   }
 
   /* JPテキスト列 */
@@ -698,6 +698,14 @@ div.wp-block-group.card-grid {
   .haru-card__logo{
     display:block;
     width:100%;
+  }
+
+  /* プロフィールカード表面：PC だけ本文フォントを +1px */
+  .haru-card__text--jp p {
+    font-size: 15px; /* 14px → 15px */
+  }
+  .haru-card__text--en p {
+    font-size: 14px; /* 13px → 14px */
   }
 }
 
