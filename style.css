@@ -637,6 +637,11 @@ div.wp-block-group.card-grid {
     margin-inline-start: -2px; /* 左へ食い込む */
   }
 
+  /* スマホ専用：カードをほんのり縦長に調整（余白確保） */
+  .haru-card {
+    aspect-ratio: 3 / 5.3; /* 5 → 5.3 で約 6% 高く */
+  }
+
   /* スマホ専用：画像を 99% 高で収め、微妙な隙間を解消 */
   .haru-card__image picture,
   .haru-card__image img {
