@@ -528,7 +528,6 @@ div.wp-block-group.card-grid {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; /* Safari用 */
 
   background: #fff;
   border-radius: 12px; /* 固定値に切替 */
@@ -609,16 +608,6 @@ div.wp-block-group.card-grid {
 }
 .haru-card__text--en p { font-size: 13px; line-height: 1.5; margin: 0; }
 .haru-card__arrow img { width: 35px; }
-
-/* --- スマホ限定：1段目をフルブリードにするための余白調整 --- */
-@media (max-width: 767px) {
-  .haru-card__front {
-    padding: 0;
-  }
-  .haru-card__body {
-    padding: 0 var(--haru-gap) var(--haru-gap);
-  }
-}
 
 /* ===========================================================
    PC/タブレット表示のレイアウト (≥ 768px)
@@ -748,4 +737,10 @@ div.wp-block-group.card-grid {
   .haru-card__back-hashtags p {
     font-size: 14px; /* 13px → 14px */
   }
+}
+
+@media (max-width: 767px) {
+   .haru-card__front {
+     padding: 0;
+   }
 }
